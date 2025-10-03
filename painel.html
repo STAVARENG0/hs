@@ -276,6 +276,7 @@ function excluirProduto(index) {
       };
 
       produtos.push(produto);
+      await salvarNoGitHub(produtos);
       document.getElementById('formProduto').reset();
       document.getElementById('preview').innerHTML = '';
       renderProdutos();
