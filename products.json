@@ -1,5 +1,19 @@
 [
   {
+    "id": "1759524536400",
+    "title": "CREATINA EM CAPISULA ",
+    "price": "96",
+    "description": "Ã© uma forma prÃ¡tica de suplemento que, assim como a creatina em pÃ³, auxilia no aumento de desempenho fÃ­sico em exercÃ­cios de curta duraÃ§Ã£o e alta intensidade, na recuperaÃ§Ã£o muscular e no ganho de forÃ§a e massa muscular",
+    "category": "supplements",
+    "stock": 7,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759524536400/creatina.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759524536400/creatina.png"
+    ],
+    "createdAt": 1759524538946,
+    "status": "publicado"
+  },
+  {
     "id": "1759524415831",
     "title": "CREATINA EM CAPISULA ",
     "price": "29",
@@ -9,20 +23,6 @@
     "image": "",
     "gallery": [],
     "createdAt": 1759524415831,
-    "status": "publicado"
-  },
-  {
-    "id": "1759524536400",
-    "title": "CREATINA EM CAPISULA ",
-    "price": "96",
-    "description": "é uma forma prática de suplemento que, assim como a creatina em pó, auxilia no aumento de desempenho físico em exercícios de curta duração e alta intensidade, na recuperação muscular e no ganho de força e massa muscular",
-    "category": "supplements",
-    "stock": 7,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759524536400/creatina.png",
-    "gallery": [
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759524536400/creatina.png"
-    ],
-    "createdAt": 1759524538946,
     "status": "publicado"
   }
 ]
