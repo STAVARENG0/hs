@@ -244,10 +244,10 @@ function excluirProduto(index) {
       const estoque = parseInt(document.getElementById('estoque').value || '0', 10);
 
       const fotosInput = document.getElementById('fotos');
-      const produtoId = Date.now();
+      const produtoId = Date.now().toString();
       const fotos = fotosInput.files;
       const capaIndex = parseInt(document.querySelector('input[name="capa"]:checked')?.value || 0);
-      const uploaded = Array.from(fotos).map(f => URL.createObjectURL(f));
+      const uploaded = await uploadImagens(produtoId, fotos);
 
       const produto = {
         id: produtoId,
