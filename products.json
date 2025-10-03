@@ -26,5 +26,19 @@
     ],
     "createdAt": 1759525238358,
     "status": "publicado"
+  },
+  {
+    "id": "1759525322046",
+    "title": "CREATINA GRANDE",
+    "price": "89",
+    "description": "é uma forma prática de suplementar creatina, um composto que auxilia no aumento da energia muscular e no desempenho em exercícios de alta intensidade e curta duração, como musculação e sprints",
+    "category": "supplements",
+    "stock": 78,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525322046/cratina grande.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525322046/cratina grande.png"
+    ],
+    "createdAt": 1759525326339,
+    "status": "publicado"
   }
 ]
