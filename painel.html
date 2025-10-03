@@ -61,6 +61,7 @@
 }
 .config-btn:hover { filter:brightness(1.1); }
 .modal{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000;}
+.modal.show{display:flex !important;}
 .modal-content{background:#1a1a1a; padding:20px; border-radius:12px; max-width:400px; width:90%; color:#fff; position:relative;}
 
 
@@ -243,12 +244,7 @@ async function uploadImagens(produtoId, files){
   return uploadedLinks;
 }
 
-function excluirProduto(index) {
-      produtos.splice(index, 1);
-      renderProdutos();
-    }
-
-    document.getElementById('formProduto').addEventListener('submit', async (e) => {
+document.getElementById('formProduto').addEventListener('submit', async (e) => {
       e.preventDefault();
       const titulo = document.getElementById('titulo').value;
       const valor = document.getElementById('valor').value;
@@ -320,7 +316,7 @@ function editarProduto(index){
   document.getElementById('editCategoria').value = produto.category;
   document.getElementById('editEstoque').value = produto.stock;
   document.getElementById('editPreview').innerHTML = produto.gallery.map((g,i)=>`<img src="${g}" style="width:80px;height:80px;object-fit:cover;border-radius:6px">`).join('');
-  document.getElementById('editModal').style.display = 'flex';
+  document.getElementById('editModal').classList.add('show');
   document.getElementById('formEditarProduto').onsubmit = async (e)=>{
     e.preventDefault();
     produto.title = document.getElementById('editTitulo').value;
@@ -336,11 +332,11 @@ function editarProduto(index){
     }
     await salvarNoGitHub(produtos);
     renderProdutos();
-    document.getElementById('editModal').style.display='none';
+    document.getElementById('editModal').classList.remove('show');
   };
 }
 
-document.getElementById('closeEditModal').onclick = ()=>{ document.getElementById('editModal').style.display='none'; };
+document.getElementById('closeEditModal').onclick = ()=>{ document.getElementById('editModal').classList.remove('show'); };
 </script>
 <!-- GitHub Config Modal -->
 <div class="modal" id="githubModal">
