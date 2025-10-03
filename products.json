@@ -12,5 +12,19 @@
     ],
     "createdAt": 1759522489148,
     "status": "publicado"
+  },
+  {
+    "id": 1759522585710,
+    "title": "CREATINA EM CAPISULA ",
+    "price": "30",
+    "description": "é uma forma prática de suplementação da creatina monohidratada, que auxilia no aumento da energia muscular para atividades de alta intensidade e curta duração, melhorando o desempenho físico e o ganho de massa muscular",
+    "category": "supplements",
+    "stock": 5,
+    "image": "blob:https://stavareng0.github.io/b3ad6f29-7394-432a-ae2d-84a47b6d043a",
+    "gallery": [
+      "blob:https://stavareng0.github.io/b3ad6f29-7394-432a-ae2d-84a47b6d043a"
+    ],
+    "createdAt": 1759522585710,
+    "status": "publicado"
   }
 ]
