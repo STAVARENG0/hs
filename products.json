@@ -12,5 +12,19 @@
     ],
     "createdAt": 1759525186502,
     "status": "publicado"
+  },
+  {
+    "id": "1759525236179",
+    "title": "CREATINA  PEQUENA",
+    "price": "25",
+    "description": "é uma forma prática de suplementar creatina, um composto que auxilia no aumento da energia muscular e no desempenho em exercícios de alta intensidade e curta duração, como musculação e sprints",
+    "category": "supplements",
+    "stock": 69,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525236179/creatina.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525236179/creatina.png"
+    ],
+    "createdAt": 1759525238358,
+    "status": "publicado"
   }
 ]
