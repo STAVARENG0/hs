@@ -133,13 +133,31 @@
           <td>${p.category}</td>
           <td>${p.stock}</td>
           <td>${new Date(p.createdAt).toLocaleDateString()}</td>
-          <td><button onclick="excluirProduto(${i})">Excluir</button></td>
+          <td><button onclick=\"editarProduto(${i})\">Editar</button> <button onclick=\"excluirProduto(${i})\">Excluir</button></td>
         `;
         lista.appendChild(tr);
       });
     }
 
     
+async function carregarProdutosGitHub(){
+  const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
+  if(!cfg.repo || !cfg.branch || !cfg.path || !cfg.token) return;
+  try {
+    const res = await fetch(`https://api.github.com/repos/${cfg.repo}/contents/${cfg.path}?ref=${cfg.branch}`, {
+      headers: { Authorization: `token ${cfg.token}` }
+    });
+    if(res.ok){
+      const data = await res.json();
+      const content = atob(data.content);
+      produtos = JSON.parse(content);
+      renderProdutos();
+    }
+  } catch(e){
+    console.error("Erro ao carregar produtos:", e);
+  }
+}
+
 async function salvarNoGitHub(produtos){
   const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
   if(!cfg.repo || !cfg.branch || !cfg.path || !cfg.token){
@@ -181,6 +199,34 @@ async function salvarNoGitHub(produtos){
   }
 }
 
+async function uploadImagens(produtoId, files){
+  const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
+  const uploadedLinks = [];
+  for(let i=0; i<files.length; i++){
+    const file = files[i];
+    const reader = new FileReader();
+    const base64 = await new Promise(res=>{
+      reader.onload = () => res(reader.result.split(",")[1]);
+      reader.readAsDataURL(file);
+    });
+
+    const imgPath = `products/${produtoId}/${file.name}`;
+    const url = `https://api.github.com/repos/${cfg.repo}/contents/${imgPath}`;
+    await fetch(url, {
+      method: "PUT",
+      headers: { "Authorization": `token ${cfg.token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: `Adicionando imagem ${file.name} do produto ${produtoId}`,
+        branch: cfg.branch,
+        content: base64
+      })
+    });
+
+    uploadedLinks.push(`https://raw.githubusercontent.com/${cfg.repo}/${cfg.branch}/${imgPath}`);
+  }
+  return uploadedLinks;
+}
+
 function excluirProduto(index) {
       produtos.splice(index, 1);
       renderProdutos();
@@ -214,12 +260,71 @@ function excluirProduto(index) {
       };
 
       produtos.push(produto);
-      await salvarNoGitHub(produtos);
       document.getElementById('formProduto').reset();
       document.getElementById('preview').innerHTML = '';
       renderProdutos();
     });
-  </script>
+  
+async function excluirProduto(index){
+  const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
+  const produto = produtos[index];
+  if(!produto) return;
+  // Remover imagens do GitHub
+  for(let url of produto.gallery || []){
+    try{
+      const path = url.split(cfg.repo + '/' + cfg.branch + '/')[1];
+      if(path){
+        const apiUrl = `https://api.github.com/repos/${cfg.repo}/contents/${path}`;
+        const res = await fetch(apiUrl+`?ref=${cfg.branch}`, { headers: { Authorization: `token ${cfg.token}` } });
+        if(res.ok){
+          const data = await res.json();
+          await fetch(apiUrl, {
+            method: "DELETE",
+            headers: { "Authorization": `token ${cfg.token}`, "Content-Type": "application/json" },
+            body: JSON.stringify({ message: "Removendo imagem do produto", branch: cfg.branch, sha: data.sha })
+          });
+        }
+      }
+    }catch(e){ console.error("Erro removendo imagem:", e); }
+  }
+  // Remover do array e salvar no GitHub
+  produtos.splice(index,1);
+  await salvarNoGitHub(produtos);
+  renderProdutos();
+}
+
+function editarProduto(index){
+  const produto = produtos[index];
+  if(!produto) return;
+  document.getElementById('editId').value = produto.id;
+  document.getElementById('editTitulo').value = produto.title;
+  document.getElementById('editValor').value = produto.price;
+  document.getElementById('editDescricao').value = produto.description;
+  document.getElementById('editCategoria').value = produto.category;
+  document.getElementById('editEstoque').value = produto.stock;
+  document.getElementById('editPreview').innerHTML = produto.gallery.map((g,i)=>`<img src="${g}" style="width:80px;height:80px;object-fit:cover;border-radius:6px">`).join('');
+  document.getElementById('editModal').style.display = 'flex';
+  document.getElementById('formEditarProduto').onsubmit = async (e)=>{
+    e.preventDefault();
+    produto.title = document.getElementById('editTitulo').value;
+    produto.price = document.getElementById('editValor').value;
+    produto.description = document.getElementById('editDescricao').value;
+    produto.category = document.getElementById('editCategoria').value;
+    produto.stock = parseInt(document.getElementById('editEstoque').value || '0');
+    const fotosInput = document.getElementById('editFotos');
+    if(fotosInput.files.length>0){
+      const newGallery = await uploadImagens(produto.id, fotosInput.files);
+      produto.gallery = newGallery;
+      produto.image = newGallery[0];
+    }
+    await salvarNoGitHub(produtos);
+    renderProdutos();
+    document.getElementById('editModal').style.display='none';
+  };
+}
+
+document.getElementById('closeEditModal').onclick = ()=>{ document.getElementById('editModal').style.display='none'; };
+</script>
 <!-- GitHub Config Modal -->
 <div class="modal" id="githubModal">
 <div class="modal-content">
@@ -269,7 +374,8 @@ window.onload = function(){
       branch: document.getElementById('ghBranch').value,
       path: document.getElementById('ghPath').value,
       token: document.getElementById('ghToken').value
-    };
+      carregarProdutosGitHub();
+};
     localStorage.setItem('ghConfig', JSON.stringify(cfg));
     showGhAlert('Configuração salva!', true);
   }
@@ -289,11 +395,38 @@ window.onload = function(){
     }catch(e){ showGhAlert('❌ Falha: ' + e.message, false); }
   }
 
-  if(openBtn){ openBtn.onclick = ()=>{ loadGithubConfig(); ghModal.style.display='flex'; }; }
-  if(closeBtn){ closeBtn.onclick = ()=>{ ghModal.style.display='none'; }; }
+  if(openBtn){ openBtn.onclick = ()=>{ loadGithubConfig(); ghModal.style.display='flex';   carregarProdutosGitHub();
+}; }
+  if(closeBtn){ closeBtn.onclick = ()=>{ ghModal.style.display='none';   carregarProdutosGitHub();
+}; }
   if(saveBtn){ saveBtn.onclick = saveGithubConfig; }
   if(testBtn){ testBtn.onclick = testGithubConfig; }
+  carregarProdutosGitHub();
 };
 </script>
+
+<div class="modal" id="editModal">
+<div class="modal-content">
+<button id="closeEditModal" style="position:absolute; top:10px; right:10px; background:#ff3c00; border:none; color:#fff; padding:6px 12px; border-radius:6px; cursor:pointer;">X</button>
+<h2 style="margin-bottom:14px; color:#ff3c00;">Editar Produto</h2>
+<form class="form" id="formEditarProduto">
+<input id="editId" type="hidden"/>
+<input id="editTitulo" placeholder="Título do produto" required="" type="text"/>
+<input id="editValor" placeholder="Valor (€)" required="" step="0.01" type="number"/>
+<textarea id="editDescricao" placeholder="Descrição do produto"></textarea>
+<label>Categoria</label>
+<select id="editCategoria" required="">
+<option value="supplements">Supplements</option>
+<option value="cosmetics">Cosmetics</option>
+</select>
+<label>Estoque</label>
+<input id="editEstoque" min="0" placeholder="Quantidade em estoque" type="number"/>
+<label class="upload-btn" for="editFotos">📷 Alterar Imagens</label>
+<input accept="image/*" id="editFotos" multiple="" type="file"/>
+<div class="preview-container" id="editPreview"></div>
+<button type="submit">Salvar Alterações</button>
+</form>
+</div>
+</div>
 </body>
 </html>
