@@ -161,7 +161,8 @@ async function carregarProdutosGitHub(){
   }
 }
 
-async function salvarNoGitHub(produtos){
+
+async function salvarNoGitHub(produtosNovos){
   const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
   if(!cfg.repo || !cfg.branch || !cfg.path || !cfg.token){
     alert("Configuração GitHub incompleta!");
@@ -169,6 +170,8 @@ async function salvarNoGitHub(produtos){
   }
   const url = `https://api.github.com/repos/${cfg.repo}/contents/${cfg.path}`;
   let sha = null;
+  let produtosAtuais = [];
+
   try {
     const res = await fetch(url+`?ref=${cfg.branch}`, {
       headers: { Authorization: `token ${cfg.token}` }
@@ -176,10 +179,18 @@ async function salvarNoGitHub(produtos){
     if(res.ok){
       const data = await res.json();
       sha = data.sha;
+      try {
+        produtosAtuais = JSON.parse(atob(data.content));
+      } catch(e){
+        produtosAtuais = [];
+      }
     }
   } catch(e){ console.error("Erro ao buscar SHA:", e); }
 
-  const novoConteudo = btoa(unescape(encodeURIComponent(JSON.stringify(produtos, null, 2))));
+  // 🔥 Mesclar produtos existentes com os novos (sem duplicar IDs)
+  const todos = [...produtosAtuais.filter(p => !produtosNovos.find(n=>String(n.id)===String(p.id))), ...produtosNovos];
+
+  const novoConteudo = btoa(unescape(encodeURIComponent(JSON.stringify(todos, null, 2))));
   const putRes = await fetch(url, {
     method: "PUT",
     headers: {
@@ -195,12 +206,14 @@ async function salvarNoGitHub(produtos){
   });
 
   if(putRes.ok){
+    document.getElementById("alertBox").innerHTML = "✅ Produto atualizado com sucesso no GitHub!";
     document.getElementById("alertBox").style.display = "block";
     setTimeout(()=> document.getElementById("alertBox").style.display="none", 3000);
   } else {
     alert("Erro ao salvar no GitHub: " + putRes.status);
   }
 }
+
 
 async function uploadImagens(produtoId, files){
   const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
