@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "1759525184460",
+    "title": "CREATINA EM CAPISULA ",
+    "price": "56",
+    "description": "é uma forma prática de suplementar creatina, um composto que auxilia no aumento da energia muscular e no desempenho em exercícios de alta intensidade e curta duração, como musculação e sprints",
+    "category": "supplements",
+    "stock": 41,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525184460/creatina em capisula.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525184460/creatina em capisula.png"
+    ],
+    "createdAt": 1759525186502,
+    "status": "publicado"
+  }
+]
