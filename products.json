@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "1759524415831",
+    "title": "CREATINA EM CAPISULA ",
+    "price": "29",
+    "description": "é uma forma prática de suplemento que, assim como a creatina em pó, auxilia no aumento de desempenho físico em exercícios de curta duração e alta intensidade, na recuperação muscular e no ganho de força e massa muscular",
+    "category": "supplements",
+    "stock": 6,
+    "image": "",
+    "gallery": [],
+    "createdAt": 1759524415831,
+    "status": "publicado"
+  }
+]
