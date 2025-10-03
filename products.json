@@ -40,5 +40,22 @@
     ],
     "createdAt": 1759525326339,
     "status": "publicado"
+  },
+  {
+    "id": "1759525355660",
+    "title": "CREATINA DE SACO",
+    "price": "89",
+    "description": "é uma forma prática de suplementar creatina, um composto que auxilia no aumento da energia muscular e no desempenho em exercícios de alta intensidade e curta duração, como musculação e sprints",
+    "category": "supplements",
+    "stock": 100,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525355660/cratina em saco.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525355660/cratina em saco.png",
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525355660/cratina grande.png",
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525355660/creatina em capisula.png",
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759525355660/creatina.png"
+    ],
+    "createdAt": 1759525369740,
+    "status": "publicado"
   }
 ]
