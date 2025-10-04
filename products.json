@@ -58,5 +58,17 @@
     "gallery": [],
     "createdAt": 1759633244270,
     "status": "publicado"
+  },
+  {
+    "id": "1759633271083",
+    "title": "CREATINA PEQUENA ",
+    "price": 14,
+    "description": "A creatina é um composto que fornece energia rápida para os músculos, melhorando o desempenho em exercícios de alta intensidade e curta duração, como musculação e tiros. Auxilia no aumento da força e potência muscular, no aumento da recuperação pós-exercício e pode contribuir para o crescimento da massa muscular ao aumentar o volume hídrico dentro das células musculares.",
+    "category": "supplements",
+    "stock": 30,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633271083/creatina.png",
+    "gallery": [],
+    "createdAt": 1759633272269,
+    "status": "publicado"
   }
 ]
