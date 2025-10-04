@@ -54,10 +54,11 @@
     .alert.success { background: var(--green); color: white; }
   
 .config-btn {
-  position:absolute; top:20px; right:20px;
+  display:block;
+  margin:0 auto 20px;
   background:#ff3c00; border:none; color:#fff;
-  padding:6px 12px; border-radius:6px; font-size:13px; cursor:pointer;
-  z-index:2000;
+  padding:8px 16px; border-radius:8px;
+  font-size:14px; font-weight:600; cursor:pointer;
 }
 .config-btn:hover { filter:brightness(1.1); }
 .modal{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000;}
@@ -92,8 +93,8 @@ body.modal-open { overflow: hidden; }
 </style>
 </head>
 <body>
-<button class="config-btn" id="openGithubModal">Configurações</button>
 <h1>Painel HS Nutrition</h1>
+<button class="config-btn" id="openGithubModal">Configurações</button>
 <div class="container">
 <div class="form-section">
 <form class="form" id="formProduto">
