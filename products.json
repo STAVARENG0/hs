@@ -10,17 +10,5 @@
     "category": "supplements",
     "createdAt": 1733318400,
     "stock": 12
-  },
-  {
-    "id": "2",
-    "title": "Creatine Monohydrate 300g",
-    "brand": "HS Nutrition",
-    "price": "24.50",
-    "image": "https://images.unsplash.com/photo-1612200931903-9c6b9b7e2a15?w=600",
-    "description": "Pure creatine monohydrate to enhance strength and performance.",
-    "gallery": [],
-    "category": "supplements",
-    "createdAt": 1733232000,
-    "stock": 20
   }
 ]
