@@ -207,21 +207,21 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:3000;justify-content:center;align-items:center;padding:16px}
 #productModal .modal-content {
   width: min(92vw, 560px);
-  max-height: 85vh;          /* altura fixa do modal */
+  max-height: 85vh;          /* altura máxima fixa do modal */
+  overflow-y: auto;          /* rolagem interna */
+  scrollbar-width: none;     
+  -ms-overflow-style: none;
   background: var(--card);
   border: 2px solid var(--orange);
   box-shadow: 0 0 12px rgba(255,60,0,.35);
   border-radius: 20px;
-  padding: 20px;
+  padding: 0;                /* sem padding, pra imagem usar o topo todo */
   color: var(--white);
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;          /* scroll invisível */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
+#productModal .modal-content::-webkit-scrollbar { display: none; }
 #productModal .modal-content::-webkit-scrollbar {
   display: none;
 }
@@ -237,14 +237,14 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 12px;
+  margin: 0;
 }
 
 #productModal .slider img {
-  max-width: 100%;
-  max-height: 85vh;          /* imagem nunca ultrapassa o modal */
-  object-fit: contain;
-  border-radius: 10px;
+  width: 100%;               /* imagem ocupa toda a largura */
+  height: auto;              /* mantém proporção */
+  object-fit: contain;       /* garante que não corte */
+  border-radius: 20px 20px 0 0; /* cantos arredondados só em cima */
 }
 
 
@@ -260,21 +260,21 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal .modal-content::-webkit-scrollbar{width:0;height:0}
 #productModal .modal-content {
   width: min(92vw, 560px);
-  max-height: 85vh;          /* altura fixa do modal */
+  max-height: 85vh;          /* altura máxima fixa do modal */
+  overflow-y: auto;          /* rolagem interna */
+  scrollbar-width: none;     
+  -ms-overflow-style: none;
   background: var(--card);
   border: 2px solid var(--orange);
   box-shadow: 0 0 12px rgba(255,60,0,.35);
   border-radius: 20px;
-  padding: 20px;
+  padding: 0;                /* sem padding, pra imagem usar o topo todo */
   color: var(--white);
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;          /* scroll invisível */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
+#productModal .modal-content::-webkit-scrollbar { display: none; }
 #productModal .modal-content::-webkit-scrollbar {
   display: none;
 }
@@ -298,6 +298,12 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
 #productModal .slider .slider-controls .nav {
   pointer-events: auto;
+}
+#productModal h2,
+#productModal p,
+#productModal .btn.buy {
+  padding: 16px;
+  text-align: center;
 }
 </style>
 </head>
