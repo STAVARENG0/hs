@@ -82,5 +82,17 @@
     "gallery": [],
     "createdAt": 1759633431001,
     "status": "publicado"
+  },
+  {
+    "id": "1759633507802",
+    "title": "CREME EGEO",
+    "price": 22,
+    "description": "Nativa SPA. Cuidado do grão à pele.A Loção Hidratante Nativa Spa Lilac vai transformar o teu momento de autocuidado. Com uma combinação exclusiva de quatro flores lilases, a famosa Lavanda, a exuberante Íris",
+    "category": "cosmetics",
+    "stock": 0,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633507802/ChatGPT Image 4 de out. de 2025, 17_27_51.png",
+    "gallery": [],
+    "createdAt": 1759633510989,
+    "status": "publicado"
   }
 ]
