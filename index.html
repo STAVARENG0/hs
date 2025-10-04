@@ -409,6 +409,7 @@ document.getElementById('gNext').addEventListener('click', ()=> showImage(galler
   currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
   render(currentList);
   document.getElementById('year').textContent = new Date().getFullYear();
+  updateCartIcon();
 })();
 </script>
 
@@ -430,13 +431,17 @@ document.getElementById('gNext').addEventListener('click', ()=> showImage(galler
 </div>
 
 <script>
-let cart = [];
+const CART_KEY='hs_cart';
+function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(e){ return []; } }
+function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); }
+let cart = loadCart();
 
 function addToCart(productId){
   const product = currentList.find(p => String(p.id) === String(productId));
   if(!product) return;
   const existing = cart.find(item => item.id === product.id);
   if(existing){ existing.qty++; } else { cart.push({...product, qty: 1}); }
+  saveCart(cart);
   updateCartIcon();
 }
 
@@ -488,6 +493,7 @@ function changeQty(id, delta){
   if(!item) return;
   item.qty += delta;
   if(item.qty <= 0){ cart = cart.filter(p => p.id !== id); }
+  saveCart(cart);
   openCart();
   updateCartIcon();
 }
