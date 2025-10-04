@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>HS Nutrition | Supplements Store</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<meta content="no-store" http-equiv="Cache-Control"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta http-equiv="Cache-Control" content="no-store"/>
 <style>
 :root{
   --black:#0d0d0d;
@@ -16,138 +15,19 @@
   --muted:#9c9c9c;
   --orange:#ff3c00;
   --card:#1a1a1a;
-  --oos:#ff2d2d;
 }
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Poppins,system-ui,Arial,sans-serif;
-  color:var(--white);
-  background: var(--black);
-  min-height:100dvh;
-}
+body{ margin:0; font-family:Poppins,system-ui,Arial,sans-serif; color:var(--white); background: var(--black); min-height:100dvh; }
 .wrap{max-width:1200px;margin:0 auto;padding:26px}
-.card{
-  background:var(--card);
-  border-radius:20px;
-  padding:10px 22px 28px;
-  border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 18px 42px rgba(0,0,0,.6);
-  position:relative;
-}
+.card{background:var(--card);border-radius:20px;padding:10px 22px 28px;border:1px solid rgba(255,255,255,.1);box-shadow:0 18px 42px rgba(0,0,0,.6);position:relative;}
 header{text-align:center;margin-bottom:18px}
-.brand{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:0;
-  position:relative;
-}
-.brand img{
-  max-width:100%;
-  height:auto;
-  border:2px solid var(--orange);
-  border-radius:20px;
-  animation: glow 3s ease-in-out infinite alternate;
-}
-@keyframes glow {
-  from { box-shadow:0 0 6px rgba(255,60,0,0.3); }
-  to   { box-shadow:0 0 14px rgba(255,100,0,0.6); }
-}
-
-/* Texto WELCOME animado */
-.welcome {
-  width: 100%;
-  max-width: 550px;
-  margin: 10px 0 0 0;
-}
-
-.welcome text {
-  font-family: "Poppins", cursive;
-  font-size: 64px;
-  fill: none;
-  stroke: var(--orange);
-  stroke-width: 2px;
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  animation: draw 6s ease forwards;
-}
-
-@keyframes draw {
-  to { stroke-dashoffset: 0; }
-}
-
-/* SEARCH BAR */
-.brand .search-box {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  max-width: 300px;
-  display: flex;
-  gap: 6px;
-}
-
-.search-box input {
-  flex: 1;
-  padding: 12px 16px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  background: #fff;
-  color: #333;
-  font-size: 14px;
-}
-
-.search-box input::placeholder { color: #999; }
-.search-box button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 20px;
-  background: #000;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
-.search-box button:hover { filter: brightness(1.2); }
-
-/* CATEGORY BUTTONS */
-.category-buttons{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin: 12px 0 2px;
-  flex-wrap: wrap;
-}
-.pill-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 20px;
-  border-radius: 9999px;
-  background: var(--orange);
-  color: var(--white);
-  font-weight: 800;
-  border: 2px solid var(--orange);
-  text-decoration:none;
-  box-shadow: 0 6px 18px rgba(255,60,0,0.35);
-  cursor:pointer;
-  transition: transform .18s ease, filter .18s ease;
-}
-.pill-btn:hover{ transform: translateY(-1px); filter: brightness(1.05); }
-.pill-btn:active{ transform: translateY(0); }
-
-/* Responsivo */
-@media (max-width: 600px) {
-  .brand { align-items: center; }
-  .brand .search-box { position: static; margin-top: 14px; width: 100%; max-width: 100%; padding: 0 10px; display: flex; justify-content: center; gap: 8px; }
-  .search-box input { flex: 1; max-width: 70%; padding: 12px; font-size: 16px; }
-  .search-box button { padding: 12px 18px; font-size: 15px; }
-}
-
+.brand{display:flex;flex-direction:column;align-items:center;gap:0;position:relative;}
+.brand img{max-width:100%;height:auto;border:2px solid var(--orange);border-radius:20px;animation: glow 3s ease-in-out infinite alternate;}
+@keyframes glow{from{box-shadow:0 0 6px rgba(255,60,0,0.3);}to{box-shadow:0 0 14px rgba(255,100,0,0.6);}}
 .divider{height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);margin:18px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;align-items:stretch}
-.product{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;flex-direction:column; position:relative;}
-.product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#0b0b0b;display:block}
+.product{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;flex-direction:column;position:relative;}
+.product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#0b0b0b;display:block;cursor:pointer}
 .product-body{padding:14px 16px 10px}
 .product h3{margin:0 0 6px;font-weight:700;font-size:16px;color:var(--white);cursor:pointer;text-decoration:underline dotted transparent}
 .product h3:hover{text-decoration-color:rgba(255,255,255,.5)}
@@ -157,181 +37,85 @@ header{text-align:center;margin-bottom:18px}
 .btn{display:block;width:100%;text-align:center;text-decoration:none;font-weight:700;padding:12px 14px;border-radius:28px;background:linear-gradient(90deg,var(--orange), #ff8c42);color:#fff;box-shadow:0 8px 20px rgba(240,116,36,.35);transition:transform .18s ease, filter .18s ease;}
 .btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
 .btn.disabled{opacity:.55;pointer-events:none;filter:grayscale(1)}
-
 footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
-.admin-btn-modal { position: absolute; top: 12px; right: 12px; z-index: 100; }
-.admin-btn-modal a { background: var(--orange); color: var(--white); text-decoration: none; padding: 4px 8px; border-radius: 6px; font-weight: 500; font-size: 11px; box-shadow: 0 1px 4px rgba(0,0,0,0.4); transition: filter 0.2s; display: inline-block; }
-.admin-btn-modal a:hover { filter: brightness(1.1); }
-
-/* Modal Produto */
-.modal {
-  display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:2000;
-}
-.modal-content {
-  background:var(--card);
-  padding:20px;
-  border-radius:16px;
-  max-width:600px;
-  width:90%;
-  text-align:center;
-  color:var(--white);
-  position:relative;
-}
-.modal-content h2{margin-bottom:10px}
-.modal-content p{margin-bottom:14px;color:var(--muted)}
-.modal-close{position:absolute;top:10px;right:10px;background:#ff3c00;border:none;color:#fff;font-weight:bold;padding:6px 12px;border-radius:6px;cursor:pointer}
-.slider{position:relative;overflow:hidden}
-.slider img{width:100%;border-radius:12px}
-.slider-controls{display:flex;justify-content:space-between;position:absolute;top:50%;left:0;width:100%;transform:translateY(-50%)}
-.slider-controls button{background:rgba(0,0,0,0.5);border:none;color:#fff;font-size:18px;padding:8px;cursor:pointer;border-radius:50%}
-
-/* OUT OF STOCK ribbon */
-.oos-ribbon{
-  position:absolute;
-  top:10px; left:-40px;
-  transform: rotate(-20deg);
-  background: rgba(255,45,45,0.85);
-  color:#fff;
-  padding:10px 60px;
-  font-weight:900;
-  letter-spacing:.12em;
-  text-shadow: 0 1px 2px rgba(0,0,0,.35);
-  box-shadow:0 10px 20px rgba(0,0,0,.35);
-  border:2px solid rgba(255,255,255,0.12);
-  pointer-events:none;
-}
-
-
-/* === Product Modal: static & responsive === */
-#productModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:3000;justify-content:center;align-items:center;padding:16px}
-#productModal .modal-content{
-  width:min(92vw, 560px);
-  max-height:min(88vh, 820px);
-  background:var(--card);
-  border:2px solid var(--orange);
-  /* brilho suavizado */
-  box-shadow:0 0 12px rgba(255,60,0,.35);
-  border-radius:20px;
-  padding:20px;
-  color:var(--white);
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  overflow:hidden;
-  animation:fadeIn .2s ease-out;
-}
-
-#productModal .slider {
-  position: relative;
-  width: 100%;
-  background: transparent;
-  border-radius: 14px;
-  padding: 8px;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-height: 65vh; /* limite do container */
-}
-
-#productModal .slider img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 10px;
-}
-
-
-#productModal .slider .slider-controls .nav{
-  pointer-events:auto;border:none;cursor:pointer;
-  width:34px;height:34px;border-radius:50%;
-  background:rgba(0,0,0,.55);color:#fff;font-size:16px;
-  display:flex;align-items:center;justify-content:center;
-}
-#productModal p{margin:10px 0 16px;color:var(--muted);text-align:center;line-height:1.55;font-size:clamp(14px,1.6vw,16px);max-width:95%}
-#productModal .btn.buy{display:inline-block;padding:12px 18px;border-radius:28px;background:linear-gradient(90deg,var(--orange),#ff8c42);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(240,116,36,.35)}
-/* hide scrollbars while keeping scroll if needed */
-#productModal .modal-content::-webkit-scrollbar{width:0;height:0}
-#productModal .modal-content{scrollbar-width:none;-ms-overflow-style:none}
-@keyframes fadeIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+/* MODAL */
+#modal{position:fixed;inset:0;display:none;place-items:center;z-index:9999;}
+#modal.open{display:grid}
+#modal .overlay{position:absolute;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(2px);}
+#modal .panel{position:relative;width:min(96vw,460px);max-height:92vh;overflow:hidden;background:#111;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 18px 42px rgba(0,0,0,.6);display:flex;flex-direction:column;}
+#modal img.hero{width:100%;aspect-ratio:1/1;object-fit:cover;background:#000;}
+#modal .details{padding:16px;overflow:auto;}
+#modal h2{margin:0 0 8px;font-size:20px}
+#modal .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+#modal .price{font-size:18px;margin:8px 0 12px;font-weight:700;color:var(--orange);}
+#modal .desc{font-size:14px;line-height:1.5;color:#ddd;white-space:pre-wrap}
+#modal .actions{display:flex;gap:8px;margin-top:14px;}
+#modal .btn.secondary{background:#222;color:#fff;box-shadow:none;}
+#modal .close{position:absolute;top:8px;right:10px;background:#222;color:#fff;border:0;border-radius:10px;padding:6px 10px;font-weight:700;cursor:pointer;font-size:18px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="card">
-<div class="admin-btn-modal">
-<a href="login.html">Admin</a>
-</div>
-<header>
-<div class="brand">
-<svg class="welcome" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
-  <text text-anchor="middle" x="50%" y="50%">WELCOME</text>
-  <text text-anchor="middle" x="50%" y="72%" 
-        style="font-family: Poppins, sans-serif;
-               font-size: 18px;
-               fill: var(--orange);
-               stroke: none;">
-    www.hs-nutrition.ie
-  </text>
-</svg>
-<img alt="HS Nutrition Cover" src="5.png"/>
-<div class="search-box">
-<input id="search" placeholder="Search for products..." type="text"/>
-<button onclick="searchProducts()">Search</button>
-</div>
-</div>
-</header>
-<!-- NEW CATEGORY BUTTONS -->
-<div class="category-buttons">
-<a class="pill-btn" href="supplements.html">Supplements</a>
-<a class="pill-btn" href="cosmetics.html">Cosmetics</a>
-</div>
-<div class="divider"></div>
-<section class="grid" id="products"></section>
-<div class="divider"></div>
-<footer>© <span id="year"></span> HS Nutrition</footer>
-</div>
-</div>
-<!-- Modal Produto -->
-<div class="modal" id="productModal">
-<div class="modal-content">
-<button aria-label="Close" class="modal-close" onclick="closeModal()">×</button>
+ <div class="card">
+  <header>
+   <div class="brand">
+     <img src="5.png" alt="HS Nutrition Cover"/>
+     <svg class="welcome" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg" style="max-width:480px;margin-top:10px;">
+       <text text-anchor="middle" x="50%" y="50%" style="font-family:'Poppins';font-size:54px;fill:none;stroke:var(--orange);stroke-width:2;">WELCOME</text>
+     </svg>
+   </div>
+  </header>
 
-<div class="slider" id="modalSlider">
-<img alt="Product image" id="modalImage" src=""/>
-<div class="slider-controls">
-<button class="nav prev" onclick="prevImage()" type="button">◀</button>
-<button class="nav next" onclick="nextImage()" type="button">▶</button>
+  <div class="divider"></div>
+  <section class="grid" id="products"></section>
+  <div class="divider"></div>
+  <footer>© <span id="year"></span> HS Nutrition</footer>
+ </div>
 </div>
+
+<!-- MODAL -->
+<div id="modal" aria-hidden="true" role="dialog">
+  <div class="overlay" data-close></div>
+  <div class="panel" role="document">
+    <button class="close" data-close>&times;</button>
+    <img id="hero" class="hero" src="" alt="Product Image"/>
+    <div class="details">
+      <h2 id="mTitle">—</h2>
+      <div id="mBrand" class="meta">—</div>
+      <div id="mPrice" class="price">—</div>
+      <div id="mDesc" class="desc">—</div>
+      <div class="actions">
+        <a id="mBuy" class="btn" href="#" target="_blank">Buy Now</a>
+        <a id="mOut" class="btn secondary" href="#" target="_blank" style="display:none;">Out of Stock</a>
+      </div>
+    </div>
+  </div>
 </div>
-<h2 id="modalTitle"></h2><p id="modalDescription"></p>
-<a class="btn buy" href="#" id="modalBuyBtn">Buy Now</a>
-</div>
-</div>
+
 <script>
-const PUBLIC_JSON = './products.json';
+const PUBLIC_JSON = './products/products.json';
 const grid = document.getElementById('products');
-let currentList = [];
-let currentGallery = [];
-let currentIndex = 0;
+const modal = document.getElementById('modal');
+const hero = document.getElementById('hero');
+const mTitle = document.getElementById('mTitle');
+const mBrand = document.getElementById('mBrand');
+const mPrice = document.getElementById('mPrice');
+const mDesc = document.getElementById('mDesc');
+const mBuy = document.getElementById('mBuy');
+const mOut = document.getElementById('mOut');
 
 function sanitizeList(list){
   if(!Array.isArray(list)) return [];
   return list.map(p => ({
-    id: p.id || (crypto.randomUUID ? crypto.randomUUID() : Math.floor(Math.random()*1e9)),
+    id: p.id || crypto.randomUUID(),
     title: p.title || '',
     brand: p.brand || '',
     price: p.price || '',
     image: p.image || '5.png',
     description: p.description || '',
-    gallery: p.gallery || [],
+    gallery: Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : (p.gallery ? [p.gallery] : []),
     category: p.category || '',
-    createdAt: p.createdAt || 0,
     stock: typeof p.stock === 'number' ? p.stock : parseInt(p.stock || '0', 10)
   }));
 }
@@ -342,8 +126,35 @@ async function readPublic(){
     if(!r.ok) throw new Error('HTTP '+r.status);
     const data = await r.json();
     return sanitizeList(data);
-  }catch(e){ return []; }
+  }catch(e){ console.error(e); return []; }
 }
+
+function openModal(p){
+  hero.src = p.image || '5.png';
+  mTitle.textContent = p.title;
+  mBrand.textContent = p.brand ? p.brand : '';
+  mPrice.textContent = '€ ' + (p.price || '0.00');
+  mDesc.textContent = p.description || '';
+  if(Number(p.stock) > 0){
+    mBuy.style.display='inline-block';
+    mOut.style.display='none';
+  } else {
+    mBuy.style.display='none';
+    mOut.style.display='inline-block';
+  }
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+
+modal.addEventListener('click', (ev)=>{ if(ev.target.hasAttribute('data-close')) closeModal(); });
+window.addEventListener('keydown', (ev)=>{ if(ev.key==='Escape' && modal.classList.contains('open')) closeModal(); });
 
 function render(list){
   grid.innerHTML = '';
@@ -351,83 +162,30 @@ function render(list){
     grid.innerHTML = '<div class="meta" style="text-align:center;padding:20px;">No products available.</div>';
     return;
   }
-  list.forEach(p=>{
+  list.forEach((p, idx)=>{
     const el = document.createElement('article'); el.className='product';
-    if(Number(p.stock) <= 0){
-      const badge = document.createElement('div');
-      badge.className = 'oos-ribbon';
-      badge.textContent = 'OUT OF STOCK';
-      el.appendChild(badge);
-    }
-    const img = document.createElement('img'); img.src = p.image; img.alt = p.title; el.appendChild(img);
+    const img = document.createElement('img'); img.src = p.image; img.alt = p.title; img.addEventListener('click', ()=> openModal(p)); el.appendChild(img);
     const body = document.createElement('div'); body.className='product-body';
-    const brand = p.brand ? `<div class="meta">${p.brand}</div>` : '';
-    body.innerHTML = `<h3 onclick="openModal('${p.id}')">${p.title}</h3>${brand}<div class='meta'>Stock: ${p.stock}</div><div class='price'>€ ${p.price}</div>`;
+    const h3 = document.createElement('h3'); h3.textContent = p.title; h3.addEventListener('click', ()=> openModal(p));
+    body.appendChild(h3);
+    if(p.brand){ const brand = document.createElement('div'); brand.className='meta'; brand.textContent=p.brand; body.appendChild(brand); }
+    const stock = document.createElement('div'); stock.className='meta'; stock.textContent='Stock: '+p.stock; body.appendChild(stock);
+    const price = document.createElement('div'); price.className='price'; price.textContent='€ '+p.price; body.appendChild(price);
     el.appendChild(body);
     const cta = document.createElement('div'); cta.className='cta';
-    const a = document.createElement('a'); a.className='btn'; a.href='#'; a.textContent= Number(p.stock) > 0 ? "Buy Now" : "Out of Stock";
-    if(Number(p.stock) <= 0) a.classList.add('disabled');
+    const a = document.createElement('a'); a.className='btn'; a.href='#'; a.textContent = Number(p.stock)>0?'Buy Now':'Out of Stock';
+    if(Number(p.stock)<=0)a.classList.add('disabled');
     cta.appendChild(a); el.appendChild(cta);
     grid.appendChild(el);
   });
 }
 
-function searchProducts(){
-  const term = document.getElementById('search').value.toLowerCase();
-  const filtered = currentList.filter(p =>
-    p.title.toLowerCase().includes(term) ||
-    (p.brand && p.brand.toLowerCase().includes(term)) ||
-    (p.category && p.category.toLowerCase().includes(term))
-  );
-  render(filtered);
-}
-
-function openModal(id){
-  const product = currentList.find(p=>String(p.id)===String(id));
-  if(!product) return;
-  document.getElementById('modalTitle').textContent = product.title;
-  document.getElementById('modalDescription').textContent = product.description;
-  currentGallery = product.gallery && product.gallery.length ? product.gallery : [product.image];
-  currentIndex = 0;
-  document.getElementById('modalImage').src = currentGallery[currentIndex];
-  document.getElementById('productModal').style.display = 'flex';
-  var buyBtn=document.getElementById('modalBuyBtn'); if(buyBtn){ buyBtn.href='#'; }
-}
-
-function closeModal(){
-  document.getElementById('productModal').style.display = 'none';
-}
-
-function prevImage(){
-  if(currentGallery.length){
-    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-    document.getElementById('modalImage').src = currentGallery[currentIndex];
-  }
-}
-
-function nextImage(){
-  if(currentGallery.length){
-    currentIndex = (currentIndex + 1) % currentGallery.length;
-    document.getElementById('modalImage').src = currentGallery[currentIndex];
-  }
-}
-
+let currentList=[];
 (async function init(){
   currentList = await readPublic();
-  // sort by most recent
-  currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
   render(currentList);
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
 </script>
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  const overlay=document.getElementById('productModal');
-  function isShown(){ return overlay && overlay.style.display==='flex'; }
-  function closeIfOverlay(e){ if(e.target===overlay){ closeModal(); } }
-  function escClose(e){ if(e.key==='Escape' && isShown()){ closeModal(); } }
-  if(overlay){ overlay.addEventListener('click', closeIfOverlay); }
-  document.addEventListener('keydown', escClose);
-});
-</script></body>
+</body>
 </html>
