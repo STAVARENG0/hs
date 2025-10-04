@@ -46,5 +46,19 @@
     "category": "cosmetics",
     "createdAt": 1733059200,
     "stock": 15
+  },
+  {
+    "id": "1759627369635",
+    "title": "CREATINA EM CAPISULA ",
+    "price": "41",
+    "description": "Se ainda aparecer algo estranho em algum item específico, me diga qual é — geralmente é algum produto com gallery em formato diferente e eu ajusto rapidamente",
+    "category": "supplements",
+    "stock": 22,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759627369635/creatina em capisula.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759627369635/creatina em capisula.png"
+    ],
+    "createdAt": 1759627371087,
+    "status": "publicado"
   }
 ]
