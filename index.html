@@ -207,7 +207,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:3000;justify-content:center;align-items:center;padding:16px}
 #productModal .modal-content {
   width: min(92vw, 560px);
-  max-height: 85vh; /* altura máxima do modal */
+  max-height: 85vh;          /* altura fixa do modal */
   background: var(--card);
   border: 2px solid var(--orange);
   box-shadow: 0 0 12px rgba(255,60,0,.35);
@@ -218,9 +218,12 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto; /* ativa rolagem */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  overflow-y: auto;          /* scroll invisível */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#productModal .modal-content::-webkit-scrollbar {
+  display: none;
 }
 #productModal .modal-content::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
@@ -231,17 +234,15 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
 #productModal .slider {
   width: 100%;
-  border-radius: 14px;
-  margin-bottom: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 12px;
 }
 
 #productModal .slider img {
   max-width: 100%;
-  width: auto;
-  height: auto;
+  max-height: 85vh;          /* imagem nunca ultrapassa o modal */
   object-fit: contain;
   border-radius: 10px;
 }
@@ -259,7 +260,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal .modal-content::-webkit-scrollbar{width:0;height:0}
 #productModal .modal-content {
   width: min(92vw, 560px);
-  max-height: 85vh; /* altura máxima do modal */
+  max-height: 85vh;          /* altura fixa do modal */
   background: var(--card);
   border: 2px solid var(--orange);
   box-shadow: 0 0 12px rgba(255,60,0,.35);
@@ -270,9 +271,12 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto; /* ativa rolagem */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  overflow-y: auto;          /* scroll invisível */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#productModal .modal-content::-webkit-scrollbar {
+  display: none;
 }
 #productModal .modal-content::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
