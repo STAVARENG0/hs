@@ -237,11 +237,11 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 }
 
 #productModal .slider img {
-  width: 100%;               /* ocupa toda a largura */
-  height: auto;              /* mantém proporção */
+  width: 100%;
+  height: auto;
   display: block;
-  object-fit: contain;       /* sem cortes */
-  border-radius: 20px 20px 0 0;
+  object-fit: contain;
+  border-radius: 20px; /* bordas arredondadas em toda a imagem */
 }
 
 
@@ -298,8 +298,14 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal h2,
 #productModal p,
 #productModal .btn.buy {
-  padding: 16px;
+  padding: 16px 24px; /* espaço maior nas laterais */
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#productModal .btn.buy {
+  margin-bottom: 20px; /* espaço do botão até o fundo do modal */
 }
 </style>
 </head>
