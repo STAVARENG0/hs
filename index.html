@@ -202,44 +202,58 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   pointer-events:none;
 }
 
-/* === Fix tamanho da imagem no modal === */
-#productModal .modal-content{display:flex;flex-direction:column;align-items:center}
+
+/* === Product Modal: static & responsive === */
+#productModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:3000;justify-content:center;align-items:center;padding:16px}
+#productModal .modal-content{
+  width:min(92vw, 560px);
+  max-height:min(88vh, 820px);
+  background:var(--card);
+  border:2px solid var(--orange);
+  /* brilho suavizado */
+  box-shadow:0 0 12px rgba(255,60,0,.35);
+  border-radius:20px;
+  padding:20px;
+  color:var(--white);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  overflow:hidden;
+  animation:fadeIn .2s ease-out;
+}
 #productModal .slider{
   position:relative;
   width:100%;
-  margin-bottom:12px;
-  padding:8px;
   background:#0b0b0b;
   border-radius:14px;
-  display:grid;
-  place-items:center;
+  padding:8px;
+  margin-bottom:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 #productModal .slider img{
   display:block;
   max-width:100%;
+  max-height:56vh;
   height:auto;
-  /* a imagem nunca passa do limite visual do modal */
-  max-height:clamp(260px, 56vh, 520px);
   object-fit:contain;
   border-radius:10px;
-  margin:0 auto;
 }
-#productModal .slider .slider-controls{
-  position:absolute;
-  inset:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 6px;
-  pointer-events:none;
-}
+
 #productModal .slider .slider-controls .nav{
-  pointer-events:auto;
-  border:none; cursor:pointer;
-  width:34px; height:34px; border-radius:50%;
-  background:rgba(0,0,0,.55); color:#fff; font-size:16px;
-  display:flex; align-items:center; justify-content:center;
+  pointer-events:auto;border:none;cursor:pointer;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(0,0,0,.55);color:#fff;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
 }
+#productModal p{margin:10px 0 16px;color:var(--muted);text-align:center;line-height:1.55;font-size:clamp(14px,1.6vw,16px);max-width:95%}
+#productModal .btn.buy{display:inline-block;padding:12px 18px;border-radius:28px;background:linear-gradient(90deg,var(--orange),#ff8c42);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(240,116,36,.35)}
+/* hide scrollbars while keeping scroll if needed */
+#productModal .modal-content::-webkit-scrollbar{width:0;height:0}
+#productModal .modal-content{scrollbar-width:none;-ms-overflow-style:none}
+@keyframes fadeIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
 </style>
 </link></head>
 <body>
@@ -274,16 +288,17 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 <!-- Modal Produto -->
 <div class="modal" id="productModal">
 <div class="modal-content">
-<button class="modal-close" onclick="closeModal()">X</button>
+<button aria-label="Close" class="modal-close" onclick="closeModal()">×</button>
 <h2 id="modalTitle"></h2>
-<p id="modalDescription"></p>
-<div class="slider">
-<img alt="" id="modalImage" src=""/>
+<div class="slider" id="modalSlider">
+<img alt="Product image" id="modalImage" src=""/>
 <div class="slider-controls">
-<button onclick="prevImage()">◀</button>
-<button onclick="nextImage()">▶</button>
+<button class="nav prev" onclick="prevImage()" type="button">◀</button>
+<button class="nav next" onclick="nextImage()" type="button">▶</button>
 </div>
 </div>
+<p id="modalDescription"></p>
+<a class="btn buy" href="#" id="modalBuyBtn">Buy Now</a>
 </div>
 </div>
 <script>
@@ -364,6 +379,7 @@ function openModal(id){
   currentIndex = 0;
   document.getElementById('modalImage').src = currentGallery[currentIndex];
   document.getElementById('productModal').style.display = 'flex';
+  var buyBtn=document.getElementById('modalBuyBtn'); if(buyBtn){ buyBtn.href='#'; }
 }
 
 function closeModal(){
@@ -392,5 +408,14 @@ function nextImage(){
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
 </script>
-</body>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  const overlay=document.getElementById('productModal');
+  function isShown(){ return overlay && overlay.style.display==='flex'; }
+  function closeIfOverlay(e){ if(e.target===overlay){ closeModal(); } }
+  function escClose(e){ if(e.key==='Escape' && isShown()){ closeModal(); } }
+  if(overlay){ overlay.addEventListener('click', closeIfOverlay); }
+  document.addEventListener('keydown', escClose);
+});
+</script></body>
 </html>
