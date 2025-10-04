@@ -290,7 +290,15 @@ async function salvarNoGitHub(produtosNovos){
     document.getElementById("alertBox").style.display = "block";
     setTimeout(()=> document.getElementById("alertBox").style.display="none", 3000);
     // recarrega produtos do GitHub para garantir sincronização
-    try { await carregarProdutosGitHub(); } catch(_) {}
+    try { await // Botão X do modal editar
+  const closeEdit = document.getElementById('closeEditModal');
+  if(closeEdit){
+    closeEdit.addEventListener('click', ()=>{
+      document.getElementById('editModal').classList.remove('show');
+    });
+  }
+
+  carregarProdutosGitHub(); } catch(_) {}
   } else {
     const txt = await putRes.text().catch(()=> "");
     alert("Erro ao salvar no GitHub: " + putRes.status + (txt ? "\n" + txt : ""));
@@ -422,7 +430,7 @@ function editarProduto(index){
   };
 }
 
-document.getElementById('closeEditModal').onclick = ()=>{ document.getElementById('editModal').classList.remove('show'); };
+};
 </script>
 <!-- GitHub Config Modal -->
 <div class="modal" id="githubModal">
@@ -493,12 +501,36 @@ window.onload = function(){
     }catch(e){ showGhAlert('❌ Falha: ' + e.message, false); }
   }
 
-  if(openBtn){ openBtn.onclick = ()=>{ loadGithubConfig(); ghModal.style.display='flex';   carregarProdutosGitHub();
+  if(openBtn){ openBtn.onclick = ()=>{ loadGithubConfig(); ghModal.style.display='flex';   // Botão X do modal editar
+  const closeEdit = document.getElementById('closeEditModal');
+  if(closeEdit){
+    closeEdit.addEventListener('click', ()=>{
+      document.getElementById('editModal').classList.remove('show');
+    });
+  }
+
+  carregarProdutosGitHub();
 }; }
-  if(closeBtn){ closeBtn.onclick = ()=>{ ghModal.style.display='none';   carregarProdutosGitHub();
+  if(closeBtn){ closeBtn.onclick = ()=>{ ghModal.style.display='none';   // Botão X do modal editar
+  const closeEdit = document.getElementById('closeEditModal');
+  if(closeEdit){
+    closeEdit.addEventListener('click', ()=>{
+      document.getElementById('editModal').classList.remove('show');
+    });
+  }
+
+  carregarProdutosGitHub();
 }; }
   if(saveBtn){ saveBtn.onclick = saveGithubConfig; }
   if(testBtn){ testBtn.onclick = testGithubConfig; }
+  // Botão X do modal editar
+  const closeEdit = document.getElementById('closeEditModal');
+  if(closeEdit){
+    closeEdit.addEventListener('click', ()=>{
+      document.getElementById('editModal').classList.remove('show');
+    });
+  }
+
   carregarProdutosGitHub();
 };
 </script>
