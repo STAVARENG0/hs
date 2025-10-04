@@ -259,27 +259,6 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal .modal-content::-webkit-scrollbar{width:0;height:0}
 #productModal .modal-content{scrollbar-width:none;-ms-overflow-style:none}
 @keyframes fadeIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
-
-.floating-cart {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--orange);
-  color: white;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-  cursor: pointer;
-  z-index: 5000;
-  font-size: 28px;
-  transition: transform 0.3s ease;
-}
-.floating-cart:hover { transform: scale(1.1) rotate(5deg); }
-
 </style>
 </head>
 <body>
@@ -331,7 +310,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 </div>
 </div>
 <h2 id="modalTitle"></h2><p id="modalDescription"></p>
-<a class="btn buy" href="#" id="modalBuyBtn">Add to Cart</a>
+<a class="btn buy" href="#" id="modalBuyBtn">Buy Now</a>
 </div>
 </div>
 <script>
@@ -386,7 +365,7 @@ function render(list){
     body.innerHTML = `<h3 onclick="openModal('${p.id}')">${p.title}</h3>${brand}<div class='meta'>Stock: ${p.stock}</div><div class='price'>€ ${p.price}</div>`;
     el.appendChild(body);
     const cta = document.createElement('div'); cta.className='cta';
-    const a = document.createElement('a'); a.className='btn'; a.href='#'; a.textContent= Number(p.stock) > 0 ? "Add to Cart" : "Out of Stock";
+    const a = document.createElement('a'); a.className='btn'; a.href='#'; a.textContent= Number(p.stock) > 0 ? "Buy Now" : "Out of Stock";
     if(Number(p.stock) <= 0) a.classList.add('disabled');
     cta.appendChild(a); el.appendChild(cta);
     grid.appendChild(el);
@@ -404,25 +383,15 @@ function searchProducts(){
 }
 
 function openModal(id){
-  const product = currentList.find(p => String(p.id) === String(id));
+  const product = currentList.find(p=>String(p.id)===String(id));
   if(!product) return;
-
-  // 🔹 Limpa o conteúdo antigo antes de abrir um novo produto
-  document.getElementById('modalTitle').textContent = '';
-  document.getElementById('modalDescription').textContent = '';
-  document.getElementById('modalImage').src = '';
-
-  // 🔹 Atualiza com o novo conteúdo
   document.getElementById('modalTitle').textContent = product.title;
-  document.getElementById('modalDescription').innerHTML = (product.description || '').replace(/
-/g, '<br>');
+  document.getElementById('modalDescription').textContent = product.description;
   currentGallery = product.gallery && product.gallery.length ? product.gallery : [product.image];
   currentIndex = 0;
   document.getElementById('modalImage').src = currentGallery[currentIndex];
   document.getElementById('productModal').style.display = 'flex';
-
-  const buyBtn = document.getElementById('modalBuyBtn');
-  if(buyBtn) buyBtn.href = '#';
+  var buyBtn=document.getElementById('modalBuyBtn'); if(buyBtn){ buyBtn.href='#'; }
 }
 
 function closeModal(){
@@ -460,114 +429,5 @@ document.addEventListener('DOMContentLoaded',function(){
   if(overlay){ overlay.addEventListener('click', closeIfOverlay); }
   document.addEventListener('keydown', escClose);
 });
-</script>
-<div class="floating-cart" onclick="alert('Cart clicked!')">
-  🛒
-</div>
-
-
-<!-- Carrinho Modal -->
-<div id="cartModal" class="modal">
-  <div class="modal-content" style="max-width:500px;text-align:left;">
-    <button class="modal-close" onclick="closeCart()">×</button>
-    <h2>Your Cart</h2>
-    <div id="cartItems" style="margin:12px 0;"></div>
-    <hr style="border:none;border-top:1px solid rgba(255,255,255,0.1);margin:12px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <strong>Total Amount:</strong>
-      <strong id="cartTotal">€ 0.00</strong>
-    </div>
-    <button class="btn" style="width:100%;background:#28a745;">Checkout</button>
-  </div>
-</div>
-
-<script>
-let cart = [];
-
-function addToCart(productId){
-  const product = currentList.find(p => String(p.id) === String(productId));
-  if(!product) return;
-  const existing = cart.find(item => item.id === product.id);
-  if(existing){
-    existing.qty++;
-  } else {
-    cart.push({...product, qty: 1});
-  }
-  updateCartIcon();
-}
-
-function updateCartIcon(){
-  const cartBtn = document.querySelector('.floating-cart');
-  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-  cartBtn.innerHTML = `🛒${totalItems ? ' ('+totalItems+')' : ''}`;
-}
-
-function openCart(){
-  const cartModal = document.getElementById('cartModal');
-  const list = document.getElementById('cartItems');
-  const totalEl = document.getElementById('cartTotal');
-  list.innerHTML = '';
-  if(cart.length === 0){
-    list.innerHTML = '<p style="color:var(--muted)">Your cart is empty.</p>';
-    totalEl.textContent = '€ 0.00';
-  } else {
-    let total = 0;
-    cart.forEach(item => {
-      total += item.price * item.qty;
-      const row = document.createElement('div');
-      row.style.display = 'flex';
-      row.style.justifyContent = 'space-between';
-      row.style.alignItems = 'center';
-      row.style.marginBottom = '10px';
-      row.innerHTML = `
-        <div>
-          <strong>${item.title}</strong><br>
-          <small>€ ${item.price.toFixed(2)}</small>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px;">
-          <button onclick="changeQty('${item.id}', -1)" style="padding:4px 8px;">−</button>
-          <span>${item.qty}</span>
-          <button onclick="changeQty('${item.id}', 1)" style="padding:4px 8px;">+</button>
-        </div>
-      `;
-      list.appendChild(row);
-    });
-    totalEl.textContent = '€ ' + total.toFixed(2);
-  }
-  cartModal.style.display = 'flex';
-}
-
-function closeCart(){
-  document.getElementById('cartModal').style.display = 'none';
-}
-
-function changeQty(id, delta){
-  const item = cart.find(p => p.id === id);
-  if(!item) return;
-  item.qty += delta;
-  if(item.qty <= 0){
-    cart = cart.filter(p => p.id !== id);
-  }
-  openCart();
-  updateCartIcon();
-}
-
-// Hook nos botões Add to Cart existentes
-document.addEventListener('click', function(e){
-  if(e.target && e.target.classList.contains('btn') && e.target.textContent.includes('Add to Cart')){
-    e.preventDefault();
-    const productEl = e.target.closest('.product');
-    if(!productEl) return;
-    const title = productEl.querySelector('h3').textContent.trim();
-    const product = currentList.find(p => p.title === title);
-    if(product){ addToCart(product.id); }
-  }
-});
-
-// Substituir o alerta do carrinho flutuante
-const cartBtn = document.querySelector('.floating-cart');
-if(cartBtn){ cartBtn.onclick = openCart; }
-</script>
-
-</body>
+</script></body>
 </html>
