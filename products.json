@@ -1,26 +1,9 @@
 [
   {
-    "id": "1759583809482",
-    "title": "KIT CREATINA",
-    "price": "129",
-    "description": "A creatina em cÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¡psula ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© uma forma prÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¡tica e conveniente de suplementaÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£o que oferece os mesmos benefÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ­cios da creatina em pÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³, principalmente para aumento da forÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§a, resistÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂªncia e desempenho em exercÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ­cios de alta intensidade e curta duraÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£o",
-    "category": "supplements",
-    "stock": 70,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759583809482/cratina em saco.png",
-    "gallery": [
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759583809482/cratina em saco.png",
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759583809482/cratina grande.png",
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759583809482/creatina em capisula.png",
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759583809482/creatina.png"
-    ],
-    "createdAt": 1759583822106,
-    "status": "publicado"
-  },
-  {
     "id": "1759593465773",
     "title": "CREATINA EM CAPISULA ",
     "price": "899",
-    "description": "1000 ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ 1000 px (quadrado)\n\nFormato: .JPG (qualidade alta, 80ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ90% de compressÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£o)\n\nFundo: branco, preto ou neutro (pra destacar o produto)\n\nPeso: atÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© 250ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ300 KB por imagem",
+    "description": "1000 ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ 1000 px (quadrado)\n\nFormato: .JPG (qualidade alta, 80ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ90% de compressÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£o)\n\nFundo: branco, preto ou neutro (pra destacar o produto)\n\nPeso: atÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© 250ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ300 KB por imagem",
     "category": "supplements",
     "stock": 20,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759593465773/Gemini_Generated_Image_u8drcvu8drcvu8dr.png",
