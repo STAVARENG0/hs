@@ -68,27 +68,62 @@
 .action-buttons { display:flex; gap:6px; }
 .action-buttons button { flex:1; }
 
-/* Modal Editar Ajustado */
+/* Ajuste do Modal Editar */
 .modal-content {
   background: #1a1a1a;
   padding: 20px;
   border-radius: 12px;
-  max-width: 600px; /* maior no desktop */
-  width: 90%;
-  max-height: 90vh; /* limita altura */
-  overflow-y: auto; /* rolagem interna se passar do tamanho */
+  max-width: 500px;
+  width: 95%;
+  max-height: 85vh;
+  overflow-y: auto;
   color: #fff;
   position: relative;
+  z-index: 4000;
+}
+#closeEditModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff3c00;
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 5000;
+}
+
+/* Esconder barra de rolagem no modal (scroll invisível) */
+.modal-content::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* Safari/Chrome */
+}
+.modal-content {
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+
   .container {
     flex-direction: column;
+    gap: 12px;
   }
 
   .form-section, .list-section {
     width: 100%;
+    padding: 15px;
   }
 
   table {
@@ -96,21 +131,19 @@
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
+    font-size: 12px;
   }
 
   button, input, textarea, select {
     width: 100%;
+    font-size: 14px;
   }
 
   .config-btn {
     top: 10px;
     right: 10px;
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-
-  h1 {
-    font-size: 20px;
+    padding: 6px 8px;
+    font-size: 11px;
   }
 }
 
