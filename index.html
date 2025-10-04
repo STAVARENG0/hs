@@ -202,31 +202,35 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   pointer-events:none;
 }
 
-/* Ajuste Modal Produto */
+/* Ajuste Modal Produto com descrição abaixo da imagem */
 #productModal .modal-content {
-  max-width: 720px;
-  width: 90%;
-  border: 2px solid var(--orange);
-  box-shadow: 0 0 20px rgba(255,60,0,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#productModal .modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: var(--orange);
-  border: none;
-  color: #fff;
-  font-weight: bold;
-  padding: 8px 14px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-  box-shadow: 0 0 10px rgba(255,60,0,0.7);
-  transition: background 0.2s;
+#productModal .modal-content p {
+  margin-top: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
 }
-#productModal .modal-close:hover {
-  background: #ff5722;
+
+#productModal #modalBuyBtn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 28px;
+  background: linear-gradient(90deg,var(--orange), #ff8c42);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(240,116,36,.35);
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+#productModal #modalBuyBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
 }
 </style>
 </link></head>
@@ -264,7 +268,6 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 <div class="modal-content">
 <button class="modal-close" onclick="closeModal()">X</button>
 <h2 id="modalTitle"></h2>
-<p id="modalDescription"></p>
 <div class="slider">
 <img alt="" id="modalImage" src=""/>
 <div class="slider-controls">
@@ -272,6 +275,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 <button onclick="nextImage()">▶</button>
 </div>
 </div>
+<p id="modalDescription"></p>
+<a class="btn" href="#" id="modalBuyBtn">Buy Now</a>
 </div>
 </div>
 <script>
@@ -352,6 +357,7 @@ function openModal(id){
   currentIndex = 0;
   document.getElementById('modalImage').src = currentGallery[currentIndex];
   document.getElementById('productModal').style.display = 'flex';
+  document.getElementById('modalBuyBtn').href = '#';
 }
 
 function closeModal(){
