@@ -225,6 +225,9 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal .modal-content::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
 }
+#productModal .modal-content::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
 
 #productModal .slider {
   width: 100%;
@@ -237,6 +240,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
 #productModal .slider img {
   max-width: 100%;
+  max-height: 60vh; /* garante que a imagem inteira caiba */
+  width: auto;
   height: auto;
   object-fit: contain;
   border-radius: 10px;
@@ -269,6 +274,9 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   overflow-y: auto; /* ativa rolagem */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
+}
+#productModal .modal-content::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 #productModal .modal-content::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
