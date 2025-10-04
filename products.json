@@ -70,5 +70,17 @@
     "gallery": [],
     "createdAt": 1759633272269,
     "status": "publicado"
+  },
+  {
+    "id": "1759633430016",
+    "title": "CREME HIDRATANTE O'BOTICARIO",
+    "price": 12,
+    "description": "Nativa SPA. Cuidado do grão à pele.A Loção Hidratante Nativa Spa Lilac vai transformar o teu momento de autocuidado. Com uma combinação exclusiva de quatro flores lilases, a famosa Lavanda, a exuberante Íris.",
+    "category": "cosmetics",
+    "stock": 16,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633430016/BOTI_C03_ECOMM_MELHORIASIMGPRODUTONSPA-49.webp",
+    "gallery": [],
+    "createdAt": 1759633431001,
+    "status": "publicado"
   }
 ]
