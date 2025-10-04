@@ -46,5 +46,17 @@
     "gallery": [],
     "createdAt": 1759633012755,
     "status": "publicado"
+  },
+  {
+    "id": "1759633241883",
+    "title": "CREATINA GRANDE",
+    "price": 27,
+    "description": "A creatina é um composto que fornece energia rápida para os músculos, melhorando o desempenho em exercícios de alta intensidade e curta duração, como musculação e tiros. Auxilia no aumento da força e potência muscular, no aumento da recuperação pós-exercício e pode contribuir para o crescimento da massa muscular ao aumentar o volume hídrico dentro das células musculares.",
+    "category": "supplements",
+    "stock": 42,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633241883/cratina grande.png",
+    "gallery": [],
+    "createdAt": 1759633244270,
+    "status": "publicado"
   }
 ]
