@@ -34,5 +34,17 @@
     "gallery": [],
     "createdAt": 1759632924128,
     "status": "publicado"
+  },
+  {
+    "id": "1759633011484",
+    "title": "CREATINA DE PACOTE",
+    "price": 20,
+    "description": "A \"creatina de pacote\" descreve a forma como a creatina é vendida em embalagens tipo refil, que são sacos econômicos e com bom custo-benefício, ideais para quem usa a creatina por um longo período e deseja economizar.",
+    "category": "supplements",
+    "stock": 38,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633011484/cratina em saco.png",
+    "gallery": [],
+    "createdAt": 1759633012755,
+    "status": "publicado"
   }
 ]
