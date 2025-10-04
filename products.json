@@ -22,5 +22,17 @@
     "gallery": [],
     "createdAt": 1759632783458,
     "status": "publicado"
+  },
+  {
+    "id": "1759632921858",
+    "title": "PERFUME EGEO ",
+    "price": 32,
+    "description": "O Boticario Egeo Blue Eau de Toilette - 90ml",
+    "category": "cosmetics",
+    "stock": 4,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759632921858/ChatGPT Image 4 de out. de 2025, 17_20_27.png",
+    "gallery": [],
+    "createdAt": 1759632924128,
+    "status": "publicado"
   }
 ]
