@@ -3,7 +3,7 @@
     "id": "1759576624937",
     "title": "CREATINA EM CAPISULA ",
     "price": "17",
-    "description": "A creatina em cápsula é uma forma prática e conveniente de suplementação que oferece os mesmos benefícios da creatina em pó, principalmente para aumento da força, resistência e desempenho em exercícios de alta intensidade e curta duração",
+    "description": "A creatina em cÃ¡psula Ã© uma forma prÃ¡tica e conveniente de suplementaÃ§Ã£o que oferece os mesmos benefÃ­cios da creatina em pÃ³, principalmente para aumento da forÃ§a, resistÃªncia e desempenho em exercÃ­cios de alta intensidade e curta duraÃ§Ã£o",
     "category": "supplements",
     "stock": 88,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759576624937/creatina em capisula.png",
@@ -11,6 +11,20 @@
       "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759576624937/creatina em capisula.png"
     ],
     "createdAt": 1759576626106,
+    "status": "publicado"
+  },
+  {
+    "id": "1759583690349",
+    "title": "CREATINA GRANDE",
+    "price": "40",
+    "description": "A creatina em cápsula é uma forma prática e conveniente de suplementação que oferece os mesmos benefícios da creatina em pó, principalmente para aumento da força, resistência e desempenho em exercícios de alta intensidade e curta duração",
+    "category": "supplements",
+    "stock": 20,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759583690349/cratina em saco.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759583690349/cratina em saco.png"
+    ],
+    "createdAt": 1759583692323,
     "status": "publicado"
   }
 ]
