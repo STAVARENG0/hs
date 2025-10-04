@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HS.NUTRITION | Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#0b2326;
+    --ivory:#F2F0EA;
+    --muted:#9EB3B2;
+    --accent:#ff3c00;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:Poppins, Arial, sans-serif;
+    background: linear-gradient(180deg,#ff6b2e 0%, #d92a2a 100%); color:var(--ivory);
+    min-height:100dvh; display:grid; place-items:center; padding:24px;
+  }
+  .card{
+    background:var(--bg); border-radius:22px; padding:30px; width:min(92vw,440px);
+    box-shadow:0 18px 42px rgba(0,0,0,.45), 0 0 26px rgba(255,60,0,.12);
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .brand{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:10px;flex-direction:column}
+  .brand img{max-width:180px;height:auto;display:block;border-radius:12px;border:2px solid rgba(255,255,255,.06)}
+  h1{margin:0 0 14px; font-size:1.25rem; text-align:center}
+  label{font-size:.9rem; color:var(--muted); display:block; margin:8px 0 6px}
+  input{width:100%; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#092023; color:var(--ivory); font-size:15px}
+  button{width:100%; padding:12px; border-radius:999px; border:0; background:linear-gradient(90deg,var(--accent), #ff9b6a); color:#102326; font-weight:700; cursor:pointer; margin-top:12px; box-shadow:0 8px 20px rgba(240,116,36,.25)}
+  .err{color:#ffd2d2; background:#5c2323; border:1px solid #a33; padding:10px 12px; border-radius:12px; display:none; margin-bottom:12px; text-align:center}
+  a.small{display:block; text-align:center; color:var(--muted); font-size:.9rem; text-decoration:none; margin-top:10px}
+  a.small:hover{filter:brightness(1.05)}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">
+      <img src="1.png" alt="HS.NUTRITION Logo">
+    </div>
+    <h1>Entrar — HS.NUTRITION</h1>
+    <div id="err" class="err">Usuário ou senha inválidos.</div>
+    <form id="loginForm" autocomplete="off">
+      <label for="u">Usuário</label>
+      <input type="text" id="u" autocomplete="username" required placeholder="nome de usuário">
+      <label for="p">Senha</label>
+      <input type="password" id="p" autocomplete="current-password" required placeholder="senha">
+      <button type="submit">Entrar</button>
+      <a class="small" href="index.html">← Voltar ao site</a>
+    </form>
+  </div>
+
+<script>
+  const VALID_USER = 'hector';
+  const VALID_PASS = 'Hector32163339!';
+
+  const form = document.getElementById('loginForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const u = document.getElementById('u').value.trim();
+    const p = document.getElementById('p').value;
+    const err = document.getElementById('err');
+
+    if (u === VALID_USER && p === VALID_PASS) {
+      sessionStorage.setItem('hsnut_panel_logged_in','1');
+      location.href = 'painel.html';
+    } else {
+      err.style.display = 'block';
+      err.textContent = 'Usuário ou senha inválidos.';
+      err.animate([{ transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }], { duration: 300 });
+    }
+  });
+</script>
+</body>
+</html>
