@@ -55,81 +55,25 @@ header{text-align:center;margin-bottom:18px}
 }
 
 /* Texto WELCOME animado */
-.welcome {
-  width: 100%;
-  max-width: 550px;
-  margin: 10px 0 0 0;
-}
-
-.welcome text {
-  font-family: "Poppins", cursive;
-  font-size: 64px;
-  fill: none;
-  stroke: var(--orange);
-  stroke-width: 2px;
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  animation: draw 6s ease forwards;
-}
-
-@keyframes draw {
-  to { stroke-dashoffset: 0; }
-}
+.welcome { width: 100%; max-width: 550px; margin: 10px 0 0 0; }
+.welcome text { font-family: "Poppins", cursive; font-size: 64px; fill: none; stroke: var(--orange); stroke-width: 2px; stroke-dasharray: 800; stroke-dashoffset: 800; animation: draw 6s ease forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
 
 /* SEARCH BAR */
 .brand .search-box {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  max-width: 300px;
-  display: flex;
-  gap: 6px;
+  position: absolute; bottom: 10px; right: 20px; max-width: 300px; display: flex; gap: 6px;
 }
-
-.search-box input {
-  flex: 1;
-  padding: 12px 16px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  background: #fff;
-  color: #333;
-  font-size: 14px;
-}
-
+.search-box input { flex: 1; padding: 12px 16px; border-radius: 20px; border: none; outline: none; background: #fff; color: #333; font-size: 14px; }
 .search-box input::placeholder { color: #999; }
-.search-box button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 20px;
-  background: #000;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
+.search-box button { padding: 12px 20px; border: none; border-radius: 20px; background: #000; color: #fff; font-weight: 600; cursor: pointer; }
 .search-box button:hover { filter: brightness(1.2); }
 
 /* CATEGORY BUTTONS */
-.category-buttons{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin: 12px 0 2px;
-  flex-wrap: wrap;
-}
+.category-buttons{ display:flex; justify-content:center; gap:12px; margin: 12px 0 2px; flex-wrap: wrap; }
 .pill-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 20px;
-  border-radius: 9999px;
-  background: var(--orange);
-  color: var(--white);
-  font-weight: 800;
-  border: 2px solid var(--orange);
-  text-decoration:none;
-  box-shadow: 0 6px 18px rgba(255,60,0,0.35);
-  cursor:pointer;
+  display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius: 9999px;
+  background: var(--orange); color: var(--white); font-weight: 800; border: 2px solid var(--orange);
+  text-decoration:none; box-shadow: 0 6px 18px rgba(255,60,0,0.35); cursor:pointer;
   transition: transform .18s ease, filter .18s ease;
 }
 .pill-btn:hover{ transform: translateY(-1px); filter: brightness(1.05); }
@@ -208,79 +152,29 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
 /* MOBILE TWEAKS */
 @media (max-width: 600px) {
-  #modal .panel {
-    width: 96vw;
-    max-height: calc(100dvh - 20px);
-    border-radius: 14px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  #modal .hero {
-    aspect-ratio: 1/1;
-    max-height: 56svh;
-  }
-  #modal .nav {
-    z-index: 5;
-    width: clamp(32px, 9vw, 40px);
-    height: clamp(32px, 9vw, 40px);
-    font-size: clamp(20px, 6vw, 26px);
-  }
+  #modal .panel { width: 96vw; max-height: calc(100dvh - 20px); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  #modal .hero { aspect-ratio: 1/1; max-height: 56svh; }
+  #modal .nav { z-index: 5; width: clamp(32px, 9vw, 40px); height: clamp(32px, 9vw, 40px); font-size: clamp(20px, 6vw, 26px); }
   #modal .nav.prev { left: min(10px, 2.5vw); }
   #modal .nav.next { right: min(10px, 2.5vw); }
-  #modal .details {
-    flex: 1;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 16px;
-    padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
-  }
-  #modal .actions {
-    position: sticky;
-    bottom: 0;
-    padding-top: 10px;
-    padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
-    background: linear-gradient(180deg, rgba(26,26,26,0) 0%, var(--card) 45%);
-  }
+  #modal .details { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 16px; padding-bottom: calc(env(safe-area-inset-bottom) + 16px); }
+  #modal .actions { position: sticky; bottom: 0; padding-top: 10px; padding-bottom: calc(env(safe-area-inset-bottom) + 10px); background: linear-gradient(180deg, rgba(26,26,26,0) 0%, var(--card) 45%); }
   #thumbs img { width: 72px; height: 72px; }
   #modal .close { z-index: 6; }
 }
 
 /* Floating cart button */
 .floating-cart {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--orange);
-  color: white;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-  cursor: pointer;
-  z-index: 5000;
-  font-size: 28px;
-  transition: transform 0.3s ease;
+  position: fixed; bottom: 20px; right: 20px; background: var(--orange); color: white; border-radius: 50%;
+  width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35); cursor: pointer; z-index: 5000; font-size: 28px; transition: transform 0.3s ease;
 }
 .floating-cart:hover { transform: scale(1.1) rotate(5deg); }
 
 /* Cart modal (kept) */
-.modal {
-  display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000;
-}
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000; }
 .modal-content {
-  background:var(--card);
-  padding:20px;
-  border-radius:16px;
-  max-width:600px;
-  width:90%;
-  text-align:left;
-  color:var(--white);
-  position:relative;
-  border: 1px solid rgba(255,255,255,0.12);
+  background:var(--card); padding:20px; border-radius:16px; max-width:600px; width:90%; text-align:left; color:var(--white); position:relative; border: 1px solid rgba(255,255,255,0.12);
 }
 .modal-close{position:absolute;top:10px;right:10px;background:#ff3c00;border:none;color:#fff;font-weight:bold;padding:6px 12px;border-radius:6px;cursor:pointer}
 </style>
@@ -288,32 +182,23 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 <body>
 <div class="wrap">
 <div class="card">
-<div class="admin-btn-modal">
-<a href="login.html">Admin</a>
-</div>
+<div class="admin-btn-modal"><a href="login.html">Admin</a></div>
 <header>
 <div class="brand">
 <svg class="welcome" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
   <text text-anchor="middle" x="50%" y="50%">WELCOME</text>
-  <text text-anchor="middle" x="50%" y="72%" 
-        style="font-family: Poppins, sans-serif;
-               font-size: 18px;
-               fill: var(--orange);
-               stroke: none;">
-    www.hs-nutrition.ie
-  </text>
+  <text text-anchor="middle" x="50%" y="72%" style="font-family: Poppins, sans-serif; font-size: 18px; fill: var(--orange); stroke: none;">www.hs-nutrition.ie</text>
 </svg>
 <img alt="HS Nutrition Cover" src="5.png"/>
 <div class="search-box">
-<input id="search" placeholder="Search for products..." type="text"/>
-<button onclick="searchProducts()">Search</button>
+  <input id="search" placeholder="Search for products..." type="text"/>
+  <button onclick="searchProducts()">Search</button>
 </div>
 </div>
 </header>
-<!-- NEW CATEGORY BUTTONS -->
 <div class="category-buttons">
-<a class="pill-btn" href="supplements.html">Supplements</a>
-<a class="pill-btn" href="cosmetics.html">Cosmetics</a>
+  <a class="pill-btn" href="supplements.html">Supplements</a>
+  <a class="pill-btn" href="cosmetics.html">Cosmetics</a>
 </div>
 <div class="divider"></div>
 <section class="grid" id="products"></section>
@@ -322,7 +207,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 </div>
 </div>
 
-<!-- ===== Next-style Product Modal (HS theme) ===== -->
+<!-- Product Modal -->
 <div id="modal" aria-hidden="true" role="dialog">
   <div class="overlay" data-close></div>
   <div class="panel" role="document">
@@ -342,7 +227,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
       <div id="mPrice" class="price">—</div>
       <div id="mDesc" class="desc">—</div>
       <div class="actions">
-        <a id="mAdd" class="btn" href="#">Add to Cart</a>
+        <a id="mAdd" class="btn" href="#" data-action="add-to-cart">Add to Cart</a>
         <a id="mCloseBtn" class="btn secondary" href="#" data-close>Close</a>
       </div>
     </div>
@@ -353,10 +238,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
-let currentGallery = [];
-let currentIndex = 0;
 
-// Modal refs (Next-style)
+// Modal refs
 const modal = document.getElementById('modal');
 const hero = document.getElementById('hero');
 const thumbs = document.getElementById('thumbs');
@@ -368,11 +251,9 @@ const mAdd  = document.getElementById('mAdd');
 const gPrev  = document.getElementById('gPrev');
 const gNext  = document.getElementById('gNext');
 const mCount = document.getElementById('mCount');
-const mCloseBtn = document.getElementById('mCloseBtn');
 
 let galleryImgs = [];
 let galleryIndex = 0;
-let openedProductId = null;
 
 const fmtEUR = n => '€ ' + (Number(n||0)).toLocaleString('en-IE', {minimumFractionDigits:2, maximumFractionDigits:2});
 
@@ -421,9 +302,18 @@ function render(list){
     body.innerHTML = `<h3 onclick="openModal('${p.id}')">${p.title}</h3>${brand}<div class='meta'>Stock: ${p.stock}</div><div class='price'>€ ${p.price}</div>`;
     el.appendChild(body);
     const cta = document.createElement('div'); cta.className='cta';
-    const a = document.createElement('a'); a.className='btn'; a.href='#'; a.textContent= Number(p.stock) > 0 ? "Add to Cart" : "Out of Stock";
-    if(Number(p.stock) <= 0) a.classList.add('disabled');
-    cta.appendChild(a); el.appendChild(cta);
+    const a = document.createElement('a');
+    a.className='btn';
+    a.href='#';
+    a.textContent = Number(p.stock) > 0 ? "Add to Cart" : "Out of Stock";
+    if(Number(p.stock) > 0){
+      a.dataset.action = 'add-to-cart';
+      a.dataset.id = p.id;
+    } else {
+      a.classList.add('disabled');
+    }
+    cta.appendChild(a);
+    el.appendChild(cta);
     grid.appendChild(el);
   });
 }
@@ -438,7 +328,7 @@ function searchProducts(){
   render(filtered);
 }
 
-/* ===== New modal logic ===== */
+/* ===== Modal logic ===== */
 function setActiveThumb(i){
   thumbs.querySelectorAll('img').forEach((t,idx)=>{
     if(idx===i) t.classList.add('active'); else t.classList.remove('active');
@@ -455,17 +345,15 @@ function showImage(i){
 function openModal(id){
   const product = currentList.find(p=>String(p.id)===String(id));
   if(!product) return;
-  openedProductId = product.id;
 
-  // Galeria: imagem principal + demais
+  // Galeria
   galleryImgs = [product.image, ...(product.gallery||[])].filter(Boolean);
   if(!galleryImgs.length) galleryImgs = ['5.png'];
-  hero.src = galleryImgs[0]; hero.alt = product.title || 'Product photo';
+  hero.src = galleryImgs[0];
+  hero.alt = product.title || 'Product photo';
   galleryIndex = 0; mCount.textContent = `1/${galleryImgs.length}`;
   thumbs.innerHTML = galleryImgs.map((src,i)=>`<img ${i===0?'class="active"':''} data-idx="${i}" src="${src}" alt="thumb ${i+1}">`).join('');
-  thumbs.querySelectorAll('img').forEach(img=>{
-    img.addEventListener('click', ()=>{ showImage(Number(img.dataset.idx)); });
-  });
+  thumbs.querySelectorAll('img').forEach(img=> img.addEventListener('click', ()=> showImage(Number(img.dataset.idx)) ));
 
   // Detalhes
   mTitle.textContent = product.title || '—';
@@ -473,10 +361,11 @@ function openModal(id){
   mPrice.textContent = product.price?fmtEUR(product.price):'';
   mDesc.textContent = product.description || '';
 
-  // Action
-  mAdd.onclick = (ev)=>{ ev.preventDefault(); if(typeof addToCart==='function'){ addToCart(product.id); } };
+  // Action (usar mesmo handler do card)
+  mAdd.dataset.action = 'add-to-cart';
+  mAdd.dataset.id = product.id;
 
-  // Open
+  // Abrir
   modal.classList.add('open');
   modal.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
@@ -486,7 +375,6 @@ function closeModal(){
   modal.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
   thumbs.innerHTML='';
-  openedProductId = null;
 }
 modal.addEventListener('click', (ev)=>{ if(ev.target.hasAttribute('data-close')) closeModal(); });
 window.addEventListener('keydown', (ev)=>{
@@ -495,29 +383,20 @@ window.addEventListener('keydown', (ev)=>{
   if(ev.key==='ArrowRight') showImage(galleryIndex+1);
   if(ev.key==='ArrowLeft')  showImage(galleryIndex-1);
 });
-if(gPrev) gPrev.addEventListener('click', ()=> showImage(galleryIndex-1));
-if(gNext) gNext.addEventListener('click', ()=> showImage(galleryIndex+1));
-(function(){
-  let x0=null; const area=document.querySelector('#modal .hero-wrap');
-  if(!area) return;
-  area.addEventListener('touchstart', e=>{ x0 = e.touches?.[0]?.clientX ?? null; }, {passive:true});
-  area.addEventListener('touchend', e=>{ if(x0==null) return; const dx = (e.changedTouches?.[0]?.clientX ?? x0) - x0; if(Math.abs(dx)>30){ if(dx<0) showImage(galleryIndex+1); else showImage(galleryIndex-1); } x0=null; }, {passive:true});
-})();
+document.getElementById('gPrev').addEventListener('click', ()=> showImage(galleryIndex-1));
+document.getElementById('gNext').addEventListener('click', ()=> showImage(galleryIndex+1));
 
 (async function init(){
   currentList = await readPublic();
-  // sort by most recent
   currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
   render(currentList);
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
 </script>
 
-<div class="floating-cart" onclick="openCart()">
-  🛒
-</div>
+<div class="floating-cart" onclick="openCart()">🛒</div>
 
-<!-- Cart Modal (kept) -->
+<!-- Cart Modal -->
 <div id="cartModal" class="modal">
   <div class="modal-content" style="max-width:500px;text-align:left;">
     <button class="modal-close" onclick="closeCart()">×</button>
@@ -539,11 +418,7 @@ function addToCart(productId){
   const product = currentList.find(p => String(p.id) === String(productId));
   if(!product) return;
   const existing = cart.find(item => item.id === product.id);
-  if(existing){
-    existing.qty++;
-  } else {
-    cart.push({...product, qty: 1});
-  }
+  if(existing){ existing.qty++; } else { cart.push({...product, qty: 1}); }
   updateCartIcon();
 }
 
@@ -571,10 +446,7 @@ function openCart(){
       row.style.alignItems = 'center';
       row.style.marginBottom = '10px';
       row.innerHTML = `
-        <div>
-          <strong>${item.title}</strong><br>
-          <small>€ ${Number(item.price).toFixed(2)}</small>
-        </div>
+        <div><strong>${item.title}</strong><br><small>€ ${Number(item.price).toFixed(2)}</small></div>
         <div style="display:flex;align-items:center;gap:6px;">
           <button onclick="changeQty('${item.id}', -1)" style="padding:4px 8px;">−</button>
           <span>${item.qty}</span>
@@ -588,32 +460,24 @@ function openCart(){
   cartModal.style.display = 'flex';
 }
 
-function closeCart(){
-  document.getElementById('cartModal').style.display = 'none';
-}
+function closeCart(){ document.getElementById('cartModal').style.display = 'none'; }
 
 function changeQty(id, delta){
   const item = cart.find(p => p.id === id);
   if(!item) return;
   item.qty += delta;
-  if(item.qty <= 0){
-    cart = cart.filter(p => p.id !== id);
-  }
+  if(item.qty <= 0){ cart = cart.filter(p => p.id !== id); }
   openCart();
   updateCartIcon();
 }
 
-// Hook nos botões Add to Cart existentes
+/* ===== Unified click handler for Add-to-Cart ===== */
 document.addEventListener('click', function(e){
-  if(e.target && e.target.classList.contains('btn') && e.target.textContent.includes('Add to Cart')){
-    e.preventDefault();
-    const productEl = e.target.closest('.product');
-    if(productEl){
-      const title = productEl.querySelector('h3').textContent.trim();
-      const product = currentList.find(p => p.title === title);
-      if(product){ addToCart(product.id); }
-    }
-  }
+  const btn = e.target.closest('[data-action="add-to-cart"]');
+  if(!btn) return;
+  e.preventDefault();
+  const id = btn.dataset.id;
+  if(id){ addToCart(id); }
 });
 </script>
 
