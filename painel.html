@@ -240,8 +240,8 @@ body.modal-open { overflow: hidden; }
         category: p.category || 'uncategorized',
         price: Number(p.price || 0),
         stock: Number.isFinite(p.stock) ? p.stock : parseInt(p.stock || '0', 10),
-        gallery: Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : (p.gallery ? [p.gallery] : []),
-        image: p.image || (Array.isArray(p.gallery) && p.gallery[0]) || '',
+        gallery: (Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : (p.gallery ? [p.gallery] : [])).filter(u => u && u !== p.image).filter((u, idx, arr) => arr.indexOf(u) === idx),
+        image: p.image || '',
         createdAt: p.createdAt || Date.now(),
         status: p.status || 'publicado'
       }));
@@ -318,6 +318,11 @@ body.modal-open { overflow: hidden; }
       const capaIndex = parseInt(document.querySelector('input[name="capa"]:checked')?.value || 0);
       const uploaded = await uploadImagens(produtoId, fotos);
 
+      const cover = uploaded[capaIndex] || "";
+      const galleryClean = (uploaded || [])
+        .filter(Boolean)
+        .filter((u, i) => i !== capaIndex) // remove capa
+        .filter((u, idx, arr) => arr.indexOf(u) === idx); // únicos
       const produto = {
         id: produtoId,
         title: titulo,
@@ -325,8 +330,8 @@ body.modal-open { overflow: hidden; }
         description: descricao,
         category: categoria,
         stock: estoque,
-        image: uploaded[capaIndex] || "",
-        gallery: Array.isArray(uploaded) ? uploaded.filter(Boolean) : [],
+        image: cover,
+        gallery: galleryClean,
         createdAt: Date.now(),
         status: "publicado"
       };
@@ -394,8 +399,9 @@ body.modal-open { overflow: hidden; }
         const fotosInput = document.getElementById('editFotos');
         if(fotosInput.files.length>0){
           const newGallery = await uploadImagens(produto.id, fotosInput.files);
-          produto.gallery = newGallery;
-          produto.image = newGallery[0];
+          const cleaned = (newGallery || []).filter(Boolean).filter((u, idx, arr) => arr.indexOf(u) === idx);
+          produto.image = cleaned[0] || produto.image;
+          produto.gallery = cleaned.slice(1);
         }
         await salvarNoGitHub(produtos);
         renderProdutos();

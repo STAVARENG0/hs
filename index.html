@@ -347,7 +347,8 @@ function openModal(id){
   if(!product) return;
 
   // Galeria
-  galleryImgs = [product.image, ...(product.gallery||[])].filter(Boolean);
+  const combined = [product.image, ...(product.gallery||[])].filter(Boolean);
+  galleryImgs = Array.from(new Set(combined));
   if(!galleryImgs.length) galleryImgs = ['5.png'];
   hero.src = galleryImgs[0];
   hero.alt = product.title || 'Product photo';
