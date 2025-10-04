@@ -82,5 +82,17 @@
     "gallery": [],
     "createdAt": 1759633431001,
     "status": "publicado"
+  },
+  {
+    "id": "1759633641903",
+    "title": "CREME EGEO ",
+    "price": 22,
+    "description": "Have one to sell?\nSell it yourself\n\nShare\nMousse Hidratante Desodorante Corporal Egeo Dolce Merengue, 250g",
+    "category": "cosmetics",
+    "stock": 0,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633641903/5141So39ILL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_PIRIOFIVE-medium,BottomLeft,30,-20_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNTAiID42OTwvc3Bhbj4=.jpg",
+    "gallery": [],
+    "createdAt": 1759633643461,
+    "status": "publicado"
   }
 ]
