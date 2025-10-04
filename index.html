@@ -7,7 +7,7 @@
 <title>HS Nutrition | Supplements Store</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <meta content="no-store" http-equiv="Cache-Control"/>
 <style>
 :root{
@@ -226,7 +226,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal .slider {
   position: relative;
   width: 100%;
-  background: #0b0b0b;
+  background: transparent;
   border-radius: 14px;
   padding: 8px;
   margin-bottom: 12px;
@@ -260,7 +260,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal .modal-content{scrollbar-width:none;-ms-overflow-style:none}
 @keyframes fadeIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
 </style>
-</link></head>
+</head>
 <body>
 <div class="wrap">
 <div class="card">
@@ -294,7 +294,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 <div class="modal" id="productModal">
 <div class="modal-content">
 <button aria-label="Close" class="modal-close" onclick="closeModal()">×</button>
-<h2 id="modalTitle"></h2>
+
 <div class="slider" id="modalSlider">
 <img alt="Product image" id="modalImage" src=""/>
 <div class="slider-controls">
@@ -302,7 +302,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 <button class="nav next" onclick="nextImage()" type="button">▶</button>
 </div>
 </div>
-<p id="modalDescription"></p>
+<h2 id="modalTitle"></h2><p id="modalDescription"></p>
 <a class="btn buy" href="#" id="modalBuyBtn">Buy Now</a>
 </div>
 </div>
