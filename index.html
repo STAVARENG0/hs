@@ -314,9 +314,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 </div>
 </div>
 <script>
-const PUBLIC_JSON_PRIMARY = './products.json';
-const PUBLIC_JSON_FALLBACK = './products/products.json';
-let PUBLIC_JSON = PUBLIC_JSON_PRIMARY;
+const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
 let currentGallery = [];
@@ -347,64 +345,12 @@ async function readPublic(){
   }catch(e){ return []; }
 }
 
-
 function render(list){
   grid.innerHTML = '';
   if(!list.length){
     grid.innerHTML = '<div class="meta" style="text-align:center;padding:20px;">No products available.</div>';
     return;
   }
-  list.forEach(p=>{
-    const el = document.createElement('article'); el.className='product';
-
-    if(Number(p.stock) <= 0){
-      const badge = document.createElement('div');
-      badge.className = 'oos-ribbon';
-      badge.textContent = 'OUT OF STOCK';
-      el.appendChild(badge);
-    }
-
-    const img = new Image();
-    img.src = p.image || '5.png';
-    img.alt = p.title || 'Product';
-    img.addEventListener('click', ()=> openModal(p.id));
-    el.appendChild(img);
-
-    const body = document.createElement('div'); body.className='product-body';
-
-    const h3 = document.createElement('h3');
-    h3.textContent = p.title || '';
-    h3.addEventListener('click', ()=> openModal(p.id));
-    body.appendChild(h3);
-
-    if(p.brand){
-      const brand = document.createElement('div');
-      brand.className = 'meta';
-      brand.textContent = p.brand;
-      body.appendChild(brand);
-    }
-
-    const stock = document.createElement('div');
-    stock.className = 'meta';
-    stock.textContent = 'Stock: ' + (p.stock ?? 0);
-    body.appendChild(stock);
-
-    const price = document.createElement('div');
-    price.className = 'price';
-    price.textContent = '€ ' + (p.price ?? '');
-    body.appendChild(price);
-
-    el.appendChild(body);
-
-    const cta = document.createElement('div'); cta.className='cta';
-    const a = document.createElement('a'); a.className='btn'; a.href='#'; a.textContent= Number(p.stock) > 0 ? "Buy Now" : "Out of Stock";
-    if(Number(p.stock) <= 0) a.classList.add('disabled');
-    cta.appendChild(a); el.appendChild(cta);
-
-    grid.appendChild(el);
-  });
-}
-
   list.forEach(p=>{
     const el = document.createElement('article'); el.className='product';
     if(Number(p.stock) <= 0){
@@ -436,42 +382,16 @@ function searchProducts(){
   render(filtered);
 }
 
-
-function setModalImage(src){
-  const img = document.getElementById('modalImage');
-  img.onerror = null;
-  img.src = src || '5.png';
-  img.onerror = () => { img.onerror = null; img.src = '5.png'; };
-}
-
-function normalizeGallery(product){
-  let g = [];
-  if (Array.isArray(product.gallery)) {
-    g = product.gallery.filter(Boolean);
-  } else if (typeof product.gallery === 'string') {
-    const trimmed = product.gallery.trim();
-    if (trimmed) g = [trimmed];
-  }
-  if (!g.length && product.image) g = [product.image];
-  return g;
-}
-
 function openModal(id){
   const product = currentList.find(p=>String(p.id)===String(id));
   if(!product) return;
-
-  document.getElementById('modalTitle').textContent = product.title || '';
-  document.getElementById('modalDescription').textContent = product.description || '';
-
-  currentGallery = normalizeGallery(product);
+  document.getElementById('modalTitle').textContent = product.title;
+  document.getElementById('modalDescription').textContent = product.description;
+  currentGallery = product.gallery && product.gallery.length ? product.gallery : [product.image];
   currentIndex = 0;
-  setModalImage(currentGallery[0]);
-
-  const overlay = document.getElementById('productModal');
-  overlay.style.display = 'flex';
-
-  const buyBtn = document.getElementById('modalBuyBtn');
-  if(buyBtn){ buyBtn.href = '#'; }
+  document.getElementById('modalImage').src = currentGallery[currentIndex];
+  document.getElementById('productModal').style.display = 'flex';
+  var buyBtn=document.getElementById('modalBuyBtn'); if(buyBtn){ buyBtn.href='#'; }
 }
 
 function closeModal(){
@@ -479,18 +399,17 @@ function closeModal(){
 }
 
 function prevImage(){
-  if(currentGallery && currentGallery.length > 0){
+  if(currentGallery.length){
     currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-    setModalImage(currentGallery[currentIndex]);
+    document.getElementById('modalImage').src = currentGallery[currentIndex];
   }
 }
 
 function nextImage(){
-  if(currentGallery && currentGallery.length > 0){
+  if(currentGallery.length){
     currentIndex = (currentIndex + 1) % currentGallery.length;
-    setModalImage(currentGallery[currentIndex]);
+    document.getElementById('modalImage').src = currentGallery[currentIndex];
   }
-}
 }
 
 (async function init(){
