@@ -81,8 +81,14 @@
   overflow-y: auto;
   padding-right: 8px;
 }
-#editModal::-webkit-scrollbar {
-  display: none;
+/* Oculta qualquer barra de rolagem */
+#editModal .form::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+#editModal .form {
+  -ms-overflow-style: none;  /* IE e Edge */
+  scrollbar-width: none;     /* Firefox */
 }
 </style>
 </head>
@@ -359,7 +365,7 @@ function editarProduto(index){
   };
 }
 
-document.getElementById('closeEditModal').onclick = ()=>{ document.getElementById('editModal').classList.remove('show'); };
+document.getElementById('closeEditModal').onclick = function(){ document.getElementById('editModal').classList.remove('show'); };
 </script>
 <!-- GitHub Config Modal -->
 <div class="modal" id="githubModal">
