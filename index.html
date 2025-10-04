@@ -74,36 +74,79 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
  </div>
 </div>
 
-<!-- MODAL -->
+
+</html>
+
+<!-- MODAL (estrutura NextRide adaptada para HS Nutrition) -->
 <div id="modal" aria-hidden="true" role="dialog">
   <div class="overlay" data-close></div>
   <div class="panel" role="document">
-    <button class="close" data-close>&times;</button>
-    <img id="hero" class="hero" src="" alt="Product Image"/>
+    <button class="close" data-close>&times; Close</button>
+    <div class="gallery">
+      <div class="hero-wrap">
+        <img id="hero" class="hero" alt="Product Image" src=""/>
+        <button class="nav prev" id="gPrev" aria-label="Anterior">‹</button>
+        <button class="nav next" id="gNext" aria-label="Próxima">›</button>
+        <div class="counter" id="mCount">0/0</div>
+      </div>
+      <div id="thumbs"></div>
+    </div>
     <div class="details">
       <h2 id="mTitle">—</h2>
       <div id="mBrand" class="meta">—</div>
       <div id="mPrice" class="price">—</div>
       <div id="mDesc" class="desc">—</div>
       <div class="actions">
-        <a id="mBuy" class="btn" href="#" target="_blank">Buy Now</a>
-        <a id="mOut" class="btn secondary" href="#" target="_blank" style="display:none;">Out of Stock</a>
+        <a id="mBuy" class="btn" target="_blank" rel="noopener">Buy Now</a>
+        <a id="mOut" class="btn secondary" target="_blank" rel="noopener" style="display:none;">Out of Stock</a>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+/* --- Modal estilo NextRide adaptado à paleta HS Nutrition --- */
+#modal{position:fixed;inset:0;display:none;place-items:center;z-index:9999;}
+#modal.open{display:grid}
+#modal .overlay{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);}
+#modal .panel{position:relative;width:min(96vw,980px);max-height:92vh;overflow:hidden;background:#111;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 18px 42px rgba(0,0,0,.6);display:grid;grid-template-columns:1.2fr 1fr;}
+@media (max-width:860px){#modal .panel{grid-template-columns:1fr;}}
+#modal .gallery{background:#111;padding:10px;display:flex;flex-direction:column;}
+#modal .hero-wrap{position:relative;}
+#modal .hero{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#000;}
+#thumbs{display:flex;gap:8px;overflow:auto;padding:10px 0;}
+#thumbs img{width:80px;height:60px;object-fit:cover;border-radius:8px;opacity:.8;cursor:pointer;border:1px solid rgba(255,255,255,.12);}
+#thumbs img.active{opacity:1;outline:2px solid #ff3c00;}
+#modal .details{padding:16px;overflow:auto;}
+#modal h2{margin:0 0 8px;font-size:20px;}
+#modal .meta{margin:8px 0;font-size:13px;color:#bbb;}
+#modal .price{font-size:18px;margin:8px 0 12px;font-weight:700;color:#ff3c00;}
+#modal .desc{font-size:14px;line-height:1.5;color:#ddd;white-space:pre-wrap;}
+#modal .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+#modal .btn{background:linear-gradient(90deg,#ff3c00,#ff8c42);border:none;color:#fff;font-weight:700;padding:12px 20px;border-radius:30px;cursor:pointer;text-decoration:none;display:inline-block;}
+#modal .btn.secondary{background:#222;}
+#modal .close{position:absolute;top:10px;right:10px;background:#222;color:#fff;border:0;border-radius:10px;padding:8px 10px;font-weight:700;cursor:pointer;}
+#modal .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);border:0;color:#fff;font-size:26px;width:40px;height:40px;border-radius:50%;cursor:pointer;display:grid;place-items:center;}
+#modal .nav.prev{left:10px;}
+#modal .nav.next{right:10px;}
+#modal .counter{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.45);padding:4px 8px;border-radius:10px;font-size:12px;color:#fff;}
+</style>
 
 <script>
 const PUBLIC_JSON = './products/products.json';
 const grid = document.getElementById('products');
 const modal = document.getElementById('modal');
 const hero = document.getElementById('hero');
+const thumbs = document.getElementById('thumbs');
 const mTitle = document.getElementById('mTitle');
 const mBrand = document.getElementById('mBrand');
 const mPrice = document.getElementById('mPrice');
 const mDesc = document.getElementById('mDesc');
 const mBuy = document.getElementById('mBuy');
 const mOut = document.getElementById('mOut');
+const gPrev = document.getElementById('gPrev');
+const gNext = document.getElementById('gNext');
+const mCount = document.getElementById('mCount');
 
 function sanitizeList(list){
   if(!Array.isArray(list)) return [];
@@ -114,78 +157,60 @@ function sanitizeList(list){
     price: p.price || '',
     image: p.image || '5.png',
     description: p.description || '',
-    gallery: Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : (p.gallery ? [p.gallery] : []),
-    category: p.category || '',
-    stock: typeof p.stock === 'number' ? p.stock : parseInt(p.stock || '0', 10)
+    gallery: Array.isArray(p.gallery)?p.gallery.filter(Boolean):(p.gallery?[p.gallery]:[]),
+    stock: typeof p.stock==='number'?p.stock:parseInt(p.stock||'0',10)
   }));
 }
 
 async function readPublic(){
   try{
-    const r = await fetch(PUBLIC_JSON + '?t=' + Date.now(), {cache:'no-store'});
+    const r = await fetch(PUBLIC_JSON+'?t='+Date.now(),{cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
     const data = await r.json();
     return sanitizeList(data);
-  }catch(e){ console.error(e); return []; }
+  }catch(e){console.error(e);return [];}
 }
+
+let galleryImgs=[],galleryIndex=0;
+function setActiveThumb(i){thumbs.querySelectorAll('img').forEach((t,idx)=>{if(idx===i)t.classList.add('active');else t.classList.remove('active');});}
+function showImage(i){if(!galleryImgs.length)return;galleryIndex=(i+galleryImgs.length)%galleryImgs.length;hero.src=galleryImgs[galleryIndex];setActiveThumb(galleryIndex);mCount.textContent=`${galleryIndex+1}/${galleryImgs.length}`;}
 
 function openModal(p){
-  hero.src = p.image || '5.png';
-  mTitle.textContent = p.title;
-  mBrand.textContent = p.brand ? p.brand : '';
-  mPrice.textContent = '€ ' + (p.price || '0.00');
-  mDesc.textContent = p.description || '';
-  if(Number(p.stock) > 0){
-    mBuy.style.display='inline-block';
-    mOut.style.display='none';
-  } else {
-    mBuy.style.display='none';
-    mOut.style.display='inline-block';
-  }
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden','false');
-  document.body.style.overflow='hidden';
+  galleryImgs=[p.image,...(p.gallery||[])].filter(Boolean);
+  if(!galleryImgs.length)galleryImgs=['5.png'];
+  hero.src=galleryImgs[0];galleryIndex=0;mCount.textContent=`1/${galleryImgs.length}`;
+  thumbs.innerHTML=galleryImgs.map((src,i)=>`<img ${i===0?'class="active"':''} data-idx="${i}" src="${src}" alt="thumb ${i+1}">`).join('');
+  thumbs.querySelectorAll('img').forEach(img=>{img.addEventListener('click',()=>showImage(Number(img.dataset.idx)));});
+  mTitle.textContent=p.title;mBrand.textContent=p.brand;mPrice.textContent='€ '+p.price;mDesc.textContent=p.description;
+  if(Number(p.stock)>0){mBuy.style.display='inline-block';mOut.style.display='none';}else{mBuy.style.display='none';mOut.style.display='inline-block';}
+  modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
 }
 
-function closeModal(){
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-}
-
-modal.addEventListener('click', (ev)=>{ if(ev.target.hasAttribute('data-close')) closeModal(); });
-window.addEventListener('keydown', (ev)=>{ if(ev.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';thumbs.innerHTML='';}
+modal.addEventListener('click',ev=>{if(ev.target.hasAttribute('data-close'))closeModal();});
+window.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&modal.classList.contains('open'))closeModal();if(!modal.classList.contains('open'))return;if(ev.key==='ArrowRight')showImage(galleryIndex+1);if(ev.key==='ArrowLeft')showImage(galleryIndex-1);});
+if(gPrev)gPrev.addEventListener('click',()=>showImage(galleryIndex-1));
+if(gNext)gNext.addEventListener('click',()=>showImage(galleryIndex+1));
 
 function render(list){
-  grid.innerHTML = '';
-  if(!list.length){
-    grid.innerHTML = '<div class="meta" style="text-align:center;padding:20px;">No products available.</div>';
-    return;
-  }
-  list.forEach((p, idx)=>{
-    const el = document.createElement('article'); el.className='product';
-    const img = document.createElement('img'); img.src = p.image; img.alt = p.title; img.addEventListener('click', ()=> openModal(p)); el.appendChild(img);
-    const body = document.createElement('div'); body.className='product-body';
-    const h3 = document.createElement('h3'); h3.textContent = p.title; h3.addEventListener('click', ()=> openModal(p));
-    body.appendChild(h3);
-    if(p.brand){ const brand = document.createElement('div'); brand.className='meta'; brand.textContent=p.brand; body.appendChild(brand); }
-    const stock = document.createElement('div'); stock.className='meta'; stock.textContent='Stock: '+p.stock; body.appendChild(stock);
-    const price = document.createElement('div'); price.className='price'; price.textContent='€ '+p.price; body.appendChild(price);
+  grid.innerHTML='';
+  if(!list.length){grid.innerHTML='<div class="meta" style="text-align:center;padding:20px;">No products available.</div>';return;}
+  list.forEach((p,idx)=>{
+    const el=document.createElement('article');el.className='product';
+    const img=document.createElement('img');img.src=p.image;img.alt=p.title;img.addEventListener('click',()=>openModal(p));el.appendChild(img);
+    const body=document.createElement('div');body.className='product-body';
+    const h3=document.createElement('h3');h3.textContent=p.title;h3.addEventListener('click',()=>openModal(p));body.appendChild(h3);
+    if(p.brand){const brand=document.createElement('div');brand.className='meta';brand.textContent=p.brand;body.appendChild(brand);}
+    const stock=document.createElement('div');stock.className='meta';stock.textContent='Stock: '+p.stock;body.appendChild(stock);
+    const price=document.createElement('div');price.className='price';price.textContent='€ '+p.price;body.appendChild(price);
     el.appendChild(body);
-    const cta = document.createElement('div'); cta.className='cta';
-    const a = document.createElement('a'); a.className='btn'; a.href='#'; a.textContent = Number(p.stock)>0?'Buy Now':'Out of Stock';
-    if(Number(p.stock)<=0)a.classList.add('disabled');
-    cta.appendChild(a); el.appendChild(cta);
-    grid.appendChild(el);
+    const cta=document.createElement('div');cta.className='cta';
+    const a=document.createElement('a');a.className='btn';a.href='#';a.textContent=Number(p.stock)>0?'Buy Now':'Out of Stock';if(Number(p.stock)<=0)a.classList.add('disabled');
+    cta.appendChild(a);el.appendChild(cta);grid.appendChild(el);
   });
 }
 
-let currentList=[];
-(async function init(){
-  currentList = await readPublic();
-  render(currentList);
-  document.getElementById('year').textContent = new Date().getFullYear();
-})();
+let currentList=[];(async function init(){currentList=await readPublic();render(currentList);document.getElementById('year').textContent=new Date().getFullYear();})();
 </script>
 </body>
 </html>
