@@ -3,7 +3,7 @@
     "id": "1759608953835",
     "title": "CREATINA EM CAPISULA ",
     "price": "75",
-    "description": "A creatina em cÃ¡psula Ã© uma forma prÃ¡tica e conveniente de suplementaÃ§Ã£o que tem os mesmos benefÃ­cios da creatina em pÃ³, ajudando a aumentar a forÃ§a muscular, o desempenho fÃ­sico e a massa magra em exercÃ­cios de alta intensidade e curta duraÃ§Ã£o.",
+    "description": "A creatina em cÃÂ¡psula ÃÂ© uma forma prÃÂ¡tica e conveniente de suplementaÃÂ§ÃÂ£o que tem os mesmos benefÃÂ­cios da creatina em pÃÂ³, ajudando a aumentar a forÃÂ§a muscular, o desempenho fÃÂ­sico e a massa magra em exercÃÂ­cios de alta intensidade e curta duraÃÂ§ÃÂ£o.",
     "category": "supplements",
     "stock": 10,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759608953835/creatina em capisula.png",
@@ -17,7 +17,7 @@
     "id": "1759609078909",
     "title": "CREATINA GRANDE",
     "price": "28",
-    "description": "A creatina em cápsula é uma forma prática e conveniente de suplementação que tem os mesmos benefícios da creatina em pó, ajudando a aumentar a força muscular, o desempenho físico e a massa magra em exercícios de alta intensidade e curta duração.",
+    "description": "A creatina em cÃ¡psula Ã© uma forma prÃ¡tica e conveniente de suplementaÃ§Ã£o que tem os mesmos benefÃ­cios da creatina em pÃ³, ajudando a aumentar a forÃ§a muscular, o desempenho fÃ­sico e a massa magra em exercÃ­cios de alta intensidade e curta duraÃ§Ã£o.",
     "category": "supplements",
     "stock": 23,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609078909/cratina grande.png",
@@ -25,6 +25,20 @@
       "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609078909/cratina grande.png"
     ],
     "createdAt": 1759609084405,
+    "status": "publicado"
+  },
+  {
+    "id": "1759609310164",
+    "title": "Egeo Blue Eau de Toilette, 90ml",
+    "price": "130",
+    "description": "Egeo Blue é uma fragrância masculina que esbanja irreverência, sensualidade e sofisticação. É inevitável a vontade de chegar mais perto! Uma combinação de notas de malte, com cardamomo, madeiras",
+    "category": "cosmetics",
+    "stock": 5,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609310164/ChatGPT Image 4 de out. de 2025, 17_20_27.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609310164/ChatGPT Image 4 de out. de 2025, 17_20_27.png"
+    ],
+    "createdAt": 1759609314408,
     "status": "publicado"
   }
 ]
