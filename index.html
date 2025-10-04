@@ -404,15 +404,25 @@ function searchProducts(){
 }
 
 function openModal(id){
-  const product = currentList.find(p=>String(p.id)===String(id));
+  const product = currentList.find(p => String(p.id) === String(id));
   if(!product) return;
+
+  // 🔹 Limpa o conteúdo antigo antes de abrir um novo produto
+  document.getElementById('modalTitle').textContent = '';
+  document.getElementById('modalDescription').textContent = '';
+  document.getElementById('modalImage').src = '';
+
+  // 🔹 Atualiza com o novo conteúdo
   document.getElementById('modalTitle').textContent = product.title;
-  document.getElementById('modalDescription').textContent = product.description;
+  document.getElementById('modalDescription').innerHTML = (product.description || '').replace(/
+/g, '<br>');
   currentGallery = product.gallery && product.gallery.length ? product.gallery : [product.image];
   currentIndex = 0;
   document.getElementById('modalImage').src = currentGallery[currentIndex];
   document.getElementById('productModal').style.display = 'flex';
-  var buyBtn=document.getElementById('modalBuyBtn'); if(buyBtn){ buyBtn.href='#'; }
+
+  const buyBtn = document.getElementById('modalBuyBtn');
+  if(buyBtn) buyBtn.href = '#';
 }
 
 function closeModal(){
