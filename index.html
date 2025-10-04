@@ -207,18 +207,19 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:3000;justify-content:center;align-items:center;padding:16px}
 #productModal .modal-content {
   width: min(92vw, 560px);
-  max-height: 85vh;          /* altura máxima do modal */
-  overflow-y: auto;          /* ativa rolagem */
+  max-height: 85vh;
+  overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   background: var(--card);
   border: 2px solid var(--orange);
   box-shadow: 0 0 12px rgba(255,60,0,.35);
   border-radius: 20px;
-  padding: 0;
+  padding: 16px; /* espaço interno */
   color: var(--white);
-  display: block;            /* deixa o conteúdo rolar normalmente */
+  display: block;
 }
+#productModal .modal-content::-webkit-scrollbar { display: none; }
 #productModal .modal-content::-webkit-scrollbar { display: none; }
 #productModal .modal-content::-webkit-scrollbar { display: none; }
 #productModal .modal-content::-webkit-scrollbar {
@@ -233,7 +234,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
 #productModal .slider {
   width: 100%;
-  margin: 0;
+  margin-bottom: 16px;
 }
 
 #productModal .slider img {
@@ -257,18 +258,19 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal .modal-content::-webkit-scrollbar{width:0;height:0}
 #productModal .modal-content {
   width: min(92vw, 560px);
-  max-height: 85vh;          /* altura máxima do modal */
-  overflow-y: auto;          /* ativa rolagem */
+  max-height: 85vh;
+  overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   background: var(--card);
   border: 2px solid var(--orange);
   box-shadow: 0 0 12px rgba(255,60,0,.35);
   border-radius: 20px;
-  padding: 0;
+  padding: 16px; /* espaço interno */
   color: var(--white);
-  display: block;            /* deixa o conteúdo rolar normalmente */
+  display: block;
 }
+#productModal .modal-content::-webkit-scrollbar { display: none; }
 #productModal .modal-content::-webkit-scrollbar { display: none; }
 #productModal .modal-content::-webkit-scrollbar { display: none; }
 #productModal .modal-content::-webkit-scrollbar {
@@ -306,6 +308,23 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
 #productModal .btn.buy {
   margin-bottom: 20px; /* espaço do botão até o fundo do modal */
+}
+#productModal .slider {
+  width: 100%;
+  margin-bottom: 16px; /* espaço abaixo da imagem */
+}
+
+#productModal h2 {
+  margin: 12px 0; /* respiro acima/abaixo do título */
+}
+
+#productModal p {
+  margin: 0 0 20px; /* espaço abaixo da descrição */
+}
+
+#productModal .btn.buy {
+  margin-top: 10px;
+  margin-bottom: 10px; /* botão solto do fundo */
 }
 </style>
 </head>
