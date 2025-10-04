@@ -67,86 +67,6 @@
 
 .action-buttons { display:flex; gap:6px; }
 .action-buttons button { flex:1; }
-
-/* Ajuste do Modal Editar */
-.modal-content {
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 500px;
-  width: 95%;
-  max-height: 85vh;
-  overflow-y: auto;
-  color: #fff;
-  position: relative;
-  z-index: 4000;
-}
-#closeEditModal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #ff3c00;
-  border: none;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 5000;
-}
-
-/* Esconder barra de rolagem no modal (scroll invisível) */
-.modal-content::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* Safari/Chrome */
-}
-.modal-content {
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-
-  h1 {
-    font-size: 18px;
-  }
-  h2 {
-    font-size: 16px;
-  }
-
-  .container {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .form-section, .list-section {
-    width: 100%;
-    padding: 15px;
-  }
-
-  table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    font-size: 12px;
-  }
-
-  button, input, textarea, select {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  .config-btn {
-    top: 10px;
-    right: 10px;
-    padding: 6px 8px;
-    font-size: 11px;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -290,15 +210,7 @@ async function salvarNoGitHub(produtosNovos){
     document.getElementById("alertBox").style.display = "block";
     setTimeout(()=> document.getElementById("alertBox").style.display="none", 3000);
     // recarrega produtos do GitHub para garantir sincronização
-    try { await // Botão X do modal editar
-  const closeEdit = document.getElementById('closeEditModal');
-  if(closeEdit){
-    closeEdit.addEventListener('click', ()=>{
-      document.getElementById('editModal').classList.remove('show');
-    });
-  }
-
-  carregarProdutosGitHub(); } catch(_) {}
+    try { await carregarProdutosGitHub(); } catch(_) {}
   } else {
     const txt = await putRes.text().catch(()=> "");
     alert("Erro ao salvar no GitHub: " + putRes.status + (txt ? "\n" + txt : ""));
@@ -430,7 +342,7 @@ function editarProduto(index){
   };
 }
 
-};
+document.getElementById('closeEditModal').onclick = ()=>{ document.getElementById('editModal').classList.remove('show'); };
 </script>
 <!-- GitHub Config Modal -->
 <div class="modal" id="githubModal">
@@ -501,36 +413,12 @@ window.onload = function(){
     }catch(e){ showGhAlert('❌ Falha: ' + e.message, false); }
   }
 
-  if(openBtn){ openBtn.onclick = ()=>{ loadGithubConfig(); ghModal.style.display='flex';   // Botão X do modal editar
-  const closeEdit = document.getElementById('closeEditModal');
-  if(closeEdit){
-    closeEdit.addEventListener('click', ()=>{
-      document.getElementById('editModal').classList.remove('show');
-    });
-  }
-
-  carregarProdutosGitHub();
+  if(openBtn){ openBtn.onclick = ()=>{ loadGithubConfig(); ghModal.style.display='flex';   carregarProdutosGitHub();
 }; }
-  if(closeBtn){ closeBtn.onclick = ()=>{ ghModal.style.display='none';   // Botão X do modal editar
-  const closeEdit = document.getElementById('closeEditModal');
-  if(closeEdit){
-    closeEdit.addEventListener('click', ()=>{
-      document.getElementById('editModal').classList.remove('show');
-    });
-  }
-
-  carregarProdutosGitHub();
+  if(closeBtn){ closeBtn.onclick = ()=>{ ghModal.style.display='none';   carregarProdutosGitHub();
 }; }
   if(saveBtn){ saveBtn.onclick = saveGithubConfig; }
   if(testBtn){ testBtn.onclick = testGithubConfig; }
-  // Botão X do modal editar
-  const closeEdit = document.getElementById('closeEditModal');
-  if(closeEdit){
-    closeEdit.addEventListener('click', ()=>{
-      document.getElementById('editModal').classList.remove('show');
-    });
-  }
-
   carregarProdutosGitHub();
 };
 </script>
