@@ -163,6 +163,7 @@ async function carregarProdutosGitHub(){
 }
 
 
+
 async function salvarNoGitHub(produtosNovos){
   const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
   if(!cfg.repo || !cfg.branch || !cfg.path || !cfg.token){
@@ -171,7 +172,6 @@ async function salvarNoGitHub(produtosNovos){
   }
   const url = `https://api.github.com/repos/${cfg.repo}/contents/${cfg.path}`;
   let sha = null;
-  let produtosAtuais = [];
 
   try {
     const res = await fetch(url+`?ref=${cfg.branch}`, {
@@ -180,13 +180,34 @@ async function salvarNoGitHub(produtosNovos){
     if(res.ok){
       const data = await res.json();
       sha = data.sha;
-      try {
-        produtosAtuais = JSON.parse(atob(data.content));
-      } catch(e){
-        produtosAtuais = [];
-      }
     }
   } catch(e){ console.error("Erro ao buscar SHA:", e); }
+
+  // ✅ Agora salva SOMENTE os produtos atuais (sem merge)
+  const novoConteudo = btoa(unescape(encodeURIComponent(JSON.stringify(produtosNovos, null, 2))));
+  const putRes = await fetch(url, {
+    method: "PUT",
+    headers: {
+      "Authorization": `token ${cfg.token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: "Atualizando products.json via painel",
+      branch: cfg.branch,
+      content: novoConteudo,
+      sha: sha
+    })
+  });
+
+  if(putRes.ok){
+    document.getElementById("alertBox").innerHTML = "✅ Produto atualizado com sucesso no GitHub!";
+    document.getElementById("alertBox").style.display = "block";
+    setTimeout(()=> document.getElementById("alertBox").style.display="none", 3000);
+  } else {
+    alert("Erro ao salvar no GitHub: " + putRes.status);
+  }
+}
+
 
   // 🔥 Mesclar produtos existentes com os novos (sem duplicar IDs)
   const todos = [...produtosAtuais.filter(p => !produtosNovos.find(n=>String(n.id)===String(p.id))), ...produtosNovos];
