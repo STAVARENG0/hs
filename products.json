@@ -3,7 +3,7 @@
     "id": "1759608953835",
     "title": "CREATINA EM CAPISULA ",
     "price": "75",
-    "description": "A creatina em cÃÂÃÂ¡psula ÃÂÃÂ© uma forma prÃÂÃÂ¡tica e conveniente de suplementaÃÂÃÂ§ÃÂÃÂ£o que tem os mesmos benefÃÂÃÂ­cios da creatina em pÃÂÃÂ³, ajudando a aumentar a forÃÂÃÂ§a muscular, o desempenho fÃÂÃÂ­sico e a massa magra em exercÃÂÃÂ­cios de alta intensidade e curta duraÃÂÃÂ§ÃÂÃÂ£o.",
+    "description": "A creatina em cÃÂÃÂÃÂÃÂ¡psula ÃÂÃÂÃÂÃÂ© uma forma prÃÂÃÂÃÂÃÂ¡tica e conveniente de suplementaÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ£o que tem os mesmos benefÃÂÃÂÃÂÃÂ­cios da creatina em pÃÂÃÂÃÂÃÂ³, ajudando a aumentar a forÃÂÃÂÃÂÃÂ§a muscular, o desempenho fÃÂÃÂÃÂÃÂ­sico e a massa magra em exercÃÂÃÂÃÂÃÂ­cios de alta intensidade e curta duraÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ£o.",
     "category": "supplements",
     "stock": 10,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759608953835/creatina em capisula.png",
@@ -17,7 +17,7 @@
     "id": "1759609078909",
     "title": "CREATINA GRANDE",
     "price": "28",
-    "description": "A creatina em cÃÂ¡psula ÃÂ© uma forma prÃÂ¡tica e conveniente de suplementaÃÂ§ÃÂ£o que tem os mesmos benefÃÂ­cios da creatina em pÃÂ³, ajudando a aumentar a forÃÂ§a muscular, o desempenho fÃÂ­sico e a massa magra em exercÃÂ­cios de alta intensidade e curta duraÃÂ§ÃÂ£o.",
+    "description": "A creatina em cÃÂÃÂ¡psula ÃÂÃÂ© uma forma prÃÂÃÂ¡tica e conveniente de suplementaÃÂÃÂ§ÃÂÃÂ£o que tem os mesmos benefÃÂÃÂ­cios da creatina em pÃÂÃÂ³, ajudando a aumentar a forÃÂÃÂ§a muscular, o desempenho fÃÂÃÂ­sico e a massa magra em exercÃÂÃÂ­cios de alta intensidade e curta duraÃÂÃÂ§ÃÂÃÂ£o.",
     "category": "supplements",
     "stock": 23,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609078909/cratina grande.png",
@@ -31,7 +31,7 @@
     "id": "1759609310164",
     "title": "Egeo Blue Eau de Toilette, 90ml",
     "price": "130",
-    "description": "Egeo Blue Ã© uma fragrÃ¢ncia masculina que esbanja irreverÃªncia, sensualidade e sofisticaÃ§Ã£o. Ã inevitÃ¡vel a vontade de chegar mais perto! Uma combinaÃ§Ã£o de notas de malte, com cardamomo, madeiras",
+    "description": "Egeo Blue ÃÂ© uma fragrÃÂ¢ncia masculina que esbanja irreverÃÂªncia, sensualidade e sofisticaÃÂ§ÃÂ£o. ÃÂ inevitÃÂ¡vel a vontade de chegar mais perto! Uma combinaÃÂ§ÃÂ£o de notas de malte, com cardamomo, madeiras",
     "category": "cosmetics",
     "stock": 5,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609310164/ChatGPT Image 4 de out. de 2025, 17_20_27.png",
@@ -43,9 +43,9 @@
   },
   {
     "id": "1759609565667",
-    "title": "Egeo CHOC Suflê Hidratante Corporal 250g",
+    "title": "Egeo CHOC SuflÃª Hidratante Corporal 250g",
     "price": "40",
-    "description": "Com textura leve que absorve rapidinho, o creme hidratante oferece 48 horas de hidratação sem deixar a pele oleosa ou pegajosa.\n\nFora de estoque",
+    "description": "Com textura leve que absorve rapidinho, o creme hidratante oferece 48 horas de hidrataÃ§Ã£o sem deixar a pele oleosa ou pegajosa.\n\nFora de estoque",
     "category": "cosmetics",
     "stock": 25,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609565667/41XaCtre1iL._SR600315_PIWhiteStripBottomLeft035_SCLZZZZZZZ_FMpng_BG255255255.png",
@@ -53,6 +53,20 @@
       "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609565667/41XaCtre1iL._SR600315_PIWhiteStripBottomLeft035_SCLZZZZZZZ_FMpng_BG255255255.png"
     ],
     "createdAt": 1759609566957,
+    "status": "publicado"
+  },
+  {
+    "id": "1759609886120",
+    "title": "O Hidratante Egeo (por exemplo Suflê Hidratante Corporal Egeo Choc High 250 g)",
+    "price": "20",
+    "description": "O Hidratante Egeo (por exemplo Suflê Hidratante Corporal Egeo Choc High 250 g) é um creme corporal da marca O Boticário com textura leve (suflê), de rápida absorção e aroma intenso.",
+    "category": "cosmetics",
+    "stock": 30,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609886120/ChatGPT Image 4 de out. de 2025, 17_27_51.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759609886120/ChatGPT Image 4 de out. de 2025, 17_27_51.png"
+    ],
+    "createdAt": 1759609893092,
     "status": "publicado"
   }
 ]
