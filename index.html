@@ -432,13 +432,27 @@ function render(list){
   });
 }
 
-function searchProducts(){
-  const term = document.getElementById('search').value.toLowerCase();
-  const filtered = currentList.filter(p =>
-    p.title.toLowerCase().includes(term) ||
-    (p.brand && p.brand.toLowerCase().includes(term)) ||
-    (p.category && p.category.toLowerCase().includes(term))
-  );
+function searchProducts() {
+  const term = document.getElementById('search').value.toLowerCase().trim();
+
+  if (!term) {
+    render(currentList); // se não digitar nada, mostra todos
+    return;
+  }
+
+  const filtered = currentList.filter(p => {
+    const searchable = `
+      ${p.title || ""}
+      ${p.brand || ""}
+      ${p.category || ""}
+      ${p.description || ""}
+      ${p.price || ""}
+      ${p.stock || ""}
+    `.toLowerCase();
+
+    return searchable.includes(term);
+  });
+
   render(filtered);
 }
 
