@@ -36,22 +36,10 @@
     "stock": 30
   },
   {
-    "id": "4",
-    "title": "Collagen Peptides 400g",
-    "brand": "HS Nutrition",
-    "price": "39.90",
-    "image": "https://images.unsplash.com/photo-1615484477211-9b1d8d2e3d5c?w=600",
-    "description": "Collagen peptides for skin, joints, and hair health.",
-    "gallery": [],
-    "category": "cosmetics",
-    "createdAt": 1733059200,
-    "stock": 15
-  },
-  {
     "id": "1759627369635",
     "title": "CREATINA EM CAPISULA ",
     "price": "41",
-    "description": "Se ainda aparecer algo estranho em algum item especÃÂÃÂÃÂÃÂ­fico, me diga qual ÃÂÃÂÃÂÃÂ© ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ geralmente ÃÂÃÂÃÂÃÂ© algum produto com gallery em formato diferente e eu ajusto rapidamente",
+    "description": "Se ainda aparecer algo estranho em algum item especÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ­fico, me diga qual ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ geralmente ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ© algum produto com gallery em formato diferente e eu ajusto rapidamente",
     "category": "supplements",
     "stock": 22,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759627369635/creatina em capisula.png",
@@ -62,10 +50,22 @@
     "status": "publicado"
   },
   {
+    "id": "1759627434233",
+    "title": "CREATINA EM CAPISULA ",
+    "price": "69",
+    "description": "Se ainda aparecer algo estranho em algum item especÃÂÃÂÃÂÃÂ­fico, me diga qual ÃÂÃÂÃÂÃÂ© ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ geralmente ÃÂÃÂÃÂÃÂ© algum produto com gallery em formato diferente e eu ajusto rapidamente",
+    "category": "supplements",
+    "stock": 78,
+    "image": "",
+    "gallery": [],
+    "createdAt": 1759627434233,
+    "status": "publicado"
+  },
+  {
     "id": "1759627474736",
     "title": "PERFUME EGEO ",
     "price": "47",
-    "description": "Se ainda aparecer algo estranho em algum item especÃÂ­fico, me diga qual ÃÂ© Ã¢ÂÂ geralmente ÃÂ© algum produto com gallery em formato diferente e eu ajusto rapidamente",
+    "description": "Se ainda aparecer algo estranho em algum item especÃÂÃÂ­fico, me diga qual ÃÂÃÂ© ÃÂ¢ÃÂÃÂ geralmente ÃÂÃÂ© algum produto com gallery em formato diferente e eu ajusto rapidamente",
     "category": "cosmetics",
     "stock": 78,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759627474736/ChatGPT Image 4 de out. de 2025, 17_20_27.png",
