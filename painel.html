@@ -67,6 +67,53 @@
 
 .action-buttons { display:flex; gap:6px; }
 .action-buttons button { flex:1; }
+
+/* Modal Editar Ajustado */
+.modal-content {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px; /* maior no desktop */
+  width: 90%;
+  max-height: 90vh; /* limita altura */
+  overflow-y: auto; /* rolagem interna se passar do tamanho */
+  color: #fff;
+  position: relative;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .form-section, .list-section {
+    width: 100%;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  button, input, textarea, select {
+    width: 100%;
+  }
+
+  .config-btn {
+    top: 10px;
+    right: 10px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
 </style>
 </head>
 <body>
