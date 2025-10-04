@@ -68,28 +68,27 @@
 .action-buttons { display:flex; gap:6px; }
 .action-buttons button { flex:1; }
 
+/* === Edit Modal: responsivo e sem scroll visível === */
+#editModal { overflow: hidden; }
+body.modal-open { overflow: hidden; }
+
 #editModal .modal-content {
-  max-width: 90%;
-  width: 100%;
-  max-height: 90vh;
-  overflow: hidden;
+  width: min(680px, 92vw);
+  max-height: min(88vh, 900px);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
+
 #editModal .form {
   flex: 1;
-  overflow-y: auto;
+  overflow: auto;
   padding-right: 8px;
 }
-/* Oculta qualquer barra de rolagem */
-#editModal .form::-webkit-scrollbar {
-  width: 0 !important;
-  height: 0 !important;
-}
-#editModal .form {
-  -ms-overflow-style: none;  /* IE e Edge */
-  scrollbar-width: none;     /* Firefox */
-}
+
+/* Ocultar barras de rolagem (Chrome/Safari/Edge/Firefox/IE) */
+#editModal .form::-webkit-scrollbar { width: 0; height: 0; }
+#editModal .form { scrollbar-width: none; -ms-overflow-style: none; }
 </style>
 </head>
 <body>
@@ -345,7 +344,7 @@ function editarProduto(index){
   document.getElementById('editCategoria').value = produto.category;
   document.getElementById('editEstoque').value = produto.stock;
   document.getElementById('editPreview').innerHTML = produto.gallery.map((g,i)=>`<img src="${g}" style="width:80px;height:80px;object-fit:cover;border-radius:6px">`).join('');
-  document.getElementById('editModal').classList.add('show');
+  document.getElementById('editModal').classList.add('show'); document.body.classList.add('modal-open');
   document.getElementById('formEditarProduto').onsubmit = async (e)=>{
     e.preventDefault();
     produto.title = document.getElementById('editTitulo').value;
@@ -361,11 +360,11 @@ function editarProduto(index){
     }
     await salvarNoGitHub(produtos);
     renderProdutos();
-    document.getElementById('editModal').classList.remove('show');
+    document.getElementById('editModal').classList.remove('show'); document.body.classList.remove('modal-open');
   };
 }
 
-document.getElementById('closeEditModal').onclick = function(){ document.getElementById('editModal').classList.remove('show'); };
+
 </script>
 <!-- GitHub Config Modal -->
 <div class="modal" id="githubModal">
@@ -468,5 +467,30 @@ window.onload = function(){
 </form>
 </div>
 </div>
-</body>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var editModal = document.getElementById('editModal');
+  if(!editModal) return;
+  var closeBtn = document.getElementById('closeEditModal');
+
+  function closeEdit() {
+    editModal.classList.remove('show');
+    document.body.classList.remove('modal-open');
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeEdit);
+  }
+
+  // Fechar clicando fora do conteúdo
+  editModal.addEventListener('click', function(e){
+    if (e.target === editModal) closeEdit();
+  });
+
+  // Fechar com ESC
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && editModal.classList.contains('show')) closeEdit();
+  });
+});
+</script></body>
 </html>
