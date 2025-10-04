@@ -22,17 +22,5 @@
     "category": "supplements",
     "createdAt": 1733232000,
     "stock": 20
-  },
-  {
-    "id": "3",
-    "title": "Vitamin D3 5000 IU",
-    "brand": "HS Nutrition",
-    "price": "14.90",
-    "image": "https://images.unsplash.com/photo-1616401784845-185ff3f5b5f2?w=600",
-    "description": "Essential vitamin D3 for immune and bone health support.",
-    "gallery": [],
-    "category": "supplements",
-    "createdAt": 1733145600,
-    "stock": 30
   }
 ]
