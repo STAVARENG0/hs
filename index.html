@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="UTF-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>HS Nutrition | Supplements Store</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -239,7 +239,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 #productModal .slider img {
   display: block;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 70vh;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -253,7 +253,15 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   background:rgba(0,0,0,.55);color:#fff;font-size:16px;
   display:flex;align-items:center;justify-content:center;
 }
-#productModal p{margin:10px 0 16px;color:var(--muted);text-align:center;line-height:1.55;font-size:clamp(14px,1.6vw,16px);max-width:95%}
+#productModal p {
+  margin: 12px 0 16px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+  font-size: clamp(14px, 1.6vw, 17px);
+  max-width: 95%;
+  overflow-y: auto;
+}
 #productModal .btn.buy{display:inline-block;padding:12px 18px;border-radius:28px;background:linear-gradient(90deg,var(--orange),#ff8c42);color:#fff;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(240,116,36,.35)}
 /* hide scrollbars while keeping scroll if needed */
 #productModal .modal-content::-webkit-scrollbar{width:0;height:0}
