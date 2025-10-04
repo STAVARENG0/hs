@@ -209,6 +209,19 @@ async function salvarNoGitHub(produtosNovos){
   } catch(e){ console.error("Erro ao buscar SHA:", e); }
 
   // Salvar SOMENTE os produtos atuais (sem merge)
+  
+// 🔒 Verificação extra antes de salvar no GitHub
+produtosNovos = produtosNovos.map(p => ({
+  ...p,
+  gallery: Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : (p.gallery ? [p.gallery] : []),
+  image: p.image || (Array.isArray(p.gallery) && p.gallery[0]) || '',
+  title: p.title || 'Sem título',
+  description: p.description || '',
+  category: p.category || 'uncategorized',
+  price: p.price || '0.00',
+  stock: typeof p.stock === 'number' ? p.stock : parseInt(p.stock || '0', 10)
+}));
+
   const novoConteudo = btoa(unescape(encodeURIComponent(JSON.stringify(produtosNovos, null, 2))));
   const body = {
     message: "Atualizando products.json via painel",
@@ -281,17 +294,17 @@ document.getElementById('formProduto').addEventListener('submit', async (e) => {
       const uploaded = await uploadImagens(produtoId, fotos);
 
       const produto = {
-        id: produtoId,
-        title: titulo,
-        price: valor,
-        description: descricao,
-        category: categoria,
-        stock: estoque,
-        image: uploaded[capaIndex] || "",
-        gallery: uploaded,
-        createdAt: Date.now(),
-        status: "publicado"
-      };
+  id: produtoId,
+  title: titulo,
+  price: valor,
+  description: descricao,
+  category: categoria,
+  stock: estoque,
+  image: uploaded[capaIndex] || "",
+  gallery: Array.isArray(uploaded) ? uploaded.filter(Boolean) : [],
+  createdAt: Date.now(),
+  status: "publicado"
+};
 
       produtos.push(produto);
       await salvarNoGitHub(produtos);
