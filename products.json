@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "1759629672053",
+    "title": "CREATINA EM CAPISULA ",
+    "price": 13,
+    "description": "A creatina em cápsula é uma forma prática de suplementação de creatina, com a mesma função da creatina em pó: aumentar os estoques de creatina no músculo para melhorar a produção de energia durante exercícios de alta intensidade, auxiliando no ganho de força, massa muscular, desempenho e recuperação.",
+    "category": "supplements",
+    "stock": 7,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759629672053/cratina em saco.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759629672053/cratina em saco.png"
+    ],
+    "createdAt": 1759629673501,
+    "status": "publicado"
+  }
+]
