@@ -153,7 +153,7 @@ async function carregarProdutosGitHub(){
     });
     if(res.ok){
       const data = await res.json();
-      const content = atob(data.content);
+      const content = atob((data.content || '').replace(/\n/g, ''));
       produtos = JSON.parse(content);
       renderProdutos();
     }
@@ -161,8 +161,6 @@ async function carregarProdutosGitHub(){
     console.error("Erro ao carregar produtos:", e);
   }
 }
-
-
 
 
 async function salvarNoGitHub(produtosNovos){
@@ -176,95 +174,48 @@ async function salvarNoGitHub(produtosNovos){
 
   try {
     const res = await fetch(url+`?ref=${cfg.branch}`, {
-      headers: { Authorization: `token ${cfg.token}` }
+      headers: {
+        "Authorization": `token ${cfg.token}`,
+        "Accept": "application/vnd.github+json"
+      }
     });
     if(res.ok){
       const data = await res.json();
-      sha = data.sha; // só vai ter se o arquivo já existir
+      sha = data.sha; // só terá valor se o arquivo existir
     }
   } catch(e){ console.error("Erro ao buscar SHA:", e); }
 
   // Salvar SOMENTE os produtos atuais (sem merge)
   const novoConteudo = btoa(unescape(encodeURIComponent(JSON.stringify(produtosNovos, null, 2))));
+  const body = {
+    message: "Atualizando products.json via painel",
+    branch: cfg.branch,
+    content: novoConteudo,
+  };
+  if(sha) body.sha = sha; // envia sha apenas se existir
+
   const putRes = await fetch(url, {
     method: "PUT",
     headers: {
       "Authorization": `token ${cfg.token}`,
+      "Accept": "application/vnd.github+json",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      message: "Atualizando products.json via painel",
-      branch: cfg.branch,
-      content: novoConteudo,
-      ...(sha ? { sha } : {}) // só envia sha se existir
-    })
+    body: JSON.stringify(body)
   });
 
   if(putRes.ok){
     document.getElementById("alertBox").innerHTML = "✅ Produto atualizado com sucesso no GitHub!";
+    document.getElementById("alertBox").classList.add("success");
     document.getElementById("alertBox").style.display = "block";
     setTimeout(()=> document.getElementById("alertBox").style.display="none", 3000);
+    // recarrega produtos do GitHub para garantir sincronização
+    try { await carregarProdutosGitHub(); } catch(_) {}
   } else {
-    alert("Erro ao salvar no GitHub: " + putRes.status);
+    const txt = await putRes.text().catch(()=> "");
+    alert("Erro ao salvar no GitHub: " + putRes.status + (txt ? "\n" + txt : ""));
   }
-}
-
-
-  // ✅ Agora salva SOMENTE os produtos atuais (sem merge)
-  const novoConteudo = btoa(unescape(encodeURIComponent(JSON.stringify(produtosNovos, null, 2))));
-  const putRes = await fetch(url, {
-    method: "PUT",
-    headers: {
-      "Authorization": `token ${cfg.token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: "Atualizando products.json via painel",
-      branch: cfg.branch,
-      content: novoConteudo,
-      sha: sha
-    })
-  });
-
-  if(putRes.ok){
-    document.getElementById("alertBox").innerHTML = "✅ Produto atualizado com sucesso no GitHub!";
-    document.getElementById("alertBox").style.display = "block";
-    setTimeout(()=> document.getElementById("alertBox").style.display="none", 3000);
-  } else {
-    alert("Erro ao salvar no GitHub: " + putRes.status);
-  }
-}
-
-
-  // 🔥 Mesclar produtos existentes com os novos (sem duplicar IDs)
-  const todos = [...produtosAtuais.filter(p => !produtosNovos.find(n=>String(n.id)===String(p.id))), ...produtosNovos];
-
-  const novoConteudo = btoa(unescape(encodeURIComponent(JSON.stringify(todos, null, 2))));
-  const putRes = await fetch(url, {
-    method: "PUT",
-    headers: {
-      "Authorization": `token ${cfg.token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: "Atualizando products.json via painel",
-      branch: cfg.branch,
-      content: novoConteudo,
-      sha: sha
-    })
-  });
-
-  if(putRes.ok){
-    document.getElementById("alertBox").innerHTML = "✅ Produto atualizado com sucesso no GitHub!";
-    document.getElementById("alertBox").style.display = "block";
-    setTimeout(()=> document.getElementById("alertBox").style.display="none", 3000);
-  } else {
-    alert("Erro ao salvar no GitHub: " + putRes.status);
-  }
-}
-
-
-async function uploadImagens(produtoId, files){
+}async function uploadImagens(produtoId, files){
   const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
   const uploadedLinks = [];
   for(let i=0; i<files.length; i++){
@@ -352,6 +303,13 @@ async function excluirProduto(index){
   produtos.splice(index,1);
   await salvarNoGitHub(produtos);
   renderProdutos();
+  try {
+    const box = document.getElementById("alertBox");
+    box.innerHTML = "🗑️ Produto excluído com sucesso!";
+    box.classList.add("success");
+    box.style.display = "block";
+    setTimeout(()=> box.style.display="none", 3000);
+  } catch(_) {}
 }
 
 function editarProduto(index){
