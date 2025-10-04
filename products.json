@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "1759625373481",
+    "title": "CREATINA EM CAPISULA ",
+    "price": "10",
+    "description": "A creatina em cápsula é um suplemento que oferece praticidade, entregando os mesmos benefícios da creatina em pó, como aumento da força, resistência, desempenho e recuperação muscular, além de auxiliar no ganho de massa magra",
+    "category": "supplements",
+    "stock": 30,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759625373481/creatina em capisula.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759625373481/creatina em capisula.png"
+    ],
+    "createdAt": 1759625375076,
+    "status": "publicado"
+  }
+]
