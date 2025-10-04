@@ -3,7 +3,7 @@
     "id": "1759625373481",
     "title": "CREATINA EM CAPISULA ",
     "price": "10",
-    "description": "A creatina em cÃ¡psula Ã© um suplemento que oferece praticidade, entregando os mesmos benefÃ­cios da creatina em pÃ³, como aumento da forÃ§a, resistÃªncia, desempenho e recuperaÃ§Ã£o muscular, alÃ©m de auxiliar no ganho de massa magra",
+    "description": "A creatina em cÃÂ¡psula ÃÂ© um suplemento que oferece praticidade, entregando os mesmos benefÃÂ­cios da creatina em pÃÂ³, como aumento da forÃÂ§a, resistÃÂªncia, desempenho e recuperaÃÂ§ÃÂ£o muscular, alÃÂ©m de auxiliar no ganho de massa magra",
     "category": "supplements",
     "stock": 30,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759625373481/creatina em capisula.png",
@@ -17,7 +17,7 @@
     "id": "1759625401128",
     "title": "PERFUME EGEO ",
     "price": "32",
-    "description": "Fragrância masculina que traz a doçura da baunilha artesanal combinada ao toque picante da Pimenta Preta. Egeo , Blue Desodorante Colônia 90ml",
+    "description": "FragrÃ¢ncia masculina que traz a doÃ§ura da baunilha artesanal combinada ao toque picante da Pimenta Preta. Egeo , Blue Desodorante ColÃ´nia 90ml",
     "category": "cosmetics",
     "stock": 89,
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759625401128/ChatGPT Image 4 de out. de 2025, 17_20_27.png",
@@ -25,6 +25,20 @@
       "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759625401128/ChatGPT Image 4 de out. de 2025, 17_20_27.png"
     ],
     "createdAt": 1759625413063,
+    "status": "publicado"
+  },
+  {
+    "id": "1759625552042",
+    "title": "CREATINA EM CAPISULA ",
+    "price": "44",
+    "description": "Fragrância masculina que traz a doçura da baunilha artesanal combinada ao toque picante da Pimenta Preta. Egeo , Blue Desodorante Colônia 90ml",
+    "category": "supplements",
+    "stock": 74,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759625552042/cratina em saco.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759625552042/cratina em saco.png"
+    ],
+    "createdAt": 1759625553466,
     "status": "publicado"
   }
 ]
