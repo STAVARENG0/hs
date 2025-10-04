@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>HS Nutrition | Supplements Store</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<meta http-equiv="Cache-Control" content="no-store"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<meta content="no-store" http-equiv="Cache-Control"/>
 <style>
 :root{
   --black:#0d0d0d;
@@ -200,61 +201,79 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   border:2px solid rgba(255,255,255,0.12);
   pointer-events:none;
 }
+
+/* Ajuste Modal Produto */
+#productModal .modal-content {
+  max-width: 720px;
+  width: 90%;
+  border: 2px solid var(--orange);
+  box-shadow: 0 0 20px rgba(255,60,0,0.8);
+}
+
+#productModal .modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--orange);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0 0 10px rgba(255,60,0,0.7);
+  transition: background 0.2s;
+}
+#productModal .modal-close:hover {
+  background: #ff5722;
+}
 </style>
-</head>
+</link></head>
 <body>
 <div class="wrap">
- <div class="card">
-
+<div class="card">
 <div class="admin-btn-modal">
-  <a href="painel.html">Admin</a>
+<a href="painel.html">Admin</a>
 </div>
-
-  <header>
-   <div class="brand">
-     <svg class="welcome" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
-       <text x="50%" y="50%" text-anchor="middle">WELCOME</text>
-     </svg>
-     <img src="5.png" alt="HS Nutrition Cover">
-     <div class="search-box">
-       <input type="text" id="search" placeholder="Search for products...">
-       <button onclick="searchProducts()">Search</button>
-     </div>
-   </div>
-  </header>
-
-  <!-- NEW CATEGORY BUTTONS -->
-  <div class="category-buttons">
-    <a class="pill-btn" href="supplements.html">Supplements</a>
-    <a class="pill-btn" href="cosmetics.html">Cosmetics</a>
-  </div>
-
-  <div class="divider"></div>
-
-  <section class="grid" id="products"></section>
-
-  <div class="divider"></div>
-
-  <footer>© <span id="year"></span> HS Nutrition</footer>
- </div>
+<header>
+<div class="brand">
+<svg class="welcome" viewbox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+<text text-anchor="middle" x="50%" y="50%">WELCOME</text>
+</svg>
+<img alt="HS Nutrition Cover" src="5.png"/>
+<div class="search-box">
+<input id="search" placeholder="Search for products..." type="text"/>
+<button onclick="searchProducts()">Search</button>
 </div>
-
+</div>
+</header>
+<!-- NEW CATEGORY BUTTONS -->
+<div class="category-buttons">
+<a class="pill-btn" href="supplements.html">Supplements</a>
+<a class="pill-btn" href="cosmetics.html">Cosmetics</a>
+</div>
+<div class="divider"></div>
+<section class="grid" id="products"></section>
+<div class="divider"></div>
+<footer>© <span id="year"></span> HS Nutrition</footer>
+</div>
+</div>
 <!-- Modal Produto -->
 <div class="modal" id="productModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()">X</button>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDescription"></p>
-    <div class="slider">
-      <img id="modalImage" src="" alt="">
-      <div class="slider-controls">
-        <button onclick="prevImage()">◀</button>
-        <button onclick="nextImage()">▶</button>
-      </div>
-    </div>
-  </div>
+<div class="modal-content">
+<button class="modal-close" onclick="closeModal()">X</button>
+<h2 id="modalTitle"></h2>
+<p id="modalDescription"></p>
+<div class="slider">
+<img alt="" id="modalImage" src=""/>
+<div class="slider-controls">
+<button onclick="prevImage()">◀</button>
+<button onclick="nextImage()">▶</button>
 </div>
-
+</div>
+</div>
+</div>
 <script>
 const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
