@@ -94,5 +94,21 @@
     "gallery": [],
     "createdAt": 1759633643461,
     "status": "publicado"
+  },
+  {
+    "id": "1759671450545",
+    "title": "KIT CREATINA",
+    "price": 99,
+    "description": "KIT COM TODAS AS CREATINAS ",
+    "category": "supplements",
+    "stock": 9,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671450545/cratina em saco.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671450545/cratina grande.png",
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671450545/creatina em capisula.png",
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671450545/creatina.png"
+    ],
+    "createdAt": 1759671455277,
+    "status": "publicado"
   }
 ]
