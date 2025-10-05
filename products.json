@@ -110,5 +110,21 @@
     ],
     "createdAt": 1759671455277,
     "status": "publicado"
+  },
+  {
+    "id": "1759671495864",
+    "title": "KIT COM TODOS OS COSMETICOS",
+    "price": 127,
+    "description": "KIT COM TODOS OS COMETICOS ",
+    "category": "cosmetics",
+    "stock": 10,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671495864/ChatGPT Image 4 de out. de 2025, 17_20_27.png",
+    "gallery": [
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671495864/41XaCtre1iL._SR600315_PIWhiteStripBottomLeft035_SCLZZZZZZZ_FMpng_BG255255255.png",
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671495864/5141So39ILL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_PIRIOFIVE-medium,BottomLeft,30,-20_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNTAiID42OTwvc3Bhbj4=.jpg",
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671495864/BOTI_C03_ECOMM_MELHORIASIMGPRODUTONSPA-49.webp"
+    ],
+    "createdAt": 1759671502639,
+    "status": "publicado"
   }
 ]
