@@ -1,176 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Checkout — HS Nutrition</title>
-<link rel="icon" href="5.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | HS Nutrition</title>
+<!-- No favicon -->
+<link rel="icon" href="data:,">
+<link rel="shortcut icon" href="data:,">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--orange:#ff3c00;--orange2:#ff8c42;--card:#ffffff;--muted:#666;}
-  body{margin:0;font-family:Poppins,system-ui,Arial,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
-  .container{max-width:980px;margin:28px auto;padding:20px}
-  .top{display:flex;align-items:center;gap:16px}
-  .logo img{height:60px}
-  h1{font-size:20px;margin:0}
-  .grid{display:grid;grid-template-columns:1fr 380px;gap:24px;margin-top:20px}
-  @media(max-width:900px){.grid{grid-template-columns:1fr;}}
-  .items{display:flex;flex-direction:column;gap:12px}
-  .card{background:#fafafa;border:1px solid #eee;border-radius:12px;padding:12px;display:flex;gap:12px;align-items:center}
-  .card img{width:72px;height:72px;object-fit:cover;border-radius:8px}
-  .card .meta{flex:1}
-  .card .meta b{display:block;margin-bottom:6px}
-  .price{font-weight:700}
-  .summary{background:#fff;border:1px solid #eee;border-radius:12px;padding:16px}
-  .summary h3{margin:0 0 12px 0}
-  .row{display:flex;gap:8px}
-  .muted{color:var(--muted);font-size:13px}
-  select,input[type=text]{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px}
-  .totals{margin-top:12px;border-top:1px dashed #eee;padding-top:12px}
-  .total-line{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-  .total-strong{font-size:18px;font-weight:800}
-  .btn-primary{display:inline-block;width:100%;text-align:center;padding:12px;border-radius:12px;background:linear-gradient(90deg,var(--orange),var(--orange2));color:#fff;font-weight:800;border:0;cursor:pointer}
-  .paypal-container{margin-top:12px}
-  .small{font-size:13px;color:#666;margin-top:8px}
+:root { --orange:#ff3c00; --white:#ffffff; --bg:#f5f6fa; --text:#222; }
+*{ box-sizing:border-box; margin:0; padding:0; font-family:'Poppins',sans-serif; }
+body{ background:var(--bg); color:var(--text); display:flex; justify-content:center; align-items:center; min-height:100vh; padding:20px; }
+.checkout-card{ background:var(--white); border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.12); max-width:620px; width:100%; padding:32px 26px; text-align:center; }
+.logo{ width:180px; border-radius:16px; border:2px solid var(--orange); box-shadow:0 0 12px rgba(255,60,0,.35); margin-bottom:18px; }
+h1{ color:var(--orange); font-size:22px; margin-bottom:14px; }
+.cart-items{ text-align:left; margin:20px 0; }
+.cart-item{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.cart-item span{ font-size:14px; }
+.cart-item strong{ color:var(--orange); }
+.total{ font-size:20px; font-weight:700; color:var(--orange); margin:20px 0; text-align:right; }
+#paypal-buttons{ margin-top:16px; }
+#paypal-button-paypal, #paypal-button-card{ margin-bottom:12px; }
+footer{ margin-top:16px; color:#666; font-size:13px; }
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="top">
-    <div class="logo"><img src="5.png" alt="HS Nutrition"></div>
-    <div><h1>HS Nutrition — Checkout</h1><div class="muted">Review your order and pay with PayPal or Card</div></div>
+
+<div class="checkout-card">
+  <img src="5.png" alt="HS Nutrition" class="logo">
+  <h1>Your Cart</h1>
+  <div class="cart-items" id="cartList"></div>
+  <div class="total">Total: € <span id="totalAmount">0.00</span></div>
+
+  <div id="paypal-buttons">
+    <div id="paypal-button-paypal"></div>
+    <div id="paypal-button-card"></div>
   </div>
 
-  <div class="grid">
-    <div class="items" id="itemsList">
-      <!-- Product cards inserted here -->
-    </div>
-
-    <aside class="summary">
-      <h3>Order Summary</h3>
-      <div style="margin-bottom:8px"><label class="muted">Shipping option</label>
-        <select id="shippingOpt"><option value="7">7.00 — No tracked</option><option value="10">10.00 — Tracked</option></select></div>
-
-      <div style="margin:8px 0">
-        <label class="muted">Shipping details</label>
-        <input id="shipName" type="text" placeholder="Full name" value="" style="margin-top:6px">
-        <input id="shipAddress" type="text" placeholder="Address line" value="" style="margin-top:8px">
-        <div class="row" style="margin-top:8px">
-          <input id="shipCity" type="text" placeholder="City" value="Dublin">
-          <input id="shipPostal" type="text" placeholder="Postal code" value="D01AB12">
-        </div>
-        <input id="shipCountry" type="text" value="Ireland" readonly style="margin-top:8px">
-      </div>
-
-      <div class="totals">
-        <div class="total-line"><span>Subtotal</span><span id="subtotal">€0.00</span></div>
-        <div class="total-line"><span>Shipping</span><span id="shippingAmt">€0.00</span></div>
-        <div class="total-line"><span class="total-strong">Total</span><span id="totalAmt" class="total-strong">€0.00</span></div>
-      </div>
-
-      <div class="paypal-container">
-        <div id="paypal-button-container"></div>
-      </div>
-      <div class="small">Use PayPal or Debit/Credit card. This page is sandbox for testing.</div>
-    </aside>
-  </div>
+  <footer>© <span id="year"></span> HS Nutrition</footer>
 </div>
 
-<!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&locale=en_IE"></script>
+<!-- PayPal SDK (buttons + card) -->
+<script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
 <script>
-(function(){
-  function fmt(n){ return Number(n).toFixed(2); }
-  function money(n){ return '€ ' + Number(n).toFixed(2); }
+const CART_KEY='hs_cart';
+function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Read cart payload from sessionStorage
-  const payloadRaw = sessionStorage.getItem('hs_checkout_payload');
-  let payload = { items: [] };
-  try{ payload = payloadRaw ? JSON.parse(payloadRaw) : { items: [] }; }catch(e){ payload = { items: [] }; }
+let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(e){ cart=[]; }
 
-  const itemsList = document.getElementById('itemsList');
-  const subtotalEl = document.getElementById('subtotal');
-  const shippingSel = document.getElementById('shippingOpt');
-  const shippingAmtEl = document.getElementById('shippingAmt');
-  const totalEl = document.getElementById('totalAmt');
-
-  function renderItems(){
-    itemsList.innerHTML = '';
-    let subtotal = 0;
-    payload.items.forEach(it => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <img src="${" + "it.image" + "}" alt="${" + "it.title" + "}">
-        <div class="meta">
-          <b>${" + "it.title" + "}</b>
-          <div class="muted">Qty: ${" + "it.qty" + "}</div>
-          <div class="price">€ ${" + "Number(it.price).toFixed(2)" + "}</div>
-        </div>
-        <div style="font-weight:700">€ ${" + "(Number(it.price)*Number(it.qty)).toFixed(2)" + "}</div>
-      `;
-      itemsList.appendChild(card);
-      subtotal += Number(it.price) * Number(it.qty);
-    });
-    subtotalEl.textContent = money(subtotal);
-    updateTotals();
+function renderCart(){
+  const list = document.getElementById('cartList');
+  let total = 0;
+  if(!cart.length){
+    list.innerHTML = '<p style="color:#666;text-align:center;">Your cart is empty.</p>';
+  }else{
+    list.innerHTML = cart.map(item=>{
+      const qty = Number(item.qty)||0;
+      const price = Number(item.price)||0;
+      const subtotal = qty*price; total += subtotal;
+      return `<div class="cart-item">
+                <span>${qty}× ${item.title}</span>
+                <strong>${fmtEUR(subtotal)}</strong>
+              </div>`;
+    }).join('');
   }
+  document.getElementById('totalAmount').textContent = total.toFixed(2);
+  return total;
+}
+renderCart();
 
-  function updateTotals(){
-    const subtotal = payload.items.reduce((s,it)=> s + Number(it.price)*Number(it.qty), 0);
-    const ship = Number(shippingSel.value || 0);
-    shippingAmtEl.textContent = money(ship);
-    totalEl.textContent = money(subtotal + ship);
-  }
-
-  shippingSel.addEventListener('change', updateTotals);
-  renderItems();
-
-  // PayPal Buttons
-  paypal.Buttons({
-
-    style: { layout: 'vertical', label: 'paypal' },
-
-    createOrder: function(data, actions){
-      const ship = {
-        name: { full_name: document.getElementById('shipName').value.trim() || 'Buyer' },
-        address: {
-          address_line_1: document.getElementById('shipAddress').value.trim() || '—',
-          admin_area_2: document.getElementById('shipCity').value.trim() || 'Dublin',
-          postal_code: document.getElementById('shipPostal').value.trim() || '',
-          country_code: 'IE'
-        }
-      };
-      const shipAmt = Number(shippingSel.value || 0);
-      const subtotal = payload.items.reduce((s,it)=> s + Number(it.price)*Number(it.qty), 0);
-      const total = (subtotal + shipAmt).toFixed(2);
-
-      // Attach items as purchase_unit breakdown (simple)
-      const purchase_unit = { amount: { currency_code: 'EUR', value: total } , shipping: ship, items: [] };
-      purchase_unit.items = payload.items.map(i => ({
-        name: i.title, unit_amount: { currency_code: 'EUR', value: Number(i.price).toFixed(2) }, quantity: String(i.qty)
-      }));
-
-      return actions.order.create({ purchase_units: [ purchase_unit ] });
+function commonConfig(){
+  return {
+    onClick: function(data, actions){
+      const t = renderCart();
+      if(t <= 0){ alert('Your cart is empty. Please add products before paying.'); return actions.reject(); }
+      return actions.resolve();
     },
-
-    onApprove: function(data, actions){
-      return actions.order.capture().then(function(details){
-        alert('Payment completed — ' + (details.payer.name && details.payer.name.given_name ? details.payer.name.given_name : '') );
-        // clear session
-        sessionStorage.removeItem('hs_checkout_payload');
-        // redirect to success page or show message
-        document.body.innerHTML = '<div style="padding:30px;text-align:center"><h2>Payment successful</h2><p>Thank you — order id: ' + data.orderID + '</p></div>';
+    createOrder: function(data, actions){
+      const t = renderCart();
+      return actions.order.create({
+        purchase_units:[{ amount:{ value:t.toFixed(2), currency_code:'EUR' }, description:'HS Nutrition Order' }]
       });
     },
+    onApprove: function(data, actions){
+      return actions.order.capture().then(function(details){
+        alert('✅ Payment completed by ' + (details?.payer?.name?.given_name || 'customer') + '!');
+        localStorage.removeItem(CART_KEY);
+        document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
+        document.getElementById('totalAmount').textContent = '0.00';
+        document.getElementById('paypal-buttons').innerHTML = '';
+      });
+    },
+    onError: function(err){ console.error('PayPal error:', err); alert('❌ There was an issue with PayPal Checkout. Please try again.'); }
+  };
+}
 
-    onError: function(err){
-      console.error(err);
-      alert('There was an error with PayPal Checkout. Check console.');
-    }
+if(typeof paypal !== 'undefined'){
+  // 1) Only PayPal (yellow)
+  const btnPayPal = paypal.Buttons(Object.assign({}, commonConfig(), {
+    fundingSource: paypal.FUNDING.PAYPAL,
+    style:{ layout:'vertical', color:'gold', shape:'pill', label:'paypal', height:45 }
+  }));
+  if(btnPayPal.isEligible()) btnPayPal.render('#paypal-button-paypal');
 
-  }).render('#paypal-button-container');
-
-})();
+  // 2) Only Card (black)
+  const btnCard = paypal.Buttons(Object.assign({}, commonConfig(), {
+    fundingSource: paypal.FUNDING.CARD,
+    style:{ layout:'vertical', color:'black', shape:'pill', label:'pay', height:45 }
+  }));
+  if(btnCard.isEligible()) btnCard.render('#paypal-button-card');
+}
 </script>
+
 </body>
 </html>

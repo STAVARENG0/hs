@@ -270,7 +270,6 @@ function fmtEUR(n){
   const v = Number(n);
   if(Number.isNaN(v)) return '€ ' + (n ?? '');
   if(Number.isInteger(v)) return '€ ' + v;
-  // keep user's precision without padding zeros
   return '€ ' + String(v);
 }
 
@@ -422,6 +421,13 @@ document.getElementById('gNext').addEventListener('click', ()=> showImage(galler
     <h2>Your Cart</h2>
     <div id="cartItems" style="margin:12px 0;"></div>
     <hr class="cart-divider" style="margin:12px 0;">
+    
+    <h4 style="margin:6px 0 4px 0;color:#111;">Shipping Details</h4>
+    <div class="shipping-options" style="margin-bottom:10px;">
+      <label><input type="radio" name="shipping" value="7" checked> 7€ — No tracked</label><br>
+      <label><input type="radio" name="shipping" value="10"> 10€ — Tracked</label>
+    </div>
+
     <div class="cart-total">
       <span>Total:</span>
       <span id="cartTotal">€ 0</span>
@@ -505,6 +511,39 @@ document.addEventListener('click', function(e){
   e.preventDefault();
   const id = btn.dataset.id;
   if(id){ addToCart(id); }
+});
+
+// ===== Shipping & Checkout (send info to checkout.html) =====
+document.addEventListener('DOMContentLoaded', () => {
+  const radios = document.querySelectorAll('input[name="shipping"]');
+  const totalEl = document.getElementById('cartTotal');
+  const checkoutBtn = document.querySelector('.cart-checkout');
+
+  function calcBaseTotal() {
+    return cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
+  }
+  function updateDisplayTotal() {
+    const base = calcBaseTotal();
+    const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
+    totalEl.textContent = fmtEUR(base + shipping);
+  }
+  radios.forEach(r => r.addEventListener('change', updateDisplayTotal));
+
+  const origOpenCart = openCart;
+  openCart = function() {
+    origOpenCart();
+    updateDisplayTotal();
+  };
+
+  checkoutBtn.addEventListener('click', () => {
+    // pega frete escolhido
+    const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
+    const shippingLabel = shipping === 10 ? 'Tracked (€10)' : 'No tracked (€7)';
+    // salva em localStorage para o checkout somar
+    localStorage.setItem('hs_shipping', JSON.stringify({ amount: shipping, label: shippingLabel, ts: Date.now() }));
+    // abre a página de checkout (que lê hs_cart + hs_shipping)
+    window.location.href = 'checkout.html?shipping=' + encodeURIComponent(shipping);
+  });
 });
 </script>
 
