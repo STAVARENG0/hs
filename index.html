@@ -423,6 +423,7 @@ document.getElementById('gNext').addEventListener('click', ()=> showImage(galler
     <div id="cartItems" style="margin:12px 0;"></div>
     <hr class="cart-divider" style="margin:12px 0;">
     
+    <h4 style="margin:6px 0 4px 0;color:#111;">Shipping Details</h4>
     <div class="shipping-options" style="margin-bottom:10px;">
       <label><input type="radio" name="shipping" value="7" checked> 7€ — No tracked</label><br>
       <label><input type="radio" name="shipping" value="10"> 10€ — Tracked</label>
@@ -541,7 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
   checkoutBtn.addEventListener('click', () => {
     const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
     const total = calcBaseTotal() + shipping;
-    const paypalUrl = `https://www.sandbox.paypal.com/checkoutnow?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&amount=${total.toFixed(2)}`;
+    const paypalUrl = `https://www.sandbox.paypal.com/checkoutnow?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&intent=capture&currency_code=EUR&commit=true&amount=${total.toFixed(2)}`;
     window.open(paypalUrl, '_blank');
   });
 });
