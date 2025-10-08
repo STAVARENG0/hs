@@ -175,10 +175,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000; }
 .modal-content {
   background:var(--card); padding:20px; border-radius:16px; max-width:600px; width:90%; text-align:left; color:var(--white); position:relative; border: 1px solid rgba(255,255,255,0.12);
-
-  max-height: 85vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;}
+}
+.modal-content::-webkit-scrollbar {width: 0; background: transparent;}
 .modal-close{position:absolute;top:10px;right:10px;background:#ff3c00;border:none;color:#fff;font-weight:bold;padding:6px 12px;border-radius:6px;cursor:pointer}
 /* Cart visual */
 .cart-content { background:#ffffff; color:#111; border:2px solid var(--orange); box-shadow:0 18px 42px rgba(0,0,0,.45); }
@@ -552,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <!-- PayPal SDK Integration -->
-<script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&locale=en_IE"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const checkoutBtn = document.querySelector('.cart-checkout');
