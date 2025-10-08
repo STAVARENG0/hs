@@ -422,6 +422,12 @@ document.getElementById('gNext').addEventListener('click', ()=> showImage(galler
     <h2>Your Cart</h2>
     <div id="cartItems" style="margin:12px 0;"></div>
     <hr class="cart-divider" style="margin:12px 0;">
+    
+    <div class="shipping-options" style="margin-bottom:10px;">
+      <label><input type="radio" name="shipping" value="7" checked> 7€ — No tracked</label><br>
+      <label><input type="radio" name="shipping" value="10"> 10€ — Tracked</label>
+    </div>
+
     <div class="cart-total">
       <span>Total:</span>
       <span id="cartTotal">€ 0</span>
@@ -506,6 +512,40 @@ document.addEventListener('click', function(e){
   const id = btn.dataset.id;
   if(id){ addToCart(id); }
 });
+
+// ===== Shipping & Checkout integration =====
+document.addEventListener('DOMContentLoaded', () => {
+  const radios = document.querySelectorAll('input[name="shipping"]');
+  const totalEl = document.getElementById('cartTotal');
+  const checkoutBtn = document.querySelector('.cart-checkout');
+  let baseTotal = 0;
+
+  function calcBaseTotal() {
+    return cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
+  }
+
+  function updateDisplayTotal() {
+    baseTotal = calcBaseTotal();
+    const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
+    totalEl.textContent = fmtEUR(baseTotal + shipping);
+  }
+
+  radios.forEach(r => r.addEventListener('change', updateDisplayTotal));
+
+  const origOpenCart = openCart;
+  openCart = function() {
+    origOpenCart();
+    updateDisplayTotal();
+  };
+
+  checkoutBtn.addEventListener('click', () => {
+    const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
+    const total = calcBaseTotal() + shipping;
+    const paypalUrl = `https://www.sandbox.paypal.com/checkoutnow?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&amount=${total.toFixed(2)}`;
+    window.open(paypalUrl, '_blank');
+  });
+});
+
 </script>
 
 </body>
