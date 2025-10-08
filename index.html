@@ -175,13 +175,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000; }
 .modal-content {
   background:var(--card); padding:20px; border-radius:16px; max-width:600px; width:90%; text-align:left; color:var(--white); position:relative; border: 1px solid rgba(255,255,255,0.12);
-
-  max-height: 85vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;}
-
-.modal-content::-webkit-scrollbar {width: 0; background: transparent;}
+}
 .modal-close{position:absolute;top:10px;right:10px;background:#ff3c00;border:none;color:#fff;font-weight:bold;padding:6px 12px;border-radius:6px;cursor:pointer}
 /* Cart visual */
 .cart-content { background:#ffffff; color:#111; border:2px solid var(--orange); box-shadow:0 18px 42px rgba(0,0,0,.45); }
@@ -193,11 +187,6 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .cart-item-left { display:flex; align-items:center; gap:10px; }
 .cart-thumb { width:46px; height:46px; border-radius:8px; object-fit:cover; border:1px solid rgba(0,0,0,.06); }
 .cart-qty { display:flex; align-items:center; gap:6px; }
-
-
-/* Invisible scrollbar for cart modal content */
-.modal-content::-webkit-scrollbar { width: 0; height: 0; background: transparent; }
-.modal-content { scrollbar-width: none; }
 
 </style>
 </head>
@@ -433,13 +422,6 @@ document.getElementById('gNext').addEventListener('click', ()=> showImage(galler
     <h2>Your Cart</h2>
     <div id="cartItems" style="margin:12px 0;"></div>
     <hr class="cart-divider" style="margin:12px 0;">
-    
-    <h4 style="margin:6px 0 4px 0;color:#111;">Shipping Details</h4>
-    <div class="shipping-options" style="margin-bottom:10px;">
-      <label><input type="radio" name="shipping" value="7" checked> 7€ — No tracked</label><br>
-      <label><input type="radio" name="shipping" value="10"> 10€ — Tracked</label>
-    </div>
-
     <div class="cart-total">
       <span>Total:</span>
       <span id="cartTotal">€ 0</span>
@@ -523,81 +505,6 @@ document.addEventListener('click', function(e){
   e.preventDefault();
   const id = btn.dataset.id;
   if(id){ addToCart(id); }
-});
-
-// ===== Shipping & Checkout integration =====
-document.addEventListener('DOMContentLoaded', () => {
-  const radios = document.querySelectorAll('input[name="shipping"]');
-  const totalEl = document.getElementById('cartTotal');
-  const checkoutBtn = document.querySelector('.cart-checkout');
-  let baseTotal = 0;
-
-  function calcBaseTotal() {
-    return cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
-  }
-
-  function updateDisplayTotal() {
-    baseTotal = calcBaseTotal();
-    const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
-    totalEl.textContent = fmtEUR(baseTotal + shipping);
-  }
-
-  radios.forEach(r => r.addEventListener('change', updateDisplayTotal));
-
-  const origOpenCart = openCart;
-  openCart = function() {
-    origOpenCart();
-    updateDisplayTotal();
-  };
-
-  checkoutBtn.addEventListener('click', () => {
-    const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
-    const total = calcBaseTotal() + shipping;
-    });
-});
-
-</script>
-
-
-<!-- PayPal SDK Integration -->
-<script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&locale=en_IE"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const checkoutBtn = document.querySelector('.cart-checkout');
-  const container = checkoutBtn.parentElement;
-  const paypalDiv = document.createElement('div');
-  paypalDiv.id = 'paypal-button-container';
-  container.replaceChild(paypalDiv, checkoutBtn);
-
-  paypal.Buttons({
-    style: {
-      color: 'gold',
-      shape: 'pill',
-      label: 'pay',
-      height: 45
-    },
-    createOrder: function(data, actions) {
-      const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
-      const baseTotal = cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
-      const total = baseTotal + shipping;
-      return actions.order.create({
-        purchase_units: [{ amount: { value: total.toFixed(2), currency_code: 'EUR' } }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('✅ Payment completed by ' + details.payer.name.given_name + '!');
-        localStorage.removeItem('hs_cart');
-        cart = [];
-        updateCartIcon();
-        closeCart();
-      });
-    },
-    onError: function(err) {
-      console.error('PayPal error:', err);
-      alert('❌ There was an issue with PayPal Checkout. Please try again.');
-    }
-  }).render('#paypal-button-container');
 });
 </script>
 
