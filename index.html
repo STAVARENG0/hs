@@ -423,7 +423,16 @@ document.getElementById('gNext').addEventListener('click', ()=> showImage(galler
     <div id="cartItems" style="margin:12px 0;"></div>
     <hr class="cart-divider" style="margin:12px 0;">
     
+    
     <h4 style="margin:6px 0 4px 0;color:#111;">Shipping Details</h4>
+    <div class="shipping-form" style="margin-bottom:10px;">
+      <input id="shipName" type="text" placeholder="Full Name" style="width:100%;padding:8px;margin:4px 0;border-radius:6px;border:1px solid #ccc;">
+      <input id="shipAddress" type="text" placeholder="Address Line" style="width:100%;padding:8px;margin:4px 0;border-radius:6px;border:1px solid #ccc;">
+      <input id="shipCity" type="text" placeholder="City" style="width:100%;padding:8px;margin:4px 0;border-radius:6px;border:1px solid #ccc;">
+      <input id="shipPostal" type="text" placeholder="Postal Code" style="width:100%;padding:8px;margin:4px 0;border-radius:6px;border:1px solid #ccc;">
+      <input id="shipCountry" type="text" placeholder="Country" value="Ireland" style="width:100%;padding:8px;margin:4px 0;border-radius:6px;border:1px solid #ccc;">
+    </div>
+
     <div class="shipping-options" style="margin-bottom:10px;">
       <label><input type="radio" name="shipping" value="7" checked> 7€ — No tracked</label><br>
       <label><input type="radio" name="shipping" value="10"> 10€ — Tracked</label>
@@ -542,51 +551,71 @@ document.addEventListener('DOMContentLoaded', () => {
   checkoutBtn.addEventListener('click', () => {
     const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
     const total = calcBaseTotal() + shipping;
-    });
+    const paypalUrl = `https://www.sandbox.paypal.com/checkoutnow?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&intent=capture&currency_code=EUR&commit=true&amount=${total.toFixed(2)}`;
+    window.open(paypalUrl, '_blank');
+  });
 });
 
 </script>
 
 
-<!-- PayPal SDK Integration -->
+<!-- PayPal SDK Integration (Sandbox) -->
 <script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const checkoutBtn = document.querySelector('.cart-checkout');
-  const container = checkoutBtn.parentElement;
-  const paypalDiv = document.createElement('div');
-  paypalDiv.id = 'paypal-button-container';
-  container.replaceChild(paypalDiv, checkoutBtn);
-
-  paypal.Buttons({
-    style: {
-      color: 'gold',
-      shape: 'pill',
-      label: 'pay',
-      height: 45
-    },
-    createOrder: function(data, actions) {
-      const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
-      const baseTotal = cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
-      const total = baseTotal + shipping;
-      return actions.order.create({
-        purchase_units: [{ amount: { value: total.toFixed(2), currency_code: 'EUR' } }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('✅ Payment completed by ' + details.payer.name.given_name + '!');
-        localStorage.removeItem('hs_cart');
-        cart = [];
-        updateCartIcon();
-        closeCart();
-      });
-    },
-    onError: function(err) {
-      console.error('PayPal error:', err);
-      alert('❌ There was an issue with PayPal Checkout. Please try again.');
+  checkoutBtn.addEventListener('click', async function() {
+    // Validate shipping form
+    const name = document.getElementById('shipName').value.trim();
+    const address = document.getElementById('shipAddress').value.trim();
+    const city = document.getElementById('shipCity').value.trim();
+    const postal = document.getElementById('shipPostal').value.trim();
+    const country = document.getElementById('shipCountry').value.trim();
+    if (!name || !address || !city || !postal || !country) {
+      alert('Please fill out all shipping details before checkout.');
+      return;
     }
-  }).render('#paypal-button-container');
+    const shipping = Number(document.querySelector('input[name="shipping"]:checked').value);
+    const baseTotal = cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
+    const total = baseTotal + shipping;
+
+    try {
+      const order = await fetch('https://api-m.sandbox.paypal.com/v2/checkout/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa('CLIENT_ID:CLIENT_SECRET') // placeholder only
+        },
+        body: JSON.stringify({
+          intent: 'CAPTURE',
+          purchase_units: [{
+            amount: { currency_code: 'EUR', value: total.toFixed(2) },
+            shipping: {
+              name: { full_name: name },
+              address: {
+                address_line_1: address,
+                admin_area_2: city,
+                postal_code: postal,
+                country_code: country.slice(0,2).toUpperCase()
+              }
+            }
+          }]
+        })
+      });
+      const data = await order.json();
+      if (data && data.links) {
+        const approveLink = data.links.find(l => l.rel === 'approve');
+        if (approveLink) {
+          window.open(approveLink.href, '_blank');
+          return;
+        }
+      }
+      alert('Error creating PayPal order. Please check your sandbox credentials.');
+    } catch (err) {
+      console.error(err);
+      alert('There was an error connecting to PayPal.');
+    }
+  });
 });
 </script>
 
