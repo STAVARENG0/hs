@@ -103,6 +103,9 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .cart-item-left { display:flex; align-items:center; gap:10px; }
 .cart-thumb { width:46px; height:46px; border-radius:8px; object-fit:cover; border:1px solid rgba(0,0,0,.06); }
 .cart-qty { display:flex; align-items:center; gap:6px; }
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
 </style>
 </head>
 <body>
