@@ -20,7 +20,7 @@
 *{box-sizing:border-box}
 body{ margin:0; font-family:Poppins,system-ui,Arial,sans-serif; color:var(--white); background: var(--black); min-height:100dvh; }
 .wrap{max-width:1200px;margin:0 auto;padding:26px}
-.card{ background:var(--card); border-radius:20px; padding:10px 22px 28px; border:1px solid rgba(255,255,255,.1); box-shadow:0 18px 42px rgba(0,0,0,.6); position:relative; }
+.card{ background:transparent; border:none; border-radius:0; padding:0; box-shadow:none; position:relative; }
 header{text-align:center;margin-bottom:18px}
 .brand{ display:flex; flex-direction:column; align-items:center; gap:0; position:relative; }
 .brand img{ max-width:100%; height:auto; border:2px solid var(--orange); border-radius:20px; animation: glow 3s ease-in-out infinite alternate; }
@@ -30,10 +30,10 @@ header{text-align:center;margin-bottom:18px}
 @keyframes draw { to { stroke-dashoffset: 0; } }
 /* SEARCH BAR */
 .brand .search-box { position: static; margin: 12px auto 0; max-width: 420px; width: 100%; display: flex; gap: 6px; justify-content: center;}
-.search-box input { flex: 1; padding: 12px 16px; border-radius: 20px; border: none; outline: none; background: #fff; color: #333; font-size: 14px; }
-.search-box input::placeholder { color: #999; }
-.search-box button { padding: 12px 20px; border: none; border-radius: 20px; background: #000; color: #fff; font-weight: 600; cursor: pointer; }
-.search-box button:hover { filter: brightness(1.2); }
+.search-box input { flex: 1; padding: 12px 16px; border-radius: 20px; border: 1px solid #ddd; outline: none; background: #ffffff; color: #000000; font-size: 14px; }
+.search-box input::placeholder { color: #555; }
+.search-box button { padding: 12px 20px; border: 1px solid #ddd; border-radius: 20px; background: #ffffff; color: #000000; font-weight: 700; cursor: pointer; }
+.search-box button:hover { filter: none; opacity: .9; }
 /* CATEGORY BUTTONS */
 .category-buttons{ display:flex; justify-content:center; gap:12px; margin: 12px 0 2px; flex-wrap: wrap; }
 .pill-btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius: 9999px; background: var(--orange); color: var(--white); font-weight: 800; border: 2px solid var(--orange); text-decoration:none; box-shadow: 0 6px 18px rgba(255,60,0,0.35); cursor:pointer; transition: transform .18s ease, filter .18s ease; }
@@ -95,7 +95,29 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   #modal .close { z-index: 6; }
 }
 /* Floating cart button */
-.floating-cart { position: fixed; bottom: 20px; right: 20px; background: var(--orange); color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.35); cursor: pointer; z-index: 5000; font-size: 28px; transition: transform 0.3s ease; }
+.floating-cart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--orange);
+  color: white;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  cursor: pointer;
+  z-index: 5000;
+  transition: transform 0.3s ease;
+}
+.floating-cart .cart-ico { font-size: 28px; line-height: 1; }
+.floating-cart .cart-count { font-size: 14px; font-weight: 800; line-height: 1; }
+.floating-cart .cart-count:empty { display:none; }
+.floating-cart:hover { transform: scale(1.1) rotate(5deg); }
 .floating-cart:hover { transform: scale(1.1) rotate(5deg); }
 /* Cart modal */
 .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000; }
@@ -137,34 +159,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   </div>
 </div>
 
-<!-- Product Modal -->
-<div id="modal" aria-hidden="true" role="dialog">
-  <div class="overlay" data-close></div>
-  <div class="panel" role="document">
-    <button class="close" data-close>&times; Close</button>
-    <div class="gallery">
-      <div class="hero-wrap">
-        <img id="hero" class="hero" alt="Product main photo" src=""/>
-        <button class="nav prev" id="gPrev" aria-label="Anterior">‹</button>
-        <button class="nav next" id="gNext" aria-label="Próxima">›</button>
-        <div class="counter" id="mCount">0/0</div>
-      </div>
-      <div id="thumbs"></div>
-    </div>
-    <div class="details">
-      <h2 id="mTitle">—</h2>
-      <div id="mMeta" class="meta">—</div>
-      <div id="mPrice" class="price">—</div>
-      <div id="mDesc" class="desc">—</div>
-      <div class="actions">
-        <a id="mAdd" class="btn" href="#" data-action="add-to-cart">Add to Cart</a>
-        <a id="mCloseBtn" class="btn secondary" href="#" data-close>Close</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="floating-cart" onclick="openCart()">🛒</div>
+<div class="floating-cart" onclick="openCart()" aria-label="Abrir carrinho"><div class="cart-ico">🛒</div><div class="cart-count" id="cartCount"></div></div>
 
 <!-- Cart Modal -->
 <div id="cartModal" class="modal">
@@ -193,22 +188,6 @@ const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
 
-// Modal refs
-const modal = document.getElementById('modal');
-const hero = document.getElementById('hero');
-const thumbs = document.getElementById('thumbs');
-const mTitle = document.getElementById('mTitle');
-const mMeta = document.getElementById('mMeta');
-const mPrice = document.getElementById('mPrice');
-const mDesc = document.getElementById('mDesc');
-const mAdd  = document.getElementById('mAdd');
-const gPrev  = document.getElementById('gPrev');
-const gNext  = document.getElementById('gNext');
-const mCount = document.getElementById('mCount');
-
-let galleryImgs = [];
-let galleryIndex = 0;
-
 // --- Universal Cart (localStorage) ---
 const CART_KEY = 'hs_cart';
 const SHIP_KEY = 'hs_shipping';
@@ -216,7 +195,11 @@ function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'
 function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); }
 let cart = loadCart();
 function fmtEUR(n){ const v = Number(n); if(Number.isNaN(v)) return '€ ' + (n ?? ''); return '€ ' + v.toFixed(2); }
-function updateCartIcon(){ const cartBtn = document.querySelector('.floating-cart'); const totalItems = cart.reduce((s, i)=> s + i.qty, 0); cartBtn.innerHTML = `🛒${totalItems ? ' ('+totalItems+')' : ''}`; }
+function updateCartIcon(){
+  const countEl = document.getElementById('cartCount');
+  const totalItems = cart.reduce((s, i)=> s + i.qty, 0);
+  if(countEl) countEl.textContent = totalItems ? String(totalItems) : '';
+}`; }
 function addToCart(productId){ const p = currentList.find(x => String(x.id)===String(productId)); if(!p) return; const e = cart.find(i=> i.id===p.id); if(e) e.qty++; else cart.push({ ...p, qty: 1 }); saveCart(cart); updateCartIcon(); }
 function changeQty(id, delta){ const it = cart.find(p => p.id === id); if(!it) return; it.qty += delta; if(it.qty <= 0) cart = cart.filter(p => p.id !== id); saveCart(cart); openCart(); updateCartIcon(); }
 function getSelectedShipping(){ return document.querySelector('input[name="shipping"]:checked'); }
