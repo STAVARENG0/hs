@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>HS Nutrition | Supplements Store</title>
+<title>HS Nutrition | Store</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -14,7 +14,7 @@
 body{ margin:0; font-family:Poppins,system-ui,Arial,sans-serif; color:var(--white); background:var(--black); min-height:100dvh; }
 .wrap{max-width:1200px;margin:0 auto;padding:26px}
 .card{ background:transparent; border:none; border-radius:0; padding:0; box-shadow:none; position:relative; }
-header{text-align:center;margin-bottom:18px}
+header{text-align:center;margin-bottom:18px; position: relative;}
 .brand{ display:flex; flex-direction:column; align-items:center; gap:0; position:relative; }
 .brand img{ max-width:100%; height:auto; border:2px solid var(--orange); border-radius:20px; animation: glow 3s ease-in-out infinite alternate; }
 @keyframes glow { from { box-shadow:0 0 6px rgba(255,60,0,0.3); } to { box-shadow:0 0 14px rgba(255,100,0,0.6); } }
@@ -26,21 +26,15 @@ header{text-align:center;margin-bottom:18px}
 .search-box input::placeholder { color: #555; }
 .search-box button { padding: 12px 20px; border: 1px solid #ddd; border-radius: 20px; background: #ffffff; color: #000000; font-weight: 700; cursor: pointer; }
 .search-box button:hover { filter: none; opacity: .9; }
-.category-buttons{ display:flex; justify-content:center; gap:12px; margin: 12px 0 2px; flex-wrap: wrap; }
-.pill-btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius: 9999px; background: var(--orange); color: var(--white); font-weight: 800; border: 2px solid var(--orange); text-decoration:none; box-shadow: 0 6px 18px rgba(255,60,0,0.35); cursor:pointer; transition: transform .18s ease, filter .18s ease; }
-.pill-btn:hover{ transform: translateY(-1px); filter: brightness(1.05); }
-.pill-btn:active{ transform: translateY(0); }
-@media (max-width: 600px) {
-  .brand { align-items: center; }
-  .brand .search-box { position: static; margin-top: 14px; width: 100%; max-width: 100%; padding: 0 10px; display: flex; justify-content: center; gap: 8px; }
-  .search-box input { flex: 1; padding: 12px 16px; border-radius: 20px; border: 1px solid #ddd; outline: none; background: #ffffff; color: #000000; font-size: 14px; }
-  .search-box button { padding: 12px 20px; border: 1px solid #ddd; border-radius: 20px; background: #ffffff; color: #000000; font-weight: 700; cursor: pointer; }
-}
 .divider{height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);margin:18px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;align-items:stretch}
 @media (max-width:600px){
   .grid{grid-template-columns:repeat(2,1fr)}
+  .brand { align-items: center; }
+  .brand .search-box { position: static; margin-top: 14px; width: 100%; max-width: 100%; padding: 0 10px; display: flex; justify-content: center; gap: 8px; }
 }
+
+/* ===== Products ===== */
 .product{display:flex;flex-direction:column;justify-content:space-between;}
 .product{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;flex-direction:column; position:relative;}
 .product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#0b0b0b;display:block}
@@ -58,7 +52,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .admin-btn-modal a:hover { filter: brightness(1.1); }
 .oos-ribbon{ position:absolute; top:10px; left:-40px; transform: rotate(-20deg); background: rgba(255,45,45,0.85); color:#fff; padding:10px 60px; font-weight:900; letter-spacing:.12em; text-shadow: 0 1px 2px rgba(0,0,0,.35); box-shadow:0 10px 20px rgba(0,0,0,.35); border:2px solid rgba(255,255,255,0.12); pointer-events:none; }
 
-/* ===== BOTÃO FLUTUANTE DO CARRINHO (contador dentro do botão) ===== */
+/* ===== Floating cart ===== */
 .floating-cart {
   position: fixed;
   bottom: 20px;
@@ -97,14 +91,113 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .cart-thumb { width:46px; height:46px; border-radius:8px; object-fit:cover; border:1px solid rgba(0,0,0,.06); }
 .cart-qty { display:flex; align-items:center; gap:6px; }
 
-/* === Forçar busca branca no desktop (pré-mobile) === */
-.brand .search-box input { background:#ffffff !important; color:#000000 !important; border:1px solid #ddd !important; }
-.brand .search-box input::placeholder { color:#555 !important; }
-.brand .search-box button { background:#ffffff !important; color:#000000 !important; border:1px solid #ddd !important; }
+/* ====== HAMBURGER MENU ====== */
+.menu-toggle {
+  position: relative;
+  z-index: 6000;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 9999px;
+  background: var(--orange);
+  color: var(--white);
+  font-weight: 900;
+  border: 2px solid var(--orange);
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 6px 18px rgba(255,60,0,0.35);
+}
+.menu-toggle .bars{
+  width: 18px; height: 12px; position: relative;
+}
+.menu-toggle .bars::before,
+.menu-toggle .bars::after,
+.menu-toggle .bar{
+  content: ""; position: absolute; left: 0; right: 0; height: 2px; background: #fff; border-radius: 2px;
+}
+.menu-toggle .bar{ top: 5px; }
+.menu-toggle .bars::before{ top: 0; }
+.menu-toggle .bars::after{ bottom: 0; }
 
+/* Drawer */
+.drawer-overlay{
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  display: none; z-index: 5500;
+}
+.drawer{
+  position: fixed; top: 0; left: 0; height: 100%; width: min(92vw, 380px);
+  background: #0f0f0f; color: #fff; transform: translateX(-100%);
+  transition: transform .28s ease; z-index: 5600; border-right: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,.5);
+}
+.drawer.open{ transform: translateX(0); }
+.drawer-header{ padding: 18px 18px 10px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.08); }
+.drawer-title{ font-weight: 900; letter-spacing: .06em; color: var(--orange); }
+.drawer-close{ background: transparent; color: #fff; border:none; font-size: 26px; cursor:pointer; }
+.drawer-body{ padding: 12px 18px 24px; overflow:auto; height: calc(100% - 60px); scrollbar-width:none; -ms-overflow-style:none; }
+.drawer-body::-webkit-scrollbar{ display:none; }
+.section{ margin: 10px 0 18px; }
+.section h4{ margin: 10px 0 8px; color: #fff; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; opacity:.9 }
+.section ul{ list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.section a{
+  display:block; padding: 10px 12px; border-radius: 10px; background: #151515;
+  color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.06);
+}
+.section a:hover{ background:#191919; }
+.drawer-footer{ padding: 14px 18px; border-top:1px dashed rgba(255,255,255,0.08); color:#9c9c9c; font-size: 12px; }
+.drawer-overlay.show{ display:block; }
 </style>
 </head>
 <body>
+
+<!-- DRAWER + OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="sideMenu" aria-hidden="true">
+  <div class="drawer-header">
+    <div class="drawer-title">Browse</div>
+    <button class="drawer-close" id="closeMenu" aria-label="Close menu">×</button>
+  </div>
+  <div class="drawer-body">
+    <div class="section">
+      <h4>Supplements</h4>
+      <ul>
+        <li><a href="#">Vitamins &amp; Minerals</a></li>
+        <li><a href="#">Heart Health</a></li>
+        <li><a href="#">Liver Support</a></li>
+        <li><a href="#">Multivitamins</a></li>
+        <li><a href="#">Mass Gainer</a></li>
+        <li><a href="#">Pre-Workout</a></li>
+        <li><a href="#">BCAA &amp; EAA</a></li>
+        <li><a href="#">Probiotics</a></li>
+        <li><a href="#">Glutamine</a></li>
+        <li><a href="#">Collagen</a></li>
+        <li><a href="#">Diuretics</a></li>
+        <li><a href="#">Omega 3</a></li>
+        <li><a href="#">Creatine</a></li>
+        <li><a href="#">Fat Loss</a></li>
+      </ul>
+    </div>
+    <div class="section">
+      <h4>Cosmetics</h4>
+      <ul>
+        <li><a href="#">Body Oil</a></li>
+        <li><a href="#">Nails</a></li>
+        <li><a href="#">Perfume</a></li>
+        <li><a href="#">Mascara</a></li>
+        <li><a href="#">Skin Care</a></li>
+        <li><a href="#">Soap</a></li>
+        <li><a href="#">Moisturizer</a></li>
+        <li><a href="#">Body Splash</a></li>
+        <li><a href="#">Hair Tonic</a></li>
+        <li><a href="#">Leave‑in Cream</a></li>
+        <li><a href="#">Shampoo &amp; Conditioner</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="drawer-footer">Tap a category to link later.</div>
+</aside>
+
 <div class="wrap">
   <div class="card">
     <div class="admin-btn-modal"><a href="login.html">Admin</a></div>
@@ -123,10 +216,16 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
       </div>
     </header>
 
-    <div class="category-buttons">
-      <a class="pill-btn" href="supplements.html">Supplements</a>
-      <a class="pill-btn" href="cosmetics.html">Cosmetics</a>
+    <!-- Menu button placed where the old category buttons were -->
+    <div class="menu-row" style="display:flex;justify-content:center;gap:12px;margin:8px 0 6px;">
+      <button class="menu-toggle" id="openMenu" aria-controls="sideMenu" aria-expanded="false">
+        <span class="bars"><span class="bar"></span></span>
+        Menu
+      </button>
     </div>
+
+
+    <!-- REMOVED old 'Supplements' and 'Cosmetics' buttons -->
 
     <div class="divider"></div>
     <section class="grid" id="products"></section>
@@ -136,8 +235,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   </div>
 </div>
 
-<!-- Botão flutuante do carrinho -->
-<div class="floating-cart" onclick="openCart()" aria-label="Abrir carrinho">
+<!-- Floating Cart -->
+<div class="floating-cart" onclick="openCart()" aria-label="Open cart">
   <div class="cart-ico">🛒</div>
   <div class="cart-count" id="cartCount"></div>
 </div>
@@ -165,6 +264,28 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 </div>
 
 <script>
+/* ===== Menu open/close ===== */
+const openBtn = document.getElementById('openMenu');
+const closeBtn = document.getElementById('closeMenu');
+const drawer = document.getElementById('sideMenu');
+const overlay = document.getElementById('drawerOverlay');
+function openDrawer(){
+  drawer.classList.add('open');
+  overlay.classList.add('show');
+  openBtn.setAttribute('aria-expanded','true');
+  drawer.setAttribute('aria-hidden','false');
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  overlay.classList.remove('show');
+  openBtn.setAttribute('aria-expanded','false');
+  drawer.setAttribute('aria-hidden','true');
+}
+openBtn.addEventListener('click', openDrawer);
+closeBtn.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
+
 const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
@@ -175,7 +296,6 @@ function fmtEUR(n){
   if(Number.isInteger(v)) return '€ ' + v;
   return '€ ' + String(v);
 }
-
 function sanitizeList(list){
   if(!Array.isArray(list)) return [];
   return list.map(p => ({
@@ -191,7 +311,6 @@ function sanitizeList(list){
     stock: typeof p.stock === 'number' ? p.stock : parseInt(p.stock || '0', 10)
   }));
 }
-
 async function readPublic(){
   try{
     const r = await fetch(PUBLIC_JSON + '?t=' + Date.now(), {cache:'no-store'});
@@ -200,7 +319,6 @@ async function readPublic(){
     return sanitizeList(data);
   }catch(e){ return []; }
 }
-
 function render(list){
   grid.innerHTML = '';
   if(!list.length){
@@ -214,8 +332,8 @@ function render(list){
     }
     const img = document.createElement('img'); img.src = p.image; img.alt = p.title; el.appendChild(img);
     const body = document.createElement('div'); body.className='product-body';
-    const brand = p.brand ? `<div class="meta">${p.brand}</div>` : '';
-    body.innerHTML = `<h3>${p.title}</h3>${brand}<div class='meta'>Stock: ${p.stock}</div><div class='price'>${fmtEUR(p.price)}</div>`;
+    const brand = p.brand ? `<div class="meta">\${p.brand}</div>` : '';
+    body.innerHTML = `<h3>\${p.title}</h3>\${brand}<div class='meta'>Stock: \${p.stock}</div><div class='price'>\${fmtEUR(p.price)}</div>`;
     el.appendChild(body);
     const cta = document.createElement('div'); cta.className='cta';
     const a = document.createElement('a');
@@ -224,8 +342,6 @@ function render(list){
     cta.appendChild(a); el.appendChild(cta); grid.appendChild(el);
   });
 }
-
-/* ===== Busca ===== */
 function searchProducts(){
   const term = document.getElementById('search').value.toLowerCase();
   const filtered = currentList.filter(p =>
@@ -236,12 +352,11 @@ function searchProducts(){
   render(filtered);
 }
 
-/* ===== CARRINHO ===== */
+/* ===== Cart ===== */
 const CART_KEY='hs_cart';
 function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(e){ return []; } }
 function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); }
 let cart = loadCart();
-
 function addToCart(productId){
   const product = currentList.find(p => String(p.id) === String(productId));
   if(!product) return;
@@ -250,17 +365,14 @@ function addToCart(productId){
   saveCart(cart);
   updateCartIcon();
 }
-
 function updateCartIcon(){
   const countEl = document.getElementById('cartCount');
   const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
   countEl.textContent = totalItems ? String(totalItems) : '';
 }
-
 function getSelectedShipping(){
   return document.querySelector('input[name="shipping"]:checked');
 }
-
 function openCart(){
   const cartModal = document.getElementById('cartModal');
   const list = document.getElementById('cartItems');
@@ -297,9 +409,7 @@ function openCart(){
   }
   cartModal.style.display = 'flex';
 }
-
 function closeCart(){ document.getElementById('cartModal').style.display = 'none'; }
-
 function changeQty(id, delta){
   const item = cart.find(p => p.id === id);
   if(!item) return;
@@ -309,8 +419,6 @@ function changeQty(id, delta){
   openCart();
   updateCartIcon();
 }
-
-/* ===== Unified click handler for Add-to-Cart ===== */
 document.addEventListener('click', function(e){
   const btn = e.target.closest('[data-action="add-to-cart"]');
   if(!btn) return;
@@ -318,32 +426,25 @@ document.addEventListener('click', function(e){
   const id = btn.dataset.id;
   if(id){ addToCart(id); }
 });
-
-// ===== Shipping & Checkout (force selection) =====
 document.addEventListener('DOMContentLoaded', () => {
   const radios = document.querySelectorAll('input[name="shipping"]');
   const totalEl = document.getElementById('cartTotal');
   const checkoutBtn = document.querySelector('.cart-checkout');
-
   function calcBaseTotal() {
     return cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
   }
-
   function updateDisplayTotal() {
     const base = calcBaseTotal();
     const sel = document.querySelector('input[name="shipping"]:checked');
     const shippingVal = sel ? Number(sel.value) : 0;
     totalEl.textContent = fmtEUR(base + shippingVal);
   }
-
   radios.forEach(r => r.addEventListener('change', updateDisplayTotal));
-
   const _openCart = openCart;
   openCart = function() {
     _openCart();
     updateDisplayTotal();
   };
-
   checkoutBtn.addEventListener('click', () => {
     const sel = getSelectedShipping();
     if(!sel){
