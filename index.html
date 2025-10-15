@@ -147,6 +147,50 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .section a:hover{ background:#191919; }
 .drawer-footer{ padding: 14px 18px; border-top:1px dashed rgba(255,255,255,0.08); color:#9c9c9c; font-size: 12px; }
 .drawer-overlay.show{ display:block; }
+
+@media (max-width: 600px) {
+  .menu-row {
+    position: relative;
+    z-index: 100;
+  }
+  .drawer {
+    width: 50vw !important;
+    max-width: none;
+  }
+  .drawer-body {
+    height: 50vh !important;
+  }
+}
+
+
+/* ===== FIX V2: Corrigir sobreposição de elementos ===== */
+.menu-toggle {
+  z-index: 2000 !important; /* abaixo do modal do carrinho */
+}
+.drawer {
+  z-index: 1500 !important; /* abaixo do menu e carrinho */
+  transition: transform 0.3s ease; /* animação suave ao abrir */
+}
+.modal {
+  z-index: 5000 !important; /* sempre acima de tudo */
+}
+.product {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 600px) {
+  .drawer {
+    width: 50vw !important;
+    max-width: none !important;
+  }
+  .drawer-body {
+    height: 50vh !important;
+  }
+  .menu-row {
+    z-index: 1000 !important;
+  }
+}
+
 </style>
 </head>
 <body>
