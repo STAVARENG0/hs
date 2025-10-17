@@ -37,9 +37,9 @@ header{text-align:center;margin-bottom:18px; position: relative;}
 /* ===== Products ===== */
 .product{display:flex;flex-direction:column;justify-content:space-between;}
 .product{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;flex-direction:column; position:relative;}
-.product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#0b0b0b;display:block;cursor:pointer;}
+.product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#0b0b0b;display:block}
 .product-body{padding:14px 16px 10px}
-.product h3{margin:0 0 6px;font-weight:700;font-size:16px;color:var(--white); cursor:pointer; }
+.product h3{margin:0 0 6px;font-weight:700;font-size:16px;color:var(--white);}
 .meta{color:var(--muted);font-size:13px;line-height:1.4;margin-bottom:8px}
 .price{font-weight:700;color:var(--white);margin-bottom:6px}
 .cta{padding:12px 14px 14px;border-top:1px dashed rgba(255,255,255,.08)}
@@ -77,11 +77,10 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .floating-cart .cart-count:empty { display:none; }
 .floating-cart:hover { transform: scale(1.1) rotate(5deg); }
 
-/* ========= GENERIC MODAL ========= */
+/* ========= CART MODAL ========= */
 .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index: 6000; }
 .modal-content { background:var(--card); padding:20px; border-radius:16px; max-width:600px; width:90%; text-align:left; color:var(--white); position:relative; border: 1px solid rgba(255,255,255,0.12); }
 .modal-close{position:absolute;top:10px;right:10px;background:#ff3c00;border:none;color:#fff;font-weight:bold;padding:6px 12px;border-radius:6px;cursor:pointer}
-
 .cart-content { background:#ffffff; color:#111; border:2px solid var(--orange); box-shadow:0 18px 42px rgba(0,0,0,.45); }
 .cart-content h2 { color:#111; margin:0 0 6px; }
 .cart-divider { border:none; border-top:2px dashed rgba(0,0,0,0.08); }
@@ -119,7 +118,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .menu-toggle .bars::before{ top: 0; }
 .menu-toggle .bars::after{ bottom: 0; }
 
-/* Drawer */
+/* Drawer (z-index abaixo do modal; fade + slide) */
 .drawer-overlay{
   position: fixed; inset: 0; background: rgba(0,0,0,0.6);
   opacity: 0; pointer-events: none; transition: opacity .28s ease;
@@ -139,7 +138,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .drawer-body{ padding: 12px 18px 24px; overflow:auto; height: calc(100% - 60px); scrollbar-width:none; -ms-overflow-style:none; }
 .drawer-body::-webkit-scrollbar{ display:none; }
 .section{ margin: 10px 0 18px; }
-.section h4{ margin: 10px 0 8px; color: #fff; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; opacity:.9 }
+.section h4{ margin: 10px 0 8px; color: var(--orange); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; opacity:.95 }
 .section ul{ list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .section a{
   display:block; padding: 10px 12px; border-radius: 10px; background: #151515;
@@ -147,41 +146,6 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 }
 .section a:hover{ background:#191919; }
 .drawer-footer{ padding: 14px 18px; border-top:1px dashed rgba(255,255,255,0.08); color:#9c9c9c; font-size: 12px; }
-
-/* ===== Product Detail Modal ===== */
-.product-content{ max-width:760px; width:min(92vw,760px); }
-.product-modal-body{ display:grid; grid-template-columns: 1fr; gap: 14px; }
-#pmImage{ width:100%; max-height:340px; border-radius:12px; object-fit:contain; background:#0b0b0b; }
-.product-title{ margin:0 0 4px; font-size: 20px; font-weight: 900; }
-.product-brand{ color: var(--muted); margin: 0 0 8px; }
-.product-price{ font-weight: 900; margin: 6px 0; }
-.product-stock{ color: var(--muted); font-size: 12px; margin-bottom: 10px; }
-.product-desc{ color: #e9e9e9; font-size: 14px; line-height: 1.5; }
-.gallery{ display:flex; gap:8px; margin-top:10px; overflow-x:auto; padding-bottom:4px; }
-.gallery img{ width:70px; height:70px; object-fit:cover; border-radius:10px; cursor:pointer; border:1px solid rgba(255,255,255,.08); flex:0 0 auto; }
-@media (min-width: 760px){
-  .product-modal-body{ grid-template-columns: 1.2fr 1fr; align-items:start; }
-}
-
-
-
-
-@media (max-width: 600px){
-  /* Mobile: drawer lateral ocupando 50% da largura */
-  .drawer{
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 50vw;                 /* metade da tela */
-    border-radius: 0;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    transform: translateX(-100%); /* escondido por completo */
-  }
-  .drawer.open{
-    transform: translateX(0);     /* entra a partir da esquerda */
-  }
-}
-
 </style>
 </head>
 <body>
@@ -273,27 +237,6 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   <div class="cart-count" id="cartCount"></div>
 </div>
 
-<!-- Product Detail Modal -->
-<div id="productModal" class="modal" aria-hidden="true">
-  <div class="modal-content product-content">
-    <button class="modal-close" onclick="closeProductModal()">×</button>
-    <div class="product-modal-body">
-      <div>
-        <img id="pmImage" alt="Product image"/>
-        <div class="gallery" id="pmGallery"></div>
-      </div>
-      <div>
-        <h3 class="product-title" id="pmTitle"></h3>
-        <div class="product-brand" id="pmBrand"></div>
-        <div class="product-price" id="pmPrice"></div>
-        <div class="product-stock" id="pmStock"></div>
-        <p class="product-desc" id="pmDesc"></p>
-        <div id="pmCta" style="margin-top:12px;"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Cart Modal -->
 <div id="cartModal" class="modal">
   <div class="modal-content cart-content" style="max-width:520px;text-align:left;">
@@ -337,7 +280,7 @@ function closeDrawer(){
 openBtn.addEventListener('click', openDrawer);
 closeBtn.addEventListener('click', closeDrawer);
 overlay.addEventListener('click', closeDrawer);
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') { closeDrawer(); closeProductModal(); } });
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDrawer(); });
 
 const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
@@ -372,8 +315,6 @@ async function readPublic(){
     return sanitizeList(data);
   }catch(e){ return []; }
 }
-
-/* ===== RENDER ===== */
 function render(list){
   grid.innerHTML = '';
   if(!list.length){
@@ -385,19 +326,11 @@ function render(list){
     if(Number(p.stock) <= 0){
       const badge = document.createElement('div'); badge.className = 'oos-ribbon'; badge.textContent = 'OUT OF STOCK'; el.appendChild(badge);
     }
-    const img = document.createElement('img'); img.src = p.image; img.alt = p.title; img.loading="lazy";
-    img.dataset.action='open-product'; img.dataset.id=p.id;
-    el.appendChild(img);
-
+    const img = document.createElement('img'); img.src = p.image; img.alt = p.title; el.appendChild(img);
     const body = document.createElement('div'); body.className='product-body';
     const brand = p.brand ? `<div class="meta">${p.brand}</div>` : '';
-    const h3 = document.createElement('h3'); h3.textContent = p.title; h3.dataset.action='open-product'; h3.dataset.id=p.id;
-    body.appendChild(h3);
-    if(brand){ const div = document.createElement('div'); div.className='meta'; div.textContent = p.brand; body.appendChild(div); }
-    const stock = document.createElement('div'); stock.className='meta'; stock.textContent = 'Stock: ' + p.stock; body.appendChild(stock);
-    const price = document.createElement('div'); price.className='price'; price.textContent = fmtEUR(p.price); body.appendChild(price);
+    body.innerHTML = `<h3>${p.title}</h3>${brand}<div class='meta'>Stock: ${p.stock}</div><div class='price'>${fmtEUR(p.price)}</div>`;
     el.appendChild(body);
-
     const cta = document.createElement('div'); cta.className='cta';
     const a = document.createElement('a');
     a.className='btn'; a.href='#'; a.textContent = Number(p.stock) > 0 ? "Add to Cart" : "Out of Stock";
@@ -414,83 +347,6 @@ function searchProducts(){
   );
   render(filtered);
 }
-
-/* ===== Product Modal logic ===== */
-const productModal = document.getElementById('productModal');
-const pmTitle = document.getElementById('pmTitle');
-const pmBrand = document.getElementById('pmBrand');
-const pmPrice = document.getElementById('pmPrice');
-const pmStock = document.getElementById('pmStock');
-const pmDesc = document.getElementById('pmDesc');
-const pmImage = document.getElementById('pmImage');
-const pmGallery = document.getElementById('pmGallery');
-const pmCta = document.getElementById('pmCta');
-
-function openProductModal(product){
-  if(!product) return;
-  pmTitle.textContent = product.title || '';
-  pmBrand.textContent = product.brand ? product.brand : '';
-  pmPrice.textContent = fmtEUR(product.price);
-  pmStock.textContent = 'Stock: ' + (product.stock ?? 0);
-  pmDesc.textContent = product.description || '—';
-
-  pmImage.src = product.image;
-  pmImage.alt = product.title || 'Product image';
-
-  pmGallery.innerHTML = '';
-  const gallery = Array.isArray(product.gallery) ? product.gallery : [];
-  const images = [product.image, ...gallery.filter(Boolean)];
-  images.slice(0,8).forEach(src => {
-    const gi = document.createElement('img');
-    gi.src = src;
-    gi.alt = product.title;
-    gi.addEventListener('click', ()=>{ pmImage.src = src; });
-    pmGallery.appendChild(gi);
-  });
-
-  pmCta.innerHTML = '';
-  const btn = document.createElement('a');
-  btn.href = '#';
-  btn.className = 'btn';
-  if(Number(product.stock) > 0){
-    btn.textContent = 'Add to Cart';
-    btn.dataset.action = 'add-to-cart';
-    btn.dataset.id = product.id;
-  }else{
-    btn.textContent = 'Out of Stock';
-    btn.classList.add('disabled');
-  }
-  pmCta.appendChild(btn);
-
-  productModal.style.display = 'flex';
-  productModal.setAttribute('aria-hidden','false');
-}
-function closeProductModal(){
-  productModal.style.display = 'none';
-  productModal.setAttribute('aria-hidden','true');
-}
-
-/* Open on click (image or title) */
-document.addEventListener('click', function(e){
-  const openBtn = e.target.closest('[data-action="open-product"]');
-  if(openBtn){
-    e.preventDefault();
-    const id = openBtn.dataset.id;
-    const product = currentList.find(p => String(p.id) === String(id));
-    openProductModal(product);
-    return;
-  }
-  const addBtn = e.target.closest('[data-action="add-to-cart"]');
-  if(addBtn){
-    e.preventDefault();
-    const id = addBtn.dataset.id;
-    if(id){ addToCart(id); }
-    return;
-  }
-});
-productModal.addEventListener('click', (e)=>{
-  if(e.target === productModal){ closeProductModal(); }
-});
 
 /* ===== Cart ===== */
 const CART_KEY='hs_cart';
@@ -559,6 +415,13 @@ function changeQty(id, delta){
   openCart();
   updateCartIcon();
 }
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('[data-action="add-to-cart"]');
+  if(!btn) return;
+  e.preventDefault();
+  const id = btn.dataset.id;
+  if(id){ addToCart(id); }
+});
 document.addEventListener('DOMContentLoaded', () => {
   const radios = document.querySelectorAll('input[name="shipping"]');
   const totalEl = document.getElementById('cartTotal');
