@@ -72,6 +72,11 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   z-index: 5000;
   transition: transform 0.3s ease;
 }
+/* quando o menu estiver aberto, o carrinho fica por trás */
+.menu-open .floating-cart{
+  z-index: 2000;
+  pointer-events: none;
+}
 .floating-cart .cart-ico { font-size: 28px; line-height: 1; }
 .floating-cart .cart-count { font-size: 14px; font-weight: 800; line-height: 1; }
 .floating-cart .cart-count:empty { display:none; }
@@ -132,6 +137,10 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   transition: transform .28s ease; z-index: 2600; border-right: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 20px 40px rgba(0,0,0,.5);
 }
+/* largura do menu 70% em mobile */
+@media (max-width:600px){
+  .drawer{ width: 70vw; }
+}
 .drawer.open{ transform: translateX(0); }
 .drawer-header{ padding: 18px 18px 10px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.08); }
 .drawer-title{ font-weight: 900; letter-spacing: .06em; color: var(--orange); }
@@ -139,7 +148,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .drawer-body{ padding: 12px 18px 24px; overflow:auto; height: calc(100% - 60px); scrollbar-width:none; -ms-overflow-style:none; }
 .drawer-body::-webkit-scrollbar{ display:none; }
 .section{ margin: 10px 0 18px; }
-.section h4{ margin: 10px 0 8px; color: #fff; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; opacity:.9 }
+/* TITULOS "SUPPLEMENTS" e "COSMETICS" em laranja */
+.section h4{ margin: 10px 0 8px; color: var(--orange); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; opacity:1 }
 .section ul{ list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .section a{
   display:block; padding: 10px 12px; border-radius: 10px; background: #151515;
@@ -307,12 +317,16 @@ function openDrawer(){
   overlay.classList.add('show');
   openBtn.setAttribute('aria-expanded','true');
   drawer.setAttribute('aria-hidden','false');
+  // body ganha classe para jogar o carrinho para trás
+  document.body.classList.add('menu-open');
 }
 function closeDrawer(){
   drawer.classList.remove('open');
   overlay.classList.remove('show');
   openBtn.setAttribute('aria-expanded','false');
   drawer.setAttribute('aria-hidden','true');
+  // remove a classe quando fechar
+  document.body.classList.remove('menu-open');
 }
 openBtn.addEventListener('click', openDrawer);
 closeBtn.addEventListener('click', closeDrawer);
