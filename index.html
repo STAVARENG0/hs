@@ -162,6 +162,26 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 @media (min-width: 760px){
   .product-modal-body{ grid-template-columns: 1.2fr 1fr; align-items:start; }
 }
+
+
+
+
+@media (max-width: 600px){
+  /* Mobile: drawer lateral ocupando 50% da largura */
+  .drawer{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50vw;                 /* metade da tela */
+    border-radius: 0;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    transform: translateX(-100%); /* escondido por completo */
+  }
+  .drawer.open{
+    transform: translateX(0);     /* entra a partir da esquerda */
+  }
+}
+
 </style>
 </head>
 <body>
