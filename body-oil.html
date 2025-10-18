@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>HS Nutrition | Store</title>
+<title>HS Nutrition | Body Oil</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <meta content="no-store" http-equiv="Cache-Control"/>
 <style>
+
 :root{ --black:#0d0d0d; --white:#ffffff; --muted:#9c9c9c; --orange:#ff3c00; --card:#1a1a1a; --oos:#ff2d2d; }
 *{box-sizing:border-box}
 body{ margin:0; font-family:Poppins,system-ui,Arial,sans-serif; color:var(--white); background:var(--black); min-height:100dvh; }
 .wrap{max-width:1200px;margin:0 auto;padding:26px}
 .card{ background:transparent; border:none; border-radius:0; padding:0; box-shadow:none; position:relative; }
-header{text-align:center;margin-bottom:18px; position: relative;}
+header{text-align:center;margin-bottom:18px}
 .brand{ display:flex; flex-direction:column; align-items:center; gap:0; position:relative; }
 .brand img{ max-width:100%; height:auto; border:2px solid var(--orange); border-radius:20px; animation: glow 3s ease-in-out infinite alternate; }
 @keyframes glow { from { box-shadow:0 0 6px rgba(255,60,0,0.3); } to { box-shadow:0 0 14px rgba(255,100,0,0.6); } }
@@ -26,20 +27,26 @@ header{text-align:center;margin-bottom:18px; position: relative;}
 .search-box input::placeholder { color: #555; }
 .search-box button { padding: 12px 20px; border: 1px solid #ddd; border-radius: 20px; background: #ffffff; color: #000000; font-weight: 700; cursor: pointer; }
 .search-box button:hover { filter: none; opacity: .9; }
+.category-buttons{ display:flex; justify-content:center; gap:12px; margin: 12px 0 2px; flex-wrap: wrap; }
+.pill-btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius: 9999px; background: var(--orange); color: var(--white); font-weight: 800; border: 2px solid var(--orange); text-decoration:none; box-shadow: 0 6px 18px rgba(255,60,0,0.35); cursor:pointer; transition: transform .18s ease, filter .18s ease; }
+.pill-btn:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+.pill-btn:active{ transform: translateY(0); }
+@media (max-width: 600px) {
+  .brand { align-items: center; }
+  .brand .search-box { position: static; margin-top: 14px; width: 100%; max-width: 100%; padding: 0 10px; display: flex; justify-content: center; gap: 8px; }
+  .search-box input { flex: 1; padding: 12px 16px; border-radius: 20px; border: 1px solid #ddd; outline: none; background: #ffffff; color: #000000; font-size: 14px; }
+  .search-box button { padding: 12px 20px; border: 1px solid #ddd; border-radius: 20px; background: #ffffff; color: #000000; font-weight: 700; cursor: pointer; }
+}
 .divider{height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);margin:18px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;align-items:stretch}
 @media (max-width:600px){
   .grid{grid-template-columns:repeat(2,1fr)}
-  .brand { align-items: center; }
-  .brand .search-box { position: static; margin-top: 14px; width: 100%; max-width: 100%; padding: 0 10px; display: flex; justify-content: center; gap: 8px; }
 }
-
-/* ===== Products ===== */
 .product{display:flex;flex-direction:column;justify-content:space-between;}
 .product{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;flex-direction:column; position:relative;}
-.product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#0b0b0b;display:block;cursor:pointer;}
+.product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#0b0b0b;display:block}
 .product-body{padding:14px 16px 10px}
-.product h3{margin:0 0 6px;font-weight:700;font-size:16px;color:var(--white); cursor:pointer; }
+.product h3{margin:0 0 6px;font-weight:700;font-size:16px;color:var(--white);}
 .meta{color:var(--muted);font-size:13px;line-height:1.4;margin-bottom:8px}
 .price{font-weight:700;color:var(--white);margin-bottom:6px}
 .cta{padding:12px 14px 14px;border-top:1px dashed rgba(255,255,255,.08)}
@@ -52,7 +59,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .admin-btn-modal a:hover { filter: brightness(1.1); }
 .oos-ribbon{ position:absolute; top:10px; left:-40px; transform: rotate(-20deg); background: rgba(255,45,45,0.85); color:#fff; padding:10px 60px; font-weight:900; letter-spacing:.12em; text-shadow: 0 1px 2px rgba(0,0,0,.35); box-shadow:0 10px 20px rgba(0,0,0,.35); border:2px solid rgba(255,255,255,0.12); pointer-events:none; }
 
-/* ===== Floating cart ===== */
+/* ===== BOTÃO FLUTUANTE DO CARRINHO (contador dentro do botão) ===== */
 .floating-cart {
   position: fixed;
   bottom: 20px;
@@ -72,21 +79,15 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   z-index: 5000;
   transition: transform 0.3s ease;
 }
-/* quando o menu estiver aberto, o carrinho fica por trás */
-.menu-open .floating-cart{
-  z-index: 2000;
-  pointer-events: none;
-}
 .floating-cart .cart-ico { font-size: 28px; line-height: 1; }
 .floating-cart .cart-count { font-size: 14px; font-weight: 800; line-height: 1; }
 .floating-cart .cart-count:empty { display:none; }
 .floating-cart:hover { transform: scale(1.1) rotate(5deg); }
 
-/* ========= GENERIC MODAL ========= */
-.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index: 6000; }
+/* ========= CART MODAL ========= */
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000; }
 .modal-content { background:var(--card); padding:20px; border-radius:16px; max-width:600px; width:90%; text-align:left; color:var(--white); position:relative; border: 1px solid rgba(255,255,255,0.12); }
 .modal-close{position:absolute;top:10px;right:10px;background:#ff3c00;border:none;color:#fff;font-weight:bold;padding:6px 12px;border-radius:6px;cursor:pointer}
-
 .cart-content { background:#ffffff; color:#111; border:2px solid var(--orange); box-shadow:0 18px 42px rgba(0,0,0,.45); }
 .cart-content h2 { color:#111; margin:0 0 6px; }
 .cart-divider { border:none; border-top:2px dashed rgba(0,0,0,0.08); }
@@ -97,204 +98,34 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .cart-thumb { width:46px; height:46px; border-radius:8px; object-fit:cover; border:1px solid rgba(0,0,0,.06); }
 .cart-qty { display:flex; align-items:center; gap:6px; }
 
-/* ====== HAMBURGER MENU ====== */
-.menu-toggle {
-  position: relative;
-  z-index: 1000;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 9999px;
-  background: var(--orange);
-  color: var(--white);
-  font-weight: 900;
-  border: 2px solid var(--orange);
-  cursor: pointer;
-  user-select: none;
-  box-shadow: 0 6px 18px rgba(255,60,0,0.35);
-}
-.menu-toggle .bars{ width: 18px; height: 12px; position: relative; }
-.menu-toggle .bars::before,
-.menu-toggle .bars::after,
-.menu-toggle .bar{
-  content: ""; position: absolute; left: 0; right: 0; height: 2px; background: #fff; border-radius: 2px;
-}
-.menu-toggle .bar{ top: 5px; }
-.menu-toggle .bars::before{ top: 0; }
-.menu-toggle .bars::after{ bottom: 0; }
-
-/* Drawer */
-.drawer-overlay{
-  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
-  opacity: 0; pointer-events: none; transition: opacity .28s ease;
-  z-index: 2500;
-}
-.drawer-overlay.show{ opacity: 1; pointer-events:auto;}
-.drawer{
-  position: fixed; top: 0; left: 0; height: 100%; width: min(92vw, 380px);
-  background: #0f0f0f; color: #fff; transform: translateX(-100%);
-  transition: transform .28s ease; z-index: 2600; border-right: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 20px 40px rgba(0,0,0,.5);
-}
-/* largura do menu 70% em mobile */
-@media (max-width:600px){
-  .drawer{ width: 70vw; }
-}
-.drawer.open{ transform: translateX(0); }
-.drawer-header{ padding: 18px 18px 10px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.08); }
-.drawer-title{ font-weight: 900; letter-spacing: .06em; color: var(--orange); }
-.drawer-close{ background: transparent; color: #fff; border:none; font-size: 26px; cursor:pointer; }
-.drawer-body{ padding: 12px 18px 24px; overflow:auto; height: calc(100% - 60px); scrollbar-width:none; -ms-overflow-style:none; }
-.drawer-body::-webkit-scrollbar{ display:none; }
-.section{ margin: 10px 0 18px; }
-/* TITULOS "SUPPLEMENTS" e "COSMETICS" em laranja */
-.section h4{ margin: 10px 0 8px; color: var(--orange); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; opacity:1 }
-.section ul{ list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.section a{
-  display:block; padding: 10px 12px; border-radius: 10px; background: #151515;
-  color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.06);
-}
-.section a:hover{ background:#191919; }
-.drawer-footer{ padding: 14px 18px; border-top:1px dashed rgba(255,255,255,0.08); color:#9c9c9c; font-size: 12px; }
-
-/* ===== Product Detail Modal ===== */
-.product-content{ max-width:760px; width:min(92vw,760px); }
-.product-modal-body{ display:grid; grid-template-columns: 1fr; gap: 14px; }
-#pmImage{ width:100%; max-height:340px; border-radius:12px; object-fit:contain; background:#0b0b0b; }
-.product-title{ margin:0 0 4px; font-size: 20px; font-weight: 900; }
-.product-brand{ color: var(--muted); margin: 0 0 8px; }
-.product-price{ font-weight: 900; margin: 6px 0; }
-.product-stock{ color: var(--muted); font-size: 12px; margin-bottom: 10px; }
-.product-desc{ color: #e9e9e9; font-size: 14px; line-height: 1.5; }
-.gallery{ display:flex; gap:8px; margin-top:10px; overflow-x:auto; padding-bottom:4px; }
-.gallery img{ width:70px; height:70px; object-fit:cover; border-radius:10px; cursor:pointer; border:1px solid rgba(255,255,255,.08); flex:0 0 auto; }
-@media (min-width: 760px){
-  .product-modal-body{ grid-template-columns: 1.2fr 1fr; align-items:start; }
-}
-
-/* Enlarged Menu button */
-.big-menu-btn {
-  font-size: 1.125rem; /* ~18px */
-  padding: 0.9rem 1.2rem;
-  border-radius: 9999px;
-}
-@media (min-width: 768px) {
-  .big-menu-btn {
-    font-size: 1.25rem; /* ~20px */
-    padding: 1rem 1.4rem;
-  }
-}
 </style>
 </head>
 <body>
-
-<!-- DRAWER + OVERLAY -->
-<div class="drawer-overlay" id="drawerOverlay"></div>
-<aside class="drawer" id="sideMenu" aria-hidden="true">
-  <div class="drawer-header">
-    <div class="drawer-title">Browse</div>
-    <button class="drawer-close big-menu-btn" id="closeMenu" aria-label="Close menu">×</button>
-  </div>
-  <div class="drawer-body">
-    <div class="section">
-      <h4>Supplements</h4>
-      <ul>
-        <li><a href="vitamins-and-minerals.html">Vitamins &amp; Minerals</a></li>
-        <li><a href="heart-health.html">Heart Health</a></li>
-        <li><a href="liver-support.html">Liver Support</a></li>
-        <li><a href="multivitamins.html">Multivitamins</a></li>
-        <li><a href="mass-gainer.html">Mass Gainer</a></li>
-        <li><a href="pre-workout.html">Pre-Workout</a></li>
-        <li><a href="bcaa-and-eaa.html">BCAA &amp; EAA</a></li>
-        <li><a href="probiotics.html">Probiotics</a></li>
-        <li><a href="glutamine.html">Glutamine</a></li>
-        <li><a href="collagen.html">Collagen</a></li>
-        <li><a href="diuretics.html">Diuretics</a></li>
-        <li><a href="omega-3.html">Omega 3</a></li>
-        <li><a href="creatine.html">Creatine</a></li>
-        <li><a href="fat-loss.html">Fat Loss</a></li>
-      </ul>
-    </div>
-    <div class="section">
-      <h4>Cosmetics</h4>
-      <ul>
-        <li><a href="body-oil.html">Body Oil</a></li>
-        <li><a href="nails.html">Nails</a></li>
-        <li><a href="perfume.html">Perfume</a></li>
-        <li><a href="mascara.html">Mascara</a></li>
-        <li><a href="skin-care.html">Skin Care</a></li>
-        <li><a href="soap.html">Soap</a></li>
-        <li><a href="moisturizer.html">Moisturizer</a></li>
-        <li><a href="body-splash.html">Body Splash</a></li>
-        <li><a href="hair-tonic.html">Hair Tonic</a></li>
-        <li><a href="leavein-cream.html">Leave‑in Cream</a></li>
-        <li><a href="shampoo-and-conditioner.html">Shampoo &amp; Conditioner</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="drawer-footer">Tap a category to open.</div>
-</aside>
-
 <div class="wrap">
   <div class="card">
-    <div class="admin-btn-modal"><a href="login.html">Admin</a></div>
-
     <header>
       <div class="brand">
-        <svg class="welcome" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
-          <text text-anchor="middle" x="50%" y="50%">WELCOME</text>
-          <text text-anchor="middle" x="50%" y="72%" style="font-family: Poppins, sans-serif; font-size: 18px; fill: var(--orange); stroke: none;">www.hs-nutrition.ie</text>
-        </svg>
-        <img alt="HS Nutrition Cover" src="5.png"/>
+        <img alt="HS Nutrition Cover" src="CapaCosmetics.png"/>
         <div class="search-box">
           <input id="search" placeholder="Search for products..." type="text"/>
           <button onclick="searchProducts()">Search</button>
         </div>
       </div>
     </header>
-
-    <!-- Menu button -->
-    <div class="menu-row" style="display:flex;justify-content:center;gap:12px;margin:8px 0 6px;">
-      <button class="menu-toggle big-menu-btn" id="openMenu" aria-controls="sideMenu" aria-expanded="false">
-        <span class="bars"><span class="bar"></span></span>
-        Menu
-      </button>
+    <div class="category-buttons">
+      <a class="pill-btn" href="index.html">Home</a>
     </div>
-
+    <h1 style="text-align:center;margin:10px 0;color:var(--orange);font-family:Orbitron,sans-serif;">Body Oil</h1>
     <div class="divider"></div>
     <section class="grid" id="products"></section>
     <div class="divider"></div>
-
     <footer>© <span id="year"></span> HS Nutrition</footer>
   </div>
 </div>
 
-<!-- Floating Cart -->
-<div class="floating-cart" onclick="openCart()" aria-label="Open cart">
+<div class="floating-cart" onclick="openCart()" aria-label="Abrir carrinho">
   <div class="cart-ico">🛒</div>
   <div class="cart-count" id="cartCount"></div>
-</div>
-
-<!-- Product Detail Modal -->
-<div id="productModal" class="modal" aria-hidden="true">
-  <div class="modal-content product-content">
-    <button class="modal-close" onclick="closeProductModal()">×</button>
-    <div class="product-modal-body">
-      <div>
-        <img id="pmImage" alt="Product image"/>
-        <div class="gallery" id="pmGallery"></div>
-      </div>
-      <div>
-        <h3 class="product-title" id="pmTitle"></h3>
-        <div class="product-brand" id="pmBrand"></div>
-        <div class="product-price" id="pmPrice"></div>
-        <div class="product-stock" id="pmStock"></div>
-        <p class="product-desc" id="pmDesc"></p>
-        <div id="pmCta" style="margin-top:12px;"></div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- Cart Modal -->
@@ -320,31 +151,6 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 </div>
 
 <script>
-/* ===== Menu open/close ===== */
-const openBtn = document.getElementById('openMenu');
-const closeBtn = document.getElementById('closeMenu');
-const drawer = document.getElementById('sideMenu');
-const overlay = document.getElementById('drawerOverlay');
-function openDrawer(){
-  drawer.classList.add('open');
-  overlay.classList.add('show');
-  openBtn.setAttribute('aria-expanded','true');
-  drawer.setAttribute('aria-hidden','false');
-  // body ganha classe para jogar o carrinho para trás
-  document.body.classList.add('menu-open');
-}
-function closeDrawer(){
-  drawer.classList.remove('open');
-  overlay.classList.remove('show');
-  openBtn.setAttribute('aria-expanded','false');
-  drawer.setAttribute('aria-hidden','true');
-  // remove a classe quando fechar
-  document.body.classList.remove('menu-open');
-}
-openBtn.addEventListener('click', openDrawer);
-closeBtn.addEventListener('click', closeDrawer);
-overlay.addEventListener('click', closeDrawer);
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') { closeDrawer(); closeProductModal(); } });
 
 const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
@@ -356,6 +162,7 @@ function fmtEUR(n){
   if(Number.isInteger(v)) return '€ ' + v;
   return '€ ' + String(v);
 }
+
 function sanitizeList(list){
   if(!Array.isArray(list)) return [];
   return list.map(p => ({
@@ -371,6 +178,7 @@ function sanitizeList(list){
     stock: typeof p.stock === 'number' ? p.stock : parseInt(p.stock || '0', 10)
   }));
 }
+
 async function readPublic(){
   try{
     const r = await fetch(PUBLIC_JSON + '?t=' + Date.now(), {cache:'no-store'});
@@ -380,7 +188,6 @@ async function readPublic(){
   }catch(e){ return []; }
 }
 
-/* ===== RENDER ===== */
 function render(list){
   grid.innerHTML = '';
   if(!list.length){
@@ -392,19 +199,11 @@ function render(list){
     if(Number(p.stock) <= 0){
       const badge = document.createElement('div'); badge.className = 'oos-ribbon'; badge.textContent = 'OUT OF STOCK'; el.appendChild(badge);
     }
-    const img = document.createElement('img'); img.src = p.image; img.alt = p.title; img.loading="lazy";
-    img.dataset.action='open-product'; img.dataset.id=p.id;
-    el.appendChild(img);
-
+    const img = document.createElement('img'); img.src = p.image; img.alt = p.title; el.appendChild(img);
     const body = document.createElement('div'); body.className='product-body';
     const brand = p.brand ? `<div class="meta">${p.brand}</div>` : '';
-    const h3 = document.createElement('h3'); h3.textContent = p.title; h3.dataset.action='open-product'; h3.dataset.id=p.id;
-    body.appendChild(h3);
-    if(brand){ const div = document.createElement('div'); div.className='meta'; div.textContent = p.brand; body.appendChild(div); }
-    const stock = document.createElement('div'); stock.className='meta'; stock.textContent = 'Stock: ' + p.stock; body.appendChild(stock);
-    const price = document.createElement('div'); price.className='price'; price.textContent = fmtEUR(p.price); body.appendChild(price);
+    body.innerHTML = `<h3>${p.title}</h3>${brand}<div class='meta'>Stock: ${p.stock}</div><div class='price'>${fmtEUR(p.price)}</div>`;
     el.appendChild(body);
-
     const cta = document.createElement('div'); cta.className='cta';
     const a = document.createElement('a');
     a.className='btn'; a.href='#'; a.textContent = Number(p.stock) > 0 ? "Add to Cart" : "Out of Stock";
@@ -412,6 +211,8 @@ function render(list){
     cta.appendChild(a); el.appendChild(cta); grid.appendChild(el);
   });
 }
+
+/* ===== Busca ===== */
 function searchProducts(){
   const term = document.getElementById('search').value.toLowerCase();
   const filtered = currentList.filter(p =>
@@ -422,88 +223,12 @@ function searchProducts(){
   render(filtered);
 }
 
-/* ===== Product Modal logic ===== */
-const productModal = document.getElementById('productModal');
-const pmTitle = document.getElementById('pmTitle');
-const pmBrand = document.getElementById('pmBrand');
-const pmPrice = document.getElementById('pmPrice');
-const pmStock = document.getElementById('pmStock');
-const pmDesc = document.getElementById('pmDesc');
-const pmImage = document.getElementById('pmImage');
-const pmGallery = document.getElementById('pmGallery');
-const pmCta = document.getElementById('pmCta');
-
-function openProductModal(product){
-  if(!product) return;
-  pmTitle.textContent = product.title || '';
-  pmBrand.textContent = product.brand ? product.brand : '';
-  pmPrice.textContent = fmtEUR(product.price);
-  pmStock.textContent = 'Stock: ' + (product.stock ?? 0);
-  pmDesc.textContent = product.description || '—';
-
-  pmImage.src = product.image;
-  pmImage.alt = product.title || 'Product image';
-
-  pmGallery.innerHTML = '';
-  const gallery = Array.isArray(product.gallery) ? product.gallery : [];
-  const images = [product.image, ...gallery.filter(Boolean)];
-  images.slice(0,8).forEach(src => {
-    const gi = document.createElement('img');
-    gi.src = src;
-    gi.alt = product.title;
-    gi.addEventListener('click', ()=>{ pmImage.src = src; });
-    pmGallery.appendChild(gi);
-  });
-
-  pmCta.innerHTML = '';
-  const btn = document.createElement('a');
-  btn.href = '#';
-  btn.className = 'btn';
-  if(Number(product.stock) > 0){
-    btn.textContent = 'Add to Cart';
-    btn.dataset.action = 'add-to-cart';
-    btn.dataset.id = product.id;
-  }else{
-    btn.textContent = 'Out of Stock';
-    btn.classList.add('disabled');
-  }
-  pmCta.appendChild(btn);
-
-  productModal.style.display = 'flex';
-  productModal.setAttribute('aria-hidden','false');
-}
-function closeProductModal(){
-  productModal.style.display = 'none';
-  productModal.setAttribute('aria-hidden','true');
-}
-
-/* Open on click (image or title) */
-document.addEventListener('click', function(e){
-  const openBtn = e.target.closest('[data-action="open-product"]');
-  if(openBtn){
-    e.preventDefault();
-    const id = openBtn.dataset.id;
-    const product = currentList.find(p => String(p.id) === String(id));
-    openProductModal(product);
-    return;
-  }
-  const addBtn = e.target.closest('[data-action="add-to-cart"]');
-  if(addBtn){
-    e.preventDefault();
-    const id = addBtn.dataset.id;
-    if(id){ addToCart(id); }
-    return;
-  }
-});
-productModal.addEventListener('click', (e)=>{
-  if(e.target === productModal){ closeProductModal(); }
-});
-
-/* ===== Cart ===== */
+/* ===== CARRINHO ===== */
 const CART_KEY='hs_cart';
 function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(e){ return []; } }
 function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); }
 let cart = loadCart();
+
 function addToCart(productId){
   const product = currentList.find(p => String(p.id) === String(productId));
   if(!product) return;
@@ -512,14 +237,17 @@ function addToCart(productId){
   saveCart(cart);
   updateCartIcon();
 }
+
 function updateCartIcon(){
   const countEl = document.getElementById('cartCount');
   const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
   countEl.textContent = totalItems ? String(totalItems) : '';
 }
+
 function getSelectedShipping(){
   return document.querySelector('input[name="shipping"]:checked');
 }
+
 function openCart(){
   const cartModal = document.getElementById('cartModal');
   const list = document.getElementById('cartItems');
@@ -556,7 +284,9 @@ function openCart(){
   }
   cartModal.style.display = 'flex';
 }
+
 function closeCart(){ document.getElementById('cartModal').style.display = 'none'; }
+
 function changeQty(id, delta){
   const item = cart.find(p => p.id === id);
   if(!item) return;
@@ -566,25 +296,41 @@ function changeQty(id, delta){
   openCart();
   updateCartIcon();
 }
+
+/* ===== Unified click handler for Add-to-Cart ===== */
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('[data-action="add-to-cart"]');
+  if(!btn) return;
+  e.preventDefault();
+  const id = btn.dataset.id;
+  if(id){ addToCart(id); }
+});
+
+// ===== Shipping & Checkout (force selection) =====
 document.addEventListener('DOMContentLoaded', () => {
   const radios = document.querySelectorAll('input[name="shipping"]');
   const totalEl = document.getElementById('cartTotal');
   const checkoutBtn = document.querySelector('.cart-checkout');
+
   function calcBaseTotal() {
     return cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
   }
+
   function updateDisplayTotal() {
     const base = calcBaseTotal();
     const sel = document.querySelector('input[name="shipping"]:checked');
     const shippingVal = sel ? Number(sel.value) : 0;
     totalEl.textContent = fmtEUR(base + shippingVal);
   }
+
   radios.forEach(r => r.addEventListener('change', updateDisplayTotal));
+
   const _openCart = openCart;
   openCart = function() {
     _openCart();
     updateDisplayTotal();
   };
+
   checkoutBtn.addEventListener('click', () => {
     const sel = getSelectedShipping();
     if(!sel){
@@ -607,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('year').textContent = new Date().getFullYear();
   updateCartIcon();
 })();
+
 </script>
 </body>
 </html>
