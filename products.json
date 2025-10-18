@@ -123,18 +123,5 @@
     "gallery": [],
     "createdAt": 1760814636312,
     "status": "publicado"
-  },
-  {
-    "id": "1760815137903",
-    "title": "CREATINA EM CAPISULA ",
-    "price": 23,
-    "description": "creatina top",
-    "department": "supplements",
-    "category": "Creatine",
-    "stock": 30,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1760815137903/creatina em capisula.png",
-    "gallery": [],
-    "createdAt": 1760815154389,
-    "status": "publicado"
   }
 ]
