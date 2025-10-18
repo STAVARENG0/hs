@@ -156,13 +156,42 @@ const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
 
-// === Category-only view (ROBUST NORMALIZATION) ===
+// === Category-only view (ROBUST) ===
 (function(){
   function normalize(str){
     try{
       if(!str) return '';
       let s = String(str).trim().toLowerCase();
-      s = s.replace(/&amp;/g, '&');
+      s = s.replace(/&amp;/g, '&');                             // decode ampersand
+      s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-'); // unify dashes
+      s = s.replace(/\s+/g, ' ');                        // collapse spaces
+      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // remove accents
+      s = s.replace(/[^a-z0-9& \-]+/g, '');              // strip odd punctuation (keep letters, numbers, &, space, -)
+      s = s.replace(/\bskin\s*care\b/g, 'skincare');
+      s = s.replace(/\bshampoo\s*conditioner\b/g, 'shampoo & conditioner');
+      s = s.replace(/\bomega\s*3\b/g, 'omega 3');
+      s = s.replace(/\bbcaa\s*eaa\b/g, 'bcaa & eaa');
+      return s.trim();
+    }catch(e){ return ''; }
+  }
+  const h1 = document.querySelector('h1');
+  const FILTER_CATEGORY = normalize(h1 && h1.textContent ? h1.textContent : '');
+  const oldInit = init;
+  init = async function(){
+    currentList = await readPublic();
+    currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+    currentList = currentList.filter(p => {
+      const c = normalize(p.category);
+      return c && c === FILTER_CATEGORY;
+    });
+    render(currentList);
+    document.getElementById('year').textContent = new Date().getFullYear();
+    updateCartIcon();
+  };
+})();
+
+
+s = s.replace(/&amp;/g, '&');
       s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-');
       s = s.replace(/\s+/g, ' ');
       s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -441,3 +470,42 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+<script>
+async function init(){
+  // Read all public products
+  currentList = await readPublic();
+  // Normalize helper
+  const normalize = (str) => {
+    try{
+      if(!str) return '';
+      let s = String(str).trim().toLowerCase();
+      s = s.replace(/&amp;/g, '&');                       // decode minimal entity
+      s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-'); // normalize dashes
+      s = s.replace(/\s+/g, ' ');                        // collapse spaces
+      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // remove accents
+      s = s.replace(/[^a-z0-9& \-]+/g, '');              // strip odd punctuation (keep letters, numbers, &, space, -)
+      s = s.replace(/\bskin\s*care\b/g, 'skincare');
+      s = s.replace(/\bshampoo\s*conditioner\b/g, 'shampoo & conditioner');
+      s = s.replace(/\bomega\s*3\b/g, 'omega 3');
+      s = s.replace(/\bbcaa\s*eaa\b/g, 'bcaa & eaa');
+      return s.trim();
+    }catch(e){ return ''; }
+  };
+  // Determine this page's category from H1
+  const h1 = document.querySelector('h1');
+  const FILTER_CATEGORY = normalize(h1 && h1.textContent ? h1.textContent : '');
+  // Sort newest first
+  currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+  // Strict filter (using normalization)
+  currentList = currentList.filter(p => {
+    const c = normalize(p.category);
+    return c && c === FILTER_CATEGORY;
+  });
+  // Render (will show "No products available." if list is empty)
+  render(currentList);
+  // Footer year + cart icon
+  document.getElementById('year').textContent = new Date().getFullYear();
+  updateCartIcon();
+}
+init();
+</script>
