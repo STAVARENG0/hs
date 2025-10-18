@@ -153,6 +153,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 <script>
 
 const PUBLIC_JSON = './products.json';
+const CATEGORY = 'BCAA & EAA'; // categoria desta página (igual ao painel)
 const grid = document.getElementById('products');
 let currentList = [];
 
@@ -348,12 +349,12 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ===== Init ===== */
 (async function init(){
   currentList = await readPublic();
+  // Filtra apenas itens desta categoria conforme o painel
+  currentList = currentList.filter(p => (p.category || '').toLowerCase() === CATEGORY.toLowerCase());
   currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
   render(currentList);
   document.getElementById('year').textContent = new Date().getFullYear();
   updateCartIcon();
-})();
-
-</script>
+})();</script>
 </body>
 </html>
