@@ -156,13 +156,7 @@ const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
 
-// === Category-only view (ROBUST) ===
-(function(){
-  function normalize(str){
-    try{
-      if(!str) return '';
-      let s = String(str).trim().toLowerCase();
-      s = s.replace(/&amp;/g, '&');                             // decode ampersand
+s = s.replace(/&amp;/g, '&');                             // decode ampersand
       s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-'); // unify dashes
       s = s.replace(/\s+/g, ' ');                        // collapse spaces
       s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // remove accents
@@ -176,22 +170,7 @@ let currentList = [];
   }
   const h1 = document.querySelector('h1');
   const FILTER_CATEGORY = normalize(h1 && h1.textContent ? h1.textContent : '');
-  const oldInit = init;
-  init = async function(){
-    currentList = await readPublic();
-    currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
-    currentList = currentList.filter(p => {
-      const c = normalize(p.category);
-      return c && c === FILTER_CATEGORY;
-    });
-    render(currentList);
-    document.getElementById('year').textContent = new Date().getFullYear();
-    updateCartIcon();
-  };
-})();
-
-
-s = s.replace(/&amp;/g, '&');
+  s = s.replace(/&amp;/g, '&');
       s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-');
       s = s.replace(/\s+/g, ' ');
       s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -460,71 +439,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ===== Init ===== */
 (async function init(){
-  currentList = await readPublic();
+currentList = await readPublic();
   currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
-  render(currentList);
-  document.getElementById('year').textContent = new Date().getFullYear();
+  /* render skipped on category pages */
+document.getElementById('year').textContent = new Date().getFullYear();
   updateCartIcon();
 })();
-
 </script>
 
 <script>
-// === Category loader (fail-safe) ===
-(function(){
-  function normalize(str){
-    try{
-      if(!str) return '';
-      let s = String(str).trim().toLowerCase();
-      s = s.replace(/&amp;/g, '&');
-      s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-');
-      s = s.replace(/\s+/g, ' ');
-      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      s = s.replace(/[^a-z0-9& \-]+/g, '');
-      s = s.replace(/\bskin\s*care\b/g, 'skincare');
-      s = s.replace(/\bshampoo\s*conditioner\b/g, 'shampoo & conditioner');
-      s = s.replace(/\bomega\s*3\b/g, 'omega 3');
-      s = s.replace(/\bbcaa\s*eaa\b/g, 'bcaa & eaa');
-      return s.trim();
-    }catch(e){ return ''; }
-  }
-  function showEmpty(){
-    try{
-      var grid = document.getElementById('products');
-      if(grid){
-        grid.innerHTML = '<div class="meta" style="text-align:center;padding:20px;">No products available.</div>';
-      }
-    }catch(e){}
-  }
-  document.addEventListener('DOMContentLoaded', async function(){
-    try{
-      var h1 = document.querySelector('h1');
-      var target = normalize(h1 && h1.textContent ? h1.textContent : '');
-      var list = [];
-      if(typeof readPublic === 'function'){
-        list = await readPublic();
-      }
-      if(!Array.isArray(list)) list = [];
-      list.sort(function(a,b){ return (b.createdAt||0) - (a.createdAt||0); });
-      list = list.filter(function(p){
-        var c = normalize(p && p.category);
-        return c && c === target;
-      });
-      if(typeof render === 'function' && list.length){
-        render(list);
-      }else{
-        showEmpty();
-      }
-    }catch(e){
-      showEmpty();
-      try{ console.error('[category failsafe]', e); }catch(_){}
-    }
-  });
-})();
-</script>
-
-</body>
-</html>
 <script>
 async function init(){
   // Read all public products
@@ -557,10 +480,158 @@ async function init(){
     return c && c === FILTER_CATEGORY;
   });
   // Render (will show "No products available." if list is empty)
-  render(currentList);
-  // Footer year + cart icon
+  /* render skipped on category pages */
+// Footer year + cart icon
   document.getElementById('year').textContent = new Date().getFullYear();
   updateCartIcon();
 }
 init();
 </script>
+
+<script>
+(function(){
+  function normBase(s){
+    if(!s) return '';
+    try{
+      s = String(s).trim().toLowerCase();
+      s = s.replace(/&amp;/g, '&');
+      s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-');
+      s = s.replace(/\s+/g, ' ');
+      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      s = s.replace(/[^a-z0-9& \-]+/g, '');
+      return s;
+    }catch(e){ return ''; }
+  }
+  const SYN = new Map([
+    // Supplements
+    ['creatina','creatine'],
+    ['vitaminas e minerais','vitamins & minerals'],
+    ['saude do coracao','heart health'],
+    ['figado','liver support'], ['suporte ao figado','liver support'],
+    ['multivitaminas','multivitamins'], ['multi vitaminas','multivitamins'],
+    ['ganho de massa','mass gainer'], ['ganho de massa muscular','mass gainer'],
+    ['pre treino','pre-workout'], ['pre-treino','pre-workout'],
+    ['bcaa e eaa','bcaa & eaa'], ['bcaa eaa','bcaa & eaa'],
+    ['probioticos','probiotics'],
+    ['glutamina','glutamine'],
+    ['colageno','collagen'],
+    ['diureticos','diuretics'],
+    ['omega 3','omega 3'], ['omega-3','omega 3'],
+    ['perda de gordura','fat loss'], ['emagrecimento','fat loss'],
+    // Cosmetics
+    ['oleo corporal','body oil'], ['oleo para o corpo','body oil'],
+    ['unhas','nails'],
+    ['perfume','perfume'],
+    ['mascara','mascara'],
+    ['cuidado com a pele','skincare'], ['cuidados com a pele','skincare'], ['skin care','skincare'],
+    ['sabonete','soap'],
+    ['hidratante','moisturizer'],
+    ['spray corporal','body splash'], ['body splash','body splash'],
+    ['tonico capilar','hair tonic'], ['tonico para cabelo','hair tonic'],
+    ['creme leave in','leave-in cream'], ['leave in','leave-in cream'], ['leave-in','leave-in cream'],
+    ['shampoo e condicionador','shampoo & conditioner'], ['shampoo & condicionador','shampoo & conditioner']
+  ].map(([k,v])=>[normBase(k), normBase(v)]));
+  function normalizeFinal(s){
+    let n = normBase(s);
+    if(SYN.has(n)) n = SYN.get(n);
+    n = n.replace(/\bskin\s*care\b/g, 'skincare');
+    n = n.replace(/\bbcaa\s*eaa\b/g, 'bcaa & eaa');
+    return n.trim();
+  }
+  async function initCategoryPage(){
+    const h1 = document.querySelector('h1');
+    const FILTER = normalizeFinal(h1 && h1.textContent);
+    let list = await readPublic();
+    if(!Array.isArray(list)) list = [];
+    list.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+    list = list.filter(p => {
+      const c = normalizeFinal(p && p.category);
+      return c && c === FILTER;
+    });
+    window.currentList = list;
+    render(list);
+    const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+    if(typeof updateCartIcon === 'function') updateCartIcon();
+  }
+  if(typeof readPublic === 'function' && typeof render === 'function'){
+    // Defer to ensure base functions are defined
+    window.addEventListener('DOMContentLoaded', ()=> initCategoryPage());
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  function normBase(s){
+    if(!s) return '';
+    try{
+      s = String(s).trim().toLowerCase();
+      s = s.replace(/&amp;/g, '&');
+      s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-');
+      s = s.replace(/\s+/g, ' ');
+      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      s = s.replace(/[^a-z0-9& \-]+/g, '');
+      return s;
+    }catch(e){ return ''; }
+  }
+  const SYN = new Map([
+    // Supplements
+    ['creatina','creatine'],
+    ['vitaminas e minerais','vitamins & minerals'],
+    ['saude do coracao','heart health'],
+    ['figado','liver support'], ['suporte ao figado','liver support'],
+    ['multivitaminas','multivitamins'], ['multi vitaminas','multivitamins'],
+    ['ganho de massa','mass gainer'], ['ganho de massa muscular','mass gainer'],
+    ['pre treino','pre-workout'], ['pre-treino','pre-workout'],
+    ['bcaa e eaa','bcaa & eaa'], ['bcaa eaa','bcaa & eaa'],
+    ['probioticos','probiotics'],
+    ['glutamina','glutamine'],
+    ['colageno','collagen'],
+    ['diureticos','diuretics'],
+    ['omega 3','omega 3'], ['omega-3','omega 3'],
+    ['perda de gordura','fat loss'], ['emagrecimento','fat loss'],
+    // Cosmetics
+    ['oleo corporal','body oil'], ['oleo para o corpo','body oil'],
+    ['unhas','nails'],
+    ['perfume','perfume'],
+    ['mascara','mascara'],
+    ['cuidado com a pele','skincare'], ['cuidados com a pele','skincare'], ['skin care','skincare'],
+    ['sabonete','soap'],
+    ['hidratante','moisturizer'],
+    ['spray corporal','body splash'], ['body splash','body splash'],
+    ['tonico capilar','hair tonic'], ['tonico para cabelo','hair tonic'],
+    ['creme leave in','leave-in cream'], ['leave in','leave-in cream'], ['leave-in','leave-in cream'],
+    ['shampoo e condicionador','shampoo & conditioner'], ['shampoo & condicionador','shampoo & conditioner']
+  ].map(([k,v])=>[normBase(k), normBase(v)]));
+  function normalizeFinal(s){
+    let n = normBase(s);
+    if(SYN.has(n)) n = SYN.get(n);
+    n = n.replace(/\bskin\s*care\b/g, 'skincare');
+    n = n.replace(/\bbcaa\s*eaa\b/g, 'bcaa & eaa');
+    return n.trim();
+  }
+  async function initCategoryPage(){
+    const h1 = document.querySelector('h1');
+    const FILTER = normalizeFinal(h1 && h1.textContent);
+    let list = await readPublic();
+    if(!Array.isArray(list)) list = [];
+    list.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+    list = list.filter(p => {
+      const c = normalizeFinal(p && p.category);
+      return c && c === FILTER;
+    });
+    window.currentList = list;
+    render(list);
+    const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+    if(typeof updateCartIcon === 'function') updateCartIcon();
+  }
+  if(typeof readPublic === 'function' && typeof render === 'function'){
+    window.addEventListener('DOMContentLoaded', ()=> initCategoryPage());
+  }
+})();
+</script>
+
+</body>
+
+</html>
