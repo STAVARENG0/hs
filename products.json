@@ -175,5 +175,31 @@
     "gallery": [],
     "createdAt": 1760815601806,
     "status": "publicado"
+  },
+  {
+    "id": "1760828202287",
+    "title": "CREATINA EM CAPISULA ",
+    "price": 50,
+    "description": "CRATIANA LINDA ",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 23,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1760828202287/creatina em capisula.png",
+    "gallery": [],
+    "createdAt": 1760828223675,
+    "status": "publicado"
+  },
+  {
+    "id": "1760828217642",
+    "title": "CREATINA EM CAPISULA ",
+    "price": 50,
+    "description": "CRATIANA LINDA ",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 23,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1760828217642/creatina em capisula.png",
+    "gallery": [],
+    "createdAt": 1760828228807,
+    "status": "publicado"
   }
 ]
