@@ -1,18 +1,5 @@
 [
   {
-    "id": "1759632782433",
-    "title": "CREME HIDRATANTE EGEO",
-    "price": 25,
-    "description": "Suflê Hidratante Desodorante Corporal Egeo Choc, 250G",
-    "category": "cosmetics",
-    "stock": 18,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759632782433/41XaCtre1iL._SR600315_PIWhiteStripBottomLeft035_SCLZZZZZZZ_FMpng_BG255255255.png",
-    "gallery": [],
-    "createdAt": 1759632783458,
-    "status": "publicado",
-    "department": "supplements"
-  },
-  {
     "id": "1759632921858",
     "title": "PERFUME EGEO ",
     "price": 32,
