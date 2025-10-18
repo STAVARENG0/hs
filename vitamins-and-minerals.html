@@ -155,13 +155,52 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
-
 // === Category-only view ===
 (function(){
   try{
     const H1 = document.querySelector('h1');
     const FILTER_CATEGORY = (H1 && H1.textContent ? H1.textContent.trim() : '').toLowerCase();
-    const _init = init;
+    init = async function(){
+      let list = await readPublic();
+      list.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+      // STRICT: only items that HAVE category and match this page's category
+      list = list.filter(p => {
+        const c = (p && p.category ? String(p.category).trim().toLowerCase() : '');
+        return c && c === FILTER_CATEGORY;
+      });
+      currentList = list;
+      render(currentList);
+      const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+      updateCartIcon && updateCartIcon();
+    };
+  }catch(e){ /* noop */ }
+})();
+
+
+// === Category-only view (STRICT) ===
+(function(){
+  try{
+    const h1 = document.querySelector('h1');
+    const FILTER_CATEGORY = (h1 && h1.textContent ? h1.textContent.trim() : '').toLowerCase();
+    const oldInit = init;
+    init = async function(){
+      currentList = await readPublic();
+      // newest first
+      currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+      // strict filter: category must exist and match exactly (case-insensitive, trimmed)
+      currentList = currentList.filter(p => {
+        const c = (p.category || '').toString().trim().toLowerCase();
+        return c && c === FILTER_CATEGORY;
+      });
+      render(currentList);
+      document.getElementById('year').textContent = new Date().getFullYear();
+      updateCartIcon();
+    };
+  }catch(e){ /* noop */ }
+})();
+
+
+const _init = init;
     init = async function(){
       currentList = await readPublic();
       currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
