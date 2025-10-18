@@ -100,11 +100,15 @@ body.modal-open { overflow: hidden; }
 <input id="titulo" placeholder="Título do produto" required type="text"/>
 <input id="valor" placeholder="Valor (€)" required step="0.01" type="number"/>
 <textarea id="descricao" placeholder="Descrição do produto"></textarea>
+<label>Departamento</label>
+<select id="departamento" required>
+  <option value="">Selecione...</option>
+  <option value="supplements">Supplements</option>
+  <option value="cosmetics">Cosmetics</option>
+</select>
 <label>Categoria</label>
-<select id="categoria" required>
-<option value="">Selecione...</option>
-<option value="supplements">Supplements</option>
-<option value="cosmetics">Cosmetics</option>
+<select id="subcategoria" required>
+  <option value="">Selecione um departamento primeiro...</option>
 </select>
 <label>Estoque</label>
 <input id="estoque" min="0" placeholder="Quantidade em estoque" type="number" value="0"/>
@@ -122,7 +126,7 @@ body.modal-open { overflow: hidden; }
 <tr>
 <th>Título</th>
 <th>Valor (€)</th>
-<th>Categoria</th>
+<th>Departamento</th><th>Categoria</th>
 <th>Estoque</th>
 <th>Data</th>
 <th>Ações</th>
@@ -133,6 +137,74 @@ body.modal-open { overflow: hidden; }
 </div>
 </div>
 <script>
+
+// ==== Categorias (subcategorias) por departamento ====
+const SUPP_CATS = [
+  "Vitamins & Minerals",
+  "Heart Health",
+  "Liver Support",
+  "Multivitamins",
+  "Mass Gainer",
+  "Pre-Workout",
+  "BCAA & EAA",
+  "Probiotics",
+  "Glutamine",
+  "Collagen",
+  "Diuretics",
+  "Omega 3",
+  "Creatine",
+  "Fat Loss",
+];
+
+const COSM_CATS = [
+  "Body Oil",
+  "Nails",
+  "Perfume",
+  "Mascara",
+  "Skin Care",
+  "Soap",
+  "Moisturizer",
+  "Body Splash",
+  "Hair Tonic",
+  "Leave-in Cream",
+  "Shampoo & Conditioner",
+];
+
+function fillOptions(selectEl, arr, selected){
+  selectEl.innerHTML = '<option value="">Selecione...</option>';
+  arr.forEach(n => {
+    const opt = document.createElement('option');
+    opt.value = n;
+    opt.textContent = n;
+    if(selected && selected === n) opt.selected = true;
+    selectEl.appendChild(opt);
+  });
+}
+
+function onDepartamentoChange(){
+  const dep = document.getElementById('departamento').value;
+  const sub = document.getElementById('subcategoria');
+  if(dep === 'supplements') fillOptions(sub, SUPP_CATS);
+  else if(dep === 'cosmetics') fillOptions(sub, COSM_CATS);
+  else sub.innerHTML = '<option value="">Selecione um departamento primeiro...</option>';
+}
+
+function onEditDepartamentoChange(){
+  const dep = document.getElementById('editDepartamento').value;
+  const sub = document.getElementById('editSubcategoria');
+  if(dep === 'supplements') fillOptions(sub, SUPP_CATS, document.getElementById('editSubcategoria').dataset.value || '');
+  else if(dep === 'cosmetics') fillOptions(sub, COSM_CATS, document.getElementById('editSubcategoria').dataset.value || '');
+  else sub.innerHTML = '<option value="">Selecione um departamento primeiro...</option>';
+}
+
+// Vincular listeners após DOM pronto
+document.addEventListener('DOMContentLoaded', () => {
+  const dep = document.getElementById('departamento');
+  if(dep){ dep.addEventListener('change', onDepartamentoChange); }
+  const ed = document.getElementById('editDepartamento');
+  if(ed){ ed.addEventListener('change', onEditDepartamentoChange); }
+});
+
     let produtos = [];
 
     // ===== Helpers UTF-8/Base64 seguros =====
@@ -183,7 +255,7 @@ body.modal-open { overflow: hidden; }
         tr.innerHTML = `
           <td>${p.title}</td>
           <td>€ ${Number(p.price || 0).toFixed(2)}</td>
-          <td>${p.category}</td>
+          <td>${p.department || (p.category === 'supplements' || p.category === 'cosmetics' ? p.category : '')}</td><td>${p.category}</td>
           <td>${p.stock}</td>
           <td>${new Date(p.createdAt).toLocaleDateString()}</td>
           <td><div class='action-buttons'><button onclick="editarProduto(${i})">Editar</button><button onclick="excluirProduto(${i})">Excluir</button></div></td>
@@ -237,6 +309,7 @@ body.modal-open { overflow: hidden; }
         ...p,
         title: p.title ?? 'Sem título',
         description: p.description ?? '',
+        department: p.department || 'supplements',
         category: p.category || 'uncategorized',
         price: Number(p.price || 0),
         stock: Number.isFinite(p.stock) ? p.stock : parseInt(p.stock || '0', 10),
@@ -309,7 +382,8 @@ body.modal-open { overflow: hidden; }
       const titulo = document.getElementById('titulo').value;
       const valor = Number(document.getElementById('valor').value || 0);
       const descricao = document.getElementById('descricao').value;
-      const categoria = document.getElementById('categoria').value;
+      const departamento = document.getElementById('departamento').value;
+      const categoria = document.getElementById('subcategoria').value;
       const estoque = parseInt(document.getElementById('estoque').value || '0', 10);
 
       const fotosInput = document.getElementById('fotos');
@@ -328,6 +402,7 @@ body.modal-open { overflow: hidden; }
         title: titulo,
         price: valor,
         description: descricao,
+        department: departamento,
         category: categoria,
         stock: estoque,
         image: cover,
@@ -385,7 +460,9 @@ body.modal-open { overflow: hidden; }
       document.getElementById('editTitulo').value = produto.title;
       document.getElementById('editValor').value = produto.price;
       document.getElementById('editDescricao').value = produto.description;
-      document.getElementById('editCategoria').value = produto.category;
+      document.getElementById('editDepartamento').value = (produto.department || (produto.category==='supplements' || produto.category==='cosmetics' ? produto.category : 'supplements'));
+      document.getElementById('editSubcategoria').dataset.value = (produto.category && produto.category !== 'supplements' && produto.category !== 'cosmetics') ? produto.category : '';
+      onEditDepartamentoChange();
       document.getElementById('editEstoque').value = produto.stock;
       document.getElementById('editPreview').innerHTML = (produto.gallery || []).map((g,i)=>`<img src="${g}" style="width:80px;height:80px;object-fit:cover;border-radius:6px">`).join('');
       document.getElementById('editModal').classList.add('show'); document.body.classList.add('modal-open');
@@ -394,7 +471,8 @@ body.modal-open { overflow: hidden; }
         produto.title = document.getElementById('editTitulo').value;
         produto.price = Number(document.getElementById('editValor').value || 0);
         produto.description = document.getElementById('editDescricao').value;
-        produto.category = document.getElementById('editCategoria').value;
+        produto.department = document.getElementById('editDepartamento').value;
+        produto.category = document.getElementById('editSubcategoria').value;
         produto.stock = parseInt(document.getElementById('editEstoque').value || '0');
         const fotosInput = document.getElementById('editFotos');
         if(fotosInput.files.length>0){
@@ -494,10 +572,14 @@ window.onload = function(){
 <input id="editTitulo" placeholder="Título do produto" required type="text"/>
 <input id="editValor" placeholder="Valor (€)" required step="0.01" type="number"/>
 <textarea id="editDescricao" placeholder="Descrição do produto"></textarea>
+<label>Departamento</label>
+<select id="editDepartamento" required>
+  <option value="supplements">Supplements</option>
+  <option value="cosmetics">Cosmetics</option>
+</select>
 <label>Categoria</label>
-<select id="editCategoria" required>
-<option value="supplements">Supplements</option>
-<option value="cosmetics">Cosmetics</option>
+<select id="editSubcategoria" required>
+  <option value="">Selecione...</option>
 </select>
 <label>Estoque</label>
 <input id="editEstoque" min="0" placeholder="Quantidade em estoque" type="number"/>

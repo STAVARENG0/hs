@@ -156,6 +156,24 @@ const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
 
+// === Category-only view ===
+(function(){
+  try{
+    const H1 = document.querySelector('h1');
+    const FILTER_CATEGORY = (H1 && H1.textContent ? H1.textContent.trim() : '').toLowerCase();
+    const _init = init;
+    init = async function(){
+      currentList = await readPublic();
+      currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+      currentList = currentList.filter(p => String(p.category||'').toLowerCase() === FILTER_CATEGORY);
+      render(currentList);
+      document.getElementById('year').textContent = new Date().getFullYear();
+      updateCartIcon();
+    };
+  }catch(e){ /* noop */ }
+})();
+
+
 function fmtEUR(n){
   const v = Number(n);
   if(Number.isNaN(v)) return '€ ' + (n ?? '');
