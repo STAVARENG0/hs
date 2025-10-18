@@ -468,6 +468,61 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 </script>
+
+<script>
+// === Category loader (fail-safe) ===
+(function(){
+  function normalize(str){
+    try{
+      if(!str) return '';
+      let s = String(str).trim().toLowerCase();
+      s = s.replace(/&amp;/g, '&');
+      s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-');
+      s = s.replace(/\s+/g, ' ');
+      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      s = s.replace(/[^a-z0-9& \-]+/g, '');
+      s = s.replace(/\bskin\s*care\b/g, 'skincare');
+      s = s.replace(/\bshampoo\s*conditioner\b/g, 'shampoo & conditioner');
+      s = s.replace(/\bomega\s*3\b/g, 'omega 3');
+      s = s.replace(/\bbcaa\s*eaa\b/g, 'bcaa & eaa');
+      return s.trim();
+    }catch(e){ return ''; }
+  }
+  function showEmpty(){
+    try{
+      var grid = document.getElementById('products');
+      if(grid){
+        grid.innerHTML = '<div class="meta" style="text-align:center;padding:20px;">No products available.</div>';
+      }
+    }catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded', async function(){
+    try{
+      var h1 = document.querySelector('h1');
+      var target = normalize(h1 && h1.textContent ? h1.textContent : '');
+      var list = [];
+      if(typeof readPublic === 'function'){
+        list = await readPublic();
+      }
+      if(!Array.isArray(list)) list = [];
+      list.sort(function(a,b){ return (b.createdAt||0) - (a.createdAt||0); });
+      list = list.filter(function(p){
+        var c = normalize(p && p.category);
+        return c && c === target;
+      });
+      if(typeof render === 'function' && list.length){
+        render(list);
+      }else{
+        showEmpty();
+      }
+    }catch(e){
+      showEmpty();
+      try{ console.error('[category failsafe]', e); }catch(_){}
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
 <script>
