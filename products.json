@@ -9,7 +9,8 @@
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759632630513/creatina em capisula.png",
     "gallery": [],
     "createdAt": 1759632634614,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759632782433",
@@ -21,7 +22,8 @@
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759632782433/41XaCtre1iL._SR600315_PIWhiteStripBottomLeft035_SCLZZZZZZZ_FMpng_BG255255255.png",
     "gallery": [],
     "createdAt": 1759632783458,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759632921858",
@@ -33,7 +35,8 @@
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759632921858/ChatGPT Image 4 de out. de 2025, 17_20_27.png",
     "gallery": [],
     "createdAt": 1759632924128,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759633011484",
@@ -45,7 +48,8 @@
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633011484/cratina em saco.png",
     "gallery": [],
     "createdAt": 1759633012755,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759633241883",
@@ -57,7 +61,8 @@
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633241883/cratina grande.png",
     "gallery": [],
     "createdAt": 1759633244270,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759633271083",
@@ -69,7 +74,8 @@
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633271083/creatina.png",
     "gallery": [],
     "createdAt": 1759633272269,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759633430016",
@@ -81,7 +87,8 @@
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633430016/BOTI_C03_ECOMM_MELHORIASIMGPRODUTONSPA-49.webp",
     "gallery": [],
     "createdAt": 1759633431001,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759633641903",
@@ -93,7 +100,8 @@
     "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759633641903/5141So39ILL.jpg_BO30,255,255,255_UF900,850_SR1910,1000,0,C_PIRIOFIVE-medium,BottomLeft,30,-20_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNTAiID42OTwvc3Bhbj4=.jpg",
     "gallery": [],
     "createdAt": 1759633643461,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759671450545",
@@ -109,7 +117,8 @@
       "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671450545/creatina.png"
     ],
     "createdAt": 1759671455277,
-    "status": "publicado"
+    "status": "publicado",
+    "department": "supplements"
   },
   {
     "id": "1759671495864",
@@ -125,6 +134,20 @@
       "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1759671495864/BOTI_C03_ECOMM_MELHORIASIMGPRODUTONSPA-49.webp"
     ],
     "createdAt": 1759671502639,
+    "status": "publicado",
+    "department": "supplements"
+  },
+  {
+    "id": "1760814635061",
+    "title": "CREATINA EM CAPISULA ",
+    "price": 23,
+    "description": "creatina muito bo,a",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 20,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1760814635061/creatina em capisula.png",
+    "gallery": [],
+    "createdAt": 1760814636312,
     "status": "publicado"
   }
 ]
