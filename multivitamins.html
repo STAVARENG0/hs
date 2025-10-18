@@ -155,12 +155,44 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 const PUBLIC_JSON = './products.json';
 const grid = document.getElementById('products');
 let currentList = [];
-// === Category-only view ===
+
+// === Category-only view (ROBUST NORMALIZATION) ===
 (function(){
+  function normalize(str){
+    try{
+      if(!str) return '';
+      let s = String(str).trim().toLowerCase();
+      s = s.replace(/&amp;/g, '&');
+      s = s.replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-');
+      s = s.replace(/\s+/g, ' ');
+      s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      s = s.replace(/[^a-z0-9& ]+/g, '');
+      s = s.replace(/\bskin\s*care\b/g, 'skincare');
+      s = s.replace(/\bshampoo\s*conditioner\b/g, 'shampoo & conditioner');
+      s = s.replace(/\bomega\s*3\b/g, 'omega 3');
+      s = s.replace(/\bbcaa\s*eaa\b/g, 'bcaa & eaa');
+      return s.trim();
+    }catch(e){ return ''; }
+  }
   try{
-    const H1 = document.querySelector('h1');
-    const FILTER_CATEGORY = (H1 && H1.textContent ? H1.textContent.trim() : '').toLowerCase();
+    const h1 = document.querySelector('h1');
+    const FILTER_CATEGORY = normalize(h1 && h1.textContent ? h1.textContent : '');
+    const oldInit = init;
     init = async function(){
+      currentList = await readPublic();
+      currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+      currentList = currentList.filter(p => {
+        const c = normalize(p.category);
+        return c && c === FILTER_CATEGORY;
+      });
+      render(currentList);
+      document.getElementById('year').textContent = new Date().getFullYear();
+      updateCartIcon();
+    };
+  }catch(e){ /* noop */ }
+})();
+
+init = async function(){
       let list = await readPublic();
       list.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
       // STRICT: only items that HAVE category and match this page's category
@@ -177,12 +209,7 @@ let currentList = [];
 })();
 
 
-// === Category-only view (STRICT) ===
-(function(){
-  try{
-    const h1 = document.querySelector('h1');
-    const FILTER_CATEGORY = (h1 && h1.textContent ? h1.textContent.trim() : '').toLowerCase();
-    const oldInit = init;
+const oldInit = init;
     init = async function(){
       currentList = await readPublic();
       // newest first
