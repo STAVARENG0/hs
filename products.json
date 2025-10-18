@@ -110,18 +110,5 @@
     "createdAt": 1759671502639,
     "status": "publicado",
     "department": "supplements"
-  },
-  {
-    "id": "1760814635061",
-    "title": "CREATINA EM CAPISULA ",
-    "price": 23,
-    "description": "creatina muito bo,a",
-    "department": "supplements",
-    "category": "Creatine",
-    "stock": 20,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1760814635061/creatina em capisula.png",
-    "gallery": [],
-    "createdAt": 1760814636312,
-    "status": "publicado"
   }
 ]
