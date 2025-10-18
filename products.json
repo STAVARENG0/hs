@@ -123,5 +123,18 @@
     "gallery": [],
     "createdAt": 1760828786108,
     "status": "publicado"
+  },
+  {
+    "id": "1760829605205",
+    "title": "CREATINA EM CAPISULA ",
+    "price": 89,
+    "description": "BOA",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 75,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1760829605205/creatina em capisula.png",
+    "gallery": [],
+    "createdAt": 1760829606370,
+    "status": "publicado"
   }
 ]
