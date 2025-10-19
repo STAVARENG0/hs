@@ -100,12 +100,12 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
 </style>
 <style>
-/* ========= GENERIC MODAL (Injected) ========= */
+/* ========= GENERIC MODAL (Injected v2) ========= */
 .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index: 6000; }
 .modal-content { background:var(--card, #1a1a1a); padding:20px; border-radius:16px; max-width:600px; width:90%; text-align:left; color:var(--white,#fff); position:relative; border: 1px solid rgba(255,255,255,0.12); }
 .modal-close{position:absolute;top:10px;right:10px;background:#ff3c00;border:none;color:#fff;font-weight:bold;padding:6px 12px;border-radius:6px;cursor:pointer}
 
-/* ===== Product Detail Modal (Injected) ===== */
+/* ===== Product Detail Modal (Injected v2) ===== */
 .product-content{ max-width:760px; width:min(92vw,760px); }
 .product-modal-body{ display:grid; grid-template-columns: 1fr; gap: 14px; }
 #pmImage{ width:100%; max-height:340px; border-radius:12px; object-fit:contain; background:#0b0b0b; }
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartIcon();
 })();</script>
 
-<!-- Product Detail Modal (Injected) -->
+<!-- Product Detail Modal (Injected v2) -->
 <div id="productModal" class="modal" aria-hidden="true">
   <div class="modal-content product-content">
     <button class="modal-close" onclick="closeProductModal()">×</button>
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <script>
-// ===== Product Modal (Injected) =====
+// ===== Product Modal (Injected v2) =====
 (function(){
   if (window.__hs_modal_injected__) return; // avoid double-inject
   window.__hs_modal_injected__ = true;
@@ -429,9 +429,61 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   window.closeProductModal = closeProductModal;
 
+  function extractIdFromCard(card){
+    if(!card) return null;
+    // Preferred: data-id / data-product-id
+    const ds = card.dataset || {};
+    const candidates = [
+      ds.id, ds.productId, ds.productid, ds.pid,
+      card.getAttribute('data-id'),
+      card.getAttribute('data-product-id'),
+      card.getAttribute('data-pid'),
+      card.id
+    ].filter(Boolean);
+
+    // Look inside children for attributes or hidden inputs
+    const attrEl = card.querySelector('[data-id],[data-product-id],[data-pid],input[name="productId"],input[name="id"]');
+    if(attrEl){
+      candidates.push(
+        attrEl.getAttribute('data-id'),
+        attrEl.getAttribute('data-product-id'),
+        attrEl.getAttribute('data-pid'),
+        (attrEl.name && (attrEl.value || attrEl.getAttribute('value')))
+      );
+    }
+
+    // Look for existing onclick="addToCart('123')" in descendants
+    const onclickBtn = card.querySelector('[onclick*="addToCart"]');
+    if(onclickBtn){
+      const m = String(onclickBtn.getAttribute('onclick')||'').match(/addToCart\s*\(\s*['"]?(\d+)['"]?\s*\)/i);
+      if(m) candidates.push(m[1]);
+    }
+
+    // Try to parse an id like "product-123"
+    if(card.id){
+      const m = card.id.match(/(\d+)/);
+      if(m) candidates.push(m[1]);
+    }
+
+    // Final pass: try to read from a data attribute on the image
+    const img = card.querySelector('img');
+    if(img){
+      const dpid = img.getAttribute('data-id') || img.getAttribute('data-product-id');
+      if(dpid) candidates.push(dpid);
+    }
+
+    // Return the first numeric-looking candidate
+    for (const c of candidates){
+      if(!c) continue;
+      const n = String(c).match(/\d+/);
+      if(n) return n[0];
+    }
+    return null;
+  }
+
   function openProductModalFromCard(card){
     if(!productModal || !card) return;
-    // Try to extract data from the card (robust to different markups)
+
     const imgEl = card.querySelector('img');
     const titleEl = card.querySelector('h3, .title, [data-title]');
     const brandEl = card.querySelector('.meta, .brand, [data-brand]');
@@ -442,7 +494,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = titleEl ? (titleEl.getAttribute('data-title') || titleEl.textContent || '').trim() : (card.getAttribute('data-title') || '');
     const brand = brandEl ? (brandEl.getAttribute('data-brand') || brandEl.textContent || '').trim() : (card.getAttribute('data-brand') || '');
     let price = priceEl ? (priceEl.getAttribute('data-price') || priceEl.textContent || '').trim() : (card.getAttribute('data-price') || '');
-    // If price looks like a number without currency, format it
     const priceNum = parseFloat(String(price).replace(/[^0-9.,-]/g,'').replace(',','.'));
     if(!isNaN(priceNum)) price = fmtEUR(priceNum);
 
@@ -450,8 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (stockEl) {
       const ds = stockEl.getAttribute && stockEl.getAttribute('data-stock');
       stockText = (ds || stockEl.textContent || '').trim();
-      // Normalize if it's just a number
-      if (/^\d+$/.test(stockText)) stockText = 'Stock: ' + stockText;
+      if (/^\\d+$/.test(stockText)) stockText = 'Stock: ' + stockText;
       if (!/stock/i.test(stockText)) stockText = 'Stock: ' + stockText;
     }
     const desc = descEl ? (descEl.getAttribute('data-description') || descEl.textContent || '').trim() : (card.getAttribute('data-description') || '—');
@@ -465,7 +515,6 @@ document.addEventListener('DOMContentLoaded', () => {
     pmImage.src = mainImg || '';
     pmImage.alt = title || 'Product image';
 
-    // Build gallery from any images inside the card
     pmGallery.innerHTML = '';
     const imgs = Array.from(card.querySelectorAll('img'));
     const seen = new Set();
@@ -477,17 +526,38 @@ document.addEventListener('DOMContentLoaded', () => {
       pmGallery.appendChild(gi);
     });
 
-    // Build CTA based on stock if available
+    // ----- CTA: Add to Cart wiring -----
     pmCta.innerHTML = '';
-    const btn = document.createElement('a');
-    btn.href = '#';
+    const btn = document.createElement('button');
+    btn.type = 'button';
     btn.className = 'btn';
-    // Decide enabled/disabled
-    const stockNumMatch = (stockText.match(/(\d+)/) || [])[1];
+    const stockNumMatch = (stockText.match(/(\\d+)/) || [])[1];
     const inStock = !stockText || (stockNumMatch ? Number(stockNumMatch) > 0 : true);
     btn.textContent = inStock ? 'Add to Cart' : 'Out of Stock';
-    if(!inStock){ btn.classList.add('disabled'); }
+    if(!inStock){ btn.disabled = true; btn.classList.add('disabled'); }
     pmCta.appendChild(btn);
+
+    const productId = extractIdFromCard(card);
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      if(!inStock) return;
+
+      if (typeof window.addToCart === 'function' && productId){
+        try {
+          window.addToCart(productId);
+          // Optional UX: flash, then close
+          btn.textContent = 'Added!';
+          setTimeout(()=>{ closeProductModal(); }, 300);
+        } catch(err){
+          console.warn('addToCart failed:', err);
+        }
+      } else {
+        // Fallback: dispatch an event. Your global code can listen for this.
+        const evt = new CustomEvent('hs:add-to-cart', { detail: { productId, title, price, source: 'modal' } });
+        document.dispatchEvent(evt);
+      }
+    });
 
     productModal.style.display = 'flex';
     productModal.setAttribute('aria-hidden','false');
@@ -499,7 +569,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = t.closest && t.closest('.product');
     if(!card) return;
 
-    // Clicks on product image or title-like elements
     if (t.matches && (t.matches('img') || t.matches('h3, .title, [data-title]'))) {
       e.preventDefault();
       openProductModalFromCard(card);
