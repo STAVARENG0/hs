@@ -166,6 +166,7 @@ function fmtEUR(n){
 function sanitizeList(list){
   if(!Array.isArray(list)) return [];
   return list.map(p => ({
+    department: p.department || '',
     id: p.id || (crypto.randomUUID ? crypto.randomUUID() : Math.floor(Math.random()*1e9)),
     title: p.title || '',
     brand: p.brand || '',
