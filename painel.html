@@ -109,10 +109,10 @@ body.modal-open { overflow: hidden; }
   <option value="cosmetics">Cosmetics</option>
   <option value="clothes">Clothes</option>
 </select>
-<label>Categoria</label>
-<select id="subcategoria" required>
+<div id="subcategoriaGroup"><label>Categoria</label>
+<select id="subcategoria">
   <option value="">Selecione um departamento primeiro...</option>
-</select>
+</select></div>
 <label>Estoque</label>
 <input id="estoque" min="0" placeholder="Quantidade em estoque" type="number" value="0"/>
 <label class="upload-btn" for="fotos">📷 Adicionar Imagens</label>
@@ -187,17 +187,19 @@ function fillOptions(selectEl, arr, selected){
 function onDepartamentoChange(){
   const dep = document.getElementById('departamento').value;
   const sub = document.getElementById('subcategoria');
-  if(dep === 'supplements') fillOptions(sub, SUPP_CATS);
-  else if(dep === 'cosmetics') fillOptions(sub, COSM_CATS);
-  else sub.innerHTML = '<option value="">Selecione um departamento primeiro...</option>';
+  if(dep === 'supplements'){ fillOptions(sub, SUPP_CATS); }
+  else if(dep === 'cosmetics'){ fillOptions(sub, COSM_CATS); }
+  else { sub.innerHTML = '<option value="">Selecione um departamento primeiro...</option>'; }
+  toggleSubcategoria(dep);
 }
 
 function onEditDepartamentoChange(){
   const dep = document.getElementById('editDepartamento').value;
   const sub = document.getElementById('editSubcategoria');
-  if(dep === 'supplements') fillOptions(sub, SUPP_CATS, document.getElementById('editSubcategoria').dataset.value || '');
-  else if(dep === 'cosmetics') fillOptions(sub, COSM_CATS, document.getElementById('editSubcategoria').dataset.value || '');
-  else sub.innerHTML = '<option value="">Selecione um departamento primeiro...</option>';
+  if(dep === 'supplements'){ fillOptions(sub, SUPP_CATS, document.getElementById('editSubcategoria').dataset.value || ''); }
+  else if(dep === 'cosmetics'){ fillOptions(sub, COSM_CATS, document.getElementById('editSubcategoria').dataset.value || ''); }
+  else { sub.innerHTML = '<option value="">Selecione um departamento primeiro...</option>'; }
+  toggleEditSubcategoria(dep);
 }
 
 // Vincular listeners após DOM pronto
@@ -386,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const valor = Number(document.getElementById('valor').value || 0);
       const descricao = document.getElementById('descricao').value;
       const departamento = document.getElementById('departamento').value;
-      const categoria = document.getElementById('subcategoria').value;
+      const categoria = (document.getElementById('departamento').value === 'clothes') ? '' : document.getElementById('subcategoria').value;
       const estoque = parseInt(document.getElementById('estoque').value || '0', 10);
 
       const fotosInput = document.getElementById('fotos');
@@ -465,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('editDescricao').value = produto.description;
       document.getElementById('editDepartamento').value = (produto.department || (produto.category==='supplements' || produto.category==='cosmetics' ? produto.category : 'supplements'));
       document.getElementById('editSubcategoria').dataset.value = (produto.category && produto.category !== 'supplements' && produto.category !== 'cosmetics') ? produto.category : '';
-      onEditDepartamentoChange();
+      onEditDepartamentoChange(); toggleEditSubcategoria(document.getElementById('editDepartamento').value);
       document.getElementById('editEstoque').value = produto.stock;
       document.getElementById('editPreview').innerHTML = (produto.gallery || []).map((g,i)=>`<img src="${g}" style="width:80px;height:80px;object-fit:cover;border-radius:6px">`).join('');
       document.getElementById('editModal').classList.add('show'); document.body.classList.add('modal-open');
@@ -475,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
         produto.price = Number(document.getElementById('editValor').value || 0);
         produto.description = document.getElementById('editDescricao').value;
         produto.department = document.getElementById('editDepartamento').value;
-        produto.category = document.getElementById('editSubcategoria').value;
+        produto.category = (document.getElementById('editDepartamento').value==='clothes') ? '' : document.getElementById('editSubcategoria').value;
         produto.stock = parseInt(document.getElementById('editEstoque').value || '0');
         const fotosInput = document.getElementById('editFotos');
         if(fotosInput.files.length>0){
@@ -553,6 +555,34 @@ function populateCategories(selectEl, dept, currentValue){
       groupEl.classList.remove('hidden');
       // Only make required if the DOM originally had 'required' (we'll set it)
       catEl.setAttribute('required','required');
+    }
+  }
+
+
+  function toggleSubcategoria(dep){
+    const group = document.getElementById('subcategoriaGroup');
+    const sel = document.getElementById('subcategoria');
+    if(!group || !sel) return;
+    if((dep||'').toLowerCase()==='clothes'){
+      group.classList.add('hidden');
+      sel.removeAttribute('required');
+      sel.value = '';
+    }else{
+      group.classList.remove('hidden');
+      sel.setAttribute('required','required');
+    }
+  }
+  function toggleEditSubcategoria(dep){
+    const group = document.getElementById('editSubcategoriaGroup');
+    const sel = document.getElementById('editSubcategoria');
+    if(!group || !sel) return;
+    if((dep||'').toLowerCase()==='clothes'){
+      group.classList.add('hidden');
+      sel.removeAttribute('required');
+      sel.value = '';
+    }else{
+      group.classList.remove('hidden');
+      sel.setAttribute('required','required');
     }
   }
 
@@ -698,10 +728,10 @@ const ghModal = document.getElementById('githubModal');
   <option value="cosmetics">Cosmetics</option>
   <option value="clothes">Clothes</option>
 </select>
-<label>Categoria</label>
-<select id="editSubcategoria" required>
+<div id="editSubcategoriaGroup"><label>Categoria</label>
+<select id="editSubcategoria">
   <option value="">Selecione...</option>
-</select>
+</select></div>
 <label>Estoque</label>
 <input id="editEstoque" min="0" placeholder="Quantidade em estoque" type="number"/>
 <label class="upload-btn" for="editFotos">📷 Alterar Imagens</label>
