@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>HS Nutrition | Clothes</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta content="no-store" http-equiv="Cache-Control"/>
+<style>
+
+:root{ --black:#0d0d0d; --white:#ffffff; --muted:#9c9c9c; --orange:#ff3c00; --card:#1a1a1a; --oos:#ff2d2d; }
+*{box-sizing:border-box}
+body{ margin:0; font-family:Poppins,system-ui,Arial,sans-serif; color:var(--white); background:var(--black); min-height:100dvh; }
+.wrap{max-width:1200px;margin:0 auto;padding:26px}
+.card{ background:transparent; border:none; border-radius:0; padding:0; box-shadow:none; position:relative; }
+header{text-align:center;margin-bottom:18px}
+.brand{ display:flex; flex-direction:column; align-items:center; gap:0; position:relative; }
+.brand img{ max-width:100%; height:auto; border:2px solid var(--orange); border-radius:20px; animation: glow 3s ease-in-out infinite alternate; }
+@keyframes glow { from { box-shadow:0 0 6px rgba(255,60,0,0.3); } to { box-shadow:0 0 14px rgba(255,100,0,0.6); } }
+.welcome { width: 100%; max-width: 550px; margin: 10px 0 0 0; }
+.welcome text { font-family: "Poppins", cursive; font-size: 64px; fill: none; stroke: var(--orange); stroke-width: 2px; stroke-dasharray: 800; stroke-dashoffset: 800; animation: draw 6s ease forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.brand .search-box { position: absolute; bottom: 10px; right: 20px; max-width: 300px; display: flex; gap: 6px; }
+.search-box input { flex: 1; padding: 12px 16px; border-radius: 20px; border: 1px solid #ddd; outline: none; background: #ffffff; color: #000000; font-size: 14px; }
+.search-box input::placeholder { color: #555; }
+.search-box button { padding: 12px 20px; border: 1px solid #ddd; border-radius: 20px; background: #ffffff; color: #000000; font-weight: 700; cursor: pointer; }
+.search-box button:hover { filter: none; opacity: .9; }
+.category-buttons{ display:flex; justify-content:center; gap:12px; margin: 12px 0 2px; flex-wrap: wrap; }
+.pill-btn{ display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius: 9999px; background: var(--orange); color: var(--white); font-weight: 800; border: 2px solid var(--orange); text-decoration:none; box-shadow: 0 6px 18px rgba(255,60,0,0.35); cursor:pointer; transition: transform .18s ease, filter .18s ease; }
+.pill-btn:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+.pill-btn:active{ transform: translateY(0); }
+@media (max-width: 600px) {
+  .brand { align-items: center; }
+  .brand .search-box { position: static; margin-top: 14px; width: 100%; max-width: 100%; padding: 0 10px; display: flex; justify-content: center; gap: 8px; }
+  .search-box input { flex: 1; padding: 12px 16px; border-radius: 20px; border: 1px solid #ddd; outline: none; background: #ffffff; color: #000000; font-size: 14px; }
+  .search-box button { padding: 12px 20px; border: 1px solid #ddd; border-radius: 20px; background: #ffffff; color: #000000; font-weight: 700; cursor: pointer; }
+}
+.divider{height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;align-items:stretch}
+@media (max-width:600px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+.product{display:flex;flex-direction:column;justify-content:space-between;}
+.product{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;flex-direction:column; position:relative;}
+.product img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#0b0b0b;display:block}
+.product-body{padding:14px 16px 10px}
+.product h3{margin:0 0 6px;font-weight:700;font-size:16px;color:var(--white);}
+.meta{color:var(--muted);font-size:13px;line-height:1.4;margin-bottom:8px}
+.price{font-weight:700;color:var(--white);margin-bottom:6px}
+.cta{padding:12px 14px 14px;border-top:1px dashed rgba(255,255,255,.08)}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;font-weight:700;padding:12px 14px;border-radius:28px;background:linear-gradient(90deg,var(--orange), #ff8c42);color:#fff;box-shadow:0 8px 20px rgba(240,116,36,.35);transition:transform .18s ease, filter .18s ease;}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.btn.disabled{opacity:.55;pointer-events:none;filter:grayscale(1)}
+footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
+.admin-btn-modal { position: absolute; top: 12px; right: 12px; z-index: 100; }
+.admin-btn-modal a { background: var(--orange); color: var(--white); text-decoration: none; padding: 4px 8px; border-radius: 6px; font-weight: 500; font-size: 11px; box-shadow: 0 1px 4px rgba(0,0,0,0.4); transition: filter 0.2s; display: inline-block; }
+.admin-btn-modal a:hover { filter: brightness(1.1); }
+.oos-ribbon{ position:absolute; top:10px; left:-40px; transform: rotate(-20deg); background: rgba(255,45,45,0.85); color:#fff; padding:10px 60px; font-weight:900; letter-spacing:.12em; text-shadow: 0 1px 2px rgba(0,0,0,.35); box-shadow:0 10px 20px rgba(0,0,0,.35); border:2px solid rgba(255,255,255,0.12); pointer-events:none; }
+
+/* ===== BOTÃO FLUTUANTE DO CARRINHO (contador dentro do botão) ===== */
+.floating-cart {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--orange);
+  color: white;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  cursor: pointer;
+  z-index: 5000;
+  transition: transform 0.3s ease;
+}
+.floating-cart .cart-ico { font-size: 28px; line-height: 1; }
+.floating-cart .cart-count { font-size: 14px; font-weight: 800; line-height: 1; }
+.floating-cart .cart-count:empty { display:none; }
+.floating-cart:hover { transform: scale(1.1) rotate(5deg); }
+
+/* ========= CART MODAL ========= */
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:3000; }
+.modal-content { background:var(--card); padding:20px; border-radius:16px; max-width:600px; width:90%; text-align:left; color:var(--white); position:relative; border: 1px solid rgba(255,255,255,0.12); }
+.modal-close{position:absolute;top:10px;right:10px;background:#ff3c00;border:none;color:#fff;font-weight:bold;padding:6px 12px;border-radius:6px;cursor:pointer}
+.cart-content { background:#ffffff; color:#111; border:2px solid var(--orange); box-shadow:0 18px 42px rgba(0,0,0,.45); }
+.cart-content h2 { color:#111; margin:0 0 6px; }
+.cart-divider { border:none; border-top:2px dashed rgba(0,0,0,0.08); }
+.cart-total { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-weight:800; color:#111; }
+.cart-checkout { width:100%; background:linear-gradient(90deg,var(--orange), #ff8c42) !important; color:#fff; border:none; }
+.cart-item { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+.cart-item-left { display:flex; align-items:center; gap:10px; }
+.cart-thumb { width:46px; height:46px; border-radius:8px; object-fit:cover; border:1px solid rgba(0,0,0,.06); }
+.cart-qty { display:flex; align-items:center; gap:6px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <header>
+      <div class="brand">
+        <img alt="HS Nutrition Cover" src="5.png"/>
+        <div class="search-box">
+          <input id="search" placeholder="Search for products..." type="text"/>
+          <button onclick="searchProducts()">Search</button>
+        </div>
+      </div>
+    </header>
+    <div class="category-buttons">
+      <a class="pill-btn" href="index.html">Home</a>
+    </div>
+    <h1 style="text-align:center;margin:10px 0;color:var(--orange);font-family:Orbitron,sans-serif;">Clothes</h1>
+    <div class="divider"></div>
+    <section class="grid" id="products"></section>
+    <div class="divider"></div>
+    <footer>© <span id="year"></span> HS Nutrition</footer>
+  </div>
+</div>
+
+<div class="floating-cart" onclick="openCart()" aria-label="Abrir carrinho">
+  <div class="cart-ico">🛒</div>
+  <div class="cart-count" id="cartCount"></div>
+</div>
+
+<!-- Cart Modal -->
+<div id="cartModal" class="modal">
+  <div class="modal-content cart-content" style="max-width:520px;text-align:left;">
+    <button class="modal-close" onclick="closeCart()">×</button>
+    <h2>Your Cart</h2>
+    <div id="cartItems" style="margin:12px 0;"></div>
+    <hr class="cart-divider" style="margin:12px 0;">
+
+    <h4 style="margin:6px 0 4px 0;color:#111;">Shipping Details</h4>
+    <div class="shipping-options" style="margin-bottom:10px;">
+      <label><input type="radio" name="shipping" value="7"> 7€ — No tracked</label><br>
+      <label><input type="radio" name="shipping" value="10"> 10€ — Tracked</label>
+    </div>
+
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cartTotal">€ --</span>
+    </div>
+    <button class="btn cart-checkout">Checkout</button>
+  </div>
+</div>
+
+<script>
+
+const PUBLIC_JSON = './products.json';
+const grid = document.getElementById('products');
+let currentList = [];
+
+function fmtEUR(n){
+  const v = Number(n);
+  if(Number.isNaN(v)) return '€ ' + (n ?? '');
+  if(Number.isInteger(v)) return '€ ' + v;
+  return '€ ' + String(v);
+}
+
+function sanitizeList(list){
+  if(!Array.isArray(list)) return [];
+  return list.map(p => ({
+    id: p.id || (crypto.randomUUID ? crypto.randomUUID() : Math.floor(Math.random()*1e9)),
+    title: p.title || '',
+    brand: p.brand || '',
+    price: Number(p.price || 0),
+    image: p.image || '5.png',
+    description: p.description || '',
+    gallery: Array.isArray(p.gallery)? p.gallery : [],
+    category: p.category || '',
+    createdAt: p.createdAt || 0,
+    stock: typeof p.stock === 'number' ? p.stock : parseInt(p.stock || '0', 10)
+  }));
+}
+
+async function readPublic(){
+  try{
+    const r = await fetch(PUBLIC_JSON + '?t=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const data = await r.json();
+    return sanitizeList(data);
+  }catch(e){ return []; }
+}
+
+function render(list){
+  grid.innerHTML = '';
+  if(!list.length){
+    grid.innerHTML = '<div class="meta" style="text-align:center;padding:20px;">No products available.</div>';
+    return;
+  }
+  list.forEach(p=>{
+    const el = document.createElement('article'); el.className='product';
+    if(Number(p.stock) <= 0){
+      const badge = document.createElement('div'); badge.className = 'oos-ribbon'; badge.textContent = 'OUT OF STOCK'; el.appendChild(badge);
+    }
+    const img = document.createElement('img'); img.src = p.image; img.alt = p.title; el.appendChild(img);
+    const body = document.createElement('div'); body.className='product-body';
+    const brand = p.brand ? `<div class="meta">${p.brand}</div>` : '';
+    body.innerHTML = `<h3>${p.title}</h3>${brand}<div class='meta'>Stock: ${p.stock}</div><div class='price'>${fmtEUR(p.price)}</div>`;
+    el.appendChild(body);
+    const cta = document.createElement('div'); cta.className='cta';
+    const a = document.createElement('a');
+    a.className='btn'; a.href='#'; a.textContent = Number(p.stock) > 0 ? "Add to Cart" : "Out of Stock";
+    if(Number(p.stock) > 0){ a.dataset.action = 'add-to-cart'; a.dataset.id = p.id; } else { a.classList.add('disabled'); }
+    cta.appendChild(a); el.appendChild(cta); grid.appendChild(el);
+  });
+}
+
+/* ===== Busca ===== */
+function searchProducts(){
+  const term = document.getElementById('search').value.toLowerCase();
+  const filtered = currentList.filter(p =>
+    p.title.toLowerCase().includes(term) ||
+    (p.brand && p.brand.toLowerCase().includes(term)) ||
+    (p.category && p.category.toLowerCase().includes(term))
+  );
+  render(filtered);
+}
+
+/* ===== CARRINHO ===== */
+const CART_KEY='hs_cart';
+function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(e){ return []; } }
+function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); }
+let cart = loadCart();
+
+function addToCart(productId){
+  const product = currentList.find(p => String(p.id) === String(productId));
+  if(!product) return;
+  const existing = cart.find(item => item.id === product.id);
+  if(existing){ existing.qty++; } else { cart.push({...product, qty: 1}); }
+  saveCart(cart);
+  updateCartIcon();
+}
+
+function updateCartIcon(){
+  const countEl = document.getElementById('cartCount');
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+  countEl.textContent = totalItems ? String(totalItems) : '';
+}
+
+function getSelectedShipping(){
+  return document.querySelector('input[name="shipping"]:checked');
+}
+
+function openCart(){
+  const cartModal = document.getElementById('cartModal');
+  const list = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cartTotal');
+  list.innerHTML = '';
+  if(cart.length === 0){
+    list.innerHTML = '<p style="color:#666">Your cart is empty.</p>';
+    totalEl.textContent = '€ 0.00';
+  } else {
+    let total = 0;
+    cart.forEach(item => {
+      total += Number(item.price) * item.qty;
+      const row = document.createElement('div');
+      row.className = 'cart-item';
+      row.innerHTML = `
+        <div class="cart-item-left">
+          <img class="cart-thumb" src="${item.image}" alt="${item.title}">
+          <div>
+            <strong>${item.title}</strong><br>
+            <small>${fmtEUR(item.price)}</small>
+          </div>
+        </div>
+        <div class="cart-qty">
+          <button onclick="changeQty('${item.id}', -1)" style="padding:4px 8px;">−</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty('${item.id}', 1)" style="padding:4px 8px;">+</button>
+        </div>
+      `;
+      list.appendChild(row);
+    });
+    const selected = getSelectedShipping();
+    const shipping = selected ? Number(selected.value) : 0;
+    totalEl.textContent = fmtEUR(total + shipping);
+  }
+  cartModal.style.display = 'flex';
+}
+
+function closeCart(){ document.getElementById('cartModal').style.display = 'none'; }
+
+function changeQty(id, delta){
+  const item = cart.find(p => p.id === id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){ cart = cart.filter(p => p.id !== id); }
+  saveCart(cart);
+  openCart();
+  updateCartIcon();
+}
+
+/* ===== Unified click handler for Add-to-Cart ===== */
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('[data-action="add-to-cart"]');
+  if(!btn) return;
+  e.preventDefault();
+  const id = btn.dataset.id;
+  if(id){ addToCart(id); }
+});
+
+// ===== Shipping & Checkout (force selection) =====
+document.addEventListener('DOMContentLoaded', () => {
+  const radios = document.querySelectorAll('input[name="shipping"]');
+  const totalEl = document.getElementById('cartTotal');
+  const checkoutBtn = document.querySelector('.cart-checkout');
+
+  function calcBaseTotal() {
+    return cart.reduce((sum, item) => sum + Number(item.price) * item.qty, 0);
+  }
+
+  function updateDisplayTotal() {
+    const base = calcBaseTotal();
+    const sel = document.querySelector('input[name="shipping"]:checked');
+    const shippingVal = sel ? Number(sel.value) : 0;
+    totalEl.textContent = fmtEUR(base + shippingVal);
+  }
+
+  radios.forEach(r => r.addEventListener('change', updateDisplayTotal));
+
+  const _openCart = openCart;
+  openCart = function() {
+    _openCart();
+    updateDisplayTotal();
+  };
+
+  checkoutBtn.addEventListener('click', () => {
+    const sel = getSelectedShipping();
+    if(!sel){
+      alert('Please choose a shipping option before continuing.');
+      document.getElementById('cartModal').style.display = 'flex';
+      return;
+    }
+    const shipping = Number(sel.value);
+    const shippingLabel = shipping === 10 ? 'Tracked (€10)' : 'No tracked (€7)';
+    localStorage.setItem('hs_shipping', JSON.stringify({ amount: shipping, label: shippingLabel, ts: Date.now() }));
+    window.location.href = 'checkout.html';
+  });
+});
+
+/* ===== Init ===== */
+(async function init(){
+  currentList = (await readPublic()).filter(p => {
+  const dep = (p.department || p.category || '').toLowerCase().trim();
+  return dep === 'clothes';
+});
+  currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+  render(currentList);
+  document.getElementById('year').textContent = new Date().getFullYear();
+  updateCartIcon();
+})();
+
+</script>
+</body>
+</html>

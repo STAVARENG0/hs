@@ -105,6 +105,7 @@ body.modal-open { overflow: hidden; }
   <option value="">Selecione...</option>
   <option value="supplements">Supplements</option>
   <option value="cosmetics">Cosmetics</option>
+  <option value="clothes">Clothes</option>
 </select>
 <label>Categoria</label>
 <select id="subcategoria" required>
@@ -503,6 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div style="display:flex; gap:10px; justify-content:flex-end;">
 <button id="saveGithubConfig">Salvar</button>
 <button id="testGithubConfig">Testar conexão</button>
+<button id="downloadProductsJson">Baixar products.json</button>
 </div>
 <div id="ghAlert" style="margin-top:10px; display:none; padding:8px; border-radius:6px; text-align:center;"></div>
 </div>
@@ -514,6 +516,7 @@ window.onload = function(){
   const closeBtn = document.getElementById('closeGithubModal');
   const saveBtn = document.getElementById('saveGithubConfig');
   const testBtn = document.getElementById('testGithubConfig');
+  const dlBtn = document.getElementById('downloadProductsJson');
 
   function showGhAlert(msg, success){
     const el = document.getElementById('ghAlert');
@@ -556,10 +559,55 @@ window.onload = function(){
     }catch(e){ showGhAlert('❌ Falha: ' + e.message, false); }
   }
 
+  
+  async function downloadProducts(){
+    const cfg = JSON.parse(localStorage.getItem('ghConfig')||'{}');
+    if(!cfg.repo || !cfg.branch || !cfg.path || !cfg.token){ showGhAlert('Preencha todos os campos antes de baixar.', false); return; }
+    try{
+      const res = await fetch(`https://api.github.com/repos/${cfg.repo}/contents/${cfg.path}?ref=${cfg.branch}`, {
+        headers: { Authorization: `token ${cfg.token}` }
+      });
+      if(!res.ok){ showGhAlert('❌ Erro ao baixar: ' + res.status, false); return; }
+      const data = await res.json();
+      // Se o arquivo não estiver em base64 (raro), usa raw_url
+      if(data && data.content){
+        // Decode base64 com quebras
+        const b64 = (data.content || '').replace(/\n/g,'');
+        const bin = atob(b64);
+        const bytes = new Uint8Array(bin.length);
+        for(let i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i);
+        const blob = new Blob([bytes], {type: 'application/json;charset=utf-8'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        const fname = (cfg.path.split('/').pop() || 'products.json');
+        a.download = fname;
+        document.body.appendChild(a);
+        a.click();
+        URL.revokeObjectURL(a.href);
+        a.remove();
+        showGhAlert('📥 Download iniciado.', true);
+      } else if (data && data.download_url){
+        // fallback via download_url
+        const a = document.createElement('a');
+        a.href = data.download_url;
+        a.download = cfg.path.split('/').pop() || 'products.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        showGhAlert('📥 Download via URL.', true);
+      } else {
+        showGhAlert('Não foi possível obter o arquivo.', false);
+      }
+    }catch(e){
+      showGhAlert('❌ Falha: ' + (e.message || e), false);
+    }
+  }
+
   if(openBtn){ openBtn.onclick = ()=>{ loadGithubConfig(); ghModal.style.display='flex'; carregarProdutosGitHub(); }; }
   if(closeBtn){ closeBtn.onclick = ()=>{ ghModal.style.display='none'; carregarProdutosGitHub(); }; }
   if(saveBtn){ saveBtn.onclick = saveGithubConfig; }
   if(testBtn){ testBtn.onclick = testGithubConfig; }
+  if(dlBtn){ dlBtn.onclick = downloadProducts; }
   carregarProdutosGitHub();
 };
 </script>
@@ -576,6 +624,7 @@ window.onload = function(){
 <select id="editDepartamento" required>
   <option value="supplements">Supplements</option>
   <option value="cosmetics">Cosmetics</option>
+  <option value="clothes">Clothes</option>
 </select>
 <label>Categoria</label>
 <select id="editSubcategoria" required>
