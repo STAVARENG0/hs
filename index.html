@@ -185,6 +185,21 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
     padding: 1rem 1.4rem;
   }
 }
+
+/* ===== New Drawer Menu (4 options; first two expandable) ===== */
+.menu { margin-top: 6px; }
+.menu-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.menu-item { display: grid; grid-template-columns: 1fr auto; align-items: center; background: #151515; border:1px solid rgba(255,255,255,0.08); border-radius:12px; }
+.menu-link { display: block; padding: 12px 14px; text-decoration: none; color: #fff; }
+.menu-link.primary { color: var(--orange); font-weight: 900; letter-spacing: .05em; text-transform: none; }
+.submenu-toggle { margin-right: 6px; margin-left: 4px; background: transparent; border: none; color: var(--orange); font-size: 20px; line-height: 1; cursor: pointer; padding: 10px; transform: rotate(0deg); transition: transform .2s ease; }
+.submenu[hidden]{display:none !important;}
+
+.submenu-toggle[aria-expanded="true"] { transform: rotate(90deg); } /* rotate caret when open */
+.submenu { grid-column: 1 / -1; list-style: none; padding: 8px 10px 12px; margin: 0; display: grid; gap: 8px; }
+.submenu a { display:block; padding:10px 12px; background:#101010; border-radius:10px; border:1px solid rgba(255,255,255,.06); color:#fff; text-decoration:none; }
+.submenu a:hover { background:#191919; }
+
 </style>
 </head>
 <body>
@@ -196,43 +211,64 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
     <div class="drawer-title">Browse</div>
     <button class="drawer-close big-menu-btn" id="closeMenu" aria-label="Close menu">×</button>
   </div>
+  
   <div class="drawer-body">
-    <div class="section">
-      <h4>Supplements</h4>
-      <ul>
-        <li><a href="vitamins-and-minerals.html">Vitamins &amp; Minerals</a></li>
-        <li><a href="heart-health.html">Heart Health</a></li>
-        <li><a href="liver-support.html">Liver Support</a></li>
-        <li><a href="multivitamins.html">Multivitamins</a></li>
-        <li><a href="mass-gainer.html">Mass Gainer</a></li>
-        <li><a href="pre-workout.html">Pre-Workout</a></li>
-        <li><a href="bcaa-and-eaa.html">BCAA &amp; EAA</a></li>
-        <li><a href="probiotics.html">Probiotics</a></li>
-        <li><a href="glutamine.html">Glutamine</a></li>
-        <li><a href="collagen.html">Collagen</a></li>
-        <li><a href="diuretics.html">Diuretics</a></li>
-        <li><a href="omega-3.html">Omega 3</a></li>
-        <li><a href="creatine.html">Creatine</a></li>
-        <li><a href="fat-loss.html">Fat Loss</a></li>
+    <nav class="menu">
+      <ul class="menu-list">
+        <!-- Suplementes (expandable + links to general page) -->
+        <li class="menu-item">
+          <a class="menu-link primary" href="supplements.html">Suplementes</a>
+          <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-supplements">›</button>
+          <ul id="submenu-supplements" class="submenu" hidden>
+            <li><a href="vitamins-and-minerals.html">Vitamins &amp; Minerals</a></li>
+            <li><a href="heart-health.html">Heart Health</a></li>
+            <li><a href="liver-support.html">Liver Support</a></li>
+            <li><a href="multivitamins.html">Multivitamins</a></li>
+            <li><a href="mass-gainer.html">Mass Gainer</a></li>
+            <li><a href="pre-workout.html">Pre-Workout</a></li>
+            <li><a href="bcaa-and-eaa.html">BCAA &amp; EAA</a></li>
+            <li><a href="probiotics.html">Probiotics</a></li>
+            <li><a href="glutamine.html">Glutamine</a></li>
+            <li><a href="collagen.html">Collagen</a></li>
+            <li><a href="diuretics.html">Diuretics</a></li>
+            <li><a href="omega-3.html">Omega 3</a></li>
+            <li><a href="creatine.html">Creatine</a></li>
+            <li><a href="fat-loss.html">Fat Loss</a></li>
+          </ul>
+        </li>
+
+        <!-- Cosmetics (expandable + links to general page) -->
+        <li class="menu-item">
+          <a class="menu-link primary" href="cosmetics.html">Cosmetics</a>
+          <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-cosmetics">›</button>
+          <ul id="submenu-cosmetics" class="submenu" hidden>
+            <li><a href="body-oil.html">Body Oil</a></li>
+            <li><a href="nails.html">Nails</a></li>
+            <li><a href="perfume.html">Perfume</a></li>
+            <li><a href="mascara.html">Mascara</a></li>
+            <li><a href="skin-care.html">Skin Care</a></li>
+            <li><a href="soap.html">Soap</a></li>
+            <li><a href="moisturizer.html">Moisturizer</a></li>
+            <li><a href="body-splash.html">Body Splash</a></li>
+            <li><a href="hair-tonic.html">Hair Tonic</a></li>
+            <li><a href="leavein-cream.html">Leave‑in Cream</a></li>
+            <li><a href="shampoo-and-conditioner.html">Shampoo &amp; Conditioner</a></li>
+          </ul>
+        </li>
+
+        <!-- Clothes (simple link, orange) -->
+        <li class="menu-item">
+          <a class="menu-link primary" href="clothes.html">Clothes</a>
+        </li>
+
+        <!-- Contactos (simple link, orange) -->
+        <li class="menu-item">
+          <a class="menu-link primary" href="contactos.html">Contactos</a>
+        </li>
       </ul>
-    </div>
-    <div class="section">
-      <h4>Cosmetics</h4>
-      <ul>
-        <li><a href="body-oil.html">Body Oil</a></li>
-        <li><a href="nails.html">Nails</a></li>
-        <li><a href="perfume.html">Perfume</a></li>
-        <li><a href="mascara.html">Mascara</a></li>
-        <li><a href="skin-care.html">Skin Care</a></li>
-        <li><a href="soap.html">Soap</a></li>
-        <li><a href="moisturizer.html">Moisturizer</a></li>
-        <li><a href="body-splash.html">Body Splash</a></li>
-        <li><a href="hair-tonic.html">Hair Tonic</a></li>
-        <li><a href="leavein-cream.html">Leave‑in Cream</a></li>
-        <li><a href="shampoo-and-conditioner.html">Shampoo &amp; Conditioner</a></li>
-      </ul>
-    </div>
+    </nav>
   </div>
+
   <div class="drawer-footer">Tap a category to open.</div>
 </aside>
 
@@ -608,5 +644,32 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartIcon();
 })();
 </script>
+
+<script>
+// ===== Collapsible submenus (Suplementes & Cosmetics) =====
+(function(){
+  // Ensure all submenus start hidden
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.submenu').forEach(function(ul){
+      ul.hidden = true;
+    });
+  });
+
+  // Toggle only when caret is clicked
+  document.addEventListener('click', function(e){
+    var toggle = e.target.closest('.submenu-toggle');
+    if(!toggle) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    var submenuId = toggle.getAttribute('aria-controls');
+    var submenu = document.getElementById(submenuId);
+    if(!submenu) return;
+    submenu.hidden = expanded; // if it was open, hide; else show
+  }, true);
+})();
+</script>
+
 </body>
 </html>
