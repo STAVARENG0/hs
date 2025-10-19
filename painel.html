@@ -89,6 +89,8 @@ body.modal-open { overflow: hidden; }
 /* Ocultar barras de rolagem (Chrome/Safari/Edge/Firefox/IE) */
 #editModal .form::-webkit-scrollbar { width: 0; height: 0; }
 #editModal .form { scrollbar-width: none; -ms-overflow-style: none; }
+
+.hidden{display:none !important;}
 </style>
 </head>
 <body>
@@ -510,8 +512,78 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </div>
 <script>
+
+// ===== Dynamic categories by department (including clothes) =====
+const DEPT_CATEGORIES = {
+  clothes: [
+    {value:'general', label:'General'},
+    {value:'tops', label:'Tops'},
+    {value:'bottoms', label:'Bottoms'},
+    {value:'shoes', label:'Shoes'},
+    {value:'accessories', label:'Accessories'},
+    {value:'outerwear', label:'Outerwear'},
+    {value:'underwear', label:'Underwear'},
+    {value:'sportswear', label:'Sportswear'},
+    {value:'swimwear', label:'Swimwear'}
+  ]
+};
+
+function populateCategories(selectEl, dept, currentValue){
+  if(!selectEl) return;
+  // If we have a map for this department, render those options; otherwise keep existing.
+  if(DEPT_CATEGORIES[dept]){
+    const opts = DEPT_CATEGORIES[dept];
+    // Save placeholder (if any) and reset
+    const placeholder = selectEl.querySelector('option[value=""]') ? selectEl.querySelector('option[value=""]').outerHTML : '';
+    selectEl.innerHTML = placeholder + opts.map(o => `<option value="${o.value}">${o.label}</option>`).join('');
+    // Choose currentValue if provided, else default "general"
+    const target = currentValue || 'general';
+    selectEl.value = target;
+  }
+}
+
+
+  function toggleCategoriaForDept(depEl, groupEl, catEl){
+    if(!depEl || !groupEl || !catEl) return;
+    if((depEl.value||'').toLowerCase()==='clothes'){
+      groupEl.classList.add('hidden');
+      catEl.removeAttribute('required');
+      catEl.value = ''; // clear so it won't be sent
+    }else{
+      groupEl.classList.remove('hidden');
+      // Only make required if the DOM originally had 'required' (we'll set it)
+      catEl.setAttribute('required','required');
+    }
+  }
+
 window.onload = function(){
-  const ghModal = document.getElementById('githubModal');
+  
+  const depCreate = document.getElementById('departamento');
+  const catCreate  = document.getElementById('categoria');
+  const depEdit   = document.getElementById('editDepartamento');
+  const catEdit    = document.getElementById('editCategoria');
+
+  
+  const catCreateGroup = document.getElementById('categoriaGroup');
+  const catEditGroup = document.getElementById('editCategoriaGroup');
+  // Initial state
+  toggleCategoriaForDept(depCreate, catCreateGroup, catCreate);
+  toggleCategoriaForDept(depEdit, catEditGroup, catEdit);
+  // Change listeners
+  if(depCreate){ depCreate.addEventListener('change', ()=> toggleCategoriaForDept(depCreate, catCreateGroup, catCreate)); }
+  if(depEdit){ depEdit.addEventListener('change', ()=> toggleCategoriaForDept(depEdit, catEditGroup, catEdit)); }
+// Initial population if default is clothes
+  if(depCreate && catCreate && (depCreate.value==='clothes')){ populateCategories(catCreate, 'clothes', catCreate.value); }
+  if(depEdit && catEdit && (depEdit.value==='clothes')){ populateCategories(catEdit, 'clothes', catEdit.value); }
+
+  // On change handlers
+  if(depCreate){ depCreate.addEventListener('change', ()=>{
+    if(depCreate.value==='clothes'){ populateCategories(catCreate, 'clothes'); }
+  }); }
+  if(depEdit){ depEdit.addEventListener('change', ()=>{
+    if(depEdit.value==='clothes'){ populateCategories(catEdit, 'clothes'); }
+  }); }
+const ghModal = document.getElementById('githubModal');
   const openBtn = document.getElementById('openGithubModal');
   const closeBtn = document.getElementById('closeGithubModal');
   const saveBtn = document.getElementById('saveGithubConfig');
