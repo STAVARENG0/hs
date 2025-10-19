@@ -162,5 +162,18 @@
     "gallery": [],
     "createdAt": 1760887269574,
     "status": "publicado"
+  },
+  {
+    "id": "1760887346803",
+    "title": "top feminino ",
+    "price": 25,
+    "description": "top feminino \n",
+    "department": "clothes",
+    "category": "uncategorized",
+    "stock": 30,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1760887346803/Gemini_Generated_Image_oxglj6oxglj6oxgl.png",
+    "gallery": [],
+    "createdAt": 1760887351369,
+    "status": "publicado"
   }
 ]
