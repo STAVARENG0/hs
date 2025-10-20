@@ -208,17 +208,18 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
   color: var(--white);
   font-weight: 700;
   text-decoration: none;
-  padding: 12px 14px;
-  border-radius: 28px;
+  padding: 4px 8px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
   box-shadow: 0 3px 8px rgba(0,0,0,0.4);
   transition: filter 0.2s;
-  display: inline-flex;
+  display: inline-block;
   align-items: center;
   gap: 8px;
 }
 .menu-btn-modal .menu-toggle:hover { filter: brightness(1.1); }
+.menu-btn-modal .menu-toggle .bars { display: none; }
 
 /* Phrase in place of the old centered Menu button, with a typewriter effect */
 .menu-phrase {
