@@ -201,25 +201,42 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .submenu a:hover { background:#191919; }
 
 
-/* ==== Tagline typewriter under logo ==== */
-.tagline{ margin-top:10px; }
-.typewriter-text{
-  font-family: 'Orbitron', Poppins, system-ui, sans-serif;
-  font-weight: 700;
-  font-size: clamp(14px, 3.4vw, 26px);
+/* ===== Custom edits: Menu top-left like Admin; typewriter phrase ===== */
+.menu-btn-modal { position: absolute; top: 12px; left: 12px; z-index: 100; }
+.menu-btn-modal .menu-toggle {
+  background: var(--orange);
   color: var(--white);
-  letter-spacing: .04em;
-  display: inline-block;
-  overflow: hidden;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 28px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+  transition: filter 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.menu-btn-modal .menu-toggle:hover { filter: brightness(1.1); }
+
+/* Phrase in place of the old centered Menu button, with a typewriter effect */
+.menu-phrase {
+  text-align: center;
+  margin: 8px 0 6px;
+  font-family: 'Orbitron', Poppins, system-ui, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: clamp(20px, 4vw, 32px);
   white-space: nowrap;
+  overflow: hidden;
   border-right: 2px solid var(--orange);
   width: 0;
-  /* --n should match the number of characters in the text */
-  animation: typing 3.2s steps(var(--n)) .3s forwards, caret .9s steps(1) infinite;
-  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  display: inline-block;
+  animation: typing 3s steps(24, end) forwards, caret-blink 0.8s step-end infinite;
 }
-@keyframes typing { to { width: calc(var(--n) * 1ch); } }
-@keyframes caret { 50% { border-color: transparent; } }
+@keyframes typing { from { width: 0 } to { width: 23ch } } /* "Your only limit is you" => 23ch */
+@keyframes caret-blink { 50% { border-color: transparent; } }
 
 </style>
 </head>
@@ -295,6 +312,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
 <div class="wrap">
   <div class="card">
+    <div class="menu-btn-modal"><button class="menu-toggle" id="openMenu" aria-controls="sideMenu" aria-expanded="false"><span class="bars"><span class="bar"></span></span>Menu</button></div>
     <div class="admin-btn-modal"><a href="login.html">Admin</a></div>
 
     <header>
@@ -304,10 +322,6 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
           <text text-anchor="middle" x="50%" y="72%" style="font-family: Poppins, sans-serif; font-size: 18px; fill: var(--orange); stroke: none;">www.hs-nutrition.ie</text>
         </svg>
         <img alt="HS Nutrition Cover" src="5.png"/>
-        <div class="tagline" aria-label="HS Nutrition motivational phrase">
-          <span class="typewriter-text" style="--n:22">Your only limit is you</span>
-        </div>
-
         <div class="search-box">
           <input id="search" placeholder="Search for products..." type="text"/>
           <button onclick="searchProducts()">Search</button>
@@ -315,12 +329,9 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
       </div>
     </header>
 
-    <!-- Menu button -->
+    <!-- Menu button (replaced by phrase) -->
     <div class="menu-row" style="display:flex;justify-content:center;gap:12px;margin:8px 0 6px;">
-      <button class="menu-toggle big-menu-btn" id="openMenu" aria-controls="sideMenu" aria-expanded="false">
-        <span class="bars"><span class="bar"></span></span>
-        Menu
-      </button>
+      <div class="menu-phrase" aria-label="Your only limit is you">Your only limit is you</div>
     </div>
 
     <div class="divider"></div>
