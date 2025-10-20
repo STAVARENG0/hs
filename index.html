@@ -239,6 +239,19 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 @keyframes typing { from { width: 0 } to { width: 23ch } } /* "Your only limit is you" => 23ch */
 @keyframes caret-blink { 50% { border-color: transparent; } }
 
+
+/* Ensure Admin and Menu buttons are identical in size and shape */
+.admin-btn-modal a, .menu-btn-modal .menu-toggle {
+  padding: 6px 10px; /* unified size */
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.1;
+  display: inline-block;
+}
+
+
+.menu-btn-modal .menu-toggle { align-items: unset; gap: 0; }
+
 </style>
 </head>
 <body>
