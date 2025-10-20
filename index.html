@@ -200,6 +200,27 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .submenu a { display:block; padding:10px 12px; background:#101010; border-radius:10px; border:1px solid rgba(255,255,255,.06); color:#fff; text-decoration:none; }
 .submenu a:hover { background:#191919; }
 
+
+/* ==== Tagline typewriter under logo ==== */
+.tagline{ margin-top:10px; }
+.typewriter-text{
+  font-family: 'Orbitron', Poppins, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 3.4vw, 26px);
+  color: var(--white);
+  letter-spacing: .04em;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--orange);
+  width: 0;
+  /* --n should match the number of characters in the text */
+  animation: typing 3.2s steps(var(--n)) .3s forwards, caret .9s steps(1) infinite;
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+}
+@keyframes typing { to { width: calc(var(--n) * 1ch); } }
+@keyframes caret { 50% { border-color: transparent; } }
+
 </style>
 </head>
 <body>
@@ -217,7 +238,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
       <ul class="menu-list">
         <!-- Suplementes (expandable + links to general page) -->
         <li class="menu-item">
-          <a class="menu-link primary" href="supplements.html">Suplementes</a>
+          <a class="menu-link primary" href="supplements.html">Supplements</a>
           <button type="button" class="submenu-toggle" aria-expanded="false" aria-controls="submenu-supplements">›</button>
           <ul id="submenu-supplements" class="submenu" hidden>
             <li><a href="vitamins-and-minerals.html">Vitamins &amp; Minerals</a></li>
@@ -263,7 +284,7 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 
         <!-- Contactos (simple link, orange) -->
         <li class="menu-item">
-          <a class="menu-link primary" href="contactos.html">Contactos</a>
+          <a class="menu-link primary" href="contactos.html">Contacts</a>
         </li>
       </ul>
     </nav>
@@ -283,6 +304,10 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
           <text text-anchor="middle" x="50%" y="72%" style="font-family: Poppins, sans-serif; font-size: 18px; fill: var(--orange); stroke: none;">www.hs-nutrition.ie</text>
         </svg>
         <img alt="HS Nutrition Cover" src="5.png"/>
+        <div class="tagline" aria-label="HS Nutrition motivational phrase">
+          <span class="typewriter-text" style="--n:22">Your only limit is you</span>
+        </div>
+
         <div class="search-box">
           <input id="search" placeholder="Search for products..." type="text"/>
           <button onclick="searchProducts()">Search</button>
