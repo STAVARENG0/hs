@@ -1,20 +1,5 @@
 [
   {
-    "id": "1777055659777",
-    "title": "TESTE",
-    "price": 1,
-    "description": "OI TESTE 24/04/2026",
-    "department": "fashion",
-    "category": "fashion",
-    "stock": 1,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777055659777/PRETA.png",
-    "gallery": [
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777055659777/AZUL.png"
-    ],
-    "createdAt": 1777055667660,
-    "status": "publicado"
-  },
-  {
     "id": "1777108197088",
     "title": "teste 2",
     "price": 1,
