@@ -1,15 +1,1 @@
-[
-  {
-    "id": "1777108197088",
-    "title": "teste 2",
-    "price": 1,
-    "description": "teste 2",
-    "department": "fashion",
-    "category": "fashion",
-    "stock": 3,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777108197088/CORDA.png",
-    "gallery": [],
-    "createdAt": 1777108200078,
-    "status": "publicado"
-  }
-]
+[]
