@@ -26,6 +26,22 @@ h1{ color:var(--orange); font-size:22px; margin-bottom:14px; }
 .helper{ margin-top:12px; font-size:13px; color:#666; }
 footer{ margin-top:16px; color:#666; font-size:13px; }
 .hidden{ display:none !important; }
+
+.policy-btn{
+  display:inline-block;
+  margin:4px 0 18px;
+  background:linear-gradient(90deg,var(--orange),#ff9b6a);
+  color:#101010;
+  padding:9px 18px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:13px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(255,60,0,.22);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.policy-btn:hover{ filter:brightness(1.06); transform:translateY(-1px); }
 </style>
 </head>
 <body>
@@ -33,6 +49,10 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
 <div class="checkout-card">
   <img src="5.png" alt="HS Nutrition" class="logo">
   <h1>Your Cart</h1>
+
+  <a class="policy-btn" href="return-refund-policy.html" aria-label="Return and Refund Policy">
+    Return & Refund Policy
+  </a>
 
   <div class="items" id="cartList"></div>
   <div class="summary">
