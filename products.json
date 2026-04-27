@@ -11,5 +11,18 @@
     "gallery": [],
     "createdAt": 1777292954282,
     "status": "publicado"
+  },
+  {
+    "id": "1777292989773",
+    "title": "CORDA DE PULAR VERMELHA",
+    "price": 1,
+    "description": "CORDA VERMELHA ",
+    "department": "cosmetics",
+    "category": "Body Oil",
+    "stock": 2,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777292989773_1777292989909_baeae76b1001.png",
+    "gallery": [],
+    "createdAt": 1777292993894,
+    "status": "publicado"
   }
 ]
