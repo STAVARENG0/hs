@@ -11,22 +11,5 @@
     "gallery": [],
     "createdAt": 1777108200078,
     "status": "publicado"
-  },
-  {
-    "id": "1777286914306",
-    "title": "TESTE 3 ",
-    "price": 1,
-    "description": "1",
-    "department": "fashion",
-    "category": "fashion",
-    "stock": 2,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777286914306_1777286924555_849b42037a8e.png",
-    "gallery": [
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777286914306_1777286915008_faf4d6157c13.png",
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777286914306_1777286919925_e38cebb154a6.png",
-      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777286914306_1777286928453_25db4fbcfc5c.png"
-    ],
-    "createdAt": 1777286932807,
-    "status": "publicado"
   }
 ]
