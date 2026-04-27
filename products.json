@@ -1,18 +1,5 @@
 [
   {
-    "id": "1777293031592",
-    "title": "CORDA PRETA ",
-    "price": 1,
-    "description": "CORDA  DE PULAR NA COR PRETA",
-    "department": "fashion",
-    "category": "fashion",
-    "stock": 2,
-    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777293031592_1777293031232_2b62677aee03.png",
-    "gallery": [],
-    "createdAt": 1777293036034,
-    "status": "publicado"
-  },
-  {
     "id": "1777293079567",
     "title": "CORDA BLUE",
     "price": 1,
