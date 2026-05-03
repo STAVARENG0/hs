@@ -324,5 +324,20 @@
     ],
     "createdAt": 1777829757741,
     "status": "publicado"
+  },
+  {
+    "id": "1777829815685",
+    "title": "Multivitamins Woman- 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 capsule\nServings per container: 60\nPackaging: 60 capsules\nMultivit Ingredients for Women: minerals (magnesium oxide, iron (II) sulfate, zinc sulfate, copper (II) sulfate, manganese sulfate, sodium selenate (IV), chromium (III) chloride, sodium molybdate (VI), potassium iodide, manganese diglycinate, chromium picolinate), vitamins (D-alpha tocopheryl acetate, nicotinic acid amide, L-ascorbic acid, calcium D-pantothenate, retinyl acetate, menaquinone, pyridoxine hydrochloride, cholecalciferol, riboflavin, thiamine mononitrate, thiamine hydrochloride, pteroylmonoglutamic acid, D-biotin, cyanocobalamin), maltodextrin, bulking agent - microcrystalline cellulose, anti-caking agent - magnesium salts of fatty acids, extract of field horsetail herb (Equisetum arvense), hydrolyzed collagen protein, extract of grape seeds (Vitis vinifera), L-cysteine, L-methionine, lutein from marigold flowers (Tagetes erecta), lycopene, capsule (gelatin, color - titanium dioxide)\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829816/hs-products/1777829815685/1777829815685_1777829816273_4548a4461a_953ACF4B-B9FD-4125-9CFE-725C2A2ED079.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829818/hs-products/1777829815685/1777829815685_1777829818283_c2285a491e_19B4C560-6064-488B-9708-72E4A4AA78E3.jpg"
+    ],
+    "createdAt": 1777829819189,
+    "status": "publicado"
   }
 ]
