@@ -414,5 +414,20 @@
     ],
     "createdAt": 1777830709258,
     "status": "publicado"
+  },
+  {
+    "id": "1777830775720",
+    "title": " Multivit Men- 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 capsule\nServings per container: 60\nPackaging: 60 capsules\nMultivit Ingredients for Men: minerals (magnesium oxide, iron (II) sulfate, zinc sulfate, copper (II) sulfate, manganese sulfate, sodium selenite (IV), chromium (III) chloride, sodium molybdate (VI), potassium iodide, manganese diglycinate, chromium picolinate), vitamins (D-alpha tocopheryl acetate, nicotinic acid amide, L-ascorbic acid, calcium D-pantothenate, retinyl acetate, menaquinone, pyridoxine hydrochloride, cholecalciferol, riboflavin, thiamine mononitrate, thiamine hydrochloride, pteroylmonoglutamic acid, D-biotin, cyanocobalamin), maltodextrin, filling agent - microcrystalline cellulose, anti-caking agent - magnesium salts of fatty acids, extract from Yerba mate leaves (Ilex paraguariensis), extract from ginseng root (Panax ginseng), extract from ginger rhizome (Zingiber officinale), lycopene, soy lecithin soy, lutein from marigold flowers (Tagetes erecta), capsule (gelatin, color - titanium dioxide). May contain derivatives of: gluten-containing cereals, soy, milk.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Multivitamins",
+    "stock": 0,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830776/hs-products/1777830775720/1777830775720_1777830776470_ece08d196f_447A7904-0429-48C1-B257-C0E312880286.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830779/hs-products/1777830775720/1777830775720_1777830778865_805f5ea17a_D2165CB3-11A8-438D-B9EF-9CE3D6F492CE.jpg"
+    ],
+    "createdAt": 1777830780071,
+    "status": "publicado"
   }
 ]
