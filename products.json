@@ -279,5 +279,20 @@
     ],
     "createdAt": 1777829159710,
     "status": "publicado"
+  },
+  {
+    "id": "1777829206320",
+    "title": "Magnesium Forte - 60 Tabs",
+    "price": 12.99,
+    "description": "Serving: 1 tabs\nServings per container: 60\nContainer: 60 tabs\nIngredients: Bulking agent: sorbitol, magnesium carbonate, anti-caking agents: magnesium salts of fatty acids and polyethylene glycol; pyridoxine hydrochloride. Product may contain derivatives of: cereals containing gluten, soy, milk.\nActive Ingredient\tContent per daily serving (1 tablet)\t%NRV*\nMagnesium\t200 mg\t53%\nVitamin B6\t10 mg\t714%\n",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829207/hs-products/1777829206320/1777829206320_1777829206904_bd7b81eaff_CD0C7F6C-BE68-43CC-B2E7-DF5BDDDF9C47.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829209/hs-products/1777829206320/1777829206320_1777829208720_f37ec40724_66ED673E-A37C-4537-986F-E4A8022EC57F.jpg"
+    ],
+    "createdAt": 1777829209951,
+    "status": "publicado"
   }
 ]
