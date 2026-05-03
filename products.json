@@ -129,5 +129,20 @@
     ],
     "createdAt": 1777820900226,
     "status": "publicado"
+  },
+  {
+    "id": "1777821160281",
+    "title": "Behemoth - 500g - Fruit Punch",
+    "price": 28,
+    "description": "Serving: 20g\nServings per package: 25\nPackage: 500g\nBehemoth Ingredients: Beta alanine, citrulline, AAKG (L-arginine alpha-ketoglutarate), glycerol monostearate, citric acid, L-tyrosine, taurine, glucuronolactone, choline bitartrate, caffeine, magnesium citrate, cocoa bean extract, silicon dioxide (anti-caking agent), flavor, cayenne pepper extract, sucralose (sweetener), black pepper extract, niacinamide, DL-alpha-tocopheryl acetate, calcium D-pantothenate, pyridoxine hydrochloride, riboflavin, thiamine mononitrate, folic acid, D-biotin, cyanocobalamin, colorings for flavors: indigotine (bubble gum), tartrazine (orange), carmoisine (strawberry-watermelon), ammonium sulfite caramel (cola).\nTartrazine may have a harmful effect on activity and attention in children.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821161/hs-products/1777821160281/1777821160281_1777821161373_cd4834d6b4_5EA16E49-563E-431F-B8CD-A9DFCD60A4AC.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821163/hs-products/1777821160281/1777821160281_1777821163402_b9a0fc4c71_7946C75C-1A90-4253-A9D6-27278EB520F0.jpg"
+    ],
+    "createdAt": 1777821164445,
+    "status": "publicado"
   }
 ]
