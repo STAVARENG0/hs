@@ -234,5 +234,20 @@
     ],
     "createdAt": 1777822513870,
     "status": "publicado"
+  },
+  {
+    "id": "1777822786353",
+    "title": "Jack3D - 250g - Grape US",
+    "price": 45,
+    "description": "Serving Size: 5.55g\nServings Per Container: 45\nPackage: 250 g\nOther Ingredients: citric acid, natural flavors, silicon dioxide, acesulfame K, sucralose, vegetable-derived stearate, colorant/s.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 0,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822788/hs-products/1777822786353/1777822786353_1777822787496_56009dd74f_IMG_5137.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822789/hs-products/1777822786353/1777822786353_1777822789243_9988b57e72_D33F5A62-DCEC-4DA4-B882-C119DACF4675.jpg"
+    ],
+    "createdAt": 1777822790059,
+    "status": "publicado"
   }
 ]
