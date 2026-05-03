@@ -84,5 +84,20 @@
     ],
     "createdAt": 1777820316137,
     "status": "publicado"
+  },
+  {
+    "id": "1777820623145",
+    "title": "Guarilla Energy - 270g Orange Mango",
+    "price": 24.99,
+    "description": "Serving: 9 g\nServings per package: 30\nPackage: 270 g\nIngredients: beta-alanine, citrulline malate, anhydrous betaine, creatine monohydrate, L-tyrosine, choline bitartrate, anti-caking agent (E551), flavors, anhydrous caffeine, acidity regulators (E330, E296), vitamin B6 (pyridoxine hydrochloride), niacin (nicotinic acid), salt, beetroot juice concentrate, black carrot concentrate, sweeteners (acesulfame K, sucralose, steviol glycosides from stevia), color/s (E160a, E104, E132). E104: May have an adverse effect on activity and attention in children.\n\nIngredient\tContent per serving (9 g)\t%NRV**\n\nBeta-alanine\t3200 mg\t†\nCitrulline malate\t1500 mg\t†\n– of which citrulline\t1000 mg\t†\nBetaine\t1000 mg\t†\nCreatine monohydrate\t500 mg\t†\n– of which creatine\t440 mg\t†\nL-tyrosine\t500 mg\t†\nCholine bitartrate\t500 mg\t†\n– of which choline\t205 mg\t†\nCaffeine\t400 mg\t†\nVitamin B6\t18 mg\t1286%\nNiacin\t16 mg NE\t100%",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820624/hs-products/1777820623145/1777820623145_1777820624064_54dc02c9db_A1FACDF7-CA50-402A-ABF6-780CAB4FDAE4.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820626/hs-products/1777820623145/1777820623145_1777820626355_b47b31ea5a_938D23EB-B506-4CAB-90B1-0D9123C8418B.jpg"
+    ],
+    "createdAt": 1777820627699,
+    "status": "publicado"
   }
 ]
