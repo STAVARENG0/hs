@@ -134,6 +134,30 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .product-pagination .dots{ color:var(--muted,#9c9c9c); font-weight:800; padding:0 2px; }
 .cart-shipping-note{ color:#666; font-size:13px; margin:8px 0 12px; }
 
+
+/* === Cart modal card color fix: white card like main index === */
+#cartModal .cart-content{
+  background:#ffffff !important;
+  color:#111111 !important;
+  border:2px solid var(--orange,#ff3c00) !important;
+  box-shadow:0 18px 42px rgba(0,0,0,.45) !important;
+}
+#cartModal .cart-content h2,
+#cartModal .cart-total,
+#cartModal .cart-item strong,
+#cartModal .cart-item small,
+#cartModal .cart-shipping-note{
+  color:#111111 !important;
+}
+#cartModal .cart-divider{
+  border:none !important;
+  border-top:2px dashed rgba(0,0,0,0.08) !important;
+}
+#cartModal .cart-checkout{
+  background:linear-gradient(90deg,var(--orange,#ff3c00),#ff8c42) !important;
+  color:#ffffff !important;
+  border:none !important;
+}
 </style>
 <style>
 /* ========= GENERIC MODAL (Injected v2) ========= */
@@ -400,15 +424,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   checkoutBtn.addEventListener('click', () => {
-    const sel = getSelectedShipping();
-    if(!sel){
-      alert('Please choose a shipping option before continuing.');
-      document.getElementById('cartModal').style.display = 'flex';
+    if(!Array.isArray(cart) || cart.length === 0){
+      alert('Your cart is empty.');
       return;
     }
-    const shipping = Number(sel.value);
-    const shippingLabel = shipping === 10 ? 'Tracked (€10)' : 'No tracked (€7)';
-    localStorage.setItem('hs_shipping', JSON.stringify({ amount: shipping, label: shippingLabel, ts: Date.now() }));
+    localStorage.removeItem('hs_shipping');
     window.location.href = 'checkout.html';
   });
 });
