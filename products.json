@@ -249,5 +249,20 @@
     ],
     "createdAt": 1777822790059,
     "status": "publicado"
+  },
+  {
+    "id": "1777823055623",
+    "title": "Pump Kong - 80ml - Bubble Gum X24 (24 Shots)",
+    "price": 25,
+    "description": "Serving: 80 ml (1 shot)\nServings per container: 12\nPackage: 12 x 80 ml\nIngredients: Water, beta-alanine, AAKG (L-arginine alpha-ketoglutarate), citrulline (citrulline malate), apple juice from concentrated apple juice (17%), glycerol, acidity regulator – potassium citrates (including potassium), acidity regulator – sodium citrates (including sodium), lemon juice from concentrated lemon juice (3%), betaine (betaine hydrochloride), flavors, standardized extract from grape seeds (Vitis vinifera L.) 7.5-9:1 (containing 40% polyphenols, 30% procyanidins), extract from Chinese Schisandra fruit (Schisandra chinensis (Turcz.) Baill.) 4:1, sweeteners – sucralose, acesulfame K, neotame, aspartame, maltodextrin, preservatives – potassium sorbate, sodium benzoate.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777823057/hs-products/1777823055623/1777823055623_1777823056482_d4b22270eb_E4D3BF2B-92B4-4F04-A0CC-33ECED094EFE.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777823058/hs-products/1777823055623/1777823055623_1777823058584_ec08ef73ee_C2EB8E44-2793-4DDE-AEA8-8173B69264E9.jpg"
+    ],
+    "createdAt": 1777823059661,
+    "status": "publicado"
   }
 ]
