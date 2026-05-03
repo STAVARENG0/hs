@@ -159,5 +159,20 @@
     ],
     "createdAt": 1777821259170,
     "status": "publicado"
+  },
+  {
+    "id": "1777821478717",
+    "title": "Black Gorilla Ice Pump PreWorkout - 300g - Strawberry Lemonade",
+    "price": 28,
+    "description": "Serving: 10g\nServings per container: 30\nContainer: 300g\nIngredients of Black Gorilla Ice Pump: L-citrulline, L-arginine alpha-ketoglutarate, beta-alanine, flavors, acidity regulator: citric acid, niacin amide, dye: beetroot red, sweeteners: acesulfame K and sucralose.\nMay contain derivatives of: gluten-containing cereals, soy, milk.\nDietary supplement. This product is not intended for the diagnosis, treatment, or prevention of any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821480/hs-products/1777821478717/1777821478717_1777821479608_fe25f0cae1_02F10A08-C09E-4748-9114-CFB0072C5387.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821481/hs-products/1777821478717/1777821478717_1777821481026_b0a42964ba_D8BE01CF-1D4E-4F47-A158-704330A52325.jpg"
+    ],
+    "createdAt": 1777821481944,
+    "status": "publicado"
   }
 ]
