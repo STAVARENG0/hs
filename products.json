@@ -189,5 +189,20 @@
     ],
     "createdAt": 1777821670422,
     "status": "publicado"
+  },
+  {
+    "id": "1777821811362",
+    "title": "Angel Dust - 270g - Fruit Massage",
+    "price": 29.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821812/hs-products/1777821811362/1777821811362_1777821812208_9b7391dc5e_E67CB397-B456-47DA-9B6A-9FFFEC2F429C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821814/hs-products/1777821811362/1777821811362_1777821814219_d4eb1dbc97_E1D04D28-052A-4BF0-98D7-071B4965B6C7.jpg"
+    ],
+    "createdAt": 1777821815042,
+    "status": "publicado"
   }
 ]
