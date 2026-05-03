@@ -408,8 +408,10 @@
     "department": "supplements",
     "category": "Vitamins & Minerals",
     "stock": 10,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831068/hs-products/1777830705779/1777830705779_1777831067632_8f835e6952_D2165CB3-11A8-438D-B9EF-9CE3D6F492CE.jpg",
-    "gallery": [],
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831155/hs-products/1777830705779/1777830705779_1777831154955_6388ea41a8_447A7904-0429-48C1-B257-C0E312880286.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831156/hs-products/1777830705779/1777830705779_1777831156663_68aaa75870_D2165CB3-11A8-438D-B9EF-9CE3D6F492CE.jpg"
+    ],
     "createdAt": 1777830709258,
     "status": "publicado"
   },
