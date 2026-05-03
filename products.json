@@ -56,5 +56,18 @@
     "gallery": [],
     "createdAt": 1777819810048,
     "status": "publicado"
+  },
+  {
+    "id": "1777819991286",
+    "title": "100% Pure Creatine - 300g - Natural",
+    "price": 17.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777819992/hs-products/1777819991286/1777819991286_1777819992061_f22c6cd6ec_C0996FC2-487A-4DC3-870F-D099329AB1E4.jpg",
+    "gallery": [],
+    "createdAt": 1777819993276,
+    "status": "publicado"
   }
 ]
