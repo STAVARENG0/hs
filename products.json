@@ -13,5 +13,20 @@
     ],
     "createdAt": 1777818283295,
     "status": "publicado"
+  },
+  {
+    "id": "1777818531830",
+    "title": "Creatine CreaMaX - 300g",
+    "price": 20,
+    "description": "Serving: 5g\nServings per container: 60\nContainer: 300g\nIngredients of Creatine CreaMax: CreaMax creatine monohydrate, taurine.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.\nNutritional values\tper 5g serving\nCreatine monohydrate\t4500 mg\nincluding creatine\t3959 mg\nTaurine\t500 mg\nHow to use Creatine CreaMax: Dissolve 1 serving (5g powder - 1 flat scoop included in the package) in 200ml of water and drink once a day.\nDietary supplements cannot be used as a substitute for a varied diet. Remember that only a healthy lifestyle and balanced nutrition ensure the proper functioning of the body and maintaining good condition.\nDo not exceed the recommended daily intake. The product cannot be used by persons allergic to any of its ingredients. The product should not be given to pregnant women and breastfeeding mothers.\nKeep out of reach of small children. Store in a dry place at room temperature in tightly closed containers. Shake the container vigorously before use.\nBest before: the production date and batch number are located on the side/bottom of the packaging.\nNet weight: 300g",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777818533/hs-products/1777818531830/1777818531830_1777818532732_f6059363e5_2FE4F974-E434-4434-8E0D-A6FC01930947.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777818535/hs-products/1777818531830/1777818531830_1777818534698_2caf984965_8477D990-6827-4CD4-A761-D08D4F0D6A52.jpg"
+    ],
+    "createdAt": 1777818535870,
+    "status": "publicado"
   }
 ]
