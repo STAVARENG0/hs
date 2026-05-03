@@ -44,5 +44,21 @@
     ],
     "createdAt": 1777805532327,
     "status": "publicado"
+  },
+  {
+    "id": "1777808771350",
+    "title": "ARTEANATO TESTE ",
+    "price": 2,
+    "description": "Peça artesanal em madeira maciça, produzida com acabamento rústico e visual exclusivo. Cada unidade possui gravações decorativas feitas em estilo caligráfico, com traços orgânicos, arabescos e detalhes artísticos que valorizam a textura natural da madeira.\n\nO design traz uma aparência elegante e personalizada, combinando o tom quente da madeira com desenhos escurecidos que lembram gravação manual ou pirografia. As linhas curvas e os detalhes ornamentais dão à peça um estilo único, ideal para quem procura um produto diferenciado, decorativo e com acabamento artesanal.\n\nA madeira possui formato retangular alongado, com estrutura firme e visual robusto. A superfície recebe desenhos variados, criando uma composição artística que se destaca tanto em ambientes rústicos quanto modernos. Por ser um item artesanal, pequenas variações de tonalidade, marcas naturais da madeira e diferenças nos desenhos tornam cada peça exclusiva.",
+    "department": "fashion",
+    "category": "fashion",
+    "stock": 2,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777808781/hs-products/1777808771350/1777808771350_1777808781016_3f9c3f76e5_Imagem_do_WhatsApp_de_2025-12-17____s__13_09_16_0a.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777808773/hs-products/1777808771350/1777808771350_1777808772834_c6bb3d7a78_Gemini_Generated_Image_qhw1rpqhw1rpqhw1.png",
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777808779/hs-products/1777808771350/1777808771350_1777808778629_32d5aa1fc9_Gemini_Generated_Image_9hlcmu9hlcmu9hlc.png"
+    ],
+    "createdAt": 1777808781534,
+    "status": "publicado"
   }
 ]
