@@ -114,5 +114,20 @@
     ],
     "createdAt": 1777820710739,
     "status": "publicado"
+  },
+  {
+    "id": "1777820897362",
+    "title": "Citrulline - 200g - Unflavored",
+    "price": 19.99,
+    "description": "Serving size: 5g\nServings per container: 113\nContainer size: 567g\nIngredients: Citrulline (citrulline malate), flavoring, sweetener - sucralose, anti-caking agent - silicon dioxide, coloring - carotenes.\n\nIngredients\tper 5g serving\nCitrulline (citrulline malate)\t4710 mg",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820898/hs-products/1777820897362/1777820897362_1777820898075_072000d520_E616C929-5182-46F3-9D22-C6C80BD112BF.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820899/hs-products/1777820897362/1777820897362_1777820899184_ad536fc09a_781E1254-90D2-45AB-A126-A351512117AF.jpg"
+    ],
+    "createdAt": 1777820900226,
+    "status": "publicado"
   }
 ]
