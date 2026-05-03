@@ -28,5 +28,20 @@
     ],
     "createdAt": 1777802227614,
     "status": "publicado"
+  },
+  {
+    "id": "1777802283202",
+    "title": "STROGONOFF",
+    "price": 1,
+    "description": "FRANGO AO MOLHO ",
+    "department": "cosmetics",
+    "category": "Body Oil",
+    "stock": 1,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802285/hs-products/1777802283202/1777802283202_1777802284787_b9ed15a231_Gemini_Generated_Image_az76g8az76g8az76.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802287/hs-products/1777802283202/1777802283202_1777802287212_f29f96f234_Gemini_Generated_Image_sd00zxsd00zxsd00__1_.png"
+    ],
+    "createdAt": 1777802288031,
+    "status": "publicado"
   }
 ]
