@@ -470,5 +470,20 @@
     ],
     "createdAt": 1777831940176,
     "status": "publicado"
+  },
+  {
+    "id": "1777831977885",
+    "title": "Omega 3 - 90 SoftGels ",
+    "price": 19.99,
+    "description": "Serving: 1 softgel\nServings per container: 90\nContainer: 90 softgels\nOmega 3 Ingredients: Fish oil (containing fish) from Peruvian sardines including: eicosapentaenoic acid (EPA), docosahexaenoic acid (DHA), gelatin capsule (gelatin, humectant-glycerol, water), vitamin E (D-alpha-tocopheryl acetate).\nProduct may contain milk (including lactose), soy, peanuts, nuts, sesame seeds, oats, eggs and crustaceans.\nDietary supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831978/hs-products/1777831977885/1777831977885_1777831978554_99a6fe1803_18D3DB21-74CB-4FE2-B46B-4D87312EEF5C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831980/hs-products/1777831977885/1777831977885_1777831980128_d7d84ef1b9_8C79807A-846C-4789-8BBD-032C2F315849.jpg"
+    ],
+    "createdAt": 1777831981266,
+    "status": "publicado"
   }
 ]
