@@ -98,6 +98,42 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .cart-thumb { width:46px; height:46px; border-radius:8px; object-fit:cover; border:1px solid rgba(0,0,0,.06); }
 .cart-qty { display:flex; align-items:center; gap:6px; }
 
+
+
+/* ===== HS extra: share button + pagination ===== */
+.share-btn{
+  margin-top:8px;
+  background:#ffffff !important;
+  color:#111 !important;
+  border:1px solid rgba(255,60,0,.55) !important;
+  box-shadow:none !important;
+}
+.share-btn:hover{ filter:none !important; opacity:.92; }
+.product-pagination{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:22px 0 8px;
+}
+.product-pagination button{
+  min-width:38px;
+  height:38px;
+  border-radius:999px;
+  border:1px solid var(--orange,#ff3c00);
+  background:#111;
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+}
+.product-pagination button.active{
+  background:var(--orange,#ff3c00);
+  color:#fff;
+}
+.product-pagination .dots{ color:var(--muted,#9c9c9c); font-weight:800; padding:0 2px; }
+.cart-shipping-note{ color:#666; font-size:13px; margin:8px 0 12px; }
+
 </style>
 <style>
 /* ========= GENERIC MODAL (Injected v2) ========= */
@@ -170,14 +206,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
     <h2>Your Cart</h2>
     <div id="cartItems" style="margin:12px 0;"></div>
     <hr class="cart-divider" style="margin:12px 0;">
-
-    <h4 style="margin:6px 0 4px 0;color:#111;">Shipping Details</h4>
-    <div class="shipping-options" style="margin-bottom:10px;">
-      <label><input type="radio" name="shipping" value="7"> 7€ — No tracked</label><br>
-      <label><input type="radio" name="shipping" value="10"> 10€ — Tracked</label>
-    </div>
-
-    <div class="cart-total">
+    <div class="cart-shipping-note">Shipping is selected on the final checkout page.</div>
+<div class="cart-total">
       <span>Total:</span>
       <span id="cartTotal">€ --</span>
     </div>
@@ -702,6 +732,263 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', function(e){
     const modal = document.getElementById('productModal');
     if(modal && e.target === modal) window.closeProductModal();
+  });
+})();
+</script>
+
+
+<script>
+// ===== HS extra: random products, pagination, share link, checkout shipping only on final page =====
+(function(){
+  const PAGE_SIZE = 12;
+  let currentPage = 1;
+  let applying = false;
+  let debounceTimer = null;
+
+  function getGrid(){ return document.getElementById('products'); }
+  function getCards(){
+    const grid = getGrid();
+    if(!grid) return [];
+    return Array.from(grid.children).filter(el => el.classList && el.classList.contains('product'));
+  }
+  function getProductId(card){
+    if(!card) return '';
+    const direct = card.dataset?.id || card.getAttribute('data-id');
+    if(direct) return String(direct);
+    const inside = card.querySelector('[data-id]');
+    return inside ? String(inside.dataset.id || inside.getAttribute('data-id') || '') : '';
+  }
+  function shuffle(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+  function productUrl(id){
+    const url = new URL(window.location.href);
+    url.searchParams.set('product', id);
+    return url.toString();
+  }
+  async function shareProduct(id, title){
+    const url = productUrl(id);
+    try{
+      if(navigator.share){
+        await navigator.share({ title: title || 'HS Nutrition product', url });
+      }else if(navigator.clipboard){
+        await navigator.clipboard.writeText(url);
+        alert('✅ Product link copied!');
+      }else{
+        prompt('Copy product link:', url);
+      }
+    }catch(e){
+      if(String(e && e.name) !== 'AbortError') prompt('Copy product link:', url);
+    }
+  }
+  function ensureShareButtons(){
+    getCards().forEach(card => {
+      if(card.querySelector('.share-btn')) return;
+      const id = getProductId(card);
+      if(!id) return;
+      const cta = card.querySelector('.cta') || card;
+      const title = (card.querySelector('h3')?.textContent || 'Product').trim();
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn share-btn';
+      btn.textContent = 'Share Product';
+      btn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        shareProduct(id, title);
+      });
+      cta.appendChild(btn);
+    });
+  }
+  function getOrCreatePager(){
+    const grid = getGrid();
+    if(!grid) return null;
+    let pager = document.getElementById('productPagination');
+    if(!pager){
+      pager = document.createElement('div');
+      pager.id = 'productPagination';
+      pager.className = 'product-pagination';
+      grid.insertAdjacentElement('afterend', pager);
+    }
+    return pager;
+  }
+  function drawPager(totalPages){
+    const pager = getOrCreatePager();
+    if(!pager) return;
+    pager.innerHTML = '';
+    if(totalPages <= 1){ pager.style.display = 'none'; return; }
+    pager.style.display = 'flex';
+
+    function addBtn(label, page, active){
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = label;
+      if(active) b.classList.add('active');
+      b.addEventListener('click', ()=>{
+        currentPage = page;
+        applyPagination(false);
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+      pager.appendChild(b);
+    }
+    function addDots(){
+      const s = document.createElement('span');
+      s.className = 'dots';
+      s.textContent = '...';
+      pager.appendChild(s);
+    }
+
+    addBtn('<', Math.max(1,currentPage-1), false);
+    if(totalPages <= 7){
+      for(let i=1;i<=totalPages;i++) addBtn(String(i), i, i===currentPage);
+    }else{
+      addBtn('1',1,currentPage===1);
+      if(currentPage > 3) addDots();
+      const start = Math.max(2, currentPage-1);
+      const end = Math.min(totalPages-1, currentPage+1);
+      for(let i=start;i<=end;i++) addBtn(String(i), i, i===currentPage);
+      if(currentPage < totalPages-2) addDots();
+      addBtn(String(totalPages), totalPages, currentPage===totalPages);
+    }
+    addBtn('>', Math.min(totalPages,currentPage+1), false);
+  }
+  function applyPagination(resetIfNew){
+    if(applying) return;
+    const grid = getGrid();
+    if(!grid) return;
+    const cards = getCards();
+    if(!cards.length){
+      const pager = document.getElementById('productPagination');
+      if(pager) pager.style.display = 'none';
+      return;
+    }
+    applying = true;
+    try{
+      ensureShareButtons();
+      const ids = cards.map(getProductId).join('|');
+      if(grid.dataset.hsSignature !== ids){
+        const shuffled = shuffle(cards.slice());
+        shuffled.forEach(card => grid.appendChild(card));
+        grid.dataset.hsSignature = shuffled.map(getProductId).join('|');
+        currentPage = 1;
+      }else if(resetIfNew){
+        currentPage = 1;
+      }
+      const freshCards = getCards();
+      const totalPages = Math.max(1, Math.ceil(freshCards.length / PAGE_SIZE));
+      if(currentPage > totalPages) currentPage = totalPages;
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      freshCards.forEach((card, idx)=>{
+        card.style.display = (idx >= start && idx < end) ? '' : 'none';
+      });
+      drawPager(totalPages);
+    }finally{
+      applying = false;
+    }
+  }
+  function schedulePagination(reset){
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(()=>applyPagination(!!reset), 120);
+  }
+  function setupObserver(){
+    const grid = getGrid();
+    if(!grid || grid.dataset.hsObserved) return;
+    grid.dataset.hsObserved = '1';
+    new MutationObserver(()=>schedulePagination(true)).observe(grid, {childList:true});
+  }
+  function hideCartShippingAndForceCheckout(){
+    const checkoutBtn = document.querySelector('.cart-checkout');
+    const modal = document.getElementById('cartModal');
+    if(modal){
+      modal.querySelectorAll('.shipping-options').forEach(el => {
+        const title = el.previousElementSibling;
+        if(title && /shipping/i.test(title.textContent || '')) title.style.display = 'none';
+        el.style.display = 'none';
+      });
+      if(!modal.querySelector('.cart-shipping-note')){
+        const total = modal.querySelector('.cart-total');
+        if(total){
+          const note = document.createElement('div');
+          note.className = 'cart-shipping-note';
+          note.textContent = 'Shipping is selected on the final checkout page.';
+          total.insertAdjacentElement('beforebegin', note);
+        }
+      }
+    }
+    if(checkoutBtn && !checkoutBtn.dataset.hsFinalCheckout){
+      checkoutBtn.dataset.hsFinalCheckout = '1';
+      checkoutBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        let cart = [];
+        try{ cart = JSON.parse(localStorage.getItem('hs_cart') || '[]'); }catch(_){ cart = []; }
+        if(!Array.isArray(cart) || !cart.length){ alert('Your cart is empty.'); return; }
+        localStorage.removeItem('hs_shipping');
+        window.location.href = 'checkout.html';
+      }, true);
+    }
+  }
+  function patchProductModalShare(){
+    if(typeof window.openProductModal !== 'function' || window.openProductModal.__hsSharePatched) return;
+    const original = window.openProductModal;
+    window.openProductModal = function(product){
+      original.apply(this, arguments);
+      try{
+        const cta = document.getElementById('pmCta');
+        if(!cta || !product || !product.id || cta.querySelector('.share-btn')) return;
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'btn share-btn';
+        b.textContent = 'Share Product';
+        b.addEventListener('click', (e)=>{ e.preventDefault(); shareProduct(product.id, product.title); });
+        cta.appendChild(b);
+      }catch(_){ }
+    };
+    window.openProductModal.__hsSharePatched = true;
+  }
+  function openProductFromUrl(){
+    const id = new URLSearchParams(location.search).get('product');
+    if(!id) return;
+    let tries = 0;
+    const timer = setInterval(()=>{
+      tries++;
+      const product = Array.isArray(window.currentList) ? window.currentList.find(p => String(p.id) === String(id)) : null;
+      if(product && typeof window.openProductModal === 'function'){
+        clearInterval(timer);
+        window.openProductModal(product);
+        return;
+      }
+      const safeId = (window.CSS && CSS.escape) ? CSS.escape(id) : String(id).replace(/[^a-zA-Z0-9_-]/g, '');
+      const target = document.querySelector(`[data-action="open-product"][data-id="${safeId}"]`);
+      if(target){
+        clearInterval(timer);
+        target.click();
+      }
+      if(tries > 40) clearInterval(timer);
+    }, 250);
+  }
+  document.addEventListener('DOMContentLoaded', ()=>{
+    setupObserver();
+    hideCartShippingAndForceCheckout();
+    patchProductModalShare();
+    schedulePagination(false);
+    openProductFromUrl();
+    const search = document.getElementById('search');
+    if(search){
+      search.addEventListener('input', ()=>schedulePagination(true));
+    }
+  });
+  window.addEventListener('load', ()=>{
+    setupObserver();
+    hideCartShippingAndForceCheckout();
+    patchProductModalShare();
+    schedulePagination(false);
+    setTimeout(()=>schedulePagination(false), 800);
   });
 })();
 </script>
