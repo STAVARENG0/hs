@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": "1777802152026",
+    "title": "CHAVEIRO ",
+    "price": 1,
+    "description": "CHAVEIRO DE CROCHE BANANA",
+    "department": "fashion",
+    "category": "fashion",
+    "stock": 2,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802156/hs-products/1777802152026/1777802152026_1777802156059_174fcd0870_Gemini_Generated_Image_al5zqal5zqal5zqa.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802154/hs-products/1777802152026/1777802152026_1777802153278_b46d771e46_Gemini_Generated_Image_bdjm0wbdjm0wbdjm.png"
+    ],
+    "createdAt": 1777802157135,
+    "status": "publicado"
+  }
+]
