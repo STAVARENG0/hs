@@ -43,5 +43,22 @@
     ],
     "createdAt": 1777802288031,
     "status": "publicado"
+  },
+  {
+    "id": "1777802422413",
+    "title": "TESTE",
+    "price": 2,
+    "description": "TESTANDO",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 2,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802425/hs-products/1777802422413/1777802422413_1777802424309_1bb7d0abb4_Gemini_Generated_Image_r901rer901rer901.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802426/hs-products/1777802422413/1777802422413_1777802426591_83057e6b38_Gemini_Generated_Image_tpenvutpenvutpen.png",
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802429/hs-products/1777802422413/1777802422413_1777802428512_eeb01a6299_Gemini_Generated_Image_2ulvni2ulvni2ulv.png",
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802431/hs-products/1777802422413/1777802422413_1777802430747_6f334a6c3d_Gemini_Generated_Image_8l97o58l97o58l97.png"
+    ],
+    "createdAt": 1777802432497,
+    "status": "publicado"
   }
 ]
