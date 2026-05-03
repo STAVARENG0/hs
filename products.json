@@ -99,5 +99,20 @@
     ],
     "createdAt": 1777820627699,
     "status": "publicado"
+  },
+  {
+    "id": "1777820706448",
+    "title": "Guarilla Energy - 270g - Blackberry Pineapple",
+    "price": 24.99,
+    "description": "Serving: 9 g\nServings per container: 30\nPackage: 270 g\nIngredients: Beta-alanine, Citrulline malate (including citrulline), Betaine, Creatine monohydrate (including creatine), L-tyrosine, Choline bitartrate (including choline), Caffeine, Vitamin B6, Niacin.\nIngredient\tContent per serving (9 g)\t%NRV\nBeta-alanine\t3200 mg\t†\nCitrulline malate\t1500 mg\t†\n– including citrulline\t1000 mg\t†\nBetaine\t1000 mg\t†\nCreatine monohydrate\t500 mg\t†\n– including creatine\t440 mg\t†\nL-tyrosine\t500 mg\t†\nCholine bitartrate\t500 mg\t†\n– including choline\t205 mg\t†\nCaffeine\t400 mg\t†\nVitamin B6\t18 mg\t1286%\nNiacin\t16 mg NE\t100%",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820707/hs-products/1777820706448/1777820706448_1777820707275_4d39c7abfe_A1FACDF7-CA50-402A-ABF6-780CAB4FDAE4.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820709/hs-products/1777820706448/1777820706448_1777820709368_2f7671d616_938D23EB-B506-4CAB-90B1-0D9123C8418B.jpg"
+    ],
+    "createdAt": 1777820710739,
+    "status": "publicado"
   }
 ]
