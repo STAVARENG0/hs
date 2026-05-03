@@ -144,5 +144,20 @@
     ],
     "createdAt": 1777821164445,
     "status": "publicado"
+  },
+  {
+    "id": "1777821255123",
+    "title": "Behemoth - 500g - Grapefruit",
+    "price": 28,
+    "description": "Serving: 20g\nServings per package: 25\nPackage: 500g\nBehemoth Ingredients: Beta alanine, citrulline, AAKG (L-arginine alpha-ketoglutarate), glycerol monostearate, citric acid, L-tyrosine, taurine, glucuronolactone, choline bitartrate, caffeine, magnesium citrate, cocoa bean extract, silicon dioxide (anti-caking agent), flavor, cayenne pepper extract, sucralose (sweetener), black pepper extract, niacinamide, DL-alpha-tocopheryl acetate, calcium D-pantothenate, pyridoxine hydrochloride, riboflavin, thiamine mononitrate, folic acid, D-biotin, cyanocobalamin, colorings for flavors: indigotine (bubble gum), tartrazine (orange), carmoisine (strawberry-watermelon), ammonium sulfite caramel (cola).\nTartrazine may have a harmful effect on activity and attention in children.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821256/hs-products/1777821255123/1777821255123_1777821255935_b8b844be8f_5EA16E49-563E-431F-B8CD-A9DFCD60A4AC.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821258/hs-products/1777821255123/1777821255123_1777821257830_912161aaaa_7946C75C-1A90-4253-A9D6-27278EB520F0.jpg"
+    ],
+    "createdAt": 1777821259170,
+    "status": "publicado"
   }
 ]
