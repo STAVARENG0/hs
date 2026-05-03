@@ -174,5 +174,20 @@
     ],
     "createdAt": 1777821481944,
     "status": "publicado"
+  },
+  {
+    "id": "1777821666829",
+    "title": "Angel Dust - 270g - Citrus Peach",
+    "price": 29,
+    "description": "Serving: 4.5g\nServings per container: 60\nContainer: 270g\nAngel Dust Ingredients: beta-alanine, anhydrous betaine, flavor, flavors, l-tyrosine, anti-caking agents (E551, E341), acidity regulators (E296, E330), gamma-aminobutyric acid (GABA), anhydrous caffeine, salt, choline bitartrate, choline alfoscerate (alpha GPC), l-theanine (extract from Camellia sinensis green tea leaves, standardized to 99% l-theanine), niacin (nicotinic acid), vitamin b6 (pyridoxine hydrochloride), beetroot juice concentrate*, sweeteners (acesulfame K, sucralose, steviol glycosides), colorant (E160, E104)*.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821668/hs-products/1777821666829/1777821666829_1777821667752_f7626443a3_E67CB397-B456-47DA-9B6A-9FFFEC2F429C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821669/hs-products/1777821666829/1777821666829_1777821669585_cbaaab51b6_E1D04D28-052A-4BF0-98D7-071B4965B6C7.jpg"
+    ],
+    "createdAt": 1777821670422,
+    "status": "publicado"
   }
 ]
