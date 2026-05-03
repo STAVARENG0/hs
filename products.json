@@ -1,20 +1,5 @@
 [
   {
-    "id": "1777805370860",
-    "title": "PROMOCAO ",
-    "price": 2,
-    "description": "TESTE TESTE TESTE TESTE TESTE",
-    "department": "supplements",
-    "category": "Vitamins & Minerals",
-    "stock": 2,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777805375/hs-products/1777805370860/1777805370860_1777805375139_fb0a2b36e8_Gemini_Generated_Image_qhq7nyqhq7nyqhq7.png",
-    "gallery": [
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777805373/hs-products/1777805370860/1777805370860_1777805372371_70c94d758d_Gemini_Generated_Image_dk0pasdk0pasdk0p.png"
-    ],
-    "createdAt": 1777805376023,
-    "status": "publicado"
-  },
-  {
     "id": "1777805525826",
     "title": "ARTESANATO",
     "price": 3,
