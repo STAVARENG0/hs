@@ -294,5 +294,20 @@
     ],
     "createdAt": 1777829209951,
     "status": "publicado"
+  },
+  {
+    "id": "1777829537401",
+    "title": "Biotin - 100 tabs",
+    "price": 14.99,
+    "description": "Portion: 1/4 tab\nServings per container: 400\nPackaging: 100 tabs\nBiotin Ingredients: Filling agent - sorbitol, standardized extract from the shoots of common bamboo (Bambusa vulgaris Schrad.) 5:1 containing 70% silicon, zinc (zinc diglycinate), biotin (D-biotin), anti-caking agent - magnesium salts of fatty acids, vitamin B1 (thiamine hydrochloride), vitamin B6 (pyridoxine hydrochloride), selenium (L-selenomethionine), vitamin B12 (cyanocobalamin).\n\nActive ingredients\tper portion (1/4 tablet)\t*NRV\nStandardized extract from the shoots\nof common bamboo (Bambusa vulgaris\nSchrad.) 5:1 containing 70% silicon\t25 mg\t\nincluding silicon\t17.5 mg\t\nBiotin\t2500 µg\t5000%\nZinc\t2.5 mg\t25%\nVitamin B1\t0.75 mg\t68.2%\nVitamin B6\t0.35 mg\t25%\nSelenium\t13.8 µg\t25%\nVitamin B12\t0.625 µg\t25%\n* Reference intake value for an average adult (8400 kJ/2000 kcal)\n\n",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829538/hs-products/1777829537401/1777829537401_1777829538233_4dc2bf00fa_3B16048F-6AC7-4FEB-8900-6F7FF794D3CE.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829540/hs-products/1777829537401/1777829537401_1777829540197_209d607a72_55A0F9AF-924F-4873-AB7F-1180F66DE3AB.jpg"
+    ],
+    "createdAt": 1777829540975,
+    "status": "publicado"
   }
 ]
