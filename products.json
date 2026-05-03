@@ -421,8 +421,10 @@
     "department": "supplements",
     "category": "Multivitamins",
     "stock": 10,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831332/hs-products/1777830775720/1777830775720_1777831331899_52a98c5986_447A7904-0429-48C1-B257-C0E312880286.jpg",
-    "gallery": [],
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831392/hs-products/1777830775720/1777830775720_1777831392312_f6d4b6260f_447A7904-0429-48C1-B257-C0E312880286.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831394/hs-products/1777830775720/1777830775720_1777831394589_ba553f5400_D2165CB3-11A8-438D-B9EF-9CE3D6F492CE.jpg"
+    ],
     "createdAt": 1777830780071,
     "status": "publicado"
   },
