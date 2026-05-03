@@ -429,5 +429,20 @@
     ],
     "createdAt": 1777830780071,
     "status": "publicado"
+  },
+  {
+    "id": "1777831008864",
+    "title": "Omega 3/6/9 - 90 SoftGels",
+    "price": 18.99,
+    "description": "Serving: 1 cap.\nServings per container: 90\nPackaging: 90 caps.\nIngredients of Omega 3-6-9 Triple: fish oil, flaxseed oil, sunflower oil, gelatin (shell ingredient) glycerin - humectant, water.",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831010/hs-products/1777831008864/1777831008864_1777831009902_16d3dd681e_45A0BCDA-4410-4419-8FB5-1B37651A62C2.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831012/hs-products/1777831008864/1777831008864_1777831011773_14c937af55_D8F3C895-65A2-4EC2-BF27-F3F6EE68FA98.jpg"
+    ],
+    "createdAt": 1777831012662,
+    "status": "publicado"
   }
 ]
