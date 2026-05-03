@@ -76,49 +76,24 @@ const CART_KEY='hs_cart';
 const SHIP_KEY='hs_shipping';
 const API_BASE='https://hs-nutrition-production.up.railway.app';
 document.getElementById('year').textContent = new Date().getFullYear();
-function fmtEUR(n){ return '€ ' + Number(n || 0).toFixed(2); }
-function escapeHtml(value){ return String(value ?? '').replace(/[&<>\"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[m])); }
+function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
 
 function getShipping(){
   let data=null;
   try{ data = JSON.parse(localStorage.getItem(SHIP_KEY) || 'null'); }catch(e){ data=null; }
-
-  const amount = Number(data?.amount);
-  const label = String(data?.label || '').toLowerCase();
-  const type = String(data?.type || data?.shippingType || '').toLowerCase();
-
-  if(type === 'tracked' || amount === 10 || label.includes('tracked')){
-    return { type:'tracked', amount:10, label:'Tracked (€10)', valid:true };
-  }
-  if(type === 'no_tracked' || type === 'not_tracked' || type === 'standard' || amount === 7 || label.includes('no tracked') || label.includes('not tracked')){
-    return { type:'no_tracked', amount:7, label:'No tracked (€7)', valid:true };
-  }
-
+  if(data && typeof data.amount === 'number'){ return data; }
   const q = new URLSearchParams(location.search).get('shipping');
   const qNum = q !== null ? Number(q) : NaN;
-  if(qNum === 10) return { type:'tracked', amount:10, label:'Tracked (€10)', valid:true };
-  if(qNum === 7) return { type:'no_tracked', amount:7, label:'No tracked (€7)', valid:true };
-
-  return { type:'', amount:0, label:'Choose shipping', valid:false };
+  if(!Number.isNaN(qNum)){
+    return { amount: qNum, label: qNum === 10 ? 'Tracked (€10)' : (qNum === 7 ? 'No tracked (€7)' : 'Shipping'), ts: Date.now() };
+  }
+  return { amount: 0, label: 'Shipping', ts: Date.now() };
 }
 
-let cart=[];
-try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
+let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
 cart = Array.isArray(cart) ? cart : [];
 let serverProducts = [];
-
-async function apiPost(path, body){
-  const response = await fetch(API_BASE + path, {
-    method:'POST',
-    headers:{ 'Content-Type':'application/json' },
-    body: JSON.stringify(body)
-  });
-  const data = await response.json().catch(() => ({}));
-  if(!response.ok || data.ok === false){
-    throw new Error(data.error || ('HTTP ' + response.status));
-  }
-  return data;
-}
+let checkoutReady = false;
 
 async function loadServerProducts(){
   const r = await fetch(API_BASE + '/api/public/products?t=' + Date.now(), { cache:'no-store' });
@@ -131,17 +106,10 @@ function findServerProduct(id){
   return serverProducts.find(p => String(p.id) === String(id));
 }
 
-function getCheckoutItems(){
-  return cart
-    .map(item => ({ id: String(item.id || ''), quantity: Math.max(1, parseInt(item.qty || item.quantity || 1, 10) || 1) }))
-    .filter(item => item.id && findServerProduct(item.id));
-}
-
 function renderSummary(){
   const list = document.getElementById('cartList');
   let subtotal = 0;
   const validRows = [];
-
   if(!cart.length){
     list.innerHTML = '<p style="color:#666;text-align:center;">Your cart is empty.</p>';
   }else{
@@ -151,93 +119,67 @@ function renderSummary(){
       if(!product){
         return `<div class="item"><div class="item-title">${qty}× Product unavailable</div><div class="item-sub">Removed</div></div>`;
       }
-      const price = Number(product.price)||0;
-      const sub = qty*price;
-      subtotal += sub;
+      const price = Number(product.price)||0; // preço lido do backend/products.json
+      const sub = qty*price; subtotal += sub;
       validRows.push({ id:String(product.id), qty, title:product.title, price });
       return `<div class="item">
-                <div class="item-title">${qty}× ${escapeHtml(product.title || 'Product')}</div>
+                <div class="item-title">${qty}× ${product.title}</div>
                 <div class="item-sub">${fmtEUR(sub)}</div>
               </div>`;
     }).join('');
   }
-
   const ship = getShipping();
-  const hasProducts = subtotal > 0 && validRows.length > 0;
-  const hasShipping = ship.valid;
-  const effectiveTotal = (hasProducts && hasShipping) ? subtotal + ship.amount : subtotal;
-
   document.getElementById('subtotalValue').textContent = fmtEUR(subtotal);
-  document.getElementById('shippingLabel').textContent = ship.label || 'Choose shipping';
-  document.getElementById('shippingValue').textContent = fmtEUR(hasShipping ? ship.amount : 0);
-  document.getElementById('totalAmount').textContent = effectiveTotal.toFixed(2);
+  document.getElementById('shippingLabel').textContent = ship.label || 'Shipping';
+  document.getElementById('shippingValue').textContent = fmtEUR(ship.amount || 0);
 
+  let effectiveTotal = 0;
+  const buttons = document.getElementById('paypal-section');
   const helper = document.getElementById('helperMsg');
-  if(!hasProducts){
+  if(subtotal > 0 && validRows.length > 0){
+    effectiveTotal = subtotal + Number(ship.amount||0);
+    buttons.classList.remove('hidden');
+    helper.classList.add('hidden');
+  }else{
+    effectiveTotal = 0;
+    buttons.classList.remove('hidden');
     document.getElementById('paypal-button-paypal').classList.add('hidden');
     document.getElementById('paypal-button-card').classList.add('hidden');
-    helper.textContent = 'Add products to your cart to enable payment.';
     helper.classList.remove('hidden');
-  }else if(!hasShipping){
-    helper.textContent = 'Please go back to cart and choose shipping before paying.';
-    helper.classList.remove('hidden');
-  }else{
-    helper.classList.add('hidden');
   }
-
-  return { subtotal, shipping: ship, total: effectiveTotal, validRows, hasProducts, hasShipping };
+  document.getElementById('totalAmount').textContent = effectiveTotal.toFixed(2);
+  return { subtotal, shipping: Number(ship.amount||0), total: effectiveTotal, validRows };
 }
 
 function commonConfig(){
   return {
     onClick: function(data, actions){
-      const fresh = renderSummary();
-      if(!fresh.hasProducts){
+      const { subtotal } = renderSummary();
+      if(subtotal <= 0){
         alert('Please add products before paying.');
-        return actions.reject();
-      }
-      if(!fresh.hasShipping){
-        alert('Please choose shipping in the cart before paying.');
         return actions.reject();
       }
       return actions.resolve();
     },
-    createOrder: async function(){
-      const fresh = renderSummary();
-      if(!fresh.hasProducts) throw new Error('Empty cart');
-      if(!fresh.hasShipping) throw new Error('Shipping not selected');
-
-      const created = await apiPost('/api/checkout/create-paypal-order', {
-        items: getCheckoutItems(),
-        shippingType: fresh.shipping.type
+    createOrder: function(data, actions){
+      const { subtotal, shipping, total } = renderSummary();
+      if(subtotal <= 0){ throw new Error('Empty subtotal'); }
+      return actions.order.create({
+        purchase_units:[{ amount:{ value: total.toFixed(2), currency_code:'EUR' }, description:'HS Nutrition Order' }]
       });
-
-      // O total verdadeiro vem do backend. O backend ignora amount do navegador.
-      if(created.subtotal !== undefined) document.getElementById('subtotalValue').textContent = fmtEUR(created.subtotal);
-      if(created.shipping !== undefined){
-        const backendShipping = typeof created.shipping === 'object' ? created.shipping.amount : created.shipping;
-        document.getElementById('shippingValue').textContent = fmtEUR(backendShipping);
-      }
-      if(created.total !== undefined) document.getElementById('totalAmount').textContent = Number(created.total).toFixed(2);
-
-      return created.id;
     },
-    onApprove: async function(data){
-      const captured = await apiPost('/api/checkout/capture-paypal-order', { orderId: data.orderID });
-      const payerName = captured?.data?.payer?.name?.given_name || 'customer';
-      alert('✅ Payment completed by ' + payerName + '!');
-      localStorage.removeItem(CART_KEY);
-      localStorage.removeItem(SHIP_KEY);
-      document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
-      document.getElementById('subtotalValue').textContent = fmtEUR(0);
-      document.getElementById('shippingValue').textContent = fmtEUR(0);
-      document.getElementById('totalAmount').textContent = '0.00';
-      document.getElementById('paypal-section').classList.add('hidden');
+    onApprove: function(data, actions){
+      return actions.order.capture().then(function(details){
+        alert('✅ Payment completed by ' + (details?.payer?.name?.given_name || 'customer') + '!');
+        localStorage.removeItem(CART_KEY);
+        document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
+        document.getElementById('subtotalValue').textContent = fmtEUR(0);
+        document.getElementById('shippingValue').textContent = fmtEUR(0);
+        document.getElementById('totalAmount').textContent = '0.00';
+        document.getElementById('paypal-section').classList.add('hidden');
+      });
     },
-    onError: function(err){
-      console.error('PayPal error:', err);
-      alert('❌ Payment error: ' + (err?.message || 'Please try again.'));
-    }
+    onError: function(err){ console.error('PayPal error:', err); alert('❌ There was an issue with PayPal Checkout. Please try again.'); }
   };
 }
 
@@ -245,7 +187,7 @@ async function bootCheckout(){
   try{
     await loadServerProducts();
     const state = renderSummary();
-    if(typeof paypal !== 'undefined' && state.hasProducts){
+    if(typeof paypal !== 'undefined' && state.subtotal > 0){
       const btnPayPal = paypal.Buttons(Object.assign({}, commonConfig(), {
         fundingSource: paypal.FUNDING.PAYPAL,
         style:{ layout:'vertical', color:'gold', shape:'pill', label:'paypal', height:45 }
@@ -264,7 +206,7 @@ async function bootCheckout(){
   }
 }
 bootCheckout();
-</script></script>
+</script>
 
 </body>
 </html>
