@@ -515,5 +515,20 @@
     ],
     "createdAt": 1777832285097,
     "status": "publicado"
+  },
+  {
+    "id": "1777832410860",
+    "title": "Multivitamins Woman- 90 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 2 tabs\nServings per package: 45\nPackage: 90 tabs\nIngredients: Magnesium citrate (magnesium), calcium carbonate (calcium), L-ascorbic acid (vitamin C), common nettle extract, inulin, acai berry extract 10:1, soy lecithin, vitamin B3, ferrous lactate amide (iron), D-alpha tocopherol (vitamin E), zinc sulfate (zinc), pantothenic acid (vitamin B5), black pepper fruit extract (piperine), alpha-lipoic acid (ALA), manganese sulfate (manganese), riboflavin (vitamin B2), pyridoxine hydrochloride (vitamin B6), thiamine mononitrate (vitamin B1), copper sulfate (copper), retinyl acetate (vitamin A), folic acid, potassium iodide (iodine), sodium selenate (selenium), D-biotin (biotin), cholecalciferol (vitamin D3), cobalamin (vitamin B12); fillers: microcrystalline cellulose, starch; anti-caking agents: magnesium stearate, silicon dioxide.",
+    "department": "supplements",
+    "category": "Multivitamins",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832412/hs-products/1777832410860/1777832410860_1777832411700_57a1593e3a_BE2CE149-125F-487A-A093-63AD4DACCBCB.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832413/hs-products/1777832410860/1777832410860_1777832413644_070a2a4859_693701E4-7F24-48AB-A99C-3C56DB3A65F7.jpg"
+    ],
+    "createdAt": 1777832414692,
+    "status": "publicado"
   }
 ]
