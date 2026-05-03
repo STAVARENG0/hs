@@ -219,5 +219,20 @@
     ],
     "createdAt": 1777822248807,
     "status": "publicado"
+  },
+  {
+    "id": "1777822509777",
+    "title": "Jack3D - 250g - Fruit Punch US",
+    "price": 45,
+    "description": "Serving Size: 5.55g\nServings Per Container: 45\nPackage: 250 g\nOther Ingredients: citric acid, natural flavors, silicon dioxide, acesulfame K, sucralose, vegetable-derived stearate, colorant/s.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822511/hs-products/1777822509777/1777822509777_1777822510652_e261b58a8b_3AE37578-36BD-4399-B857-9D3CAF62065C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822513/hs-products/1777822509777/1777822509777_1777822512964_b4289e384d_D33F5A62-DCEC-4DA4-B882-C119DACF4675.jpg"
+    ],
+    "createdAt": 1777822513870,
+    "status": "publicado"
   }
 ]
