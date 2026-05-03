@@ -69,5 +69,20 @@
     "gallery": [],
     "createdAt": 1777819993276,
     "status": "publicado"
+  },
+  {
+    "id": "1777820312507",
+    "title": "Creatine 1000mg - 120tabs",
+    "price": 19.99,
+    "description": "Serving: 5g\nServings per container: 50\nContainer: 250g\nCreatine Monohydrate Ingredients: creatine monohydrate containing 99.5% creatine, taurine, anti-caking agent - magnesium salts of fatty acids, vitamin B6 (pyridoxine hydrochloride), vitamin B12 (cyanocobalamin).\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820313/hs-products/1777820312507/1777820312507_1777820313478_c2d951c535_7ECA5393-8B59-46F9-88D2-E7C4892152C8.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820315/hs-products/1777820312507/1777820312507_1777820315193_06b345bf19_0AF8C397-B53A-4E34-8384-D7CFBC8612E7.jpg"
+    ],
+    "createdAt": 1777820316137,
+    "status": "publicado"
   }
 ]
