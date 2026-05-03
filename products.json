@@ -339,5 +339,20 @@
     ],
     "createdAt": 1777829819189,
     "status": "publicado"
+  },
+  {
+    "id": "1777830032297",
+    "title": "Melatonin - 300 Capsules ",
+    "price": 14.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830033/hs-products/1777830032297/1777830032297_1777830033286_45f31f9373_39D14C57-005A-4B2C-9FB1-F5600DDD3DDA.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830034/hs-products/1777830032297/1777830032297_1777830034566_bb5ef9890f_6690CCA4-44C5-481F-B53B-2BA7D3908F62.jpg"
+    ],
+    "createdAt": 1777830035356,
+    "status": "publicado"
   }
 ]
