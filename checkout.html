@@ -21,6 +21,11 @@ h1{ color:var(--orange); font-size:22px; margin-bottom:14px; }
 .item{ display:flex; justify-content:space-between; gap:12px; margin:6px 0; }
 .item-title{ font-size:14px; }
 .item-sub{ font-weight:600; color:var(--orange); }
+.shipping-box{ text-align:left; background:#fff7f3; border:1px solid rgba(255,60,0,.25); border-radius:14px; padding:14px; margin:16px 0; }
+.shipping-box h3{ color:#111; font-size:16px; margin-bottom:10px; }
+.shipping-option{ display:flex; align-items:center; gap:10px; padding:10px 8px; border-radius:10px; cursor:pointer; }
+.shipping-option:hover{ background:rgba(255,60,0,.08); }
+.shipping-option input{ transform:scale(1.15); }
 #paypal-section{ margin-top:16px; }
 #paypal-button-paypal, #paypal-button-card{ margin-bottom:12px; }
 .helper{ margin-top:12px; font-size:13px; color:#666; }
@@ -42,6 +47,33 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
   letter-spacing:.06em;
 }
 .policy-btn:hover{ filter:brightness(1.06); transform:translateY(-1px); }
+
+
+/* ===== Thank you / tracking modal ===== */
+.thankyou-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9000;align-items:center;justify-content:center;padding:20px;}
+.thankyou-card{background:#fff;border-radius:22px;max-width:520px;width:100%;padding:28px 24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35);border:2px solid rgba(255,60,0,.2);position:relative;overflow:hidden;}
+.thankyou-card h2{color:var(--orange);font-size:24px;margin:8px 0 10px;}
+.thankyou-card p{color:#333;font-size:15px;line-height:1.5;margin:8px 0;}
+.truck-stage{height:86px;margin:8px 0 14px;position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(180deg,#fff7f3,#ffffff);}
+.truck-road{position:absolute;left:0;right:0;bottom:18px;border-top:3px dashed rgba(255,60,0,.45);}
+.truck{position:absolute;bottom:21px;left:-120px;width:96px;height:42px;background:var(--orange);border-radius:10px 12px 8px 8px;animation:truckMove 3.2s linear infinite;filter:drop-shadow(0 6px 8px rgba(0,0,0,.22));}
+.truck::before{content:"";position:absolute;right:-22px;bottom:0;width:35px;height:30px;background:var(--orange);border-radius:7px 12px 7px 0;}
+.truck::after{content:"";position:absolute;right:-12px;top:7px;width:14px;height:10px;background:#fff;border-radius:3px;animation:blinkWindow .9s infinite;}
+.wheel{position:absolute;bottom:-9px;width:18px;height:18px;background:#111;border-radius:50%;border:4px solid #fff;animation:wheelSpin .6s linear infinite;}
+.wheel.w1{left:15px}.wheel.w2{right:-12px}
+@keyframes truckMove{0%{transform:translateX(0)}100%{transform:translateX(calc(100vw + 220px))}}
+@keyframes wheelSpin{to{transform:rotate(360deg)}}
+@keyframes blinkWindow{0%,100%{opacity:1}50%{opacity:.35}}
+.tracking-form{display:grid;gap:10px;margin-top:14px;text-align:left;}
+.tracking-form label{font-size:13px;font-weight:700;color:#222;}
+.tracking-form input{width:100%;padding:13px 14px;border:1px solid #ddd;border-radius:12px;font-size:14px;outline:none;}
+.tracking-form input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,60,0,.12);}
+.tracking-actions{display:flex;gap:10px;margin-top:12px;}
+.tracking-actions button,.tracking-actions a{flex:1;text-align:center;text-decoration:none;border:none;border-radius:999px;padding:12px 14px;font-weight:800;cursor:pointer;}
+.primary-action{background:linear-gradient(90deg,var(--orange),#ff9b6a);color:#fff;}
+.secondary-action{background:#f1f1f1;color:#222;}
+.small-note{font-size:12px!important;color:#666!important;text-align:center;}
+
 </style>
 </head>
 <body>
@@ -55,6 +87,13 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
   </a>
 
   <div class="items" id="cartList"></div>
+
+  <div class="shipping-box" id="shippingBox">
+    <h3>Choose shipping</h3>
+    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="7"> 7€ — No tracked</label>
+    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="10"> 10€ — Tracked</label>
+  </div>
+
   <div class="summary">
     <div class="row"><span class="label">Products Subtotal</span><span class="value" id="subtotalValue">€ 0.00</span></div>
     <div class="row"><span class="label" id="shippingLabel">Shipping</span><span class="value" id="shippingValue">€ 0.00</span></div>
@@ -70,6 +109,12 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
   <footer>© <span id="year"></span> HS Nutrition</footer>
 </div>
 
+
+
+<div class="thankyou-modal" id="thankyouModal" aria-hidden="true">
+  <div class="thankyou-card" id="thankyouCard"></div>
+</div>
+
 <script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
 <script>
 const CART_KEY='hs_cart';
@@ -79,15 +124,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
 
 function getShipping(){
-  let data=null;
-  try{ data = JSON.parse(localStorage.getItem(SHIP_KEY) || 'null'); }catch(e){ data=null; }
-  if(data && typeof data.amount === 'number'){ return data; }
-  const q = new URLSearchParams(location.search).get('shipping');
-  const qNum = q !== null ? Number(q) : NaN;
-  if(!Number.isNaN(qNum)){
-    return { amount: qNum, label: qNum === 10 ? 'Tracked (€10)' : (qNum === 7 ? 'No tracked (€7)' : 'Shipping'), ts: Date.now() };
-  }
-  return { amount: 0, label: 'Shipping', ts: Date.now() };
+  const selected = document.querySelector('input[name="checkoutShipping"]:checked');
+  if(!selected){ return { amount: 0, label: 'Choose shipping', selected: false }; }
+  const amount = Number(selected.value);
+  if(amount === 10){ return { amount: 10, label: 'Tracked (€10)', selected: true }; }
+  if(amount === 7){ return { amount: 7, label: 'No tracked (€7)', selected: true }; }
+  return { amount: 0, label: 'Choose shipping', selected: false };
 }
 
 let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
@@ -95,88 +137,161 @@ cart = Array.isArray(cart) ? cart : [];
 let serverProducts = [];
 let checkoutReady = false;
 
-async function loadServerProducts(){
-  const r = await fetch(API_BASE + '/api/public/products?t=' + Date.now(), { cache:'no-store' });
-  const json = await r.json().catch(()=>({}));
-  if(!r.ok || json.ok === false) throw new Error(json.error || ('HTTP ' + r.status));
-  serverProducts = Array.isArray(json.data) ? json.data : [];
-}
-
-function findServerProduct(id){
-  return serverProducts.find(p => String(p.id) === String(id));
-}
-
-function renderSummary(){
-  const list = document.getElementById('cartList');
-  let subtotal = 0;
-  const validRows = [];
-  if(!cart.length){
-    list.innerHTML = '<p style="color:#666;text-align:center;">Your cart is empty.</p>';
-  }else{
-    list.innerHTML = cart.map(item=>{
-      const qty = Math.max(1, parseInt(item.qty || item.quantity || 1, 10) || 1);
-      const product = findServerProduct(item.id);
-      if(!product){
-        return `<div class="item"><div class="item-title">${qty}× Product unavailable</div><div class="item-sub">Removed</div></div>`;
-      }
-      const price = Number(product.price)||0; // preço lido do backend/products.json
-      const sub = qty*price; subtotal += sub;
-      validRows.push({ id:String(product.id), qty, title:product.title, price });
-      return `<div class="item">
-                <div class="item-title">${qty}× ${product.title}</div>
-                <div class="item-sub">${fmtEUR(sub)}</div>
-              </div>`;
-    }).join('');
-  }
+let lastOrderSummary = null;
+function selectedShippingKind(){
   const ship = getShipping();
-  document.getElementById('subtotalValue').textContent = fmtEUR(subtotal);
-  document.getElementById('shippingLabel').textContent = ship.label || 'Shipping';
-  document.getElementById('shippingValue').textContent = fmtEUR(ship.amount || 0);
-
-  let effectiveTotal = 0;
-  const buttons = document.getElementById('paypal-section');
-  const helper = document.getElementById('helperMsg');
-  if(subtotal > 0 && validRows.length > 0){
-    effectiveTotal = subtotal + Number(ship.amount||0);
-    buttons.classList.remove('hidden');
-    helper.classList.add('hidden');
+  if(!ship.selected) return '';
+  return Number(ship.amount) === 10 ? 'tracked' : 'no_tracked';
+}
+function buildOrderSummary(details){
+  const state = renderSummary();
+  const ship = getShipping();
+  const lines = (state.validRows || []).map(item => {
+    const qty = Math.max(1, Number(item.qty || 1));
+    const price = Number(item.price || 0);
+    return `${qty}x ${item.title} - ${fmtEUR(qty * price)}`;
+  });
+  return {
+    payerName: details?.payer?.name?.given_name || 'customer',
+    payerEmail: details?.payer?.email_address || '',
+    orderId: details?.id || '',
+    shippingLabel: ship.label,
+    shippingAmount: Number(ship.amount || 0),
+    subtotal: Number(state.subtotal || 0),
+    total: Number(state.total || 0),
+    itemsText: lines.join('\n'),
+    products: state.validRows || []
+  };
+}
+function clearCheckoutAfterPayment(){
+  localStorage.removeItem(CART_KEY);
+  localStorage.removeItem(SHIP_KEY);
+  document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
+  document.getElementById('subtotalValue').textContent = fmtEUR(0);
+  document.getElementById('shippingValue').textContent = fmtEUR(0);
+  document.getElementById('totalAmount').textContent = '0.00';
+  document.getElementById('paypal-section').classList.add('hidden');
+}
+function openThankYouModal(kind, summary){
+  const modal = document.getElementById('thankyouModal');
+  const card = document.getElementById('thankyouCard');
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden','false');
+  if(kind === 'tracked'){
+    card.innerHTML = `
+      <h2>Thank you for your purchase!</h2>
+      <p>Please enter your email address to receive your tracking code.</p>
+      <div class="tracking-form">
+        <label for="trackingEmail">Email address</label>
+        <input id="trackingEmail" type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="tracking-actions">
+        <button class="primary-action" type="button" onclick="sendTrackingRequest()">Send Email</button>
+        <button class="secondary-action" type="button" onclick="closeThankYouModal()">Close</button>
+      </div>
+      <p class="small-note">Your order details will be sent to HS Nutrition.</p>
+    `;
   }else{
-    effectiveTotal = 0;
-    buttons.classList.remove('hidden');
-    document.getElementById('paypal-button-paypal').classList.add('hidden');
-    document.getElementById('paypal-button-card').classList.add('hidden');
-    helper.classList.remove('hidden');
+    card.innerHTML = `
+      <div class="truck-stage" aria-hidden="true">
+        <div class="truck-road"></div>
+        <div class="truck"><span class="wheel w1"></span><span class="wheel w2"></span></div>
+      </div>
+      <h2>Thank you for your purchase!</h2>
+      <p>Your product is on its way!</p>
+      <div class="tracking-actions" style="justify-content:center;">
+        <button class="primary-action" type="button" onclick="closeThankYouModal()">OK</button>
+      </div>
+    `;
   }
-  document.getElementById('totalAmount').textContent = effectiveTotal.toFixed(2);
-  return { subtotal, shipping: Number(ship.amount||0), total: effectiveTotal, validRows };
+}
+function closeThankYouModal(){
+  const modal = document.getElementById('thankyouModal');
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden','true');
+}
+async function sendTrackingRequest(){
+  const input = document.getElementById('trackingEmail');
+  const email = String(input?.value || '').trim();
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    alert('Please enter a valid email address.');
+    return;
+  }
+  const summary = lastOrderSummary || {};
+  const btn = document.querySelector('.tracking-actions .primary-action');
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending...'; }
+
+  const orderText = [
+    `Customer email: ${email}`,
+    `Order ID: ${summary.orderId || ''}`,
+    `Payer: ${summary.payerName || ''} ${summary.payerEmail || ''}`,
+    '',
+    'Products:',
+    summary.itemsText || '',
+    '',
+    `Subtotal: ${fmtEUR(summary.subtotal || 0)}`,
+    `Shipping: ${summary.shippingLabel || 'Tracked (€10)'} - ${fmtEUR(summary.shippingAmount || 10)}`,
+    `Total: ${fmtEUR(summary.total || 0)}`
+  ].join('\n');
+
+  try{
+    const res = await fetch('https://formsubmit.co/ajax/hs.nutrition.info@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'HS Nutrition tracking request - Order ' + (summary.orderId || ''),
+        _captcha: 'false',
+        _template: 'table',
+        customer_email: email,
+        order_id: summary.orderId || '',
+        payer_name: summary.payerName || '',
+        payer_email: summary.payerEmail || '',
+        products: summary.itemsText || '',
+        subtotal: fmtEUR(summary.subtotal || 0),
+        shipping: `${summary.shippingLabel || 'Tracked (€10)'} - ${fmtEUR(summary.shippingAmount || 10)}`,
+        total: fmtEUR(summary.total || 0),
+        full_order_details: orderText
+      })
+    });
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok || data.success === false){ throw new Error(data.message || 'Email service error'); }
+    alert('✅ Your tracking request has been sent.');
+    if(btn){ btn.textContent = 'Sent'; }
+  }catch(err){
+    console.error(err);
+    alert('❌ Could not send the email automatically. Please try again.');
+    if(btn){ btn.disabled = false; btn.textContent = 'Send Email'; }
+  }
 }
 
 function commonConfig(){
   return {
     onClick: function(data, actions){
-      const { subtotal } = renderSummary();
+      const { subtotal, shippingSelected } = renderSummary();
       if(subtotal <= 0){
         alert('Please add products before paying.');
+        return actions.reject();
+      }
+      if(!shippingSelected){
+        alert('Please choose shipping before paying.');
         return actions.reject();
       }
       return actions.resolve();
     },
     createOrder: function(data, actions){
-      const { subtotal, shipping, total } = renderSummary();
+      const { subtotal, shippingSelected, total } = renderSummary();
       if(subtotal <= 0){ throw new Error('Empty subtotal'); }
+      if(!shippingSelected){ throw new Error('Choose shipping'); }
       return actions.order.create({
         purchase_units:[{ amount:{ value: total.toFixed(2), currency_code:'EUR' }, description:'HS Nutrition Order' }]
       });
     },
     onApprove: function(data, actions){
       return actions.order.capture().then(function(details){
-        alert('✅ Payment completed by ' + (details?.payer?.name?.given_name || 'customer') + '!');
-        localStorage.removeItem(CART_KEY);
-        document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
-        document.getElementById('subtotalValue').textContent = fmtEUR(0);
-        document.getElementById('shippingValue').textContent = fmtEUR(0);
-        document.getElementById('totalAmount').textContent = '0.00';
-        document.getElementById('paypal-section').classList.add('hidden');
+        const kind = selectedShippingKind();
+        lastOrderSummary = buildOrderSummary(details);
+        clearCheckoutAfterPayment();
+        openThankYouModal(kind, lastOrderSummary);
       });
     },
     onError: function(err){ console.error('PayPal error:', err); alert('❌ There was an issue with PayPal Checkout. Please try again.'); }
@@ -186,6 +301,7 @@ function commonConfig(){
 async function bootCheckout(){
   try{
     await loadServerProducts();
+    document.querySelectorAll('input[name="checkoutShipping"]').forEach(r => r.addEventListener('change', renderSummary));
     const state = renderSummary();
     if(typeof paypal !== 'undefined' && state.subtotal > 0){
       const btnPayPal = paypal.Buttons(Object.assign({}, commonConfig(), {
