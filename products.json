@@ -442,5 +442,18 @@
     ],
     "createdAt": 1777831012662,
     "status": "publicado"
+  },
+  {
+    "id": "1777831626243",
+    "title": "Astragalus Root 470mg - 100 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 1 capsule\nServings per container: 100\nPackaging: 100 capsules\nIngredients: Gelatin, microcrystalline cellulose (plant fiber).\nActive Ingredients\t1 capsule\nAstragalus Root (Astragalus membranaceus)",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831627/hs-products/1777831626243/1777831626243_1777831627044_05e5c6aee2_9B759149-AC3B-48E4-9A89-60DBA09E748E.jpg",
+    "gallery": [],
+    "createdAt": 1777831628094,
+    "status": "publicado"
   }
 ]
