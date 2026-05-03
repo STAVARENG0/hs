@@ -15,13 +15,13 @@ body{ background:var(--bg); color:var(--text); display:flex; justify-content:cen
 .logo{ width:180px; border-radius:16px; border:2px solid var(--orange); box-shadow:0 0 12px rgba(255,60,0,.35); margin-bottom:18px; }
 h1{ color:var(--orange); font-size:22px; margin-bottom:14px; }
 .summary{ margin:18px 0; }
-.row{ display:flex; justify-content:space-between; align-items:center; margin:8px 0; font-size:14px; gap:12px; }
+.row{ display:flex; justify-content:space-between; align-items:center; margin:8px 0; font-size:14px; }
 .row.total{ font-size:20px; font-weight:800; color:var(--orange); margin-top:16px; }
 .items{ text-align:left; margin:10px 0 6px; }
 .item{ display:flex; justify-content:space-between; gap:12px; margin:6px 0; }
 .item-title{ font-size:14px; }
-.item-sub{ font-weight:600; color:var(--orange); white-space:nowrap; }
-.shipping-box{ text-align:left; background:#fff7f3; border:1px solid rgba(255,60,0,.28); border-radius:14px; padding:14px; margin:16px 0; }
+.item-sub{ font-weight:600; color:var(--orange); }
+.shipping-box{ text-align:left; background:#fff7f3; border:1px solid rgba(255,60,0,.25); border-radius:14px; padding:14px; margin:16px 0; }
 .shipping-box h3{ color:#111; font-size:16px; margin-bottom:10px; }
 .shipping-option{ display:flex; align-items:center; gap:10px; padding:10px 8px; border-radius:10px; cursor:pointer; }
 .shipping-option:hover{ background:rgba(255,60,0,.08); }
@@ -31,7 +31,21 @@ h1{ color:var(--orange); font-size:22px; margin-bottom:14px; }
 .helper{ margin-top:12px; font-size:13px; color:#666; }
 footer{ margin-top:16px; color:#666; font-size:13px; }
 .hidden{ display:none !important; }
-.policy-btn{ display:inline-block; margin:4px 0 18px; background:linear-gradient(90deg,var(--orange),#ff9b6a); color:#101010; padding:9px 18px; border-radius:999px; font-weight:800; font-size:13px; text-decoration:none; box-shadow:0 8px 20px rgba(255,60,0,.22); text-transform:uppercase; letter-spacing:.06em; }
+
+.policy-btn{
+  display:inline-block;
+  margin:4px 0 18px;
+  background:linear-gradient(90deg,var(--orange),#ff9b6a);
+  color:#101010;
+  padding:9px 18px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:13px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(255,60,0,.22);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
 .policy-btn:hover{ filter:brightness(1.06); transform:translateY(-1px); }
 </style>
 </head>
@@ -41,26 +55,28 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
   <img src="5.png" alt="HS Nutrition" class="logo">
   <h1>Your Cart</h1>
 
-  <a class="policy-btn" href="return-refund-policy.html" aria-label="Return and Refund Policy">Return & Refund Policy</a>
+  <a class="policy-btn" href="return-refund-policy.html" aria-label="Return and Refund Policy">
+    Return & Refund Policy
+  </a>
 
   <div class="items" id="cartList"></div>
 
   <div class="shipping-box" id="shippingBox">
     <h3>Choose shipping</h3>
-    <label class="shipping-option"><input type="radio" name="shippingType" value="no_tracked"> 7€ — No tracked</label>
-    <label class="shipping-option"><input type="radio" name="shippingType" value="tracked"> 10€ — Tracked</label>
+    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="7"> 7€ — No tracked</label>
+    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="10"> 10€ — Tracked</label>
   </div>
 
   <div class="summary">
     <div class="row"><span class="label">Products Subtotal</span><span class="value" id="subtotalValue">€ 0.00</span></div>
-    <div class="row"><span class="label" id="shippingLabel">Shipping</span><span class="value" id="shippingValue">Choose shipping</span></div>
+    <div class="row"><span class="label" id="shippingLabel">Shipping</span><span class="value" id="shippingValue">€ 0.00</span></div>
     <div class="row total">Total: € <span id="totalAmount">0.00</span></div>
   </div>
 
   <div id="paypal-section">
     <div id="paypal-button-paypal"></div>
     <div id="paypal-button-card"></div>
-    <div id="helperMsg" class="helper">Choose shipping to enable payment.</div>
+    <div id="helperMsg" class="helper hidden">Add products to your cart to enable payment.</div>
   </div>
 
   <footer>© <span id="year"></span> HS Nutrition</footer>
@@ -69,15 +85,24 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
 <script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
 <script>
 const CART_KEY='hs_cart';
+const SHIP_KEY='hs_shipping';
 const API_BASE='https://hs-nutrition-production.up.railway.app';
 document.getElementById('year').textContent = new Date().getFullYear();
-function fmtEUR(n){ return '€ ' + Number(n || 0).toFixed(2); }
-function escapeHtml(value){ return String(value ?? '').replace(/[&<>\"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
+function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
 
-let cart=[];
-try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
+function getShipping(){
+  const selected = document.querySelector('input[name="checkoutShipping"]:checked');
+  if(!selected){ return { amount: 0, label: 'Choose shipping', selected: false }; }
+  const amount = Number(selected.value);
+  if(amount === 10){ return { amount: 10, label: 'Tracked (€10)', selected: true }; }
+  if(amount === 7){ return { amount: 7, label: 'No tracked (€7)', selected: true }; }
+  return { amount: 0, label: 'Choose shipping', selected: false };
+}
+
+let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
 cart = Array.isArray(cart) ? cart : [];
 let serverProducts = [];
+let checkoutReady = false;
 
 async function loadServerProducts(){
   const r = await fetch(API_BASE + '/api/public/products?t=' + Date.now(), { cache:'no-store' });
@@ -90,22 +115,10 @@ function findServerProduct(id){
   return serverProducts.find(p => String(p.id) === String(id));
 }
 
-function selectedShippingType(){
-  const value = document.querySelector('input[name="shippingType"]:checked')?.value || '';
-  return (value === 'tracked' || value === 'no_tracked') ? value : '';
-}
-
-function shippingInfo(type){
-  if(type === 'tracked') return { amount: 10, label: 'Tracked (€10)' };
-  if(type === 'no_tracked') return { amount: 7, label: 'No tracked (€7)' };
-  return { amount: 0, label: 'Choose shipping' };
-}
-
 function renderSummary(){
   const list = document.getElementById('cartList');
   let subtotal = 0;
   const validRows = [];
-
   if(!cart.length){
     list.innerHTML = '<p style="color:#666;text-align:center;">Your cart is empty.</p>';
   }else{
@@ -115,67 +128,65 @@ function renderSummary(){
       if(!product){
         return `<div class="item"><div class="item-title">${qty}× Product unavailable</div><div class="item-sub">Removed</div></div>`;
       }
-      const price = Number(product.price) || 0;
-      const sub = qty * price;
-      subtotal += sub;
+      const price = Number(product.price)||0; // preço lido do backend/products.json
+      const sub = qty*price; subtotal += sub;
       validRows.push({ id:String(product.id), qty, title:product.title, price });
-      return `<div class="item"><div class="item-title">${qty}× ${escapeHtml(product.title || 'Product')}</div><div class="item-sub">${fmtEUR(sub)}</div></div>`;
+      return `<div class="item">
+                <div class="item-title">${qty}× ${product.title}</div>
+                <div class="item-sub">${fmtEUR(sub)}</div>
+              </div>`;
     }).join('');
   }
-
-  const type = selectedShippingType();
-  const ship = shippingInfo(type);
-  const total = subtotal + (type ? ship.amount : 0);
-
+  const ship = getShipping();
   document.getElementById('subtotalValue').textContent = fmtEUR(subtotal);
-  document.getElementById('shippingLabel').textContent = type ? ship.label : 'Shipping';
-  document.getElementById('shippingValue').textContent = type ? fmtEUR(ship.amount) : 'Choose shipping';
-  document.getElementById('totalAmount').textContent = total.toFixed(2);
+  document.getElementById('shippingLabel').textContent = ship.selected ? ship.label : 'Shipping';
+  document.getElementById('shippingValue').textContent = ship.selected ? fmtEUR(ship.amount) : 'Choose shipping';
 
+  let effectiveTotal = 0;
+  const buttons = document.getElementById('paypal-section');
   const helper = document.getElementById('helperMsg');
-  if(!validRows.length){
-    helper.textContent = 'Add products to your cart to enable payment.';
-    helper.classList.remove('hidden');
-  }else if(!type){
-    helper.textContent = 'Choose shipping to enable payment.';
-    helper.classList.remove('hidden');
+  if(subtotal > 0 && validRows.length > 0){
+    effectiveTotal = subtotal + (ship.selected ? Number(ship.amount||0) : 0);
+    buttons.classList.remove('hidden');
+    if(ship.selected){ helper.classList.add('hidden'); }
+    else { helper.textContent = 'Choose shipping to enable payment.'; helper.classList.remove('hidden'); }
   }else{
-    helper.classList.add('hidden');
+    effectiveTotal = 0;
+    buttons.classList.remove('hidden');
+    document.getElementById('paypal-button-paypal').classList.add('hidden');
+    document.getElementById('paypal-button-card').classList.add('hidden');
+    helper.classList.remove('hidden');
   }
-
-  return { subtotal, shipping: ship.amount, shippingType:type, total, validRows };
+  document.getElementById('totalAmount').textContent = effectiveTotal.toFixed(2);
+  return { subtotal, shipping: Number(ship.amount||0), shippingSelected: !!ship.selected, total: effectiveTotal, validRows };
 }
 
 function commonConfig(){
   return {
     onClick: function(data, actions){
-      const state = renderSummary();
-      if(state.subtotal <= 0 || !state.validRows.length){
+      const { subtotal, shippingSelected } = renderSummary();
+      if(subtotal <= 0){
         alert('Please add products before paying.');
         return actions.reject();
       }
-      if(!state.shippingType){
+      if(!shippingSelected){
         alert('Please choose shipping before paying.');
         return actions.reject();
       }
       return actions.resolve();
     },
     createOrder: function(data, actions){
-      const state = renderSummary();
-      if(state.subtotal <= 0 || !state.validRows.length){ throw new Error('Empty subtotal'); }
-      if(!state.shippingType){ throw new Error('Choose shipping'); }
+      const { subtotal, shippingSelected, total } = renderSummary();
+      if(subtotal <= 0){ throw new Error('Empty subtotal'); }
+      if(!shippingSelected){ throw new Error('Choose shipping'); }
       return actions.order.create({
-        purchase_units:[{
-          amount:{ value: state.total.toFixed(2), currency_code:'EUR' },
-          description:'HS Nutrition Order'
-        }]
+        purchase_units:[{ amount:{ value: total.toFixed(2), currency_code:'EUR' }, description:'HS Nutrition Order' }]
       });
     },
     onApprove: function(data, actions){
       return actions.order.capture().then(function(details){
         alert('✅ Payment completed by ' + (details?.payer?.name?.given_name || 'customer') + '!');
         localStorage.removeItem(CART_KEY);
-        localStorage.removeItem('hs_shipping');
         document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
         document.getElementById('subtotalValue').textContent = fmtEUR(0);
         document.getElementById('shippingValue').textContent = fmtEUR(0);
@@ -183,19 +194,15 @@ function commonConfig(){
         document.getElementById('paypal-section').classList.add('hidden');
       });
     },
-    onError: function(err){
-      console.error('PayPal error:', err);
-      alert('❌ There was an issue with PayPal Checkout. Please try again.');
-    }
+    onError: function(err){ console.error('PayPal error:', err); alert('❌ There was an issue with PayPal Checkout. Please try again.'); }
   };
 }
 
 async function bootCheckout(){
   try{
     await loadServerProducts();
+    document.querySelectorAll('input[name="checkoutShipping"]').forEach(r => r.addEventListener('change', renderSummary));
     const state = renderSummary();
-    document.querySelectorAll('input[name="shippingType"]').forEach(r => r.addEventListener('change', renderSummary));
-
     if(typeof paypal !== 'undefined' && state.subtotal > 0){
       const btnPayPal = paypal.Buttons(Object.assign({}, commonConfig(), {
         fundingSource: paypal.FUNDING.PAYPAL,
