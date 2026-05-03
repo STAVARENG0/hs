@@ -500,5 +500,20 @@
     ],
     "createdAt": 1777832239978,
     "status": "publicado"
+  },
+  {
+    "id": "1777832281777",
+    "title": "Vitamin D3 8000IU - 240 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 1 tabs\nServings per container: 240\nPackage: 240 tabs\nIngredients: Vitamin D3 (cholecalciferol from lanolin), anti-caking agent – magnesium salts of fatty acids, bulking agent – sorbitol.",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832282/hs-products/1777832281777/1777832281777_1777832282389_ecc09b0b6f_301F1138-B479-47CD-84A8-B09040C35053.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832284/hs-products/1777832281777/1777832281777_1777832284222_9a902d8a41_4462CC3D-A061-426A-8A36-0B2B9F2A6F57.jpg"
+    ],
+    "createdAt": 1777832285097,
+    "status": "publicado"
   }
 ]
