@@ -13,5 +13,20 @@
     ],
     "createdAt": 1777802157135,
     "status": "publicado"
+  },
+  {
+    "id": "1777802222374",
+    "title": "PRATO FEITO ",
+    "price": 1,
+    "description": "PRATO DE ARROZA BATATA E BIFE ",
+    "department": "supplements",
+    "category": "Whey Protein",
+    "stock": 1,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802227/hs-products/1777802222374/1777802222374_1777802226790_1bbfcf81b9_Gemini_Generated_Image_qhq7nyqhq7nyqhq7.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802225/hs-products/1777802222374/1777802222374_1777802224490_24fd18194a_Gemini_Generated_Image_izcdsizcdsizcdsi.png"
+    ],
+    "createdAt": 1777802227614,
+    "status": "publicado"
   }
 ]
