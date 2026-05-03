@@ -28,5 +28,21 @@
     ],
     "createdAt": 1777805376023,
     "status": "publicado"
+  },
+  {
+    "id": "1777805525826",
+    "title": "ARTESANATO",
+    "price": 3,
+    "description": "TESTANDO DESCRICAO ",
+    "department": "cosmetics",
+    "category": "Body Oil",
+    "stock": 1,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777805527/hs-products/1777805525826/1777805525826_1777805527206_ee5c7163c0_Gemini_Generated_Image_cv0oqlcv0oqlcv0o.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777805530/hs-products/1777805525826/1777805525826_1777805529679_e1dfdcfdf7_Gemini_Generated_Image_kystczkystczkyst.png",
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777805531/hs-products/1777805525826/1777805525826_1777805531383_4cf5cdac42_Gemini_Generated_Image_2ulvni2ulvni2ulv.png"
+    ],
+    "createdAt": 1777805532327,
+    "status": "publicado"
   }
 ]
