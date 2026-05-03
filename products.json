@@ -354,5 +354,20 @@
     ],
     "createdAt": 1777830035356,
     "status": "publicado"
+  },
+  {
+    "id": "1777830241870",
+    "title": "Ashwaghandha 450mg - 60 Capsules ",
+    "price": 18.99,
+    "description": "Serving Size: 1 cap\nServings per container: 60\nContainer: 60 caps\nAshwagandha Ingredients: *Standardized extract from the root of Withania somnifera - Ashwagandha (Withania somnifera L.) 5:1, containing 9% withanolides, 0.32% withaferin A, 1% alkaloids, filling agent - microcrystalline cellulose, capsule - bovine gelatin, purified water.\nThe product may contain milk (including lactose), soy, peanuts, nuts, sesame seeds, oats, eggs, and crustaceans.\n*Due to the presence of standardized extract from the root of Withania somnifera - Ashwagandha, the product should not be consumed if taking sedative, hypnotic, or antiepileptic medications. It should not be used by children, pregnant or lactating women.\nDietary supplement. This product is not intended for the diagnosis, treatment, or prevention of any disease.",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830243/hs-products/1777830241870/1777830241870_1777830242737_4b6ac94dfd_027EE023-7285-45F7-9687-2BC3361C9874.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830244/hs-products/1777830241870/1777830241870_1777830244580_d658ec8f12_AB77DB9B-FF66-4F55-9C28-309CD59647B7.jpg"
+    ],
+    "createdAt": 1777830245477,
+    "status": "publicado"
   }
 ]
