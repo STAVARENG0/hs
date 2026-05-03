@@ -28,5 +28,20 @@
     ],
     "createdAt": 1777818535870,
     "status": "publicado"
+  },
+  {
+    "id": "1777819639099",
+    "title": "100% Creatine Mono Łowickie - 500g - Natural",
+    "price": 24.99,
+    "description": "Serving: 5g\nServings per container: 100\nPackaging: 500g\nIngredients: micronized creatine monohydrate, fenugreek extract.\nActive Ingredients\t5g\nCreatine Monohydrate\t5g\n*** Nutritional values in the table may slightly vary depending on the batch. The page is regularly updated, but it may happen that we have several batches of the product in stock.\n** Reference intake value for an average adult (8400 kJ/2000 kcal)\n* Ingredients, weight, and nutritional values may slightly vary depending on the flavor variant of the product.",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777819640/hs-products/1777819639099/1777819639099_1777819639853_6622d91a97_88CF82FD-839F-4BDF-B0A3-D63EDB268170.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777819641/hs-products/1777819639099/1777819639099_1777819641016_6371964a49_EF6ABD39-D9BD-4337-896A-70DB49D397CE.jpg"
+    ],
+    "createdAt": 1777819641780,
+    "status": "publicado"
   }
 ]
