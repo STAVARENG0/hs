@@ -43,5 +43,18 @@
     ],
     "createdAt": 1777819641780,
     "status": "publicado"
+  },
+  {
+    "id": "1777819808196",
+    "title": "100% Creatine Monohydrate - 300g",
+    "price": 19.99,
+    "description": "Serving: 3.4g\nServings per container: 88\nContainer: 300g\nIngredients 100% Creatine Monohydrate: Creatine monohydrate.\nManufactured in a facility that processes milk, eggs, gluten, soy, nuts, celery, fish, crustaceans, molluscs, and products containing sulfur dioxide.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777819809/hs-products/1777819808196/1777819808196_1777819808965_33da459edb_C5BF0CF8-B959-4EF9-ABE8-BB35437A04F5.jpg",
+    "gallery": [],
+    "createdAt": 1777819810048,
+    "status": "publicado"
   }
 ]
