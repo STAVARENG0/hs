@@ -1,64 +1,32 @@
 [
   {
-    "id": "1777802152026",
-    "title": "CHAVEIRO ",
-    "price": 1,
-    "description": "CHAVEIRO DE CROCHE BANANA",
-    "department": "fashion",
-    "category": "fashion",
-    "stock": 2,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802156/hs-products/1777802152026/1777802152026_1777802156059_174fcd0870_Gemini_Generated_Image_al5zqal5zqal5zqa.png",
-    "gallery": [
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802154/hs-products/1777802152026/1777802152026_1777802153278_b46d771e46_Gemini_Generated_Image_bdjm0wbdjm0wbdjm.png"
-    ],
-    "createdAt": 1777802157135,
-    "status": "publicado"
-  },
-  {
-    "id": "1777802222374",
-    "title": "PRATO FEITO ",
-    "price": 1,
-    "description": "PRATO DE ARROZA BATATA E BIFE ",
+    "id": "1777718647109",
+    "title": "Creatine CreaMaX - 600g",
+    "price": 30,
+    "description": "Serving: 5g\nServings per container: 120\nContainer: 600g\nIngredients of Creatine CreaMax: creatine monohydrate, taurine.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.\nNutritional values\tper serving 5g\nCreatine monohydrate\t4500 mg\nincluding creatine\t3960 mg\nTaurine\t500 mg\nDirections for use of Creatine CreaMax: Dissolve 1 serving (5g powder - 1 level scoop included in the package) in 200ml of water and drink once a day.\nDietary supplements cannot be used as a substitute for a varied diet. Remember that only a healthy lifestyle and balanced nutrition ensure proper body functioning and maintain good condition.\nDo not exceed the recommended daily dose. The product should not be used by individuals allergic to any of its ingredients. The product should not be used by pregnant women and breastfeeding mothers.\nKeep out of reach of small children. Store in a dry place at room temperature in tightly closed containers. Shake the container vigorously before use.\nBest before: the date and batch number are located on the side/bottom of the packaging.\nNet weight: 600g",
     "department": "supplements",
-    "category": "Whey Protein",
-    "stock": 1,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802227/hs-products/1777802222374/1777802222374_1777802226790_1bbfcf81b9_Gemini_Generated_Image_qhq7nyqhq7nyqhq7.png",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777718647109_1777718647867_e247fd1ca8db.jpeg",
     "gallery": [
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802225/hs-products/1777802222374/1777802222374_1777802224490_24fd18194a_Gemini_Generated_Image_izcdsizcdsizcdsi.png"
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777718647109_1777718649946_1215061b9c1e.jpeg"
     ],
-    "createdAt": 1777802227614,
+    "createdAt": 1777718651265,
     "status": "publicado"
   },
   {
-    "id": "1777802283202",
-    "title": "STROGONOFF",
-    "price": 1,
-    "description": "FRANGO AO MOLHO ",
-    "department": "cosmetics",
-    "category": "Body Oil",
-    "stock": 1,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802285/hs-products/1777802283202/1777802283202_1777802284787_b9ed15a231_Gemini_Generated_Image_az76g8az76g8az76.png",
-    "gallery": [
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802287/hs-products/1777802283202/1777802283202_1777802287212_f29f96f234_Gemini_Generated_Image_sd00zxsd00zxsd00__1_.png"
-    ],
-    "createdAt": 1777802288031,
-    "status": "publicado"
-  },
-  {
-    "id": "1777802422413",
-    "title": "TESTE",
-    "price": 2,
-    "description": "TESTANDO",
+    "id": "1777719090240",
+    "title": "Creatine CreaMaX - 300g",
+    "price": 25,
+    "description": "Serving: 5g\nServings per container: 60\nContainer: 300g\nIngredients of Creatine CreaMax: CreaMax creatine monohydrate, taurine.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.\nNutritional values\tper 5g serving\nCreatine monohydrate\t4500 mg\nincluding creatine\t3959 mg\nTaurine\t500 mg\nHow to use Creatine CreaMax: Dissolve 1 serving (5g powder - 1 flat scoop included in the package) in 200ml of water and drink once a day.\nDietary supplements cannot be used as a substitute for a varied diet. Remember that only a healthy lifestyle and balanced nutrition ensure the proper functioning of the body and maintaining good condition.\nDo not exceed the recommended daily intake. The product cannot be used by persons allergic to any of its ingredients. The product should not be given to pregnant women and breastfeeding mothers.\nKeep out of reach of small children. Store in a dry place at room temperature in tightly closed containers. Shake the container vigorously before use.\nBest before: the production date and batch number are located on the side/bottom of the packaging.\nNet weight: 300g",
     "department": "supplements",
-    "category": "Vitamins & Minerals",
-    "stock": 2,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802425/hs-products/1777802422413/1777802422413_1777802424309_1bb7d0abb4_Gemini_Generated_Image_r901rer901rer901.png",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777719090240_1777719091157_cb1c1d9e576c.jpeg",
     "gallery": [
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802426/hs-products/1777802422413/1777802422413_1777802426591_83057e6b38_Gemini_Generated_Image_tpenvutpenvutpen.png",
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802429/hs-products/1777802422413/1777802422413_1777802428512_eeb01a6299_Gemini_Generated_Image_2ulvni2ulvni2ulv.png",
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777802431/hs-products/1777802422413/1777802422413_1777802430747_6f334a6c3d_Gemini_Generated_Image_8l97o58l97o58l97.png"
+      "https://raw.githubusercontent.com/STAVARENG0/hs/main/products/1777719090240_1777719093535_3c88fa85bb1c.jpeg"
     ],
-    "createdAt": 1777802432497,
+    "createdAt": 1777719094873,
     "status": "publicado"
   }
 ]
