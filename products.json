@@ -384,5 +384,20 @@
     ],
     "createdAt": 1777830492193,
     "status": "publicado"
+  },
+  {
+    "id": "1777830532216",
+    "title": "Vitamax Men- 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 tablet\nServings per container: 60\nContainer: 60 tablets\nIngredients: magnesium citrate (magnesium), calcium carbonate (calcium), vitamin C (ascorbic acid), Siberian ginseng (root extract), puncturevine (fruit extract (tribulus terrestris)), lecithin, fenugreek (seed extract 4:1), saw palmetto (25mg), vitamin B3, iron, zinc, vitamin B5, iron, zinc, vitamin B5, piperine, manganese, vitamin B2, vitamin B1, vitamin B6, copper, vitamin A, folic acid, iodine, selenium, biotin, vitamin D, vitamin B12.",
+    "department": "supplements",
+    "category": "Multivitamins",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830533/hs-products/1777830532216/1777830532216_1777830533167_c90639cde2_5F707E5A-E31D-45EB-BFA9-6D419165BEF8.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830534/hs-products/1777830532216/1777830532216_1777830534537_b74314156a_983E3460-0B14-4D00-9BFA-6F361EC869BF.jpg"
+    ],
+    "createdAt": 1777830535825,
+    "status": "publicado"
   }
 ]
