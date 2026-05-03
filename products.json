@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "id": "1777800541684",
+    "title": "CORDA",
+    "price": 1,
+    "description": "DESCRICAO ",
+    "department": "fashion",
+    "category": "fashion",
+    "stock": 4,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777800544/hs-products/1777800541684/1777800541684_1777800543283_5a67adfd0f_PRETA.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777800547/hs-products/1777800541684/1777800541684_1777800546749_314b3e3c4e_AZUL.png",
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777800552/hs-products/1777800541684/1777800541684_1777800552183_48bc022520_REDE_-_Copia.png",
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777800557/hs-products/1777800541684/1777800541684_1777800556441_c40bd7a03e_CORDA.png"
+    ],
+    "createdAt": 1777800558192,
+    "status": "publicado"
+  }
+]
