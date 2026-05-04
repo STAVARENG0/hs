@@ -588,5 +588,20 @@
     "gallery": [],
     "createdAt": 1777899570590,
     "status": "publicado"
+  },
+  {
+    "id": "1777899898876",
+    "title": "Coenzyme Q10 100mg - 90 SoftGels",
+    "price": 19.99,
+    "description": "Serving: 1 softgel\nServings per package: 90\nPackage: 90 softgels",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777899900/hs-products/1777899898876/1777899898876_1777899899590_f61a6a75d1_76C41D7F-4D46-41CF-A0E1-046334985CAD.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777899901/hs-products/1777899898876/1777899898876_1777899901384_91801a20c2_853DA646-E602-4A3D-8811-B6E6154EFEE2.jpg"
+    ],
+    "createdAt": 1777899902352,
+    "status": "publicado"
   }
 ]
