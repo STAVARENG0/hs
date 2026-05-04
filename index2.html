@@ -551,12 +551,21 @@ function sanitizeList(list){
   }));
 }
 async function readPublic(){
-  try{
-    const r = await fetch(PUBLIC_JSON + '?t=' + Date.now(), {cache:'no-store'});
-    if(!r.ok) throw new Error('HTTP '+r.status);
+  async function loadFrom(url){
+    const r = await fetch(url, {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP ' + r.status);
     const data = await r.json();
     return sanitizeList(Array.isArray(data) ? data : (data.data || []));
-  }catch(e){ return []; }
+  }
+  try{
+    const apiList = await loadFrom(PUBLIC_JSON + '?t=' + Date.now());
+    if(apiList.length) return apiList;
+  }catch(e){}
+  try{
+    return await loadFrom('products.json?t=' + Date.now());
+  }catch(e){
+    return [];
+  }
 }
 
 /* ===== RENDER ===== */
@@ -786,7 +795,9 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ===== Init ===== */
 (async function init(){
   currentList = await readPublic();
+  window.currentList = currentList;
   currentList.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+  window.currentList = currentList;
   render(currentList);
   document.getElementById('year').textContent = new Date().getFullYear();
   updateCartIcon();
