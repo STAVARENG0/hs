@@ -661,5 +661,18 @@
     "gallery": [],
     "createdAt": 1777901074413,
     "status": "publicado"
+  },
+  {
+    "id": "1777901128134",
+    "title": "Berberine HCL PLUS - 100 Capsules ",
+    "price": 29.99,
+    "description": "Portion: 1 vcap\nPortions in package: 100\nPackage: 100 vcaps\nIngredients of Berberine HCL PLUS: extract from barberry root (Berberis aristata) -97% berberine; cinnamon extract 4:1; turmeric extract (Curcuma longa) -95% curcuminoids; black pepper extract (Piper nigrum) -95% piperine; cellulose capsule -HPMC.\nDietary supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901129/hs-products/1777901128134/1777901128134_1777901128730_33d4c1186d_AC1176CB-6078-4020-A3A6-5D7011BB1003.jpg",
+    "gallery": [],
+    "createdAt": 1777901129707,
+    "status": "publicado"
   }
 ]
