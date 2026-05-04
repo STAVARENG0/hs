@@ -603,5 +603,20 @@
     ],
     "createdAt": 1777899902352,
     "status": "publicado"
+  },
+  {
+    "id": "1777900270373",
+    "title": "Melatonin 5mg - 120 Capsules ",
+    "price": 21.99,
+    "description": "Serving: 1/5 tablet\nServings per container 600\nPackaging 120 tabs\nMelatonin Ingredients: Filling agent - microcrystalline cellulose, filling agent - calcium phosphates, anti-caking agent - magnesium salts of fatty acids (vegan), melatonin.\nDietary supplement. \nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900271/hs-products/1777900270373/1777900270373_1777900271166_95c5633a96_2BCF4E56-DCEA-4EF8-BC37-DE1C67393BC2.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900273/hs-products/1777900270373/1777900270373_1777900272789_9e05ef1d2d_FF2C8032-4FF1-432B-BA17-3B7934EEA4F9.jpg"
+    ],
+    "createdAt": 1777900273646,
+    "status": "publicado"
   }
 ]
