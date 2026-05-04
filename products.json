@@ -618,5 +618,20 @@
     ],
     "createdAt": 1777900273646,
     "status": "publicado"
+  },
+  {
+    "id": "1777900642190",
+    "title": "Magnesium Citrate Powder - 227g",
+    "price": 24.99,
+    "description": "Active ingredients in:\t3g (1 serving)\nMagnesium (from 3000mg of magnesium citrate)\t",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900643/hs-products/1777900642190/1777900642190_1777900642905_d4ac3f7591_FC87BFB6-D65F-44A2-A75A-E7911529DFF3.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900645/hs-products/1777900642190/1777900642190_1777900644846_856e974794_87C31406-FAC7-4C6C-B3F7-27F4084474B8.jpg"
+    ],
+    "createdAt": 1777900645894,
+    "status": "publicado"
   }
 ]
