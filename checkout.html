@@ -65,7 +65,6 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
     <h3>Choose shipping</h3>
     <label class="shipping-option"><input type="radio" name="checkoutShipping" value="7"> 7€ — No tracked</label>
     <label class="shipping-option"><input type="radio" name="checkoutShipping" value="10"> 10€ — Tracked</label>
-    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="0"> 0€ — Free shipping test</label>
   </div>
 
   <div class="summary">
@@ -83,7 +82,7 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
   <footer>© <span id="year"></span> HS Nutrition</footer>
 </div>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AWxRBWcw1-yyUd5Ozct3UrhsF0ztYRedV2T8qx9gSTCChSreNBl5MoCo-rXPE9tZCpp0Rf6QenfdnfWS&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
 <script>
 const CART_KEY='hs_cart';
 const SHIP_KEY='hs_shipping';
@@ -97,7 +96,6 @@ function getShipping(){
   const amount = Number(selected.value);
   if(amount === 10){ return { amount: 10, label: 'Tracked (€10)', selected: true }; }
   if(amount === 7){ return { amount: 7, label: 'No tracked (€7)', selected: true }; }
-  if(amount === 0){ return { amount: 0, label: 'Free shipping test (€0)', selected: true }; }
   return { amount: 0, label: 'Choose shipping', selected: false };
 }
 
@@ -181,9 +179,8 @@ function commonConfig(){
       const { subtotal, shippingSelected, total } = renderSummary();
       if(subtotal <= 0){ throw new Error('Empty subtotal'); }
       if(!shippingSelected){ throw new Error('Choose shipping'); }
-      const paypalValue = Number(total || 0).toFixed(2).replace(',', '.');
       return actions.order.create({
-        purchase_units:[{ amount:{ value: paypalValue, currency_code:'EUR' }, description:'HS Nutrition Order' }]
+        purchase_units:[{ amount:{ value: total.toFixed(2), currency_code:'EUR' }, description:'HS Nutrition Order' }]
       });
     },
     onApprove: function(data, actions){
