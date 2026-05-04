@@ -704,5 +704,20 @@
     ],
     "createdAt": 1777901346590,
     "status": "publicado"
+  },
+  {
+    "id": "1777901495982",
+    "title": "Mass KONG - 1000g - Chocolate",
+    "price": 22.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Mass Gainer",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901497/hs-products/1777901495982/1777901495982_1777901496841_c8dcef467a_853646E1-A093-4493-97A1-9690F9B13EC2.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901499/hs-products/1777901495982/1777901495982_1777901498888_6fa3f5403b_53803B01-0910-4CE5-B1F5-C9A662CCC723.jpg"
+    ],
+    "createdAt": 1777901499881,
+    "status": "publicado"
   }
 ]
