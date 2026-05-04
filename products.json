@@ -575,5 +575,18 @@
     ],
     "createdAt": 1777895307770,
     "status": "publicado"
+  },
+  {
+    "id": "1777899568129",
+    "title": "Cystone - 100 Capsules ",
+    "price": 18.99,
+    "description": "Kidney Support ",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777899569/hs-products/1777899568129/1777899568129_1777899568840_b4a36c11d1_877A8DD7-CFCD-4877-AE7D-6FE5C265D0FA.jpg",
+    "gallery": [],
+    "createdAt": 1777899570590,
+    "status": "publicado"
   }
 ]
