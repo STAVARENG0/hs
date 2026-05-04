@@ -689,5 +689,20 @@
     ],
     "createdAt": 1777901301739,
     "status": "publicado"
+  },
+  {
+    "id": "1777901342760",
+    "title": "Vitamin D3 4000IU + K2 MK7 - 160 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 1 capsule\nServings per container: 160\nContainer: 160 tabs\nIngredients Vitamin D3+K2 160 tabs: Filling agent: sorbitol, anti-caking agent: magnesium salts of fatty acids, cholecalciferol (vitamin D), menaquinone (vitamin K).\nDietary supplement. This product is not intended for the diagnosis, treatment, or prevention of any disease.",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901344/hs-products/1777901342760/1777901342760_1777901343484_405343d6fb_44C6EA57-3343-4389-AC98-874D43562563.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901345/hs-products/1777901342760/1777901342760_1777901345567_c603de7136_010FBCC2-BB1C-42E9-9776-A74EF55ACF94.jpg"
+    ],
+    "createdAt": 1777901346590,
+    "status": "publicado"
   }
 ]
