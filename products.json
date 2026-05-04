@@ -545,5 +545,20 @@
     ],
     "createdAt": 1777832452720,
     "status": "publicado"
+  },
+  {
+    "id": "1777885642490",
+    "title": "TESTE",
+    "price": 20,
+    "description": "TESTE BANANA ",
+    "department": "fashion",
+    "category": "fashion",
+    "stock": 2,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777885647/hs-products/1777885642490/1777885642490_1777885647068_d45653af20_Gemini_Generated_Image_al5zqal5zqal5zqa.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777885645/hs-products/1777885642490/1777885642490_1777885644470_a139be7f4a_Gemini_Generated_Image_bdjm0wbdjm0wbdjm.png"
+    ],
+    "createdAt": 1777885647520,
+    "status": "publicado"
   }
 ]
