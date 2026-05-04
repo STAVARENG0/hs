@@ -560,5 +560,20 @@
     ],
     "createdAt": 1777885647520,
     "status": "publicado"
+  },
+  {
+    "id": "1777895298377",
+    "title": "CHAVEIRO DE BANANA",
+    "price": 1,
+    "description": "CHAVEIRO",
+    "department": "fashion",
+    "category": "fashion",
+    "stock": 1,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777895303/hs-products/1777895298377/1777895298377_1777895302495_4864c2bece_Gemini_Generated_Image_bdjm0wbdjm0wbdjm.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777895308/hs-products/1777895298377/1777895298377_1777895307472_7cac78baf1_Gemini_Generated_Image_al5zqal5zqal5zqa.png"
+    ],
+    "createdAt": 1777895307770,
+    "status": "publicado"
   }
 ]
