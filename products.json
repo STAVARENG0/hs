@@ -2,7 +2,7 @@
   {
     "id": "1777818279485",
     "title": "Creatine CreaMaX - 600g",
-    "price": 30,
+    "price": 29.99,
     "description": "Serving: 5g\nServings per container: 120\nContainer: 600g\nIngredients of Creatine CreaMax: creatine monohydrate, taurine.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.\nNutritional values\tper serving 5g\nCreatine monohydrate\t4500 mg\nincluding creatine\t3960 mg\nTaurine\t500 mg\nDirections for use of Creatine CreaMax: Dissolve 1 serving (5g powder - 1 level scoop included in the package) in 200ml of water and drink once a day.\nDietary supplements cannot be used as a substitute for a varied diet. Remember that only a healthy lifestyle and balanced nutrition ensure proper body functioning and maintain good condition.\nDo not exceed the recommended daily dose. The product should not be used by individuals allergic to any of its ingredients. The product should not be used by pregnant women and breastfeeding mothers.\nKeep out of reach of small children. Store in a dry place at room temperature in tightly closed containers. Shake the container vigorously before use.\nBest before: the date and batch number are located on the side/bottom of the packaging.\nNet weight: 600g",
     "department": "supplements",
     "category": "Creatine",
@@ -17,7 +17,7 @@
   {
     "id": "1777818531830",
     "title": "Creatine CreaMaX - 300g",
-    "price": 20,
+    "price": 19.99,
     "description": "Serving: 5g\nServings per container: 60\nContainer: 300g\nIngredients of Creatine CreaMax: CreaMax creatine monohydrate, taurine.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.\nNutritional values\tper 5g serving\nCreatine monohydrate\t4500 mg\nincluding creatine\t3959 mg\nTaurine\t500 mg\nHow to use Creatine CreaMax: Dissolve 1 serving (5g powder - 1 flat scoop included in the package) in 200ml of water and drink once a day.\nDietary supplements cannot be used as a substitute for a varied diet. Remember that only a healthy lifestyle and balanced nutrition ensure the proper functioning of the body and maintaining good condition.\nDo not exceed the recommended daily intake. The product cannot be used by persons allergic to any of its ingredients. The product should not be given to pregnant women and breastfeeding mothers.\nKeep out of reach of small children. Store in a dry place at room temperature in tightly closed containers. Shake the container vigorously before use.\nBest before: the production date and batch number are located on the side/bottom of the packaging.\nNet weight: 300g",
     "department": "supplements",
     "category": "Creatine",
@@ -27,6 +27,523 @@
       "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777818535/hs-products/1777818531830/1777818531830_1777818534698_2caf984965_8477D990-6827-4CD4-A761-D08D4F0D6A52.jpg"
     ],
     "createdAt": 1777818535870,
+    "status": "publicado"
+  },
+  {
+    "id": "1777819639099",
+    "title": "100% Creatine Mono Łowickie - 500g - Natural",
+    "price": 24.99,
+    "description": "Serving: 5g\nServings per container: 100\nPackaging: 500g\nIngredients: micronized creatine monohydrate, fenugreek extract.\nActive Ingredients\t5g\nCreatine Monohydrate\t5g\n*** Nutritional values in the table may slightly vary depending on the batch. The page is regularly updated, but it may happen that we have several batches of the product in stock.\n** Reference intake value for an average adult (8400 kJ/2000 kcal)\n* Ingredients, weight, and nutritional values may slightly vary depending on the flavor variant of the product.",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777819640/hs-products/1777819639099/1777819639099_1777819639853_6622d91a97_88CF82FD-839F-4BDF-B0A3-D63EDB268170.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777819641/hs-products/1777819639099/1777819639099_1777819641016_6371964a49_EF6ABD39-D9BD-4337-896A-70DB49D397CE.jpg"
+    ],
+    "createdAt": 1777819641780,
+    "status": "publicado"
+  },
+  {
+    "id": "1777819808196",
+    "title": "100% Creatine Monohydrate - 300g",
+    "price": 19.99,
+    "description": "Serving: 3.4g\nServings per container: 88\nContainer: 300g\nIngredients 100% Creatine Monohydrate: Creatine monohydrate.\nManufactured in a facility that processes milk, eggs, gluten, soy, nuts, celery, fish, crustaceans, molluscs, and products containing sulfur dioxide.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777819809/hs-products/1777819808196/1777819808196_1777819808965_33da459edb_C5BF0CF8-B959-4EF9-ABE8-BB35437A04F5.jpg",
+    "gallery": [],
+    "createdAt": 1777819810048,
+    "status": "publicado"
+  },
+  {
+    "id": "1777819991286",
+    "title": "100% Pure Creatine - 300g - Natural",
+    "price": 17.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777819992/hs-products/1777819991286/1777819991286_1777819992061_f22c6cd6ec_C0996FC2-487A-4DC3-870F-D099329AB1E4.jpg",
+    "gallery": [],
+    "createdAt": 1777819993276,
+    "status": "publicado"
+  },
+  {
+    "id": "1777820312507",
+    "title": "Creatine 1000mg - 120tabs",
+    "price": 19.99,
+    "description": "Serving: 5g\nServings per container: 50\nContainer: 250g\nCreatine Monohydrate Ingredients: creatine monohydrate containing 99.5% creatine, taurine, anti-caking agent - magnesium salts of fatty acids, vitamin B6 (pyridoxine hydrochloride), vitamin B12 (cyanocobalamin).\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820313/hs-products/1777820312507/1777820312507_1777820313478_c2d951c535_7ECA5393-8B59-46F9-88D2-E7C4892152C8.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820315/hs-products/1777820312507/1777820312507_1777820315193_06b345bf19_0AF8C397-B53A-4E34-8384-D7CFBC8612E7.jpg"
+    ],
+    "createdAt": 1777820316137,
+    "status": "publicado"
+  },
+  {
+    "id": "1777820623145",
+    "title": "Guarilla Energy - 270g Orange Mango",
+    "price": 24.99,
+    "description": "Serving: 9 g\nServings per package: 30\nPackage: 270 g\nIngredients: beta-alanine, citrulline malate, anhydrous betaine, creatine monohydrate, L-tyrosine, choline bitartrate, anti-caking agent (E551), flavors, anhydrous caffeine, acidity regulators (E330, E296), vitamin B6 (pyridoxine hydrochloride), niacin (nicotinic acid), salt, beetroot juice concentrate, black carrot concentrate, sweeteners (acesulfame K, sucralose, steviol glycosides from stevia), color/s (E160a, E104, E132). E104: May have an adverse effect on activity and attention in children.\n\nIngredient\tContent per serving (9 g)\t%NRV**\n\nBeta-alanine\t3200 mg\t†\nCitrulline malate\t1500 mg\t†\n– of which citrulline\t1000 mg\t†\nBetaine\t1000 mg\t†\nCreatine monohydrate\t500 mg\t†\n– of which creatine\t440 mg\t†\nL-tyrosine\t500 mg\t†\nCholine bitartrate\t500 mg\t†\n– of which choline\t205 mg\t†\nCaffeine\t400 mg\t†\nVitamin B6\t18 mg\t1286%\nNiacin\t16 mg NE\t100%",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820624/hs-products/1777820623145/1777820623145_1777820624064_54dc02c9db_A1FACDF7-CA50-402A-ABF6-780CAB4FDAE4.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820626/hs-products/1777820623145/1777820623145_1777820626355_b47b31ea5a_938D23EB-B506-4CAB-90B1-0D9123C8418B.jpg"
+    ],
+    "createdAt": 1777820627699,
+    "status": "publicado"
+  },
+  {
+    "id": "1777820706448",
+    "title": "Guarilla Energy - 270g - Blackberry Pineapple",
+    "price": 24.99,
+    "description": "Serving: 9 g\nServings per container: 30\nPackage: 270 g\nIngredients: Beta-alanine, Citrulline malate (including citrulline), Betaine, Creatine monohydrate (including creatine), L-tyrosine, Choline bitartrate (including choline), Caffeine, Vitamin B6, Niacin.\nIngredient\tContent per serving (9 g)\t%NRV\nBeta-alanine\t3200 mg\t†\nCitrulline malate\t1500 mg\t†\n– including citrulline\t1000 mg\t†\nBetaine\t1000 mg\t†\nCreatine monohydrate\t500 mg\t†\n– including creatine\t440 mg\t†\nL-tyrosine\t500 mg\t†\nCholine bitartrate\t500 mg\t†\n– including choline\t205 mg\t†\nCaffeine\t400 mg\t†\nVitamin B6\t18 mg\t1286%\nNiacin\t16 mg NE\t100%",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820707/hs-products/1777820706448/1777820706448_1777820707275_4d39c7abfe_A1FACDF7-CA50-402A-ABF6-780CAB4FDAE4.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820709/hs-products/1777820706448/1777820706448_1777820709368_2f7671d616_938D23EB-B506-4CAB-90B1-0D9123C8418B.jpg"
+    ],
+    "createdAt": 1777820710739,
+    "status": "publicado"
+  },
+  {
+    "id": "1777820897362",
+    "title": "Citrulline - 200g - Unflavored",
+    "price": 19.99,
+    "description": "Serving size: 5g\nServings per container: 113\nContainer size: 567g\nIngredients: Citrulline (citrulline malate), flavoring, sweetener - sucralose, anti-caking agent - silicon dioxide, coloring - carotenes.\n\nIngredients\tper 5g serving\nCitrulline (citrulline malate)\t4710 mg",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820898/hs-products/1777820897362/1777820897362_1777820898075_072000d520_E616C929-5182-46F3-9D22-C6C80BD112BF.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777820899/hs-products/1777820897362/1777820897362_1777820899184_ad536fc09a_781E1254-90D2-45AB-A126-A351512117AF.jpg"
+    ],
+    "createdAt": 1777820900226,
+    "status": "publicado"
+  },
+  {
+    "id": "1777821160281",
+    "title": "Behemoth - 500g - Fruit Punch",
+    "price": 27.99,
+    "description": "Serving: 20g\nServings per package: 25\nPackage: 500g\nBehemoth Ingredients: Beta alanine, citrulline, AAKG (L-arginine alpha-ketoglutarate), glycerol monostearate, citric acid, L-tyrosine, taurine, glucuronolactone, choline bitartrate, caffeine, magnesium citrate, cocoa bean extract, silicon dioxide (anti-caking agent), flavor, cayenne pepper extract, sucralose (sweetener), black pepper extract, niacinamide, DL-alpha-tocopheryl acetate, calcium D-pantothenate, pyridoxine hydrochloride, riboflavin, thiamine mononitrate, folic acid, D-biotin, cyanocobalamin, colorings for flavors: indigotine (bubble gum), tartrazine (orange), carmoisine (strawberry-watermelon), ammonium sulfite caramel (cola).\nTartrazine may have a harmful effect on activity and attention in children.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821161/hs-products/1777821160281/1777821160281_1777821161373_cd4834d6b4_5EA16E49-563E-431F-B8CD-A9DFCD60A4AC.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821163/hs-products/1777821160281/1777821160281_1777821163402_b9a0fc4c71_7946C75C-1A90-4253-A9D6-27278EB520F0.jpg"
+    ],
+    "createdAt": 1777821164445,
+    "status": "publicado"
+  },
+  {
+    "id": "1777821255123",
+    "title": "Behemoth - 500g - Grapefruit",
+    "price": 27.99,
+    "description": "Serving: 20g\nServings per package: 25\nPackage: 500g\nBehemoth Ingredients: Beta alanine, citrulline, AAKG (L-arginine alpha-ketoglutarate), glycerol monostearate, citric acid, L-tyrosine, taurine, glucuronolactone, choline bitartrate, caffeine, magnesium citrate, cocoa bean extract, silicon dioxide (anti-caking agent), flavor, cayenne pepper extract, sucralose (sweetener), black pepper extract, niacinamide, DL-alpha-tocopheryl acetate, calcium D-pantothenate, pyridoxine hydrochloride, riboflavin, thiamine mononitrate, folic acid, D-biotin, cyanocobalamin, colorings for flavors: indigotine (bubble gum), tartrazine (orange), carmoisine (strawberry-watermelon), ammonium sulfite caramel (cola).\nTartrazine may have a harmful effect on activity and attention in children.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821256/hs-products/1777821255123/1777821255123_1777821255935_b8b844be8f_5EA16E49-563E-431F-B8CD-A9DFCD60A4AC.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821258/hs-products/1777821255123/1777821255123_1777821257830_912161aaaa_7946C75C-1A90-4253-A9D6-27278EB520F0.jpg"
+    ],
+    "createdAt": 1777821259170,
+    "status": "publicado"
+  },
+  {
+    "id": "1777821478717",
+    "title": "Black Gorilla Ice Pump PreWorkout - 300g - Strawberry Lemonade",
+    "price": 27.99,
+    "description": "Serving: 10g\nServings per container: 30\nContainer: 300g\nIngredients of Black Gorilla Ice Pump: L-citrulline, L-arginine alpha-ketoglutarate, beta-alanine, flavors, acidity regulator: citric acid, niacin amide, dye: beetroot red, sweeteners: acesulfame K and sucralose.\nMay contain derivatives of: gluten-containing cereals, soy, milk.\nDietary supplement. This product is not intended for the diagnosis, treatment, or prevention of any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821480/hs-products/1777821478717/1777821478717_1777821479608_fe25f0cae1_02F10A08-C09E-4748-9114-CFB0072C5387.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821481/hs-products/1777821478717/1777821478717_1777821481026_b0a42964ba_D8BE01CF-1D4E-4F47-A158-704330A52325.jpg"
+    ],
+    "createdAt": 1777821481944,
+    "status": "publicado"
+  },
+  {
+    "id": "1777821666829",
+    "title": "Angel Dust - 270g - Citrus Peach",
+    "price": 28.99,
+    "description": "Serving: 4.5g\nServings per container: 60\nContainer: 270g\nAngel Dust Ingredients: beta-alanine, anhydrous betaine, flavor, flavors, l-tyrosine, anti-caking agents (E551, E341), acidity regulators (E296, E330), gamma-aminobutyric acid (GABA), anhydrous caffeine, salt, choline bitartrate, choline alfoscerate (alpha GPC), l-theanine (extract from Camellia sinensis green tea leaves, standardized to 99% l-theanine), niacin (nicotinic acid), vitamin b6 (pyridoxine hydrochloride), beetroot juice concentrate*, sweeteners (acesulfame K, sucralose, steviol glycosides), colorant (E160, E104)*.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821668/hs-products/1777821666829/1777821666829_1777821667752_f7626443a3_E67CB397-B456-47DA-9B6A-9FFFEC2F429C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821669/hs-products/1777821666829/1777821666829_1777821669585_cbaaab51b6_E1D04D28-052A-4BF0-98D7-071B4965B6C7.jpg"
+    ],
+    "createdAt": 1777821670422,
+    "status": "publicado"
+  },
+  {
+    "id": "1777821811362",
+    "title": "Angel Dust - 270g - Fruit Massage",
+    "price": 29.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821812/hs-products/1777821811362/1777821811362_1777821812208_9b7391dc5e_E67CB397-B456-47DA-9B6A-9FFFEC2F429C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777821814/hs-products/1777821811362/1777821811362_1777821814219_d4eb1dbc97_E1D04D28-052A-4BF0-98D7-071B4965B6C7.jpg"
+    ],
+    "createdAt": 1777821815042,
+    "status": "publicado"
+  },
+  {
+    "id": "1777822244934",
+    "title": "Napalm Pre-Contest Pumped Stimulant Free - 350g - Watermelon",
+    "price": 27.99,
+    "description": "Serving: ~half scoop (4.38g)\nServings per container: 79\nContainer: 350g\nNapalm Pre-Contest Pumped Stimulant Free Ingredients: citrulline malate, beta alanine, betaine anhydrous, stabilizer (glycerol monostearate), flavors, anti-caking agent (E551), acidity regulator (E500(ii)), choline bitartrate, L-tyrosine, taurine, plant extract complex -bacopa monnieri leaf extract (Bacopa monnieri (L.), Wettst; 50% bacosides), ashwagandha root extract (Withania somnifera (L.); 1.5% withanolide glycosides), ginkgo biloba leaf extract (Ginkgo biloba (L.); 24% flavonoid glycosides), rhodiola rosea root extract (Rhodiola rosea (L.), 3% rosavins, 1% salidroside), black pepper fruit extract (Piper nigrum (L.); 95% piperine), cayenne pepper fruit extract (Capsicum annuum (L.); 10% capsaicin), glucuronolactone, niacin (nicotinic acid), vitamin B6 (pyridoxine hydrochloride), beetroot juice concentrate1,2,4,5, salt, sweeteners (acesulfame K, sucralose, steviol glycosides), colorant/s (E160a2,3, E1043, E1326). E104 may have an adverse effect on activity and attention in children.\nFlavors: Lychee1, Dragon Fruit2, Mango-Lemon3, Sour Watermelon4, Grape5, Blue Raspberry6.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822246/hs-products/1777822244934/1777822244934_1777822245785_9151273f9c_3B211F99-0F9B-4D4B-A94A-25CA6235ABF5.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822248/hs-products/1777822244934/1777822244934_1777822247719_c11d332fc4_B5E4F7FC-5BB0-4028-8CE4-0589834B4BE7.jpg"
+    ],
+    "createdAt": 1777822248807,
+    "status": "publicado"
+  },
+  {
+    "id": "1777822509777",
+    "title": "Jack3D - 250g - Fruit Punch US",
+    "price": 44.99,
+    "description": "Serving Size: 5.55g\nServings Per Container: 45\nPackage: 250 g\nOther Ingredients: citric acid, natural flavors, silicon dioxide, acesulfame K, sucralose, vegetable-derived stearate, colorant/s.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822511/hs-products/1777822509777/1777822509777_1777822510652_e261b58a8b_3AE37578-36BD-4399-B857-9D3CAF62065C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822513/hs-products/1777822509777/1777822509777_1777822512964_b4289e384d_D33F5A62-DCEC-4DA4-B882-C119DACF4675.jpg"
+    ],
+    "createdAt": 1777822513870,
+    "status": "publicado"
+  },
+  {
+    "id": "1777822786353",
+    "title": "Jack3D - 250g - Grape US",
+    "price": 44.99,
+    "description": "Serving Size: 5.55g\nServings Per Container: 45\nPackage: 250 g\nOther Ingredients: citric acid, natural flavors, silicon dioxide, acesulfame K, sucralose, vegetable-derived stearate, colorant/s.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 0,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822788/hs-products/1777822786353/1777822786353_1777822787496_56009dd74f_IMG_5137.png",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777822789/hs-products/1777822786353/1777822786353_1777822789243_9988b57e72_D33F5A62-DCEC-4DA4-B882-C119DACF4675.jpg"
+    ],
+    "createdAt": 1777822790059,
+    "status": "publicado"
+  },
+  {
+    "id": "1777823055623",
+    "title": "Pump Kong - 80ml - Bubble Gum X24 (24 Shots)",
+    "price": 24.99,
+    "description": "Serving: 80 ml (1 shot)\nServings per container: 12\nPackage: 12 x 80 ml\nIngredients: Water, beta-alanine, AAKG (L-arginine alpha-ketoglutarate), citrulline (citrulline malate), apple juice from concentrated apple juice (17%), glycerol, acidity regulator – potassium citrates (including potassium), acidity regulator – sodium citrates (including sodium), lemon juice from concentrated lemon juice (3%), betaine (betaine hydrochloride), flavors, standardized extract from grape seeds (Vitis vinifera L.) 7.5-9:1 (containing 40% polyphenols, 30% procyanidins), extract from Chinese Schisandra fruit (Schisandra chinensis (Turcz.) Baill.) 4:1, sweeteners – sucralose, acesulfame K, neotame, aspartame, maltodextrin, preservatives – potassium sorbate, sodium benzoate.",
+    "department": "supplements",
+    "category": "Pre-Workout",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777823057/hs-products/1777823055623/1777823055623_1777823056482_d4b22270eb_E4D3BF2B-92B4-4F04-A0CC-33ECED094EFE.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777823058/hs-products/1777823055623/1777823055623_1777823058584_ec08ef73ee_C2EB8E44-2793-4DDE-AEA8-8173B69264E9.jpg"
+    ],
+    "createdAt": 1777823059661,
+    "status": "publicado"
+  },
+  {
+    "id": "1777829155610",
+    "title": "Magnesium Forte - 60 Tabs.",
+    "price": 12.99,
+    "description": "Serving: 1 tabs\nServings per container: 60\nContainer: 60 tabs\nIngredients: Bulking agent: sorbitol, magnesium carbonate, anti-caking agents: magnesium salts of fatty acids and polyethylene glycol; pyridoxine hydrochloride. Product may contain derivatives of: cereals containing gluten, soy, milk.\nActive Ingredient\tContent per daily serving (1 tablet)\t%NRV*\nMagnesium\t200 mg\t53%\nVitamin B6\t10 mg\t714%\n",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829156/hs-products/1777829155610/1777829155610_1777829156343_8943e7f778_CD0C7F6C-BE68-43CC-B2E7-DF5BDDDF9C47.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829159/hs-products/1777829155610/1777829155610_1777829158679_755209894f_66ED673E-A37C-4537-986F-E4A8022EC57F.jpg"
+    ],
+    "createdAt": 1777829159710,
+    "status": "publicado"
+  },
+  {
+    "id": "1777829206320",
+    "title": "Magnesium Forte - 60 Tabs",
+    "price": 12.99,
+    "description": "Serving: 1 tabs\nServings per container: 60\nContainer: 60 tabs\nIngredients: Bulking agent: sorbitol, magnesium carbonate, anti-caking agents: magnesium salts of fatty acids and polyethylene glycol; pyridoxine hydrochloride. Product may contain derivatives of: cereals containing gluten, soy, milk.\nActive Ingredient\tContent per daily serving (1 tablet)\t%NRV*\nMagnesium\t200 mg\t53%\nVitamin B6\t10 mg\t714%\n",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829207/hs-products/1777829206320/1777829206320_1777829206904_bd7b81eaff_CD0C7F6C-BE68-43CC-B2E7-DF5BDDDF9C47.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829209/hs-products/1777829206320/1777829206320_1777829208720_f37ec40724_66ED673E-A37C-4537-986F-E4A8022EC57F.jpg"
+    ],
+    "createdAt": 1777829209951,
+    "status": "publicado"
+  },
+  {
+    "id": "1777829537401",
+    "title": "Biotin - 100 tabs",
+    "price": 14.99,
+    "description": "Portion: 1/4 tab\nServings per container: 400\nPackaging: 100 tabs\nBiotin Ingredients: Filling agent - sorbitol, standardized extract from the shoots of common bamboo (Bambusa vulgaris Schrad.) 5:1 containing 70% silicon, zinc (zinc diglycinate), biotin (D-biotin), anti-caking agent - magnesium salts of fatty acids, vitamin B1 (thiamine hydrochloride), vitamin B6 (pyridoxine hydrochloride), selenium (L-selenomethionine), vitamin B12 (cyanocobalamin).\n\nActive ingredients\tper portion (1/4 tablet)\t*NRV\nStandardized extract from the shoots\nof common bamboo (Bambusa vulgaris\nSchrad.) 5:1 containing 70% silicon\t25 mg\t\nincluding silicon\t17.5 mg\t\nBiotin\t2500 µg\t5000%\nZinc\t2.5 mg\t25%\nVitamin B1\t0.75 mg\t68.2%\nVitamin B6\t0.35 mg\t25%\nSelenium\t13.8 µg\t25%\nVitamin B12\t0.625 µg\t25%\n* Reference intake value for an average adult (8400 kJ/2000 kcal)\n\n",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829538/hs-products/1777829537401/1777829537401_1777829538233_4dc2bf00fa_3B16048F-6AC7-4FEB-8900-6F7FF794D3CE.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829540/hs-products/1777829537401/1777829537401_1777829540197_209d607a72_55A0F9AF-924F-4873-AB7F-1180F66DE3AB.jpg"
+    ],
+    "createdAt": 1777829540975,
+    "status": "publicado"
+  },
+  {
+    "id": "1777829754250",
+    "title": "Multivitamins Woman  - 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 capsule\nServings per container: 60\nPackaging: 60 capsules\n\nMultivit Ingredients for Women: minerals (magnesium oxide, iron (II) sulfate, zinc sulfate, copper (II) sulfate, manganese sulfate, sodium selenate (IV), chromium (III) chloride, sodium molybdate (VI), potassium iodide, manganese diglycinate, chromium picolinate), vitamins (D-alpha tocopheryl acetate, nicotinic acid amide, L-ascorbic acid, calcium D-pantothenate, retinyl acetate, menaquinone, pyridoxine hydrochloride, cholecalciferol, riboflavin, thiamine mononitrate, thiamine hydrochloride, pteroylmonoglutamic acid, D-biotin, cyanocobalamin), maltodextrin, bulking agent - microcrystalline cellulose, anti-caking agent - magnesium salts of fatty acids, extract of field horsetail herb (Equisetum arvense), hydrolyzed collagen protein, extract of grape seeds (Vitis vinifera), L-cysteine, L-methionine, lutein from marigold flowers (Tagetes erecta), lycopene, capsule (gelatin, color - titanium dioxide)\nThis product is not intended to diagnose, treat, cure, or prevent any disease\n",
+    "department": "supplements",
+    "category": "Multivitamins",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829755/hs-products/1777829754250/1777829754250_1777829755038_78094226e0_953ACF4B-B9FD-4125-9CFE-725C2A2ED079.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829757/hs-products/1777829754250/1777829754250_1777829756828_b22326f459_19B4C560-6064-488B-9708-72E4A4AA78E3.jpg"
+    ],
+    "createdAt": 1777829757741,
+    "status": "publicado"
+  },
+  {
+    "id": "1777829815685",
+    "title": "Multivitamins Woman- 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 capsule\nServings per container: 60\nPackaging: 60 capsules\nMultivit Ingredients for Women: minerals (magnesium oxide, iron (II) sulfate, zinc sulfate, copper (II) sulfate, manganese sulfate, sodium selenate (IV), chromium (III) chloride, sodium molybdate (VI), potassium iodide, manganese diglycinate, chromium picolinate), vitamins (D-alpha tocopheryl acetate, nicotinic acid amide, L-ascorbic acid, calcium D-pantothenate, retinyl acetate, menaquinone, pyridoxine hydrochloride, cholecalciferol, riboflavin, thiamine mononitrate, thiamine hydrochloride, pteroylmonoglutamic acid, D-biotin, cyanocobalamin), maltodextrin, bulking agent - microcrystalline cellulose, anti-caking agent - magnesium salts of fatty acids, extract of field horsetail herb (Equisetum arvense), hydrolyzed collagen protein, extract of grape seeds (Vitis vinifera), L-cysteine, L-methionine, lutein from marigold flowers (Tagetes erecta), lycopene, capsule (gelatin, color - titanium dioxide)\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829816/hs-products/1777829815685/1777829815685_1777829816273_4548a4461a_953ACF4B-B9FD-4125-9CFE-725C2A2ED079.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777829818/hs-products/1777829815685/1777829815685_1777829818283_c2285a491e_19B4C560-6064-488B-9708-72E4A4AA78E3.jpg"
+    ],
+    "createdAt": 1777829819189,
+    "status": "publicado"
+  },
+  {
+    "id": "1777830032297",
+    "title": "Melatonin - 300 Capsules ",
+    "price": 14.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830033/hs-products/1777830032297/1777830032297_1777830033286_45f31f9373_39D14C57-005A-4B2C-9FB1-F5600DDD3DDA.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830034/hs-products/1777830032297/1777830032297_1777830034566_bb5ef9890f_6690CCA4-44C5-481F-B53B-2BA7D3908F62.jpg"
+    ],
+    "createdAt": 1777830035356,
+    "status": "publicado"
+  },
+  {
+    "id": "1777830241870",
+    "title": "Ashwaghandha 450mg - 60 Capsules ",
+    "price": 18.99,
+    "description": "Serving Size: 1 cap\nServings per container: 60\nContainer: 60 caps\nAshwagandha Ingredients: *Standardized extract from the root of Withania somnifera - Ashwagandha (Withania somnifera L.) 5:1, containing 9% withanolides, 0.32% withaferin A, 1% alkaloids, filling agent - microcrystalline cellulose, capsule - bovine gelatin, purified water.\nThe product may contain milk (including lactose), soy, peanuts, nuts, sesame seeds, oats, eggs, and crustaceans.\n*Due to the presence of standardized extract from the root of Withania somnifera - Ashwagandha, the product should not be consumed if taking sedative, hypnotic, or antiepileptic medications. It should not be used by children, pregnant or lactating women.\nDietary supplement. This product is not intended for the diagnosis, treatment, or prevention of any disease.",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830243/hs-products/1777830241870/1777830241870_1777830242737_4b6ac94dfd_027EE023-7285-45F7-9687-2BC3361C9874.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830244/hs-products/1777830241870/1777830241870_1777830244580_d658ec8f12_AB77DB9B-FF66-4F55-9C28-309CD59647B7.jpg"
+    ],
+    "createdAt": 1777830245477,
+    "status": "publicado"
+  },
+  {
+    "id": "1777830488904",
+    "title": "Vitamax Men - 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 tablet\nServings per container: 60\nContainer: 60 tablets\nIngredients: magnesium citrate (magnesium), calcium carbonate (calcium), vitamin C (ascorbic acid), Siberian ginseng (root extract), puncturevine (fruit extract (tribulus terrestris)), lecithin, fenugreek (seed extract 4:1), saw palmetto (25mg), vitamin B3, iron, zinc, vitamin B5, iron, zinc, vitamin B5, piperine, manganese, vitamin B2, vitamin B1, vitamin B6, copper, vitamin A, folic acid, iodine, selenium, biotin, vitamin D, vitamin B12.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830490/hs-products/1777830488904/1777830488904_1777830489764_67b5b1dce8_5F707E5A-E31D-45EB-BFA9-6D419165BEF8.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830491/hs-products/1777830488904/1777830488904_1777830491234_ef5bbf41e0_983E3460-0B14-4D00-9BFA-6F361EC869BF.jpg"
+    ],
+    "createdAt": 1777830492193,
+    "status": "publicado"
+  },
+  {
+    "id": "1777830532216",
+    "title": "Vitamax Men- 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 tablet\nServings per container: 60\nContainer: 60 tablets\nIngredients: magnesium citrate (magnesium), calcium carbonate (calcium), vitamin C (ascorbic acid), Siberian ginseng (root extract), puncturevine (fruit extract (tribulus terrestris)), lecithin, fenugreek (seed extract 4:1), saw palmetto (25mg), vitamin B3, iron, zinc, vitamin B5, iron, zinc, vitamin B5, piperine, manganese, vitamin B2, vitamin B1, vitamin B6, copper, vitamin A, folic acid, iodine, selenium, biotin, vitamin D, vitamin B12.",
+    "department": "supplements",
+    "category": "Multivitamins",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830533/hs-products/1777830532216/1777830532216_1777830533167_c90639cde2_5F707E5A-E31D-45EB-BFA9-6D419165BEF8.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777830534/hs-products/1777830532216/1777830532216_1777830534537_b74314156a_983E3460-0B14-4D00-9BFA-6F361EC869BF.jpg"
+    ],
+    "createdAt": 1777830535825,
+    "status": "publicado"
+  },
+  {
+    "id": "1777830705779",
+    "title": "Multivit Men - 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 capsule\nServings per container: 60\nPackaging: 60 capsules\nMultivit Ingredients for Men: minerals (magnesium oxide, iron (II) sulfate, zinc sulfate, copper (II) sulfate, manganese sulfate, sodium selenite (IV), chromium (III) chloride, sodium molybdate (VI), potassium iodide, manganese diglycinate, chromium picolinate), vitamins (D-alpha tocopheryl acetate, nicotinic acid amide, L-ascorbic acid, calcium D-pantothenate, retinyl acetate, menaquinone, pyridoxine hydrochloride, cholecalciferol, riboflavin, thiamine mononitrate, thiamine hydrochloride, pteroylmonoglutamic acid, D-biotin, cyanocobalamin), maltodextrin, filling agent - microcrystalline cellulose, anti-caking agent - magnesium salts of fatty acids, extract from Yerba mate leaves (Ilex paraguariensis), extract from ginseng root (Panax ginseng), extract from ginger rhizome (Zingiber officinale), lycopene, soy lecithin soy, lutein from marigold flowers (Tagetes erecta), capsule (gelatin, color - titanium dioxide). May contain derivatives of: gluten-containing cereals, soy, milk.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831233/hs-products/1777830705779/1777830705779_1777831233092_d83875b2db_447A7904-0429-48C1-B257-C0E312880286.jpg",
+    "gallery": [],
+    "createdAt": 1777830709258,
+    "status": "publicado"
+  },
+  {
+    "id": "1777830775720",
+    "title": " Multivit Men- 60 Capsules ",
+    "price": 14.99,
+    "description": "Serving: 1 capsule\nServings per container: 60\nPackaging: 60 capsules\nMultivit Ingredients for Men: minerals (magnesium oxide, iron (II) sulfate, zinc sulfate, copper (II) sulfate, manganese sulfate, sodium selenite (IV), chromium (III) chloride, sodium molybdate (VI), potassium iodide, manganese diglycinate, chromium picolinate), vitamins (D-alpha tocopheryl acetate, nicotinic acid amide, L-ascorbic acid, calcium D-pantothenate, retinyl acetate, menaquinone, pyridoxine hydrochloride, cholecalciferol, riboflavin, thiamine mononitrate, thiamine hydrochloride, pteroylmonoglutamic acid, D-biotin, cyanocobalamin), maltodextrin, filling agent - microcrystalline cellulose, anti-caking agent - magnesium salts of fatty acids, extract from Yerba mate leaves (Ilex paraguariensis), extract from ginseng root (Panax ginseng), extract from ginger rhizome (Zingiber officinale), lycopene, soy lecithin soy, lutein from marigold flowers (Tagetes erecta), capsule (gelatin, color - titanium dioxide). May contain derivatives of: gluten-containing cereals, soy, milk.\nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Multivitamins",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831392/hs-products/1777830775720/1777830775720_1777831392312_f6d4b6260f_447A7904-0429-48C1-B257-C0E312880286.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831394/hs-products/1777830775720/1777830775720_1777831394589_ba553f5400_D2165CB3-11A8-438D-B9EF-9CE3D6F492CE.jpg"
+    ],
+    "createdAt": 1777830780071,
+    "status": "publicado"
+  },
+  {
+    "id": "1777831008864",
+    "title": "Omega 3/6/9 - 90 SoftGels",
+    "price": 18.99,
+    "description": "Serving: 1 cap.\nServings per container: 90\nPackaging: 90 caps.\nIngredients of Omega 3-6-9 Triple: fish oil, flaxseed oil, sunflower oil, gelatin (shell ingredient) glycerin - humectant, water.",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831010/hs-products/1777831008864/1777831008864_1777831009902_16d3dd681e_45A0BCDA-4410-4419-8FB5-1B37651A62C2.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831012/hs-products/1777831008864/1777831008864_1777831011773_14c937af55_D8F3C895-65A2-4EC2-BF27-F3F6EE68FA98.jpg"
+    ],
+    "createdAt": 1777831012662,
+    "status": "publicado"
+  },
+  {
+    "id": "1777831626243",
+    "title": "Astragalus Root 470mg - 100 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 1 capsule\nServings per container: 100\nPackaging: 100 capsules\nIngredients: Gelatin, microcrystalline cellulose (plant fiber).\nActive Ingredients\t1 capsule\nAstragalus Root (Astragalus membranaceus)",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831627/hs-products/1777831626243/1777831626243_1777831627044_05e5c6aee2_9B759149-AC3B-48E4-9A89-60DBA09E748E.jpg",
+    "gallery": [],
+    "createdAt": 1777831628094,
+    "status": "publicado"
+  },
+  {
+    "id": "1777831937142",
+    "title": "Omega 3- 90 SoftGels ",
+    "price": 19.99,
+    "description": "Serving: 1 softgel\nServings per container: 90\nContainer: 90 softgels\nOmega 3 Ingredients: Fish oil (containing fish) from Peruvian sardines including: eicosapentaenoic acid (EPA), docosahexaenoic acid (DHA), gelatin capsule (gelatin, humectant-glycerol, water), vitamin E (D-alpha-tocopheryl acetate).\nProduct may contain milk (including lactose), soy, peanuts, nuts, sesame seeds, oats, eggs and crustaceans.\nDietary supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831938/hs-products/1777831937142/1777831937142_1777831937838_c3f5549662_18D3DB21-74CB-4FE2-B46B-4D87312EEF5C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831939/hs-products/1777831937142/1777831937142_1777831939241_8c992d71f0_8C79807A-846C-4789-8BBD-032C2F315849.jpg"
+    ],
+    "createdAt": 1777831940176,
+    "status": "publicado"
+  },
+  {
+    "id": "1777831977885",
+    "title": "Omega 3 - 90 SoftGels ",
+    "price": 19.99,
+    "description": "Serving: 1 softgel\nServings per container: 90\nContainer: 90 softgels\nOmega 3 Ingredients: Fish oil (containing fish) from Peruvian sardines including: eicosapentaenoic acid (EPA), docosahexaenoic acid (DHA), gelatin capsule (gelatin, humectant-glycerol, water), vitamin E (D-alpha-tocopheryl acetate).\nProduct may contain milk (including lactose), soy, peanuts, nuts, sesame seeds, oats, eggs and crustaceans.\nDietary supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831978/hs-products/1777831977885/1777831977885_1777831978554_99a6fe1803_18D3DB21-74CB-4FE2-B46B-4D87312EEF5C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777831980/hs-products/1777831977885/1777831977885_1777831980128_d7d84ef1b9_8C79807A-846C-4789-8BBD-032C2F315849.jpg"
+    ],
+    "createdAt": 1777831981266,
+    "status": "publicado"
+  },
+  {
+    "id": "1777832236447",
+    "title": "Vitamin D3 8000IU - 240 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 1 tabs\nServings per container: 240\nPackage: 240 tabs\nIngredients: Vitamin D3 (cholecalciferol from lanolin), anti-caking agent – magnesium salts of fatty acids, bulking agent – sorbitol.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832237/hs-products/1777832236447/1777832236447_1777832237306_4f5450fd90_301F1138-B479-47CD-84A8-B09040C35053.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832239/hs-products/1777832236447/1777832236447_1777832239096_f6e887bd70_4462CC3D-A061-426A-8A36-0B2B9F2A6F57.jpg"
+    ],
+    "createdAt": 1777832239978,
+    "status": "publicado"
+  },
+  {
+    "id": "1777832281777",
+    "title": "Vitamin D3 8000IU - 240 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 1 tabs\nServings per container: 240\nPackage: 240 tabs\nIngredients: Vitamin D3 (cholecalciferol from lanolin), anti-caking agent – magnesium salts of fatty acids, bulking agent – sorbitol.",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832282/hs-products/1777832281777/1777832281777_1777832282389_ecc09b0b6f_301F1138-B479-47CD-84A8-B09040C35053.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832284/hs-products/1777832281777/1777832281777_1777832284222_9a902d8a41_4462CC3D-A061-426A-8A36-0B2B9F2A6F57.jpg"
+    ],
+    "createdAt": 1777832285097,
+    "status": "publicado"
+  },
+  {
+    "id": "1777832410860",
+    "title": "Multivitamins Woman- 90 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 2 tabs\nServings per package: 45\nPackage: 90 tabs\nIngredients: Magnesium citrate (magnesium), calcium carbonate (calcium), L-ascorbic acid (vitamin C), common nettle extract, inulin, acai berry extract 10:1, soy lecithin, vitamin B3, ferrous lactate amide (iron), D-alpha tocopherol (vitamin E), zinc sulfate (zinc), pantothenic acid (vitamin B5), black pepper fruit extract (piperine), alpha-lipoic acid (ALA), manganese sulfate (manganese), riboflavin (vitamin B2), pyridoxine hydrochloride (vitamin B6), thiamine mononitrate (vitamin B1), copper sulfate (copper), retinyl acetate (vitamin A), folic acid, potassium iodide (iodine), sodium selenate (selenium), D-biotin (biotin), cholecalciferol (vitamin D3), cobalamin (vitamin B12); fillers: microcrystalline cellulose, starch; anti-caking agents: magnesium stearate, silicon dioxide.",
+    "department": "supplements",
+    "category": "Multivitamins",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832412/hs-products/1777832410860/1777832410860_1777832411700_57a1593e3a_BE2CE149-125F-487A-A093-63AD4DACCBCB.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832413/hs-products/1777832410860/1777832410860_1777832413644_070a2a4859_693701E4-7F24-48AB-A99C-3C56DB3A65F7.jpg"
+    ],
+    "createdAt": 1777832414692,
+    "status": "publicado"
+  },
+  {
+    "id": "1777832448920",
+    "title": "Multivitamins Woman- 90 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 2 tabs\nServings per package: 45\nPackage: 90 tabs\nIngredients: Magnesium citrate (magnesium), calcium carbonate (calcium), L-ascorbic acid (vitamin C), common nettle extract, inulin, acai berry extract 10:1, soy lecithin, vitamin B3, ferrous lactate amide (iron), D-alpha tocopherol (vitamin E), zinc sulfate (zinc), pantothenic acid (vitamin B5), black pepper fruit extract (piperine), alpha-lipoic acid (ALA), manganese sulfate (manganese), riboflavin (vitamin B2), pyridoxine hydrochloride (vitamin B6), thiamine mononitrate (vitamin B1), copper sulfate (copper), retinyl acetate (vitamin A), folic acid, potassium iodide (iodine), sodium selenate (selenium), D-biotin (biotin), cholecalciferol (vitamin D3), cobalamin (vitamin B12); fillers: microcrystalline cellulose, starch; anti-caking agents: magnesium stearate, silicon dioxide.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832450/hs-products/1777832448920/1777832448920_1777832449564_4775453cc3_BE2CE149-125F-487A-A093-63AD4DACCBCB.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777832452/hs-products/1777832448920/1777832448920_1777832451916_81b9a1e8f0_693701E4-7F24-48AB-A99C-3C56DB3A65F7.jpg"
+    ],
+    "createdAt": 1777832452720,
     "status": "publicado"
   }
 ]
