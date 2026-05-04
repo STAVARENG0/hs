@@ -648,5 +648,18 @@
     ],
     "createdAt": 1777900820154,
     "status": "publicado"
+  },
+  {
+    "id": "1777901072367",
+    "title": "Berberine HCL PLUS - 100 Capsules ",
+    "price": 24.99,
+    "description": "Portion: 1 vcap\nPortions in package: 100\nPackage: 100 vcaps\nIngredients of Berberine HCL PLUS:\n\nDietary supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.\n\n",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901073/hs-products/1777901072367/1777901072367_1777901073092_d049898be6_AC1176CB-6078-4020-A3A6-5D7011BB1003.jpg",
+    "gallery": [],
+    "createdAt": 1777901074413,
+    "status": "publicado"
   }
 ]
