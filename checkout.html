@@ -61,12 +61,6 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
 
   <div class="items" id="cartList"></div>
 
-  <div class="shipping-box" id="shippingBox">
-    <h3>Choose shipping</h3>
-    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="7"> 7€ — No tracked</label>
-    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="10"> 10€ — Tracked</label>
-  </div>
-
   <div class="summary">
     <div class="row"><span class="label">Products Subtotal</span><span class="value" id="subtotalValue">€ 0.00</span></div>
     <div class="row"><span class="label" id="shippingLabel">Shipping</span><span class="value" id="shippingValue">€ 0.00</span></div>
@@ -82,7 +76,7 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
   <footer>© <span id="year"></span> HS Nutrition</footer>
 </div>
 
-<script src="https://www.paypal.com/sdk/js?client-id=ATM-JsB9g4-G3NnRT-Mzln_I-H3eHtJI9wGF-nbGVaakZ-4ql0Z8CSSEjzOdBmITrY-Cy2cxJIo-ffNB&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AWxRBWcw1-yyUd5Ozct3UrhsF0ztYRedV2T8qx9gSTCChSreNBl5MoCo-rXPE9tZCpp0Rf6QenfdnfWS&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
 <script>
 const CART_KEY='hs_cart';
 const SHIP_KEY='hs_shipping';
@@ -91,12 +85,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
 
 function getShipping(){
-  const selected = document.querySelector('input[name="checkoutShipping"]:checked');
-  if(!selected){ return { amount: 0, label: 'Choose shipping', selected: false }; }
-  const amount = Number(selected.value);
-  if(amount === 10){ return { amount: 10, label: 'Tracked (€10)', selected: true }; }
-  if(amount === 7){ return { amount: 7, label: 'No tracked (€7)', selected: true }; }
-  return { amount: 0, label: 'Choose shipping', selected: false };
+  return { amount: 0, label: 'Free shipping', selected: true };
 }
 
 let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
@@ -146,10 +135,9 @@ function renderSummary(){
   const buttons = document.getElementById('paypal-section');
   const helper = document.getElementById('helperMsg');
   if(subtotal > 0 && validRows.length > 0){
-    effectiveTotal = subtotal + (ship.selected ? Number(ship.amount||0) : 0);
+    effectiveTotal = subtotal;
     buttons.classList.remove('hidden');
-    if(ship.selected){ helper.classList.add('hidden'); }
-    else { helper.textContent = 'Choose shipping to enable payment.'; helper.classList.remove('hidden'); }
+    helper.classList.add('hidden');
   }else{
     effectiveTotal = 0;
     buttons.classList.remove('hidden');
@@ -164,21 +152,16 @@ function renderSummary(){
 function commonConfig(){
   return {
     onClick: function(data, actions){
-      const { subtotal, shippingSelected } = renderSummary();
+      const { subtotal } = renderSummary();
       if(subtotal <= 0){
         alert('Please add products before paying.');
-        return actions.reject();
-      }
-      if(!shippingSelected){
-        alert('Please choose shipping before paying.');
         return actions.reject();
       }
       return actions.resolve();
     },
     createOrder: function(data, actions){
-      const { subtotal, shippingSelected, total } = renderSummary();
+      const { subtotal, total } = renderSummary();
       if(subtotal <= 0){ throw new Error('Empty subtotal'); }
-      if(!shippingSelected){ throw new Error('Choose shipping'); }
       return actions.order.create({
         purchase_units:[{ amount:{ value: total.toFixed(2), currency_code:'EUR' }, description:'HS Nutrition Order' }]
       });
@@ -189,7 +172,7 @@ function commonConfig(){
         localStorage.removeItem(CART_KEY);
         document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
         document.getElementById('subtotalValue').textContent = fmtEUR(0);
-        document.getElementById('shippingValue').textContent = fmtEUR(0);
+        document.getElementById('shippingValue').textContent = 'Free';
         document.getElementById('totalAmount').textContent = '0.00';
         document.getElementById('paypal-section').classList.add('hidden');
       });
@@ -201,7 +184,6 @@ function commonConfig(){
 async function bootCheckout(){
   try{
     await loadServerProducts();
-    document.querySelectorAll('input[name="checkoutShipping"]').forEach(r => r.addEventListener('change', renderSummary));
     const state = renderSummary();
     if(typeof paypal !== 'undefined' && state.subtotal > 0){
       const btnPayPal = paypal.Buttons(Object.assign({}, commonConfig(), {
