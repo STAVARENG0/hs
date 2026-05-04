@@ -633,5 +633,20 @@
     ],
     "createdAt": 1777900645894,
     "status": "publicado"
+  },
+  {
+    "id": "1777900816383",
+    "title": "Magnesium Glycinate - 120 Capsules ",
+    "price": 28.99,
+    "description": "Serving: 2 capsules\t% l\nMagnesium bisglycinate (MagChel®)\t2300 mg\t-\n- including magnesium\t262.2 mg\t70%\nVitamin B6 (P-5-P - pyridoxal 5'-phosphate)\t2.8 mg\t200%",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900817/hs-products/1777900816383/1777900816383_1777900817087_28ef60c5de_A284105E-32C4-4B26-BAF3-A1DD9CD21344.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900819/hs-products/1777900816383/1777900816383_1777900819325_d03ed3c750_F5C6F46D-FA8F-4D54-836A-B5EB563E6398.jpg"
+    ],
+    "createdAt": 1777900820154,
+    "status": "publicado"
   }
 ]
