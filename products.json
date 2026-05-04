@@ -734,5 +734,20 @@
     ],
     "createdAt": 1777901583133,
     "status": "publicado"
+  },
+  {
+    "id": "1777901922831",
+    "title": "Whey Mass Gain - 3000g Strawberry",
+    "price": 27.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Mass Gainer",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901924/hs-products/1777901922831/1777901922831_1777901923748_d78d742b8a_43BE6C26-CE5B-4B13-92F6-D335FC5FB3E0.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901925/hs-products/1777901922831/1777901922831_1777901925629_fb006f622b_07A48985-61A9-42F4-A456-174940902217.jpg"
+    ],
+    "createdAt": 1777901926493,
+    "status": "publicado"
   }
 ]
