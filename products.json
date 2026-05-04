@@ -719,5 +719,20 @@
     ],
     "createdAt": 1777901499881,
     "status": "publicado"
+  },
+  {
+    "id": "1777901579578",
+    "title": "Mass KONG - 1000g  Strawberry",
+    "price": 22.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Mass Gainer",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901580/hs-products/1777901579578/1777901579578_1777901580285_503d077894_BDDA9B60-9EB2-40C9-8B15-479BED7EF0EE.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901582/hs-products/1777901579578/1777901579578_1777901581906_6b71680ca3_53803B01-0910-4CE5-B1F5-C9A662CCC723.jpg"
+    ],
+    "createdAt": 1777901583133,
+    "status": "publicado"
   }
 ]
