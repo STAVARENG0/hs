@@ -749,5 +749,20 @@
     ],
     "createdAt": 1777901926493,
     "status": "publicado"
+  },
+  {
+    "id": "1777901999510",
+    "title": "Whey Mass Gain - 3000g  Vanilla",
+    "price": 27.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Mass Gainer",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777902000/hs-products/1777901999510/1777901999510_1777902000324_113a5cc10a_43BE6C26-CE5B-4B13-92F6-D335FC5FB3E0.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777902002/hs-products/1777901999510/1777901999510_1777902001957_83ac2b08e9_07A48985-61A9-42F4-A456-174940902217.jpg"
+    ],
+    "createdAt": 1777902002914,
+    "status": "publicado"
   }
 ]
