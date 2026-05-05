@@ -60,19 +60,13 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
   </a>
 
   <div class="items" id="cartList"></div>
-
-
-  <div class="shipping-box" id="shippingBox">
-    <h3>Choose shipping</h3>
-    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="7"> 7€ — No tracked</label>
-    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="10"> 10€ — Tracked</label>
-  </div>
-
-  <div class="summary">
+<div class="summary">
     <div class="row"><span class="label">Products Subtotal</span><span class="value" id="subtotalValue">€ 0.00</span></div>
     <div class="row"><span class="label" id="shippingLabel">Shipping</span><span class="value" id="shippingValue">€ 0.00</span></div>
     <div class="row total">Total: € <span id="totalAmount">0.00</span></div>
   </div>
+
+  <div id="buyerEmailBox" class="helper hidden" style="background:#fff7f3;border:1px solid rgba(255,60,0,.25);border-radius:12px;padding:10px;margin:12px 0;color:#222;font-weight:600;"></div>
 
   <div id="paypal-section">
     <div id="paypal-button-paypal"></div>
@@ -92,12 +86,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
 
 function getShipping(){
-  const selected = document.querySelector('input[name="checkoutShipping"]:checked');
-  if(!selected){ return { amount: 0, label: 'Choose shipping', selected: false }; }
-  const amount = Number(selected.value);
-  if(amount === 10){ return { amount: 10, label: 'Tracked (€10)', selected: true }; }
-  if(amount === 7){ return { amount: 7, label: 'No tracked (€7)', selected: true }; }
-  return { amount: 0, label: 'Choose shipping', selected: false };
+  return { amount: 0, label: 'Free Shipping', selected: true };
 }
 
 let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
@@ -140,8 +129,8 @@ function renderSummary(){
   }
   const ship = getShipping();
   document.getElementById('subtotalValue').textContent = fmtEUR(subtotal);
-  document.getElementById('shippingLabel').textContent = ship.selected ? ship.label : 'Shipping';
-  document.getElementById('shippingValue').textContent = ship.selected ? fmtEUR(ship.amount) : 'Choose shipping';
+  document.getElementById('shippingLabel').textContent = 'Shipping';
+  document.getElementById('shippingValue').textContent = 'Free';
 
   let effectiveTotal = 0;
   const buttons = document.getElementById('paypal-section');
@@ -158,19 +147,15 @@ function renderSummary(){
     helper.classList.remove('hidden');
   }
   document.getElementById('totalAmount').textContent = Number(effectiveTotal).toFixed(2);
-  return { subtotal, shipping: Number(ship.amount||0), shippingSelected: !!ship.selected, total: Number(effectiveTotal.toFixed(2)), validRows };
+  return { subtotal, shipping: 0, shippingSelected: true, total: Number(effectiveTotal.toFixed(2)), validRows };
 }
 
 function commonConfig(){
   return {
     onClick: function(data, actions){
-      const { subtotal, shippingSelected } = renderSummary();
+      const { subtotal } = renderSummary();
       if(subtotal <= 0){
         alert('Please add products before paying.');
-        return actions.reject();
-      }
-      if(!shippingSelected){
-        alert('Please choose shipping before paying.');
         return actions.reject();
       }
       return actions.resolve();
@@ -184,32 +169,19 @@ function commonConfig(){
         return {
           name: String(item.title || 'HS Nutrition Product').substring(0, 127),
           quantity: String(item.qty || 1),
-          unit_amount: {
-            currency_code: 'EUR',
-            value: Number(item.price || 0).toFixed(2)
-          }
+          unit_amount: { currency_code:'EUR', value: Number(item.price || 0).toFixed(2) }
         };
       });
-
-      const paypalSubtotal = Number(subtotal || 0).toFixed(2);
-      const paypalShipping = Number(shipping || 0).toFixed(2);
-      const paypalTotal = Number(total || 0).toFixed(2);
 
       return actions.order.create({
         purchase_units:[{
           description:'HS Nutrition Order',
           amount:{
             currency_code:'EUR',
-            value: paypalTotal,
+            value: Number(total || 0).toFixed(2),
             breakdown:{
-              item_total:{
-                currency_code:'EUR',
-                value: paypalSubtotal
-              },
-              shipping:{
-                currency_code:'EUR',
-                value: paypalShipping
-              }
+              item_total:{ currency_code:'EUR', value: Number(subtotal || 0).toFixed(2) },
+              shipping:{ currency_code:'EUR', value: Number(shipping || 0).toFixed(2) }
             }
           },
           items: paypalItems
@@ -218,9 +190,17 @@ function commonConfig(){
     },
     onApprove: function(data, actions){
       return actions.order.capture().then(function(details){
-        alert('✅ Payment completed by ' + (details?.payer?.name?.given_name || 'customer') + '!');
+        const buyerName = details?.payer?.name?.given_name || 'customer';
+        const buyerEmail = details?.payer?.email_address || '';
+        alert('✅ Payment completed by ' + buyerName + (buyerEmail ? '
+Email: ' + buyerEmail : '') + '!');
         localStorage.removeItem(CART_KEY);
         document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
+        if(buyerEmail){
+          const emailBox = document.getElementById('buyerEmailBox');
+          emailBox.textContent = 'Buyer email: ' + buyerEmail;
+          emailBox.classList.remove('hidden');
+        }
         document.getElementById('subtotalValue').textContent = fmtEUR(0);
         document.getElementById('shippingValue').textContent = fmtEUR(0);
         document.getElementById('totalAmount').textContent = '0.00';
@@ -234,7 +214,6 @@ function commonConfig(){
 async function bootCheckout(){
   try{
     await loadServerProducts();
-    document.querySelectorAll('input[name="checkoutShipping"]').forEach(r => r.addEventListener('change', renderSummary));
     const state = renderSummary();
     if(typeof paypal !== 'undefined' && state.subtotal > 0){
       const btnPayPal = paypal.Buttons(Object.assign({}, commonConfig(), {
