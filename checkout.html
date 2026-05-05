@@ -63,9 +63,8 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
 
 
   <div class="shipping-box" id="shippingBox">
-    <h3>Choose shipping</h3>
-    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="7"> 7€ — No tracked</label>
-    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="10"> 10€ — Tracked</label>
+    <h3>Shipping</h3>
+    <div class="shipping-option">Free shipping — €0</div>
   </div>
 
   <div class="summary">
@@ -92,12 +91,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
 
 function getShipping(){
-  const selected = document.querySelector('input[name="checkoutShipping"]:checked');
-  if(!selected){ return { amount: 0, label: 'Choose shipping', selected: false }; }
-  const amount = Number(selected.value);
-  if(amount === 10){ return { amount: 10, label: 'Tracked (€10)', selected: true }; }
-  if(amount === 7){ return { amount: 7, label: 'No tracked (€7)', selected: true }; }
-  return { amount: 0, label: 'Choose shipping', selected: false };
+  return { amount: 0, label: 'Free shipping (€0)', selected: true };
 }
 
 let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
@@ -131,9 +125,9 @@ function renderSummary(){
       }
       const price = Number(product.price)||0; // preço lido do backend/products.json
       const sub = qty*price; subtotal += sub;
-      validRows.push({ id:String(product.id), qty, title:product.title, price });
+      validRows.push({ id:String(product.id), qty, title:product.title, price, lineTotal: sub });
       return `<div class="item">
-                <div class="item-title">${qty}× ${product.title}</div>
+                <div class="item-title">${qty}× ${product.title}<br><small>${qty} × ${fmtEUR(price)} each</small></div>
                 <div class="item-sub">${fmtEUR(sub)}</div>
               </div>`;
     }).join('');
@@ -161,24 +155,42 @@ function renderSummary(){
   return { subtotal, shipping: Number(ship.amount||0), shippingSelected: !!ship.selected, total: Number(effectiveTotal.toFixed(2)), validRows };
 }
 
+function getShippingText(amount){
+  if(Number(amount) === 10) return 'Tracked shipping (€10)';
+  if(Number(amount) === 7) return 'No tracked shipping (€7)';
+  return 'Free shipping (€0)';
+}
+
+function buildSellerSummary(state){
+  const lines = state.validRows.map(function(item){
+    return `${item.qty}x ${item.title} - ${fmtEUR(item.price)} each = ${fmtEUR(item.lineTotal || (item.qty * item.price))}`;
+  });
+  lines.push(`Shipping: ${getShippingText(state.shipping)} - ${fmtEUR(state.shipping)}`);
+  lines.push(`Total: ${fmtEUR(state.total)}`);
+  return lines.join(' | ');
+}
+
+function getBuyerInfo(details){
+  const payer = details && details.payer ? details.payer : {};
+  const name = payer.name ? [payer.name.given_name, payer.name.surname].filter(Boolean).join(' ') : 'customer';
+  const email = payer.email_address || 'Customer email not returned by PayPal';
+  return { name, email };
+}
+
 function commonConfig(){
   return {
     onClick: function(data, actions){
-      const { subtotal, shippingSelected } = renderSummary();
+      const { subtotal } = renderSummary();
       if(subtotal <= 0){
         alert('Please add products before paying.');
-        return actions.reject();
-      }
-      if(!shippingSelected){
-        alert('Please choose shipping before paying.');
         return actions.reject();
       }
       return actions.resolve();
     },
     createOrder: function(data, actions){
-      const { subtotal, shippingSelected, shipping, total, validRows } = renderSummary();
+      const state = renderSummary();
+      const { subtotal, shippingSelected, shipping, total, validRows } = state;
       if(subtotal <= 0){ throw new Error('Empty subtotal'); }
-      if(!shippingSelected){ throw new Error('Choose shipping'); }
 
       const paypalItems = validRows.map(function(item){
         return {
@@ -197,7 +209,9 @@ function commonConfig(){
 
       return actions.order.create({
         purchase_units:[{
-          description:'HS Nutrition Order',
+          description:'HS Nutrition Order - product list, quantity, shipping and total included',
+          custom_id: buildSellerSummary(state).substring(0, 127),
+          invoice_id: ('HS-' + Date.now()).substring(0, 127),
           amount:{
             currency_code:'EUR',
             value: paypalTotal,
@@ -218,9 +232,11 @@ function commonConfig(){
     },
     onApprove: function(data, actions){
       return actions.order.capture().then(function(details){
-        alert('✅ Payment completed by ' + (details?.payer?.name?.given_name || 'customer') + '!');
+        const buyer = getBuyerInfo(details);
+        console.log('PayPal buyer email for tracking:', buyer.email);
+        alert('✅ Payment completed by ' + buyer.name + '! Customer email: ' + buyer.email);
         localStorage.removeItem(CART_KEY);
-        document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p>';
+        document.getElementById('cartList').innerHTML = '<p style="color:green;text-align:center;">Payment Approved!</p><p style="color:#222;text-align:center;font-size:13px;"><b>Customer email:</b> ' + buyer.email + '</p>';
         document.getElementById('subtotalValue').textContent = fmtEUR(0);
         document.getElementById('shippingValue').textContent = fmtEUR(0);
         document.getElementById('totalAmount').textContent = '0.00';
