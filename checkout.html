@@ -63,8 +63,9 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
 
 
   <div class="shipping-box" id="shippingBox">
-    <h3>Shipping</h3>
-    <div class="shipping-option">Free shipping — €0</div>
+    <h3>Choose shipping</h3>
+    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="7"> 7€ — No tracked</label>
+    <label class="shipping-option"><input type="radio" name="checkoutShipping" value="10"> 10€ — Tracked</label>
   </div>
 
   <div class="summary">
@@ -91,7 +92,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
 
 function getShipping(){
-  return { amount: 0, label: 'Free shipping (€0)', selected: true };
+  const selected = document.querySelector('input[name="checkoutShipping"]:checked');
+  if(!selected){ return { amount: 0, label: 'Choose shipping', selected: false }; }
+  const amount = Number(selected.value);
+  if(amount === 10){ return { amount: 10, label: 'Tracked (€10)', selected: true }; }
+  if(amount === 7){ return { amount: 7, label: 'No tracked (€7)', selected: true }; }
+  return { amount: 0, label: 'Choose shipping', selected: false };
 }
 
 let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
@@ -180,9 +186,13 @@ function getBuyerInfo(details){
 function commonConfig(){
   return {
     onClick: function(data, actions){
-      const { subtotal } = renderSummary();
+      const { subtotal, shippingSelected } = renderSummary();
       if(subtotal <= 0){
         alert('Please add products before paying.');
+        return actions.reject();
+      }
+      if(!shippingSelected){
+        alert('Please choose shipping before paying.');
         return actions.reject();
       }
       return actions.resolve();
@@ -191,6 +201,7 @@ function commonConfig(){
       const state = renderSummary();
       const { subtotal, shippingSelected, shipping, total, validRows } = state;
       if(subtotal <= 0){ throw new Error('Empty subtotal'); }
+      if(!shippingSelected){ throw new Error('Choose shipping'); }
 
       const paypalItems = validRows.map(function(item){
         return {
