@@ -764,20 +764,5 @@
     ],
     "createdAt": 1777902002914,
     "status": "publicado"
-  },
-  {
-    "id": "1777970142610",
-    "title": "ARROZ E FEIJAO",
-    "price": 1,
-    "description": "DESCRICAO 123...",
-    "department": "supplements",
-    "category": "Whey Protein",
-    "stock": 2,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777970148/hs-products/1777970142610/1777970142610_1777970147750_6bd3d189fd_Gemini_Generated_Image_qhq7nyqhq7nyqhq7.png",
-    "gallery": [
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777970144/hs-products/1777970142610/1777970142610_1777970143596_9ad7363453_Gemini_Generated_Image_dk0pasdk0pasdk0p.png"
-    ],
-    "createdAt": 1777970149192,
-    "status": "publicado"
   }
 ]
