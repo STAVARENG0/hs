@@ -1019,5 +1019,20 @@
     ],
     "createdAt": 1778328842812,
     "status": "publicado"
+  },
+  {
+    "id": "1778329025432",
+    "title": "NAC - 90 Capsules ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778329026/hs-products/1778329025432/1778329025432_1778329026166_af9b2ca5fe_5A8C726F-6E82-4569-8F24-0FA44B8AACB9.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778329027/hs-products/1778329025432/1778329025432_1778329027366_69447554ba_BD8A4DD1-73B8-4EF5-90D8-A7949E768105.jpg"
+    ],
+    "createdAt": 1778329028087,
+    "status": "publicado"
   }
 ]
