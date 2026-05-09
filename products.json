@@ -824,5 +824,20 @@
     ],
     "createdAt": 1778326737516,
     "status": "publicado"
+  },
+  {
+    "id": "1778326863240",
+    "title": "Gold Glutamine - 300g Natural",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Glutamine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326864/hs-products/1778326863240/1778326863240_1778326863938_de9a260e96_74E2107A-53FC-4299-89E0-D0699F905B08.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326865/hs-products/1778326863240/1778326863240_1778326865145_1d3ad7cffe_2936FD76-97B5-44B0-A6AA-4B7B031AEEC1.jpg"
+    ],
+    "createdAt": 1778326865765,
+    "status": "publicado"
   }
 ]
