@@ -734,5 +734,20 @@
     ],
     "createdAt": 1777902002914,
     "status": "publicado"
+  },
+  {
+    "id": "1778326045884",
+    "title": "BCAA - 400g Natural",
+    "price": 23.99,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326046/hs-products/1778326045884/1778326045884_1778326046455_0ffea24390_72FC26D0-0543-48E9-948E-187D5F16FEE4.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326048/hs-products/1778326045884/1778326045884_1778326047741_7467384d66_5DA6814B-D6D5-4443-AA29-4038C6F5FD1C.jpg"
+    ],
+    "createdAt": 1778326048565,
+    "status": "publicado"
   }
 ]
