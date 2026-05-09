@@ -854,5 +854,20 @@
     ],
     "createdAt": 1778327149676,
     "status": "publicado"
+  },
+  {
+    "id": "1778327336706",
+    "title": "Probiotic 4 - 60 Capsules ",
+    "price": 17.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Probiotics",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327337/hs-products/1778327336706/1778327336706_1778327337427_3db067c8db_5BDD4C1B-8CA4-40F4-A3C6-69C3A90B6E1C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327339/hs-products/1778327336706/1778327336706_1778327338751_cdd6d36e4b_B1FAC378-E981-4578-8DF5-47FEEB59AB25.jpg"
+    ],
+    "createdAt": 1778327339725,
+    "status": "publicado"
   }
 ]
