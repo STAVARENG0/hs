@@ -809,5 +809,20 @@
     ],
     "createdAt": 1778326581459,
     "status": "publicado"
+  },
+  {
+    "id": "1778326734904",
+    "title": "L- Glutamine  250g",
+    "price": 21.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Glutamine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326735/hs-products/1778326734904/1778326734904_1778326735601_e317299e9e_DAF3630B-F694-4AAD-A179-AA920376BFF8.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326737/hs-products/1778326734904/1778326734904_1778326736762_c50b1f8ba7_4B342DC8-35D6-4984-BBBA-CE6E11109EAD.jpg"
+    ],
+    "createdAt": 1778326737516,
+    "status": "publicado"
   }
 ]
