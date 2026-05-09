@@ -989,5 +989,20 @@
     ],
     "createdAt": 1778328633342,
     "status": "publicado"
+  },
+  {
+    "id": "1778328769975",
+    "title": "Citrus Bergamot - 60 Capsules ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328771/hs-products/1778328769975/1778328769975_1778328770725_7c50d50fd5_B13E1638-C14B-4482-9D73-26FB27B527B9.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328772/hs-products/1778328769975/1778328769975_1778328771840_9e9c79f2fe_B955274D-0187-4592-BAFF-1F525BAAA9A0.jpg"
+    ],
+    "createdAt": 1778328772710,
+    "status": "publicado"
   }
 ]
