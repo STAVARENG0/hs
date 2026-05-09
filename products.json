@@ -794,5 +794,20 @@
     ],
     "createdAt": 1778326466358,
     "status": "publicado"
+  },
+  {
+    "id": "1778326578795",
+    "title": "EAA Perfect 480g Orange",
+    "price": 28.99,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326579/hs-products/1778326578795/1778326578795_1778326579486_d13eaa1f80_89593651-57E2-4C8B-81B8-204CC90EECBD.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326580/hs-products/1778326578795/1778326578795_1778326580734_e44a4e64ce_CD6E2130-7E0A-4F63-88E9-5FA735FC8D27.jpg"
+    ],
+    "createdAt": 1778326581459,
+    "status": "publicado"
   }
 ]
