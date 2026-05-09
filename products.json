@@ -884,5 +884,20 @@
     ],
     "createdAt": 1778327527241,
     "status": "publicado"
+  },
+  {
+    "id": "1778327696467",
+    "title": "H2O Xpell+ - 90 Capsules (Diuretic)",
+    "price": 25.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Diuretics",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327697/hs-products/1778327696467/1778327696467_1778327697386_6b9ead5da8_67F15E4B-0792-4ED9-BBD4-A19EAF897C18.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327699/hs-products/1778327696467/1778327696467_1778327698792_3abebcee5f_15D61748-80A0-4F19-B5EC-7FFFB79F63AB.jpg"
+    ],
+    "createdAt": 1778327699660,
+    "status": "publicado"
   }
 ]
