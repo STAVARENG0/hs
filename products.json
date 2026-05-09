@@ -779,5 +779,20 @@
     ],
     "createdAt": 1778326340712,
     "status": "publicado"
+  },
+  {
+    "id": "1778326463448",
+    "title": "GEAAR - 400g Tropical Fruit Punch",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326464/hs-products/1778326463448/1778326463448_1778326464288_08e965a1e2_D8A2662E-5B07-4323-A242-45303F8BE2F5.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326465/hs-products/1778326463448/1778326463448_1778326465450_307f78e2b2_DB8E3EAC-CB18-4E92-A94B-6ED9BB89C0FD.jpg"
+    ],
+    "createdAt": 1778326466358,
+    "status": "publicado"
   }
 ]
