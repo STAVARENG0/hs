@@ -764,5 +764,20 @@
     ],
     "createdAt": 1778326186292,
     "status": "publicado"
+  },
+  {
+    "id": "1778326337850",
+    "title": "GEAAR - 400g  Blue Raspberry",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326339/hs-products/1778326337850/1778326337850_1778326338681_4494cb055a_D8A2662E-5B07-4323-A242-45303F8BE2F5.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326340/hs-products/1778326337850/1778326337850_1778326339850_5f336cfe2e_DB8E3EAC-CB18-4E92-A94B-6ED9BB89C0FD.jpg"
+    ],
+    "createdAt": 1778326340712,
+    "status": "publicado"
   }
 ]
