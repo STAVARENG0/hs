@@ -899,5 +899,20 @@
     ],
     "createdAt": 1778327699660,
     "status": "publicado"
+  },
+  {
+    "id": "1778327917243",
+    "title": "Fat Direct - 60 Capsules ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Fat Loss",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327918/hs-products/1778327917243/1778327917243_1778327918182_8c19a20515_B2315B7E-2142-40CA-A79B-EAE284C66C5D.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327919/hs-products/1778327917243/1778327917243_1778327919369_3804587ac5_0D800513-CFD7-4635-9229-ABC2C3BFD14B.jpg"
+    ],
+    "createdAt": 1778327920129,
+    "status": "publicado"
   }
 ]
