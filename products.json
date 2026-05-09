@@ -869,5 +869,20 @@
     ],
     "createdAt": 1778327339725,
     "status": "publicado"
+  },
+  {
+    "id": "1778327523748",
+    "title": "Probiotic-10 25 Billion (30 Capsules) ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Probiotics",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327525/hs-products/1778327523748/1778327523748_1778327524593_1a272aa97e_744FF94F-2AE6-4301-885C-A610EA15EFA7.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327526/hs-products/1778327523748/1778327523748_1778327526112_5e9355ce7e_C8301D8D-05CE-426F-B4BA-C76568B2EE7D.jpg"
+    ],
+    "createdAt": 1778327527241,
+    "status": "publicado"
   }
 ]
