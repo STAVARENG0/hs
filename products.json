@@ -839,5 +839,20 @@
     ],
     "createdAt": 1778326865765,
     "status": "publicado"
+  },
+  {
+    "id": "1778327147028",
+    "title": "Glutamine - 500g",
+    "price": 27.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Glutamine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327148/hs-products/1778327147028/1778327147028_1778327147730_38e8db7398_20C227FD-7DAD-4B71-B87E-45C819C7031E.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327149/hs-products/1778327147028/1778327147028_1778327148906_1a4a673eba_2CD663B0-0B2A-4F7B-B803-1B07D0174926.jpg"
+    ],
+    "createdAt": 1778327149676,
+    "status": "publicado"
   }
 ]
