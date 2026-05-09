@@ -944,5 +944,20 @@
     ],
     "createdAt": 1778328232033,
     "status": "publicado"
+  },
+  {
+    "id": "1778328274943",
+    "title": "Berberine HCL - 60 Capsules ",
+    "price": 23.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328276/hs-products/1778328274943/1778328274943_1778328275633_e0bf36534e_CB2BA853-4F3F-43C3-AB8F-DFC1BB929FE7.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328276/hs-products/1778328274943/1778328274943_1778328276731_5f5d53a58f_5A389086-3348-4560-A847-5448A1C6CA43.jpg"
+    ],
+    "createdAt": 1778328277507,
+    "status": "publicado"
   }
 ]
