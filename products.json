@@ -1012,9 +1012,11 @@
     "description": "",
     "department": "supplements",
     "category": "Liver Support",
-    "stock": 0,
-    "image": "",
-    "gallery": [],
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328929/hs-products/1778328842809/1778328842809_1778328929256_ece6c0d959_C5487D72-D040-45BB-AFE8-01481DAC3714.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328930/hs-products/1778328842809/1778328842809_1778328930317_82c7ef263c_F307C677-156D-4EDA-96A2-6F6F4F18F1ED.jpg"
+    ],
     "createdAt": 1778328842812,
     "status": "publicado"
   }
