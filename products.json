@@ -1004,5 +1004,18 @@
     ],
     "createdAt": 1778328772710,
     "status": "publicado"
+  },
+  {
+    "id": "1778328842809",
+    "title": "NAC - 250g Unflavoured",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 0,
+    "image": "",
+    "gallery": [],
+    "createdAt": 1778328842812,
+    "status": "publicado"
   }
 ]
