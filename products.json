@@ -749,5 +749,20 @@
     ],
     "createdAt": 1778326048565,
     "status": "publicado"
+  },
+  {
+    "id": "1778326183768",
+    "title": "BCAA Powder Instant - 330g Natural",
+    "price": 24,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326184/hs-products/1778326183768/1778326183768_1778326184462_a56930417f_7B96993F-9747-4D32-B1DE-9FFC9D04DE3A.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326185/hs-products/1778326183768/1778326183768_1778326185628_a04d42ad07_80A4C219-D16F-443C-89B8-444784D7A002.jpg"
+    ],
+    "createdAt": 1778326186292,
+    "status": "publicado"
   }
 ]
