@@ -974,5 +974,20 @@
     ],
     "createdAt": 1778328501242,
     "status": "publicado"
+  },
+  {
+    "id": "1778328630374",
+    "title": "Saw Palmetto 540mg - 250 Capsules ",
+    "price": 17.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328631/hs-products/1778328630374/1778328630374_1778328631116_6c9b232efa_58F3988C-F76C-417D-9F98-C00DCFFB47CF.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328632/hs-products/1778328630374/1778328630374_1778328632645_20942f130c_C8741EEF-106B-4016-8152-F0E9E7FAEB9A.jpg"
+    ],
+    "createdAt": 1778328633342,
+    "status": "publicado"
   }
 ]
