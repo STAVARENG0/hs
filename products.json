@@ -929,5 +929,20 @@
     ],
     "createdAt": 1778328076958,
     "status": "publicado"
+  },
+  {
+    "id": "1778328229033",
+    "title": "Berberine HCL - 60 Capsules ",
+    "price": 23.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328230/hs-products/1778328229033/1778328229033_1778328229900_2d04a11506_CB2BA853-4F3F-43C3-AB8F-DFC1BB929FE7.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328231/hs-products/1778328229033/1778328229033_1778328231268_9b9fa5e80f_5A389086-3348-4560-A847-5448A1C6CA43.jpg"
+    ],
+    "createdAt": 1778328232033,
+    "status": "publicado"
   }
 ]
