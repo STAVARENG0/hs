@@ -225,7 +225,7 @@ function commonConfig(){
       const paypalTotal = Number(total || 0).toFixed(2);
 
       const purchaseUnit = {
-        description: state.isPickup ? 'HS Nutrition Order - Pickup / Collection at 4 Lower Dublin Street, Ballyjamesduff, Co. Cavan, A82 CY90, Ireland' : 'HS Nutrition Order - product list, quantity, shipping and total included',
+        description: state.isPickup ? 'HS Nutrition Order - Pickup / Collection - NO SHIPPING' : 'HS Nutrition Order - product list, quantity, shipping and total included',
         custom_id: buildSellerSummary(state).substring(0, 127),
         invoice_id: ('HS-' + Date.now()).substring(0, 127),
         amount:{
@@ -245,22 +245,17 @@ function commonConfig(){
         items: paypalItems
       };
 
+      const orderPayload = {
+        purchase_units:[purchaseUnit]
+      };
+
       if(state.isPickup){
-        purchaseUnit.shipping = {
-          name: { full_name: 'Pickup / Collection' },
-          address: {
-            address_line_1: '4 Lower Dublin Street',
-            admin_area_2: 'Ballyjamesduff',
-            admin_area_1: 'Co. Cavan',
-            postal_code: 'A82 CY90',
-            country_code: 'IE'
-          }
+        orderPayload.application_context = {
+          shipping_preference: 'NO_SHIPPING'
         };
       }
 
-      return actions.order.create({
-        purchase_units:[purchaseUnit]
-      });
+      return actions.order.create(orderPayload);
     },
     onApprove: function(data, actions){
       return actions.order.capture().then(function(details){
