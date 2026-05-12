@@ -96,16 +96,6 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 .cart-item-left { display:flex; align-items:center; gap:10px; }
 .cart-thumb { width:46px; height:46px; border-radius:8px; object-fit:cover; border:1px solid rgba(0,0,0,.06); }
 .cart-qty { display:flex; align-items:center; gap:6px; }
-.cart-qty button{
-  background:linear-gradient(90deg,var(--orange), #ff8c42);
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  font-weight:900;
-  cursor:pointer;
-  min-width:28px;
-  min-height:28px;
-}
 
 /* ====== HAMBURGER MENU ====== */
 .menu-toggle {
@@ -508,10 +498,10 @@ const grid = document.getElementById('products');
 let currentList = [];
 
 function fmtEUR(n){
-  const raw = (n ?? '').toString().trim();
-  const v = Number(raw.replace(',', '.'));
-  if(Number.isNaN(v)) return '€ ' + raw;
-  return '€ ' + v.toLocaleString('pt-PT', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const v = Number(n);
+  if(Number.isNaN(v)) return '€ ' + (n ?? '');
+  if(Number.isInteger(v)) return '€ ' + v;
+  return '€ ' + String(v);
 }
 function sanitizeList(list){
   if(!Array.isArray(list)) return [];
@@ -530,7 +520,7 @@ function sanitizeList(list){
 }
 async function readPublic(){
   try{
-    const r = await fetch(PUBLIC_JSON + '?t=' + Date.now(), {cache:'no-store'});
+    const r = await fetch(PUBLIC_JSON + '?limit=10000&t=' + Date.now(), {cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
     const data = await r.json();
     return sanitizeList(Array.isArray(data) ? data : (data.data || []));
@@ -684,7 +674,7 @@ function openCart(){
   list.innerHTML = '';
   if(cart.length === 0){
     list.innerHTML = '<p style="color:#666">Your cart is empty.</p>';
-    totalEl.textContent = fmtEUR(0);
+    totalEl.textContent = '€ 0.00';
   } else {
     let total = 0;
     cart.forEach(item => {
@@ -798,10 +788,9 @@ document.addEventListener('DOMContentLoaded', () => {
 (function(){
   function fmtEURSafe(n){
     if (typeof fmtEUR === 'function') return fmtEUR(n);
-    const raw = (n ?? '').toString().trim();
-    const v = Number(raw.replace(',', '.'));
-    if(Number.isNaN(v)) return '€ ' + raw;
-    return '€ ' + v.toLocaleString('pt-PT', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const v = Number(n);
+    if(Number.isNaN(v)) return '€ ' + (n ?? '');
+    return Number.isInteger(v) ? '€ ' + v : '€ ' + String(v);
   }
   function getList(){
     try { return Array.isArray(currentList) ? currentList : []; } catch(_) { return []; }
@@ -984,40 +973,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if(totalPages <= 1){ pager.style.display = 'none'; return; }
     pager.style.display = 'flex';
 
-    const GROUP_SIZE = 3;
-    const groupStart = Math.floor((currentPage - 1) / GROUP_SIZE) * GROUP_SIZE + 1;
-    const groupEnd = Math.min(totalPages, groupStart + GROUP_SIZE - 1);
+    const INITIAL_VISIBLE_PAGES = 6;
+    const PAGE_STEP = 3;
+    const visibleEnd = Math.min(
+      totalPages,
+      Math.max(INITIAL_VISIBLE_PAGES, Math.ceil(currentPage / PAGE_STEP) * PAGE_STEP)
+    );
 
-    function go(page){
-      currentPage = Math.max(1, Math.min(totalPages, page));
-      applyPagination(false);
-      window.scrollTo({top:0, behavior:'smooth'});
-    }
-
-    function addBtn(label, page, active){
+    function addBtn(label, page, active, disabled){
       const b = document.createElement('button');
       b.type = 'button';
       b.textContent = label;
       if(active) b.classList.add('active');
-      b.addEventListener('click', ()=>go(page));
+      if(disabled){
+        b.disabled = true;
+        b.style.opacity = '0.45';
+        b.style.cursor = 'not-allowed';
+      }
+      b.addEventListener('click', ()=>{
+        if(disabled) return;
+        currentPage = page;
+        applyPagination(false);
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
       pager.appendChild(b);
     }
 
-    function addDots(page){
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'dots';
-      b.textContent = '...';
-      b.setAttribute('aria-label','More pages');
-      b.addEventListener('click', ()=>go(page));
-      pager.appendChild(b);
+    addBtn('<', Math.max(1,currentPage-1), false, currentPage === 1);
+    for(let i=1;i<=visibleEnd;i++) addBtn(String(i), i, i===currentPage, false);
+    if(visibleEnd < totalPages){
+      const more = Math.min(totalPages, visibleEnd + PAGE_STEP);
+      addBtn('...', more, false, false);
     }
-
-    addBtn('<', Math.max(1,currentPage-1), false);
-    if(groupStart > 1) addDots(groupStart - 1);
-    for(let i = groupStart; i <= groupEnd; i++) addBtn(String(i), i, i === currentPage);
-    if(groupEnd < totalPages) addDots(groupEnd + 1);
-    addBtn('>', Math.min(totalPages,currentPage+1), false);
+    addBtn('>', Math.min(totalPages,currentPage+1), false, currentPage === totalPages);
   }
   function applyPagination(resetIfNew){
     if(applying) return;
