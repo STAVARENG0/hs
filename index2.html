@@ -520,7 +520,7 @@ function sanitizeList(list){
 }
 async function readPublic(){
   try{
-    const r = await fetch(PUBLIC_JSON + '?limit=10000&t=' + Date.now(), {cache:'no-store'});
+    const r = await fetch(PUBLIC_JSON + '?t=' + Date.now(), {cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
     const data = await r.json();
     return sanitizeList(Array.isArray(data) ? data : (data.data || []));
@@ -973,39 +973,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if(totalPages <= 1){ pager.style.display = 'none'; return; }
     pager.style.display = 'flex';
 
-    const INITIAL_VISIBLE_PAGES = 6;
-    const PAGE_STEP = 3;
-    const visibleEnd = Math.min(
-      totalPages,
-      Math.max(INITIAL_VISIBLE_PAGES, Math.ceil(currentPage / PAGE_STEP) * PAGE_STEP)
-    );
-
-    function addBtn(label, page, active, disabled){
+    function addBtn(label, page, active){
       const b = document.createElement('button');
       b.type = 'button';
       b.textContent = label;
       if(active) b.classList.add('active');
-      if(disabled){
-        b.disabled = true;
-        b.style.opacity = '0.45';
-        b.style.cursor = 'not-allowed';
-      }
       b.addEventListener('click', ()=>{
-        if(disabled) return;
         currentPage = page;
         applyPagination(false);
         window.scrollTo({top:0, behavior:'smooth'});
       });
       pager.appendChild(b);
     }
-
-    addBtn('<', Math.max(1,currentPage-1), false, currentPage === 1);
-    for(let i=1;i<=visibleEnd;i++) addBtn(String(i), i, i===currentPage, false);
-    if(visibleEnd < totalPages){
-      const more = Math.min(totalPages, visibleEnd + PAGE_STEP);
-      addBtn('...', more, false, false);
+    function addDots(){
+      const s = document.createElement('span');
+      s.className = 'dots';
+      s.textContent = '...';
+      pager.appendChild(s);
     }
-    addBtn('>', Math.min(totalPages,currentPage+1), false, currentPage === totalPages);
+
+    addBtn('<', Math.max(1,currentPage-1), false);
+    if(totalPages <= 7){
+      for(let i=1;i<=totalPages;i++) addBtn(String(i), i, i===currentPage);
+    }else{
+      addBtn('1',1,currentPage===1);
+      if(currentPage > 3) addDots();
+      const start = Math.max(2, currentPage-1);
+      const end = Math.min(totalPages-1, currentPage+1);
+      for(let i=start;i<=end;i++) addBtn(String(i), i, i===currentPage);
+      if(currentPage < totalPages-2) addDots();
+      addBtn(String(totalPages), totalPages, currentPage===totalPages);
+    }
+    addBtn('>', Math.min(totalPages,currentPage+1), false);
   }
   function applyPagination(resetIfNew){
     if(applying) return;
