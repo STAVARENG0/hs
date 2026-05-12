@@ -1014,9 +1014,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     addBtn('<', Math.max(1,currentPage-1), false);
-    if(groupStart > 1) addDots(groupStart - 1);
+    if(groupStart > 1) addDots(groupStart - GROUP_SIZE);
     for(let i = groupStart; i <= groupEnd; i++) addBtn(String(i), i, i === currentPage);
-    if(groupEnd < totalPages) addDots(groupEnd + 1);
+    if(groupEnd < totalPages) addDots(groupStart + GROUP_SIZE);
     addBtn('>', Math.min(totalPages,currentPage+1), false);
   }
   function applyPagination(resetIfNew){
