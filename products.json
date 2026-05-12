@@ -545,5 +545,494 @@
     ],
     "createdAt": 1777832452720,
     "status": "publicado"
+  },
+  {
+    "id": "1777899568129",
+    "title": "Cystone - 100 Capsules ",
+    "price": 18.99,
+    "description": "Kidney Support ",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777899569/hs-products/1777899568129/1777899568129_1777899568840_b4a36c11d1_877A8DD7-CFCD-4877-AE7D-6FE5C265D0FA.jpg",
+    "gallery": [],
+    "createdAt": 1777899570590,
+    "status": "publicado"
+  },
+  {
+    "id": "1777899898876",
+    "title": "Coenzyme Q10 100mg - 90 SoftGels",
+    "price": 19.99,
+    "description": "Serving: 1 softgel\nServings per package: 90\nPackage: 90 softgels",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777899900/hs-products/1777899898876/1777899898876_1777899899590_f61a6a75d1_76C41D7F-4D46-41CF-A0E1-046334985CAD.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777899901/hs-products/1777899898876/1777899898876_1777899901384_91801a20c2_853DA646-E602-4A3D-8811-B6E6154EFEE2.jpg"
+    ],
+    "createdAt": 1777899902352,
+    "status": "publicado"
+  },
+  {
+    "id": "1777900270373",
+    "title": "Melatonin 5mg - 120 Capsules ",
+    "price": 21.99,
+    "description": "Serving: 1/5 tablet\nServings per container 600\nPackaging 120 tabs\nMelatonin Ingredients: Filling agent - microcrystalline cellulose, filling agent - calcium phosphates, anti-caking agent - magnesium salts of fatty acids (vegan), melatonin.\nDietary supplement. \nThis product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900271/hs-products/1777900270373/1777900270373_1777900271166_95c5633a96_2BCF4E56-DCEA-4EF8-BC37-DE1C67393BC2.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900273/hs-products/1777900270373/1777900270373_1777900272789_9e05ef1d2d_FF2C8032-4FF1-432B-BA17-3B7934EEA4F9.jpg"
+    ],
+    "createdAt": 1777900273646,
+    "status": "publicado"
+  },
+  {
+    "id": "1777900642190",
+    "title": "Magnesium Citrate Powder - 227g",
+    "price": 24.99,
+    "description": "Active ingredients in:\t3g (1 serving)\nMagnesium (from 3000mg of magnesium citrate)\t",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900643/hs-products/1777900642190/1777900642190_1777900642905_d4ac3f7591_FC87BFB6-D65F-44A2-A75A-E7911529DFF3.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900645/hs-products/1777900642190/1777900642190_1777900644846_856e974794_87C31406-FAC7-4C6C-B3F7-27F4084474B8.jpg"
+    ],
+    "createdAt": 1777900645894,
+    "status": "publicado"
+  },
+  {
+    "id": "1777900816383",
+    "title": "Magnesium Glycinate - 120 Capsules ",
+    "price": 28.99,
+    "description": "Serving: 2 capsules\t% l\nMagnesium bisglycinate (MagChel®)\t2300 mg\t-\n- including magnesium\t262.2 mg\t70%\nVitamin B6 (P-5-P - pyridoxal 5'-phosphate)\t2.8 mg\t200%",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900817/hs-products/1777900816383/1777900816383_1777900817087_28ef60c5de_A284105E-32C4-4B26-BAF3-A1DD9CD21344.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777900819/hs-products/1777900816383/1777900816383_1777900819325_d03ed3c750_F5C6F46D-FA8F-4D54-836A-B5EB563E6398.jpg"
+    ],
+    "createdAt": 1777900820154,
+    "status": "publicado"
+  },
+  {
+    "id": "1777901072367",
+    "title": "Berberine HCL PLUS - 100 Capsules ",
+    "price": 24.99,
+    "description": "Portion: 1 vcap\nPortions in package: 100\nPackage: 100 vcaps\nIngredients of Berberine HCL PLUS:\n\nDietary supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.\n\n",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901073/hs-products/1777901072367/1777901072367_1777901073092_d049898be6_AC1176CB-6078-4020-A3A6-5D7011BB1003.jpg",
+    "gallery": [],
+    "createdAt": 1777901074413,
+    "status": "publicado"
+  },
+  {
+    "id": "1777901128134",
+    "title": "Berberine HCL PLUS - 100 Capsules ",
+    "price": 29.99,
+    "description": "Portion: 1 vcap\nPortions in package: 100\nPackage: 100 vcaps\nIngredients of Berberine HCL PLUS: extract from barberry root (Berberis aristata) -97% berberine; cinnamon extract 4:1; turmeric extract (Curcuma longa) -95% curcuminoids; black pepper extract (Piper nigrum) -95% piperine; cellulose capsule -HPMC.\nDietary supplement. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901129/hs-products/1777901128134/1777901128134_1777901128730_33d4c1186d_AC1176CB-6078-4020-A3A6-5D7011BB1003.jpg",
+    "gallery": [],
+    "createdAt": 1777901129707,
+    "status": "publicado"
+  },
+  {
+    "id": "1777901298550",
+    "title": "Vitamin D3 4000IU + K2 MK7 - 160 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 1 capsule\nServings per container: 160\nContainer: 160 tabs\nIngredients Vitamin D3+K2 160 tabs: Filling agent: sorbitol, anti-caking agent: magnesium salts of fatty acids, cholecalciferol (vitamin D), menaquinone (vitamin K).\nDietary supplement. This product is not intended for the diagnosis, treatment, or prevention of any disease.",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901299/hs-products/1777901298550/1777901298550_1777901299396_f610aecb08_44C6EA57-3343-4389-AC98-874D43562563.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901301/hs-products/1777901298550/1777901298550_1777901300787_c96ac132c0_010FBCC2-BB1C-42E9-9776-A74EF55ACF94.jpg"
+    ],
+    "createdAt": 1777901301739,
+    "status": "publicado"
+  },
+  {
+    "id": "1777901342760",
+    "title": "Vitamin D3 4000IU + K2 MK7 - 160 Capsules ",
+    "price": 18.99,
+    "description": "Serving: 1 capsule\nServings per container: 160\nContainer: 160 tabs\nIngredients Vitamin D3+K2 160 tabs: Filling agent: sorbitol, anti-caking agent: magnesium salts of fatty acids, cholecalciferol (vitamin D), menaquinone (vitamin K).\nDietary supplement. This product is not intended for the diagnosis, treatment, or prevention of any disease.",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901344/hs-products/1777901342760/1777901342760_1777901343484_405343d6fb_44C6EA57-3343-4389-AC98-874D43562563.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901345/hs-products/1777901342760/1777901342760_1777901345567_c603de7136_010FBCC2-BB1C-42E9-9776-A74EF55ACF94.jpg"
+    ],
+    "createdAt": 1777901346590,
+    "status": "publicado"
+  },
+  {
+    "id": "1777901495982",
+    "title": "Mass KONG - 1000g - Chocolate",
+    "price": 22.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Mass Gainer",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901497/hs-products/1777901495982/1777901495982_1777901496841_c8dcef467a_853646E1-A093-4493-97A1-9690F9B13EC2.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901499/hs-products/1777901495982/1777901495982_1777901498888_6fa3f5403b_53803B01-0910-4CE5-B1F5-C9A662CCC723.jpg"
+    ],
+    "createdAt": 1777901499881,
+    "status": "publicado"
+  },
+  {
+    "id": "1777901579578",
+    "title": "Mass KONG - 1000g  Strawberry",
+    "price": 22.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Mass Gainer",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901580/hs-products/1777901579578/1777901579578_1777901580285_503d077894_BDDA9B60-9EB2-40C9-8B15-479BED7EF0EE.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901582/hs-products/1777901579578/1777901579578_1777901581906_6b71680ca3_53803B01-0910-4CE5-B1F5-C9A662CCC723.jpg"
+    ],
+    "createdAt": 1777901583133,
+    "status": "publicado"
+  },
+  {
+    "id": "1777901922831",
+    "title": "Whey Mass Gain - 3000g Strawberry",
+    "price": 27.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Mass Gainer",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901924/hs-products/1777901922831/1777901922831_1777901923748_d78d742b8a_43BE6C26-CE5B-4B13-92F6-D335FC5FB3E0.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777901925/hs-products/1777901922831/1777901922831_1777901925629_fb006f622b_07A48985-61A9-42F4-A456-174940902217.jpg"
+    ],
+    "createdAt": 1777901926493,
+    "status": "publicado"
+  },
+  {
+    "id": "1777901999510",
+    "title": "Whey Mass Gain - 3000g  Vanilla",
+    "price": 27.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Mass Gainer",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777902000/hs-products/1777901999510/1777901999510_1777902000324_113a5cc10a_43BE6C26-CE5B-4B13-92F6-D335FC5FB3E0.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1777902002/hs-products/1777901999510/1777901999510_1777902001957_83ac2b08e9_07A48985-61A9-42F4-A456-174940902217.jpg"
+    ],
+    "createdAt": 1777902002914,
+    "status": "publicado"
+  },
+  {
+    "id": "1778326045884",
+    "title": "BCAA - 400g Natural",
+    "price": 23.99,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326046/hs-products/1778326045884/1778326045884_1778326046455_0ffea24390_72FC26D0-0543-48E9-948E-187D5F16FEE4.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326048/hs-products/1778326045884/1778326045884_1778326047741_7467384d66_5DA6814B-D6D5-4443-AA29-4038C6F5FD1C.jpg"
+    ],
+    "createdAt": 1778326048565,
+    "status": "publicado"
+  },
+  {
+    "id": "1778326183768",
+    "title": "BCAA Powder Instant - 330g Natural",
+    "price": 24,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326184/hs-products/1778326183768/1778326183768_1778326184462_a56930417f_7B96993F-9747-4D32-B1DE-9FFC9D04DE3A.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326185/hs-products/1778326183768/1778326183768_1778326185628_a04d42ad07_80A4C219-D16F-443C-89B8-444784D7A002.jpg"
+    ],
+    "createdAt": 1778326186292,
+    "status": "publicado"
+  },
+  {
+    "id": "1778326337850",
+    "title": "GEAAR - 400g  Blue Raspberry",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326339/hs-products/1778326337850/1778326337850_1778326338681_4494cb055a_D8A2662E-5B07-4323-A242-45303F8BE2F5.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326340/hs-products/1778326337850/1778326337850_1778326339850_5f336cfe2e_DB8E3EAC-CB18-4E92-A94B-6ED9BB89C0FD.jpg"
+    ],
+    "createdAt": 1778326340712,
+    "status": "publicado"
+  },
+  {
+    "id": "1778326463448",
+    "title": "GEAAR - 400g Tropical Fruit Punch",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326464/hs-products/1778326463448/1778326463448_1778326464288_08e965a1e2_D8A2662E-5B07-4323-A242-45303F8BE2F5.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326465/hs-products/1778326463448/1778326463448_1778326465450_307f78e2b2_DB8E3EAC-CB18-4E92-A94B-6ED9BB89C0FD.jpg"
+    ],
+    "createdAt": 1778326466358,
+    "status": "publicado"
+  },
+  {
+    "id": "1778326578795",
+    "title": "EAA Perfect 480g Orange",
+    "price": 28.99,
+    "description": "",
+    "department": "supplements",
+    "category": "BCAA & EAA",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326579/hs-products/1778326578795/1778326578795_1778326579486_d13eaa1f80_89593651-57E2-4C8B-81B8-204CC90EECBD.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326580/hs-products/1778326578795/1778326578795_1778326580734_e44a4e64ce_CD6E2130-7E0A-4F63-88E9-5FA735FC8D27.jpg"
+    ],
+    "createdAt": 1778326581459,
+    "status": "publicado"
+  },
+  {
+    "id": "1778326734904",
+    "title": "L- Glutamine  250g",
+    "price": 21.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Glutamine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326735/hs-products/1778326734904/1778326734904_1778326735601_e317299e9e_DAF3630B-F694-4AAD-A179-AA920376BFF8.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326737/hs-products/1778326734904/1778326734904_1778326736762_c50b1f8ba7_4B342DC8-35D6-4984-BBBA-CE6E11109EAD.jpg"
+    ],
+    "createdAt": 1778326737516,
+    "status": "publicado"
+  },
+  {
+    "id": "1778326863240",
+    "title": "Gold Glutamine - 300g Natural",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Glutamine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326864/hs-products/1778326863240/1778326863240_1778326863938_de9a260e96_74E2107A-53FC-4299-89E0-D0699F905B08.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778326865/hs-products/1778326863240/1778326863240_1778326865145_1d3ad7cffe_2936FD76-97B5-44B0-A6AA-4B7B031AEEC1.jpg"
+    ],
+    "createdAt": 1778326865765,
+    "status": "publicado"
+  },
+  {
+    "id": "1778327147028",
+    "title": "Glutamine - 500g",
+    "price": 27.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Glutamine",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327148/hs-products/1778327147028/1778327147028_1778327147730_38e8db7398_20C227FD-7DAD-4B71-B87E-45C819C7031E.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327149/hs-products/1778327147028/1778327147028_1778327148906_1a4a673eba_2CD663B0-0B2A-4F7B-B803-1B07D0174926.jpg"
+    ],
+    "createdAt": 1778327149676,
+    "status": "publicado"
+  },
+  {
+    "id": "1778327336706",
+    "title": "Probiotic 4 - 60 Capsules ",
+    "price": 17.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Probiotics",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327337/hs-products/1778327336706/1778327336706_1778327337427_3db067c8db_5BDD4C1B-8CA4-40F4-A3C6-69C3A90B6E1C.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327339/hs-products/1778327336706/1778327336706_1778327338751_cdd6d36e4b_B1FAC378-E981-4578-8DF5-47FEEB59AB25.jpg"
+    ],
+    "createdAt": 1778327339725,
+    "status": "publicado"
+  },
+  {
+    "id": "1778327523748",
+    "title": "Probiotic-10 25 Billion (30 Capsules) ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Probiotics",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327525/hs-products/1778327523748/1778327523748_1778327524593_1a272aa97e_744FF94F-2AE6-4301-885C-A610EA15EFA7.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327526/hs-products/1778327523748/1778327523748_1778327526112_5e9355ce7e_C8301D8D-05CE-426F-B4BA-C76568B2EE7D.jpg"
+    ],
+    "createdAt": 1778327527241,
+    "status": "publicado"
+  },
+  {
+    "id": "1778327696467",
+    "title": "H2O Xpell+ - 90 Capsules (Diuretic)",
+    "price": 25.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Diuretics",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327697/hs-products/1778327696467/1778327696467_1778327697386_6b9ead5da8_67F15E4B-0792-4ED9-BBD4-A19EAF897C18.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327699/hs-products/1778327696467/1778327696467_1778327698792_3abebcee5f_15D61748-80A0-4F19-B5EC-7FFFB79F63AB.jpg"
+    ],
+    "createdAt": 1778327699660,
+    "status": "publicado"
+  },
+  {
+    "id": "1778327917243",
+    "title": "Fat Direct - 60 Capsules ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Fat Loss",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327918/hs-products/1778327917243/1778327917243_1778327918182_8c19a20515_B2315B7E-2142-40CA-A79B-EAE284C66C5D.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778327919/hs-products/1778327917243/1778327917243_1778327919369_3804587ac5_0D800513-CFD7-4635-9229-ABC2C3BFD14B.jpg"
+    ],
+    "createdAt": 1778327920129,
+    "status": "publicado"
+  },
+  {
+    "id": "1778328073214",
+    "title": "Machine Man Burner - 120 Capsules ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Fat Loss",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328074/hs-products/1778328073214/1778328073214_1778328074092_f1193c24f3_8E32EC00-D4B5-470C-9289-9B65E03CC459.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328075/hs-products/1778328073214/1778328073214_1778328075247_9b67cfc074_984E8F26-9483-4271-AFF3-6F6BFE9363DB.jpg"
+    ],
+    "createdAt": 1778328076958,
+    "status": "publicado"
+  },
+  {
+    "id": "1778328229033",
+    "title": "Berberine HCL - 60 Capsules ",
+    "price": 23.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328230/hs-products/1778328229033/1778328229033_1778328229900_2d04a11506_CB2BA853-4F3F-43C3-AB8F-DFC1BB929FE7.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328231/hs-products/1778328229033/1778328229033_1778328231268_9b9fa5e80f_5A389086-3348-4560-A847-5448A1C6CA43.jpg"
+    ],
+    "createdAt": 1778328232033,
+    "status": "publicado"
+  },
+  {
+    "id": "1778328274943",
+    "title": "Berberine HCL - 60 Capsules ",
+    "price": 23.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328276/hs-products/1778328274943/1778328274943_1778328275633_e0bf36534e_CB2BA853-4F3F-43C3-AB8F-DFC1BB929FE7.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328276/hs-products/1778328274943/1778328274943_1778328276731_5f5d53a58f_5A389086-3348-4560-A847-5448A1C6CA43.jpg"
+    ],
+    "createdAt": 1778328277507,
+    "status": "publicado"
+  },
+  {
+    "id": "1778328498570",
+    "title": "Saw Palmetto 540mg - 100 Capsules ",
+    "price": 19.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328499/hs-products/1778328498570/1778328498570_1778328499276_f7cb98ae71_C7993240-6590-4A97-9475-0CFF7DF299F6.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328500/hs-products/1778328498570/1778328498570_1778328500471_971daf1c72_F41E91C9-6D28-42A6-B9D4-9BED1B890E17.jpg"
+    ],
+    "createdAt": 1778328501242,
+    "status": "publicado"
+  },
+  {
+    "id": "1778328630374",
+    "title": "Saw Palmetto 540mg - 250 Capsules ",
+    "price": 17.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Vitamins & Minerals",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328631/hs-products/1778328630374/1778328630374_1778328631116_6c9b232efa_58F3988C-F76C-417D-9F98-C00DCFFB47CF.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328632/hs-products/1778328630374/1778328630374_1778328632645_20942f130c_C8741EEF-106B-4016-8152-F0E9E7FAEB9A.jpg"
+    ],
+    "createdAt": 1778328633342,
+    "status": "publicado"
+  },
+  {
+    "id": "1778328769975",
+    "title": "Citrus Bergamot - 60 Capsules ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Heart Health",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328771/hs-products/1778328769975/1778328769975_1778328770725_7c50d50fd5_B13E1638-C14B-4482-9D73-26FB27B527B9.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328772/hs-products/1778328769975/1778328769975_1778328771840_9e9c79f2fe_B955274D-0187-4592-BAFF-1F525BAAA9A0.jpg"
+    ],
+    "createdAt": 1778328772710,
+    "status": "publicado"
+  },
+  {
+    "id": "1778328842809",
+    "title": "NAC - 250g Unflavoured",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328929/hs-products/1778328842809/1778328842809_1778328929256_ece6c0d959_C5487D72-D040-45BB-AFE8-01481DAC3714.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778328930/hs-products/1778328842809/1778328842809_1778328930317_82c7ef263c_F307C677-156D-4EDA-96A2-6F6F4F18F1ED.jpg"
+    ],
+    "createdAt": 1778328842812,
+    "status": "publicado"
+  },
+  {
+    "id": "1778329025432",
+    "title": "NAC - 90 Capsules ",
+    "price": 24.99,
+    "description": "",
+    "department": "supplements",
+    "category": "Liver Support",
+    "stock": 10,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778329026/hs-products/1778329025432/1778329025432_1778329026166_af9b2ca5fe_5A8C726F-6E82-4569-8F24-0FA44B8AACB9.jpg",
+    "gallery": [
+      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778329027/hs-products/1778329025432/1778329025432_1778329027366_69447554ba_BD8A4DD1-73B8-4EF5-90D8-A7949E768105.jpg"
+    ],
+    "createdAt": 1778329028087,
+    "status": "publicado"
   }
 ]
