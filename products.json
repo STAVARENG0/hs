@@ -1034,20 +1034,5 @@
     ],
     "createdAt": 1778329028087,
     "status": "publicado"
-  },
-  {
-    "id": "1778613054664",
-    "title": "CHAVEIRO DE BANANA ",
-    "price": 1,
-    "description": "chaveiro teste",
-    "department": "fashion",
-    "category": "fashion",
-    "stock": 1,
-    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778613056/hs-products/1778613054664/1778613054664_1778613055892_f9a8d4caf0_Gemini_Generated_Image_al5zqal5zqal5zqa.png",
-    "gallery": [
-      "https://res.cloudinary.com/dz2cdndjf/image/upload/v1778613054/hs-products/1778613054664/1778613054664_1778613053842_36094af64d_Gemini_Generated_Image_bdjm0wbdjm0wbdjm.png"
-    ],
-    "createdAt": 1778613059037,
-    "status": "publicado"
   }
 ]
