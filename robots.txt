@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /checkout.html
+Disallow: /index2.html
+Allow: /
+
+Sitemap: https://hs-nutrition.ie/sitemap.xml

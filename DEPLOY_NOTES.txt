@@ -1,0 +1,12 @@
+FRONT pronto para subir.
+
+Correções aplicadas:
+- index2.html removido.
+- links de Home apontando para /.
+- sitemap.xml sem /index.html e sem /index2.html.
+- checkout.html usa o backend para criar e capturar o pedido PayPal.
+- H1, meta description e canonical adicionados nas páginas.
+- checkout com noindex.
+- robots.txt adicionado.
+- imagens principais em WebP adicionadas e usadas no HTML.
+- _headers e _redirects incluídos para Cloudflare Pages/Netlify. GitHub Pages ignora esses dois arquivos; para headers reais no GitHub Pages, use Cloudflare na frente do domínio.
