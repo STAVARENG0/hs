@@ -1034,5 +1034,18 @@
     ],
     "createdAt": 1778329028087,
     "status": "publicado"
+  },
+  {
+    "id": "1784235561251",
+    "title": "teste",
+    "price": 1,
+    "description": "",
+    "department": "supplements",
+    "category": "Creatine",
+    "stock": 1,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1784235560/hs-products/1784235561251/1784235561251_1784235560165_e797466155_Gemini_Generated_Image_u8drcvu8drcvu8dr.png",
+    "gallery": [],
+    "createdAt": 1784235563922,
+    "status": "publicado"
   }
 ]
