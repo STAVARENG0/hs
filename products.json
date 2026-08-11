@@ -1034,5 +1034,18 @@
     ],
     "createdAt": 1778329028087,
     "status": "publicado"
+  },
+  {
+    "id": "1786488217677",
+    "title": "Morte Súbita Super Moisturizing Hair Mask",
+    "price": 22.99,
+    "description": "The **Morte Súbita Super Moisturizing Hair Mask** instantly restores the hair’s natural moisture barrier, providing an intensive treatment for dry, damaged, and lifeless hair\\.\n\n**Benefits:**\n• Deep and immediate hydration\n• Helps repair damaged hair\n• Adds shine and softness\n• Helps control frizz\n• Reduces the appearance of dryness\n• Strengthens the hair fiber",
+    "department": "cosmetics",
+    "category": "Mascara",
+    "stock": 6,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1786488218/hs-products/1786488217677/1786488217677_1786488218338_7382135b09_IMG_1358.webp",
+    "gallery": [],
+    "createdAt": 1786488219418,
+    "status": "publicado"
   }
 ]
