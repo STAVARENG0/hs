@@ -1047,5 +1047,18 @@
     "gallery": [],
     "createdAt": 1786488219418,
     "status": "publicado"
+  },
+  {
+    "id": "1786488369247",
+    "title": "Morte Súbita Total Repair Spray",
+    "price": 19.99,
+    "description": "The Morte Súbita Total Repair Spray provides complete leave-in repair, helping to protect hair from heat while delivering hydration and frizz control without weighing it down.\n\nBenefits:\n• Heat protection\n• Leave-in repair\n• Helps control frizz\n• Adds shine and softness\n• Can be used alone or combined with other styling products\n• Lightweight formula that does not weigh hair down",
+    "department": "cosmetics",
+    "category": "Leave-in Cream",
+    "stock": 6,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1786488369/hs-products/1786488369247/1786488369247_1786488369716_c249146c1d_IMG_1359.webp",
+    "gallery": [],
+    "createdAt": 1786488370449,
+    "status": "publicado"
   }
 ]
