@@ -1086,5 +1086,18 @@
     "gallery": [],
     "createdAt": 1788177740592,
     "status": "publicado"
+  },
+  {
+    "id": "1788177997072",
+    "title": "Jelly gel definition ",
+    "price": 15.99,
+    "description": "The gel for wavy, curly, and coily hair contains argan oil and olive oil in its formula, providing intense hydration, frizz control, and softness, while adding more volume and natural movement to the hair.",
+    "department": "cosmetics",
+    "category": "Leave-in Cream",
+    "stock": 6,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1788177997/hs-products/1788177997072/1788177997072_1788177997358_58a0e6d4e6_IMG_1888.jpg",
+    "gallery": [],
+    "createdAt": 1788177998665,
+    "status": "publicado"
   }
 ]
