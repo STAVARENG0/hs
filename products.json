@@ -1073,5 +1073,18 @@
     "gallery": [],
     "createdAt": 1786488548107,
     "status": "publicado"
+  },
+  {
+    "id": "1788177739220",
+    "title": "Jelly Gel 1 kilo",
+    "price": 22.99,
+    "description": "Salon Line's #Todecacho Super Definition Hair Gel is ideal for those looking for highly defined curls with intense shine and frizz-free curls.\n",
+    "department": "cosmetics",
+    "category": "Leave-in Cream",
+    "stock": 6,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1788177739/hs-products/1788177739220/1788177739220_1788177739650_00d2346ce9_IMG_1887.jpg",
+    "gallery": [],
+    "createdAt": 1788177740592,
+    "status": "publicado"
   }
 ]
