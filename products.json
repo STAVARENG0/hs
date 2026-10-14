@@ -1110,5 +1110,18 @@
     "gallery": [],
     "createdAt": 1792009302076,
     "status": "publicado"
+  },
+  {
+    "id": "1792009417989",
+    "title": "Densidade Hair Mask ",
+    "price": 18.99,
+    "description": "Lola Cosmetics Densidade Hair Mask 230g is designed to provide reparative and regenerating action, significantly enhancing hair density and strength. This nutrient-rich formula treats hair from the roots and promotes the growth of stronger, fuller, and healthier locks.",
+    "department": "cosmetics",
+    "category": "Mascara",
+    "stock": 6,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1792009494/hs-products/1792009417989/1792009417989_1792009493763_5b12e38911_IMG_2694.jpg",
+    "gallery": [],
+    "createdAt": 1792009495170,
+    "status": "publicado"
   }
 ]
