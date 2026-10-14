@@ -1097,5 +1097,18 @@
     "gallery": [],
     "createdAt": 1788177998665,
     "status": "publicado"
+  },
+  {
+    "id": "1792009298917",
+    "title": "Dream Cream",
+    "price": 22.99,
+    "description": "Are your curls struggling to withstand more experiments? Protect and rejuvenate them with the Dream Cream formula from Lola Cosmetics. This moisturizing mask for dry and unruly hair is enriched with natural oils, proteins, amino acids, and other ingredients that restore your hair's healthy appearance and strength. With deep nourishment and hydration, you will quickly forget about dryness, brittleness, and dullness, achieving shine and smoothness. Hair, especially those that tend to frizz and stick out, becomes more manageable and easier to style.",
+    "department": "cosmetics",
+    "category": "Mascara",
+    "stock": 6,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1792009301/hs-products/1792009298917/1792009298917_1792009300974_47842e11c0_IMG_2693.jpg",
+    "gallery": [],
+    "createdAt": 1792009302076,
+    "status": "publicado"
   }
 ]
