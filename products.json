@@ -1123,5 +1123,18 @@
     "gallery": [],
     "createdAt": 1792009495170,
     "status": "publicado"
+  },
+  {
+    "id": "1792009710143",
+    "title": "Rapunzel Hair Mask ",
+    "price": 22.99,
+    "description": "Lola Cosmetics Rapunzel Strengthening Hair Mask is a fortifying hair mask created for fragile, brittle, and weakened hair that struggles to grow. For example, it's a good option for hair weakened by chemical treatments (such as coloring, bleaching, or straightening), frequent use of heat styling tools, or environmental aggressors. So, thanks to the inclusion of fortifying and revitalizing ingredients, such as caffeine and jaborandi extract, it helps restore balance, reduce breakage, and protect against further damage. Additionally, by promoting healthy growth and restoring strength and vitality to the strands, it helps reduce the early stages of hair loss.",
+    "department": "cosmetics",
+    "category": "Mascara",
+    "stock": 6,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1792009714/hs-products/1792009710143/1792009710143_1792009713857_1c930511be_IMG_2695.jpg",
+    "gallery": [],
+    "createdAt": 1792009714834,
+    "status": "publicado"
   }
 ]
