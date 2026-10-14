@@ -1136,5 +1136,18 @@
     "gallery": [],
     "createdAt": 1792009714834,
     "status": "publicado"
+  },
+  {
+    "id": "1792009878084",
+    "title": "Rapunzel hair Tonic",
+    "price": 19.99,
+    "description": "Filled with natural ingredients, Lola Rapunzel Growth Tonic strengthens and revitalizes hair!\n\nA tonic that strengthens hair roots and prolongs their lifespan, helping to combat hair loss.\n\nIdeal for long hair or brittle hair with a tendency to hair loss.",
+    "department": "cosmetics",
+    "category": "Hair Tonic",
+    "stock": 6,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1792009881/hs-products/1792009878084/1792009878084_1792009881283_cc5bee793e_IMG_2697.jpg",
+    "gallery": [],
+    "createdAt": 1792009882135,
+    "status": "publicado"
   }
 ]
