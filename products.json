@@ -1149,5 +1149,18 @@
     "gallery": [],
     "createdAt": 1792009882135,
     "status": "publicado"
+  },
+  {
+    "id": "1792010044595",
+    "title": "Rapunzel Milk Spray ",
+    "price": 19.99,
+    "description": "Discover Lola Cosmetics Rapunzel Milk Nourishing Leave-In Spray – the ultra-nourishing leave-in that hydrates, restores, and protects dry, brittle hair for a youthful, silky finish.",
+    "department": "cosmetics",
+    "category": "Leave-in Cream",
+    "stock": 5,
+    "image": "https://res.cloudinary.com/dz2cdndjf/image/upload/v1792010045/hs-products/1792010044595/1792010044595_1792010045217_47c61d9443_IMG_2698.webp",
+    "gallery": [],
+    "createdAt": 1792010046315,
+    "status": "publicado"
   }
 ]
