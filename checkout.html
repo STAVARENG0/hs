@@ -227,7 +227,7 @@ function commonConfig(){
     },
     onApprove: async function(data){
       try{
-        const result=await postCheckout('/api/checkout/capture-paypal-order',{orderId:data.orderID,checkoutToken:checkoutToken||sessionStorage.getItem('hs-checkout-'+data.orderID)});
+        const result=await postCheckout('/api/checkout/capture-paypal-order',{orderId:data.orderID,checkoutToken:sessionStorage.getItem('hs-checkout-'+data.orderID)||checkoutToken});
         if(!result.ok||result.data?.status!=='COMPLETED')throw Error('Payment pending');
         sessionStorage.removeItem('hs-checkout-'+data.orderID);
         localStorage.removeItem(CART_KEY);
