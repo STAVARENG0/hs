@@ -35,6 +35,22 @@ h1{ color:var(--orange); font-size:22px; margin-bottom:14px; }
 .shipping-option:hover{ background:#ffe4d8; border-color:var(--orange); }
 .shipping-option input{ transform:scale(1.15); }
 .pickup-address{ display:block; margin-top:5px; padding-left:28px; color:#555; font-size:12px; line-height:1.45; font-weight:500; }
+.coupon-box{ text-align:left; margin:18px 0; padding:16px; border:1px solid #e4e5e9; border-radius:14px; background:#fff; }
+.coupon-box h2{ font-size:15px; margin-bottom:9px; }
+.coupon-controls{ display:flex; gap:8px; flex-wrap:wrap; }
+.coupon-controls input{ flex:1 1 170px; min-width:0; width:100%; border:1px solid #b6b8bd; border-radius:9px; padding:10px 12px; font-size:14px; text-transform:uppercase; }
+.coupon-controls button,.quote-retry{ border:1px solid var(--orange); border-radius:9px; padding:10px 14px; background:var(--orange); color:#fff; font-weight:600; cursor:pointer; }
+.coupon-controls .remove-coupon,.quote-retry{ background:#fff; color:#a92a00; }
+.coupon-controls input:focus-visible,.coupon-controls button:focus-visible,.quote-retry:focus-visible{ outline:3px solid #ffb698; outline-offset:2px; }
+.coupon-controls input[aria-invalid="true"]{ border-color:#b42318; }
+.coupon-controls :disabled,.shipping-option input:disabled,.quote-retry:disabled{ opacity:.6; cursor:not-allowed; }
+.coupon-help,.coupon-status{ font-size:12px; line-height:1.6; margin-top:8px; }
+.coupon-help{ color:#666; }
+.coupon-status:empty{ display:none; }
+.coupon-status.success,.discount-row{ color:#166534; }
+.coupon-status.error{ color:#b42318; }
+.quote-retry{ margin-top:8px; font-size:12px; padding:7px 12px; }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 #paypal-section{ margin-top:16px; }
 #paypal-button-paypal, #paypal-button-card{ margin-bottom:12px; }
 .helper{ margin-top:12px; font-size:13px; color:#666; }
@@ -79,10 +95,26 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
     <span class="pickup-address">4 Lower Dublin Street<br>Ballyjamesduff<br>Co. Cavan<br>A82 CY90<br>Ireland</span>
   </div>
 
+  <section class="coupon-box" id="couponBox" aria-labelledby="couponHeading">
+    <h2 id="couponHeading">Discount code</h2>
+    <form id="couponForm" novalidate>
+      <label class="sr-only" for="couponInput">Discount code</label>
+      <div class="coupon-controls">
+        <input id="couponInput" name="couponCode" type="text" maxlength="64" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Enter code" aria-describedby="couponHelp couponStatus" aria-invalid="false">
+        <button id="couponApply" type="submit">Apply</button>
+        <button id="couponRemove" class="remove-coupon hidden" type="button">Remove</button>
+      </div>
+    </form>
+    <p id="couponHelp" class="coupon-help">Discounts apply to eligible products only. Shipping is excluded.</p>
+    <p id="couponStatus" class="coupon-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    <button id="quoteRetry" class="quote-retry hidden" type="button">Retry</button>
+  </section>
+
   <div class="summary">
     <div class="row"><span class="label">Products Subtotal</span><span class="value" id="subtotalValue">€ 0.00</span></div>
+    <div class="row discount-row hidden" id="discountRow"><span class="label" id="discountLabel">Discount</span><span class="value" id="discountValue"></span></div>
     <div class="row"><span class="label" id="shippingLabel">Shipping</span><span class="value" id="shippingValue">€ 0.00</span></div>
-    <div class="row total">Total: € <span id="totalAmount">0.00</span></div>
+    <div class="row total"><span>Total</span><span id="totalAmount">€ 0.00</span></div>
   </div>
 
   <div id="paypal-section">
@@ -97,169 +129,426 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
 <script src="https://www.paypal.com/sdk/js?client-id=AWxRBWcw1-yyUd5Ozct3UrhsF0ztYRedV2T8qx9gSTCChSreNBl5MoCo-rXPE9tZCpp0Rf6QenfdnfWS&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
 <script>
 const CART_KEY='hs_cart';
-const SHIP_KEY='hs_shipping';
 const API_BASE=(window.HS_CHECKOUT_API_BASE || 'https://hs-nutrition-production.up.railway.app').replace(/\/+$/, '');
-let checkoutToken='';
-async function postCheckout(path,body){ const r=await fetch(API_BASE+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); const data=await r.json(); if(!r.ok||data.ok!==true)throw Error('Payment not confirmed');return data; }
-const PICKUP_ADDRESS = '4 Lower Dublin Street, Ballyjamesduff, Co. Cavan, A82 CY90, Ireland';
-document.getElementById('year').textContent = new Date().getFullYear();
-function fmtEUR(n){ return '€ ' + Number(n).toFixed(2); }
+const paymentActions=new Set();
+const renderedPaymentTargets=new Set();
+const couponInput=document.getElementById('couponInput');
+let checkoutToken='', activeOrderId='', paymentRequestSignature='';
+let cart=readCart(), serverProducts=[], productsLoaded=false;
+let appliedCouponCode='', currentQuote=null, currentQuoteSignature='';
+let quoteStatus='idle', quoteError='', quoteErrorCode='', quoteVersion=0, quoteController=null;
+let checkoutBusy=false, paymentCompleted=false, paymentNeedsSupport=false, paymentError='', paymentButtonsLoading=false, captureInProgress=false;
+document.getElementById('year').textContent=new Date().getFullYear();
 
+function readCart(){
+  try{
+    const stored=JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    return Array.isArray(stored) ? stored : [];
+  }catch(e){ return []; }
+}
+function fmtEUR(value){ return '€ ' + Number(value).toFixed(2); }
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function normalizedCode(value){ return String(value || '').trim().toUpperCase(); }
 function getShipping(){
-  const selected = document.querySelector('input[name="checkoutShipping"]:checked');
-  if(!selected){ return { amount: 0, label: 'Choose shipping or pickup', selected: false, method: 'none' }; }
-  if(selected.value === 'pickup'){ return { amount: 0, label: 'Pickup / Collection', selected: true, method: 'pickup' }; }
-  const amount = Number(selected.value);
-  if(amount === 10){ return { amount: 10, label: 'Tracked (€10)', selected: true, method: 'tracked' }; }
-  if(amount === 7){ return { amount: 7, label: 'No tracked (€7)', selected: true, method: 'no_tracked' }; }
-  return { amount: 0, label: 'Choose shipping or pickup', selected: false, method: 'none' };
+  const selected=document.querySelector('input[name="checkoutShipping"]:checked');
+  if(!selected) return {amount:0,label:'Choose shipping or pickup',selected:false,method:'none'};
+  if(selected.value==='pickup') return {amount:0,label:'Pickup / Collection',selected:true,method:'pickup'};
+  if(selected.value==='10') return {amount:10,label:'Tracked (€10)',selected:true,method:'tracked'};
+  if(selected.value==='7') return {amount:7,label:'No tracked (€7)',selected:true,method:'no_tracked'};
+  return {amount:0,label:'Choose shipping or pickup',selected:false,method:'none'};
 }
-
-let cart=[]; try{ cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch(e){ cart=[]; }
-cart = Array.isArray(cart) ? cart : [];
-let serverProducts = [];
-let checkoutReady = false;
-
-async function loadServerProducts(){
-  const r = await fetch(API_BASE + '/api/public/products?t=' + Date.now(), { cache:'no-store' });
-  const json = await r.json().catch(()=>({}));
-  if(!r.ok || json.ok === false) throw new Error(json.error || ('HTTP ' + r.status));
-  serverProducts = Array.isArray(json.data) ? json.data : [];
+function getCartState(){
+  const validRows=[];
+  cart.forEach(function(item){
+    if(!item || typeof item!=='object') return;
+    const product=serverProducts.find(function(p){ return String(p.id)===String(item.id); });
+    if(!product) return;
+    const qty=Math.max(1,parseInt(item.qty || item.quantity || 1,10) || 1);
+    const price=Number(product.price) || 0;
+    validRows.push({id:String(product.id),qty:qty,title:product.title,price:price,lineTotal:qty*price});
+  });
+  const shipping=getShipping();
+  const body={
+    items:validRows.map(function(item){ return {id:item.id,quantity:item.qty}; }),
+    shippingType:shipping.method
+  };
+  if(appliedCouponCode) body.couponCode=appliedCouponCode;
+  return {validRows:validRows,shipping:shipping,body:body,signature:JSON.stringify(body)};
 }
-
-function findServerProduct(id){
-  return serverProducts.find(p => String(p.id) === String(id));
+function quoteIsCurrent(state){
+  return quoteStatus==='ready' && currentQuote && currentQuoteSignature===state.signature;
 }
-
+function hasUnappliedCode(){
+  return normalizedCode(couponInput.value)!==appliedCouponCode;
+}
+function getPaymentIssue(state){
+  if(paymentNeedsSupport) return 'Payment could not be confirmed. Contact HS Nutrition before attempting another payment.';
+  if(checkoutBusy) return 'Complete or cancel your current PayPal checkout before making changes.';
+  if(quoteStatus==='error') return quoteError || 'Your total could not be confirmed. Retry before paying.';
+  if(!productsLoaded) return 'Loading products. Please wait.';
+  if(!state.validRows.length) return 'Add products to your cart to enable payment.';
+  if(!quoteIsCurrent(state)) return 'Updating your total. Please wait before paying.';
+  if(hasUnappliedCode()) return 'Apply the discount code, or remove it, before paying.';
+  if(!state.shipping.selected) return 'Please choose shipping or pickup before paying.';
+  if(currentQuote.total<=0) return 'This cart cannot be paid with PayPal. Please contact HS Nutrition.';
+  if(paymentError) return paymentError;
+  return '';
+}
+function clearCheckoutToken(){
+  if(activeOrderId){
+    try{ sessionStorage.removeItem('hs-checkout-'+activeOrderId); }catch(e){}
+  }
+  checkoutToken='';
+  activeOrderId='';
+  paymentRequestSignature='';
+}
+function updateControls(state){
+  const locked=checkoutBusy || paymentNeedsSupport || paymentCompleted || !productsLoaded;
+  couponInput.disabled=locked;
+  document.getElementById('couponApply').disabled=locked || !normalizedCode(couponInput.value);
+  document.getElementById('couponRemove').disabled=locked;
+  document.getElementById('couponRemove').classList.toggle('hidden',!appliedCouponCode && !couponInput.value);
+  document.querySelectorAll('input[name="checkoutShipping"]').forEach(function(input){ input.disabled=locked; });
+  document.getElementById('quoteRetry').disabled=checkoutBusy || paymentNeedsSupport;
+  const issue=getPaymentIssue(state);
+  paymentActions.forEach(function(actions){
+    if(issue || paymentCompleted) actions.disable();
+    else actions.enable();
+  });
+  const helper=document.getElementById('helperMsg');
+  helper.textContent=issue;
+  helper.classList.toggle('hidden',!issue);
+  ['paypal-button-paypal','paypal-button-card'].forEach(function(id){
+    document.getElementById(id).classList.toggle('hidden',!state.validRows.length || paymentCompleted);
+  });
+}
 function renderSummary(){
-  const list = document.getElementById('cartList');
-  let subtotal = 0;
-  const validRows = [];
+  if(paymentCompleted) return;
+  const state=getCartState();
+  const list=document.getElementById('cartList');
   if(!cart.length){
-    list.innerHTML = '<p style="color:#666;text-align:center;">Your cart is empty.</p>';
-  }else{
-    list.innerHTML = cart.map(item=>{
-      const qty = Math.max(1, parseInt(item.qty || item.quantity || 1, 10) || 1);
-      const product = findServerProduct(item.id);
-      if(!product){
-        return `<div class="item"><div class="item-title">${qty}× Product unavailable</div><div class="item-sub">Removed</div></div>`;
-      }
-      const price = Number(product.price)||0; // preço lido do backend/products.json
-      const sub = qty*price; subtotal += sub;
-      validRows.push({ id:String(product.id), qty, title:product.title, price, lineTotal: sub });
-      return `<div class="item">
-                <div class="item-title">${qty}× ${String(product.title).replace(/[&<>"\']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\'":"&#39;",'"':"&quot;"}[c]))}<br><small>${qty} × ${fmtEUR(price)} each</small></div>
-                <div class="item-sub">${fmtEUR(sub)}</div>
-              </div>`;
+    list.innerHTML='<p style="color:#666;text-align:center;">Your cart is empty.</p>';
+  }else if(productsLoaded){
+    list.innerHTML=cart.filter(function(item){ return item && typeof item==='object'; }).map(function(item){
+      const qty=Math.max(1,parseInt(item.qty || item.quantity || 1,10) || 1);
+      const product=serverProducts.find(function(p){ return String(p.id)===String(item.id); });
+      if(!product) return '<div class="item"><div class="item-title">'+qty+'× Product unavailable</div><div class="item-sub">Removed</div></div>';
+      const price=Number(product.price) || 0;
+      return '<div class="item"><div class="item-title">'+qty+'× '+escapeHTML(product.title)+
+        '<br><small>'+qty+' × '+fmtEUR(price)+' each</small></div><div class="item-sub">'+fmtEUR(qty*price)+'</div></div>';
     }).join('');
   }
-  const ship = getShipping();
-  document.getElementById('subtotalValue').textContent = fmtEUR(subtotal);
-  document.getElementById('shippingLabel').textContent = ship.selected ? ship.label : 'Shipping';
-  document.getElementById('shippingValue').textContent = ship.selected ? fmtEUR(ship.amount) : 'Choose shipping';
+  const confirmed=quoteIsCurrent(state);
+  const hasItems=state.validRows.length>0;
+  document.getElementById('subtotalValue').textContent=confirmed ? fmtEUR(currentQuote.subtotal) : (hasItems ? 'Awaiting confirmation' : fmtEUR(0));
+  document.getElementById('shippingLabel').textContent=state.shipping.selected ? state.shipping.label : 'Shipping';
+  document.getElementById('shippingValue').textContent=confirmed && state.shipping.selected ? fmtEUR(currentQuote.shipping.amount) : (state.shipping.selected ? 'Awaiting confirmation' : 'Choose shipping');
+  document.getElementById('totalAmount').textContent=confirmed ? fmtEUR(currentQuote.total) : (hasItems ? '—' : fmtEUR(0));
+  const coupon=confirmed ? currentQuote.coupon : null;
+  document.getElementById('discountRow').classList.toggle('hidden',!appliedCouponCode);
+  document.getElementById('discountLabel').textContent='Discount'+(appliedCouponCode ? ' ('+appliedCouponCode+')' : '');
+  document.getElementById('discountValue').textContent=coupon ? '− '+fmtEUR(currentQuote.discount) : (quoteStatus==='loading' ? 'Checking…' : 'Unconfirmed');
 
-  let effectiveTotal = 0;
-  const buttons = document.getElementById('paypal-section');
-  const helper = document.getElementById('helperMsg');
-  if(subtotal > 0 && validRows.length > 0){
-    effectiveTotal = subtotal + (ship.selected ? Number(ship.amount||0) : 0);
-    buttons.classList.remove('hidden');
-    helper.classList.add('hidden');
-  }else{
-    effectiveTotal = 0;
-    buttons.classList.remove('hidden');
-    document.getElementById('paypal-button-paypal').classList.add('hidden');
-    document.getElementById('paypal-button-card').classList.add('hidden');
-    helper.classList.remove('hidden');
+  const status=document.getElementById('couponStatus');
+  let message='', statusType='';
+  if(quoteStatus==='loading'){
+    message=appliedCouponCode ? 'Checking '+appliedCouponCode+' and updating your total…' : 'Updating your total…';
+  }else if(quoteStatus==='error'){
+    message=quoteError || 'Your total could not be confirmed. Please retry.';
+    statusType='error';
+  }else if(coupon){
+    message=coupon.code+' applied — '+coupon.percentage+'% off eligible products. You save '+fmtEUR(currentQuote.discount)+'.';
+    statusType='success';
+  }else if(appliedCouponCode && !hasItems){
+    message='Add products to check '+appliedCouponCode+'.';
   }
-  document.getElementById('totalAmount').textContent = Number(effectiveTotal).toFixed(2);
-  return { subtotal, shipping: Number(ship.amount||0), shippingSelected: !!ship.selected, shippingMethod: ship.method, isPickup: ship.method === 'pickup', total: Number(effectiveTotal.toFixed(2)), validRows };
+  if(hasUnappliedCode()){
+    message+=(message ? ' ' : '')+(normalizedCode(couponInput.value) ? 'Apply your entered code to update the discount.' : 'The applied code is still active. Use Remove to clear it.');
+  }
+  status.textContent=message;
+  status.className='coupon-status'+(statusType ? ' '+statusType : '');
+  couponInput.setAttribute('aria-invalid',String(quoteStatus==='error' && !!appliedCouponCode && /^coupon_/.test(quoteErrorCode)));
+  document.getElementById('quoteRetry').classList.toggle('hidden',quoteStatus!=='error' || paymentNeedsSupport);
+  document.getElementById('couponBox').setAttribute('aria-busy',String(quoteStatus==='loading'));
+  updateControls(state);
 }
-
-function getShippingText(amount, method){
-  if(method === 'pickup') return 'Pickup / Collection - ' + PICKUP_ADDRESS;
-  if(Number(amount) === 10) return 'Tracked shipping (€10)';
-  if(Number(amount) === 7) return 'No tracked shipping (€7)';
-  return 'Free shipping (€0)';
+function errorMessage(error){
+  if(error.code==='coupon_not_applicable') return 'This code does not apply to the products in your cart. Remove it or choose eligible products.';
+  if(error.code==='coupon_unavailable') return 'This discount code is invalid or no longer available. Check the code, retry, or remove it.';
+  if(error instanceof TypeError) return 'We could not connect to confirm your total. Please retry before paying.';
+  return error.message || 'Your total could not be confirmed. Please retry before paying.';
 }
-
-function buildSellerSummary(state){
-  const lines = state.validRows.map(function(item){
-    return `${item.qty}x ${item.title} - ${fmtEUR(item.price)} each = ${fmtEUR(item.lineTotal || (item.qty * item.price))}`;
+async function postCheckout(path,body,signal){
+  const response=await fetch(API_BASE+path,{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:signal
   });
-  lines.push(`${state.isPickup ? 'Pickup' : 'Shipping'}: ${getShippingText(state.shipping, state.shippingMethod)} - ${fmtEUR(state.shipping)}`);
-  lines.push(`Total: ${fmtEUR(state.total)}`);
-  return lines.join(' | ');
+  const data=await response.json().catch(function(){ return {}; });
+  if(!response.ok || data.ok!==true){
+    const code=typeof data.code==='string' ? data.code : (typeof data.error==='string' && /^coupon_/.test(data.error) ? data.error : '');
+    const message=typeof data.error==='string' && !/^coupon_/.test(data.error) ? data.error : (typeof data.message==='string' ? data.message : 'The server could not confirm checkout. Please retry.');
+    const error=new Error(message);
+    error.code=code;
+    throw error;
+  }
+  return data;
 }
-
-function getBuyerInfo(details){
-  const payer = details && details.payer ? details.payer : {};
-  const name = payer.name ? [payer.name.given_name, payer.name.surname].filter(Boolean).join(' ') : 'customer';
-  const email = payer.email_address || 'Customer email not returned by PayPal';
-  return { name, email };
+function moneyAmount(value){
+  if((typeof value!=='number' && (typeof value!=='string' || !/^\d+(?:\.\d{1,2})?$/.test(value))) || !Number.isFinite(Number(value)) || Number(value)<0){
+    throw new Error('The server returned an invalid total. Please retry.');
+  }
+  return Number(value);
 }
-
+function normalizeQuote(data,state){
+  if(!data.shipping || data.shipping.type!==state.shipping.method) throw new Error('The server could not confirm your shipping choice. Please retry.');
+  const quote={
+    subtotal:moneyAmount(data.subtotal),discount:moneyAmount(data.discount),total:moneyAmount(data.total),
+    shipping:{type:data.shipping.type,amount:moneyAmount(data.shipping.amount)},coupon:null
+  };
+  if(quote.discount>quote.subtotal || Math.round(quote.total*100)!==Math.round(quote.subtotal*100)-Math.round(quote.discount*100)+Math.round(quote.shipping.amount*100)){
+    throw new Error('The server returned an inconsistent total. Please retry.');
+  }
+  if(state.body.couponCode){
+    if(!data.coupon || normalizedCode(data.coupon.code)!==state.body.couponCode || !Number.isFinite(Number(data.coupon.percentage)) || Number(data.coupon.percentage)<=0 || Number(data.coupon.percentage)>100){
+      throw new Error('The server could not confirm this discount. Retry or remove the code.');
+    }
+    quote.coupon={code:normalizedCode(data.coupon.code),percentage:Number(data.coupon.percentage),scope:data.coupon.scope};
+  }else if(data.coupon || quote.discount!==0){
+    throw new Error('The server returned an unexpected discount. Please retry.');
+  }
+  return quote;
+}
+async function loadServerProducts(){
+  const response=await fetch(API_BASE+'/api/public/products?t='+Date.now(),{cache:'no-store'});
+  const data=await response.json().catch(function(){ return {}; });
+  if(!response.ok || data.ok===false) throw new Error(typeof data.error==='string' ? data.error : 'Could not load products. Please retry.');
+  serverProducts=Array.isArray(data.data) ? data.data : [];
+  productsLoaded=true;
+}
+async function refreshQuote(){
+  if(paymentCompleted || paymentNeedsSupport) return;
+  const version=++quoteVersion;
+  if(quoteController) quoteController.abort();
+  quoteController=null;
+  clearCheckoutToken();
+  currentQuote=null;
+  currentQuoteSignature='';
+  quoteError='';
+  quoteErrorCode='';
+  paymentError='';
+  const state=getCartState();
+  if(!productsLoaded || !state.validRows.length){
+    quoteStatus='idle';
+    renderSummary();
+    return;
+  }
+  const controller=new AbortController();
+  quoteController=controller;
+  quoteStatus='loading';
+  renderSummary();
+  try{
+    const response=await postCheckout('/api/checkout/quote',state.body,controller.signal);
+    if(version!==quoteVersion || state.signature!==getCartState().signature) return;
+    currentQuote=normalizeQuote(response,state);
+    currentQuoteSignature=state.signature;
+    quoteStatus='ready';
+  }catch(error){
+    if(error.name==='AbortError' || version!==quoteVersion) return;
+    currentQuote=null;
+    currentQuoteSignature='';
+    quoteStatus='error';
+    quoteError=errorMessage(error);
+    quoteErrorCode=error.code || '';
+  }finally{
+    if(version===quoteVersion){
+      quoteController=null;
+      renderSummary();
+    }
+  }
+}
 function commonConfig(){
   return {
-    onClick: function(data, actions){
-      const { subtotal, shippingSelected } = renderSummary();
-      if(subtotal <= 0){
-        alert('Please add products before paying.');
-        return actions.reject();
-      }
-      if(!shippingSelected){
-        alert('Please choose shipping before paying.');
-        return actions.reject();
-      }
-      return actions.resolve();
+    onInit:function(data,actions){
+      paymentActions.add(actions);
+      updateControls(getCartState());
     },
-    createOrder: async function(){
-      const state=renderSummary();
-      if(!state.shippingSelected||!state.validRows.length)throw Error('Select shipping and products');
-      const response=await postCheckout('/api/checkout/create-paypal-order',{
-        items:state.validRows.map(i=>({id:String(i.id),quantity:i.qty})),shippingType:state.shippingMethod
-      });
-      if(!response.id||!response.checkoutToken)throw Error('Invalid server checkout');
-      checkoutToken=response.checkoutToken;
-      sessionStorage.setItem('hs-checkout-'+response.id,checkoutToken);
-      document.getElementById('totalAmount').textContent=Number(response.total).toFixed(2);
-      return response.id;
+    onClick:function(data,actions){
+      const issue=getPaymentIssue(getCartState());
+      renderSummary();
+      return issue ? actions.reject() : actions.resolve();
     },
-    onApprove: async function(data){
+    createOrder:async function(){
+      const state=getCartState();
+      const issue=getPaymentIssue(state);
+      if(issue) throw new Error(issue);
+      const version=quoteVersion;
+      checkoutBusy=true;
+      paymentError='';
+      clearCheckoutToken();
+      renderSummary();
       try{
-        const result=await postCheckout('/api/checkout/capture-paypal-order',{orderId:data.orderID,checkoutToken:sessionStorage.getItem('hs-checkout-'+data.orderID)||checkoutToken});
-        if(!result.ok||result.data?.status!=='COMPLETED')throw Error('Payment pending');
-        sessionStorage.removeItem('hs-checkout-'+data.orderID);
-        localStorage.removeItem(CART_KEY);
-        document.getElementById('cartList').textContent='Payment confirmed by the server. Thank you!';
-        document.getElementById('paypal-section').classList.add('hidden');
-      }catch(error){alert('Payment could not be confirmed. Contact HS Nutrition before attempting another payment.');throw error;}
+        const response=await postCheckout('/api/checkout/create-paypal-order',state.body);
+        if(version!==quoteVersion || state.signature!==getCartState().signature) throw new Error('Your cart changed during checkout. Review your total and retry.');
+        if(!response.id || !response.checkoutToken) throw new Error('The server could not start secure checkout. Please retry.');
+        currentQuote=normalizeQuote(response,state);
+        currentQuoteSignature=state.signature;
+        quoteStatus='ready';
+        checkoutToken=response.checkoutToken;
+        activeOrderId=response.id;
+        paymentRequestSignature=state.signature;
+        try{ sessionStorage.setItem('hs-checkout-'+response.id,checkoutToken); }catch(e){}
+        renderSummary();
+        return response.id;
+      }catch(error){
+        clearCheckoutToken();
+        checkoutBusy=false;
+        currentQuote=null;
+        currentQuoteSignature='';
+        quoteStatus='error';
+        quoteError=errorMessage(error);
+        quoteErrorCode=error.code || '';
+        renderSummary();
+        throw error;
+      }
     },
-    onError: function(err){ console.error('PayPal error:', err); alert('❌ There was an issue with PayPal Checkout. Please try again.'); }
+    onApprove:async function(data){
+      if(captureInProgress || paymentCompleted || paymentNeedsSupport) return;
+      captureInProgress=true;
+      checkoutBusy=true;
+      renderSummary();
+      try{
+        if(!checkoutToken || activeOrderId!==data.orderID || paymentRequestSignature!==getCartState().signature) throw new Error('The checkout state changed before confirmation.');
+        const result=await postCheckout('/api/checkout/capture-paypal-order',{orderId:data.orderID,checkoutToken:checkoutToken});
+        if(!result.ok || !result.data || result.data.status!=='COMPLETED') throw new Error('Payment pending');
+        clearCheckoutToken();
+        try{ localStorage.removeItem(CART_KEY); }catch(e){}
+        cart=[];
+        appliedCouponCode='';
+        couponInput.value='';
+        quoteError='';
+        quoteErrorCode='';
+        paymentCompleted=true;
+        checkoutBusy=false;
+        document.getElementById('cartList').textContent='Payment confirmed by the server. Thank you!';
+        document.getElementById('shippingBox').classList.add('hidden');
+        document.getElementById('couponBox').classList.add('hidden');
+        document.getElementById('paypal-section').classList.add('hidden');
+        updateControls(getCartState());
+      }catch(error){
+        paymentNeedsSupport=true;
+        clearCheckoutToken();
+        renderSummary();
+        alert('Payment could not be confirmed. Contact HS Nutrition before attempting another payment.');
+        throw error;
+      }finally{
+        captureInProgress=false;
+      }
+    },
+    onCancel:function(){
+      if(paymentNeedsSupport || paymentCompleted) return;
+      checkoutBusy=false;
+      clearCheckoutToken();
+      refreshQuote();
+    },
+    onError:function(error){
+      console.error('PayPal error:',error);
+      if(paymentNeedsSupport || paymentCompleted) return;
+      checkoutBusy=false;
+      clearCheckoutToken();
+      if(quoteStatus!=='error') paymentError='PayPal checkout could not start. Retry your total before paying again.';
+      renderSummary();
+      document.getElementById('quoteRetry').classList.remove('hidden');
+    }
   };
 }
-
+document.getElementById('couponForm').addEventListener('submit',function(event){
+  event.preventDefault();
+  if(checkoutBusy || paymentNeedsSupport || paymentCompleted || !productsLoaded) return;
+  const code=normalizedCode(couponInput.value);
+  if(!code){
+    document.getElementById('couponStatus').textContent='Enter a discount code to apply.';
+    couponInput.setAttribute('aria-invalid','true');
+    couponInput.focus();
+    return;
+  }
+  appliedCouponCode=code;
+  couponInput.value=code;
+  refreshQuote();
+});
+document.getElementById('couponRemove').addEventListener('click',function(){
+  if(checkoutBusy || paymentNeedsSupport || paymentCompleted || !productsLoaded) return;
+  appliedCouponCode='';
+  couponInput.value='';
+  refreshQuote();
+  couponInput.focus();
+});
+couponInput.addEventListener('input',function(){
+  if(checkoutBusy || paymentNeedsSupport || paymentCompleted) return;
+  clearCheckoutToken();
+  renderSummary();
+});
+document.querySelectorAll('input[name="checkoutShipping"]').forEach(function(input){
+  input.addEventListener('change',function(){ if(!checkoutBusy && !paymentNeedsSupport) refreshQuote(); });
+});
+document.getElementById('quoteRetry').addEventListener('click',async function(){
+  if(checkoutBusy || paymentNeedsSupport || paymentCompleted) return;
+  try{
+    if(!productsLoaded) await loadServerProducts();
+    await refreshQuote();
+    await renderPaymentButtons();
+  }catch(error){
+    quoteStatus='error';
+    quoteError=errorMessage(error);
+    renderSummary();
+  }
+});
+window.addEventListener('storage',function(event){
+  if(event.key!==CART_KEY || paymentCompleted || paymentNeedsSupport) return;
+  cart=readCart();
+  refreshQuote();
+});
+async function renderPaymentButtons(){
+  if(paymentButtonsLoading || paymentCompleted) return;
+  if(typeof paypal==='undefined'){
+    paymentError='Payment options could not load. Refresh this page to try again.';
+    renderSummary();
+    return;
+  }
+  paymentButtonsLoading=true;
+  try{
+    const configs=[
+      {fundingSource:paypal.FUNDING.PAYPAL,style:{layout:'vertical',color:'gold',shape:'pill',label:'paypal',height:45},target:'#paypal-button-paypal'},
+      {fundingSource:paypal.FUNDING.CARD,style:{layout:'vertical',color:'black',shape:'pill',label:'pay',height:45},target:'#paypal-button-card'}
+    ];
+    for(const config of configs){
+      if(renderedPaymentTargets.has(config.target)) continue;
+      const buttons=paypal.Buttons(Object.assign({},commonConfig(),{fundingSource:config.fundingSource,style:config.style}));
+      if(buttons.isEligible()){
+        await buttons.render(config.target);
+        renderedPaymentTargets.add(config.target);
+      }
+    }
+    if(!renderedPaymentTargets.size) paymentError='No PayPal payment option is available. Please contact HS Nutrition.';
+    renderSummary();
+  }finally{
+    paymentButtonsLoading=false;
+  }
+}
 async function bootCheckout(){
+  renderSummary();
   try{
     await loadServerProducts();
-    document.querySelectorAll('input[name="checkoutShipping"]').forEach(r => r.addEventListener('change', renderSummary));
-    const state = renderSummary();
-    if(typeof paypal !== 'undefined' && state.subtotal > 0){
-      const btnPayPal = paypal.Buttons(Object.assign({}, commonConfig(), {
-        fundingSource: paypal.FUNDING.PAYPAL,
-        style:{ layout:'vertical', color:'gold', shape:'pill', label:'paypal', height:45 }
-      }));
-      if(btnPayPal.isEligible()) btnPayPal.render('#paypal-button-paypal');
-
-      const btnCard = paypal.Buttons(Object.assign({}, commonConfig(), {
-        fundingSource: paypal.FUNDING.CARD,
-        style:{ layout:'vertical', color:'black', shape:'pill', label:'pay', height:45 }
-      }));
-      if(btnCard.isEligible()) btnCard.render('#paypal-button-card');
-    }
-  }catch(e){
-    console.error(e);
-    document.getElementById('cartList').innerHTML = '<p style="color:#c0392b;text-align:center;">Could not load products from backend.</p>';
+    await refreshQuote();
+    await renderPaymentButtons();
+  }catch(error){
+    console.error(error);
+    quoteStatus='error';
+    quoteError=errorMessage(error);
+    if(!productsLoaded) document.getElementById('cartList').textContent='Could not load products from backend.';
+    renderSummary();
   }
 }
 bootCheckout();
