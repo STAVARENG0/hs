@@ -229,6 +229,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 }
 </style>
 
+<link rel="stylesheet" href="cart-coupons.css">
+<script src="cart-coupons.js" defer></script>
 </head>
 <body>
 <div class="wrap">
@@ -471,11 +473,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   radios.forEach(r => r.addEventListener('change', updateDisplayTotal));
 
-  const _openCart = openCart;
-  openCart = function() {
-    _openCart();
-    updateDisplayTotal();
-  };
 
   checkoutBtn.addEventListener('click', () => {
     const sel = getSelectedShipping();
@@ -1196,6 +1193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     cartModal.style.display = 'flex';
     cartModal.setAttribute('aria-hidden', 'false');
+    window.HSCartCoupon?.refresh(cart);
   };
 
   window.closeCart = function(){

@@ -1,0 +1,137 @@
+#cartModal.hs-cart-coupon-ready .cart-content {
+  max-height: calc(100vh - 24px);
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+#cartModal .hs-cart-coupon {
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid #dedee3;
+  border-radius: 12px;
+  background: #fff;
+  color: #222;
+}
+
+#cartModal .hs-cart-coupon[hidden],
+#cartModal .hs-cart-coupon-remove[hidden],
+#cartModal .hs-cart-coupon-breakdown[hidden] {
+  display: none !important;
+}
+
+#cartModal .hs-cart-coupon-form label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: .92rem;
+  font-weight: 700;
+}
+
+#cartModal .hs-cart-coupon-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
+
+#cartModal .hs-cart-coupon-controls input {
+  flex: 1 1 135px;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: 7px 10px;
+  border: 1px solid #858591;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font: inherit;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+#cartModal .hs-cart-coupon-controls input::placeholder {
+  color: #62626a;
+  text-transform: none;
+}
+
+#cartModal .hs-cart-coupon-controls input[aria-invalid="true"] {
+  border-color: #a32118;
+}
+
+#cartModal .hs-cart-coupon-controls button {
+  min-height: 42px;
+  padding: 7px 11px;
+  border: 1px solid #a62d06;
+  border-radius: 8px;
+  color: #fff;
+  background: #a62d06;
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#cartModal .hs-cart-coupon-controls .hs-cart-coupon-remove {
+  color: #a62d06;
+  background: #fff;
+}
+
+#cartModal .hs-cart-coupon-controls :focus-visible {
+  outline: 2px solid #a62d06;
+  outline-offset: 2px;
+}
+
+#cartModal .hs-cart-coupon-controls button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+#cartModal .cart-checkout[data-hs-coupon-pending] {
+  opacity: .62;
+  cursor: wait;
+}
+
+#cartModal .hs-cart-coupon-help,
+#cartModal .hs-cart-coupon-status {
+  margin: 7px 0 0;
+  color: #555;
+  font-size: .8rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+#cartModal .hs-cart-coupon-status:empty {
+  margin: 0;
+}
+
+#cartModal .hs-cart-coupon-status[data-tone="success"],
+#cartModal .hs-cart-coupon-savings > span {
+  color: #166534;
+}
+
+#cartModal .hs-cart-coupon-status[data-tone="error"] {
+  color: #a32118;
+}
+
+#cartModal .hs-cart-coupon-breakdown {
+  margin: 0 0 6px;
+  font-size: .88rem;
+}
+
+#cartModal .hs-cart-coupon-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+#cartModal .hs-cart-coupon-line > span:first-child {
+  overflow-wrap: anywhere;
+}
+
+#cartModal .hs-cart-coupon-line > span:last-child {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
