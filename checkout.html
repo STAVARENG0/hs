@@ -129,6 +129,7 @@ footer{ margin-top:16px; color:#666; font-size:13px; }
 <script src="https://www.paypal.com/sdk/js?client-id=AWxRBWcw1-yyUd5Ozct3UrhsF0ztYRedV2T8qx9gSTCChSreNBl5MoCo-rXPE9tZCpp0Rf6QenfdnfWS&currency=EUR&intent=capture&commit=true&locale=en_IE&components=buttons,funding-eligibility&enable-funding=card"></script>
 <script>
 const CART_KEY='hs_cart';
+const COUPON_KEY='hs_checkout_coupon';
 const API_BASE=(window.HS_CHECKOUT_API_BASE || 'https://hs-nutrition-production.up.railway.app').replace(/\/+$/, '');
 const paymentActions=new Set();
 const renderedPaymentTargets=new Set();
@@ -153,6 +154,38 @@ function escapeHTML(value){
   });
 }
 function normalizedCode(value){ return String(value || '').trim().toUpperCase(); }
+function storeCheckoutCoupon(value){
+  const code=normalizedCode(value);
+  try{
+    if(code) sessionStorage.setItem(COUPON_KEY,code);
+    else sessionStorage.removeItem(COUPON_KEY);
+  }catch(e){}
+}
+function removeSavedCheckoutCouponIf(predicate){
+  try{
+    const savedCode=normalizedCode(sessionStorage.getItem(COUPON_KEY));
+    if(savedCode && predicate(savedCode)) sessionStorage.removeItem(COUPON_KEY);
+  }catch(e){}
+}
+function discardRejectedCheckoutCoupon(error,state,version){
+  const code=state.body.couponCode;
+  if(!code || !['coupon_unavailable','coupon_not_applicable','coupon_zero_total'].includes(error.code)) return;
+  if(error.status===408 || error.status===429 || error.status>=500) return;
+  if(version!==quoteVersion || state.signature!==getCartState().signature) return;
+  removeSavedCheckoutCouponIf(function(savedCode){ return savedCode===code; });
+}
+function clearCheckoutCoupon(){
+  appliedCouponCode='';
+  couponInput.value='';
+  storeCheckoutCoupon('');
+}
+function restoreCheckoutCoupon(){
+  if(!cart.length){ clearCheckoutCoupon(); return; }
+  try{
+    appliedCouponCode=normalizedCode(sessionStorage.getItem(COUPON_KEY));
+    couponInput.value=appliedCouponCode;
+  }catch(e){}
+}
 function getShipping(){
   const selected=document.querySelector('input[name="checkoutShipping"]:checked');
   if(!selected) return {amount:0,label:'Choose shipping or pickup',selected:false,method:'none'};
@@ -292,6 +325,7 @@ async function postCheckout(path,body,signal){
     const message=typeof data.error==='string' && !/^coupon_/.test(data.error) ? data.error : (typeof data.message==='string' ? data.message : 'The server could not confirm checkout. Please retry.');
     const error=new Error(message);
     error.code=code;
+    error.status=response.status;
     throw error;
   }
   return data;
@@ -355,8 +389,10 @@ async function refreshQuote(){
     currentQuote=normalizeQuote(response,state);
     currentQuoteSignature=state.signature;
     quoteStatus='ready';
+    if(currentQuote.coupon) storeCheckoutCoupon(currentQuote.coupon.code);
   }catch(error){
     if(error.name==='AbortError' || version!==quoteVersion) return;
+    discardRejectedCheckoutCoupon(error,state,version);
     currentQuote=null;
     currentQuoteSignature='';
     quoteStatus='error';
@@ -403,6 +439,7 @@ function commonConfig(){
         renderSummary();
         return response.id;
       }catch(error){
+        discardRejectedCheckoutCoupon(error,state,version);
         clearCheckoutToken();
         checkoutBusy=false;
         currentQuote=null;
@@ -426,8 +463,7 @@ function commonConfig(){
         clearCheckoutToken();
         try{ localStorage.removeItem(CART_KEY); }catch(e){}
         cart=[];
-        appliedCouponCode='';
-        couponInput.value='';
+        clearCheckoutCoupon();
         quoteError='';
         quoteErrorCode='';
         paymentCompleted=true;
@@ -474,14 +510,14 @@ document.getElementById('couponForm').addEventListener('submit',function(event){
     couponInput.focus();
     return;
   }
+  removeSavedCheckoutCouponIf(function(savedCode){ return savedCode!==code; });
   appliedCouponCode=code;
   couponInput.value=code;
   refreshQuote();
 });
 document.getElementById('couponRemove').addEventListener('click',function(){
   if(checkoutBusy || paymentNeedsSupport || paymentCompleted || !productsLoaded) return;
-  appliedCouponCode='';
-  couponInput.value='';
+  clearCheckoutCoupon();
   refreshQuote();
   couponInput.focus();
 });
@@ -506,8 +542,17 @@ document.getElementById('quoteRetry').addEventListener('click',async function(){
   }
 });
 window.addEventListener('storage',function(event){
-  if(event.key!==CART_KEY || paymentCompleted || paymentNeedsSupport) return;
+  const cartStorageChanged=event.key===CART_KEY || (event.key===null && event.storageArea===localStorage);
+  if(!cartStorageChanged || paymentCompleted || paymentNeedsSupport) return;
   cart=readCart();
+  if(!cart.length) clearCheckoutCoupon();
+  refreshQuote();
+});
+window.addEventListener('pageshow',function(event){
+  if(!event.persisted || checkoutBusy || paymentCompleted || paymentNeedsSupport) return;
+  cart=readCart();
+  if(!productsLoaded){ bootCheckout(); return; }
+  restoreCheckoutCoupon();
   refreshQuote();
 });
 async function renderPaymentButtons(){
@@ -538,6 +583,7 @@ async function renderPaymentButtons(){
   }
 }
 async function bootCheckout(){
+  restoreCheckoutCoupon();
   renderSummary();
   try{
     await loadServerProducts();

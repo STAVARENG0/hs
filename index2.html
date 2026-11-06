@@ -338,6 +338,8 @@ footer{color:var(--muted);text-align:center;font-size:12px;margin-top:20px}
 @media (min-width:760px){.product-modal-body{grid-template-columns:1.15fr .85fr;align-items:start;}}
 </style>
 
+<link rel="stylesheet" href="cart-coupons.css">
+<script src="cart-coupons.js" defer></script>
 </head>
 <body>
 
@@ -748,8 +750,10 @@ document.addEventListener('DOMContentLoaded', () => {
   radios.forEach(r => r.addEventListener('change', updateDisplayTotal));
   const _openCart = openCart;
   openCart = function() {
+    cart = loadCart();
     _openCart();
     updateDisplayTotal();
+    window.HSCartCoupon?.refresh(cart);
   };
   checkoutBtn.addEventListener('click', () => {
     const sel = getSelectedShipping();
